@@ -26,6 +26,21 @@ app.get("/quotes/random", (request, response)=>{
   response.send(quotes[Math.floor(Math.random() * quotes.length)])
 });
 
+app.get("/quotes/search", (req, res)=>{
+  console.log(`we,re searching for a ${req.query.term} in quotes `)
+  if(req.query.term){
+    const searchedQuotes = quotes.filter(quoteObj =>{
+      return (
+        quoteObj.quote.toLowerCase().includes(req.query.term.toLowerCase()) || 
+        quoteObj.author.toLowerCase().includes(req.query.term.toLowerCase())
+      )
+    })
+    res.send(searchedQuotes)
+  }else{
+    res.send(400, "no term parameter provided!");
+  }
+})
+
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
