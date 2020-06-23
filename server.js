@@ -18,6 +18,14 @@ app.get("/", function (request, response) {
 
 //START OF YOUR CODE...
 
+app.get("/quotes", (request, response)=>{
+  response.send(quotes)
+});
+
+app.get("/quotes/random", (request, response)=>{
+  response.send(quotes[Math.floor(Math.random() * quotes.length)])
+});
+
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
