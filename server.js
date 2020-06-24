@@ -21,7 +21,7 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
-app.get("/quotes/ramdom", (req,res)=>{
+app.get("/quotes/random", (req,res)=>{
   res.send(pickFromArray(quotes))
 })
 
