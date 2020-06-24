@@ -6,7 +6,7 @@ const express = require("express");
 const app = express();
 const _ = require("lodash");
 const cors = require("cors");
-
+app.use(cors());
 //load the quotes JSON
 const quotes = require("./quotes.json");
 
@@ -35,16 +35,16 @@ app.get("/quotes/search", (req, res) => {
   );
   res.send(searchData);
 });
-app.use(cors());
+
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
 //example: pickFromArray([1,2,3,4]), or
 //example: pickFromArray(myContactsArray)
 //
-function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
+// function pickFromArray(arr) {
+//   return arr[Math.floor(Math.random() * arr.length)];
+// }
 const port = process.env.PORT || 5000;
 //Start our server so that it listens for HTTP requests!
 const listener = app.listen(port, function () {
