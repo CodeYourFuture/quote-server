@@ -22,6 +22,9 @@ app.get("/quotes", (req, res) => {
   res.send(quotes);
 });
 
+app.get("/quotes/random", (req, res) => {
+  res.json(pickFromArray(quotes));
+});
 
 //...END OF YOUR CODE
 
@@ -34,6 +37,10 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
-  console.log("Your app is listening on port " + listener.address().port);
-});
+// const listener = app.listen(process.env.PORT, function () {
+//   console.log("Your app is listening on port " + listener.address().port);
+// });
+const PORT = process.env.PORT || 5000;
+// process.env.PORT check first environmentvaiable than 5000
+
+app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
