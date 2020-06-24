@@ -27,12 +27,14 @@ app.get("/quotes/random", (req, res) => {
 
 app.get("/quotes/search", (req, res) => {
   if (req.query.term) {
-    const searchQuote = quotes.filter((item) =>
-      item.quote.toLowerCase().includes(req.query.term.toLowerCase())
+    const searchQuote = quotes.filter(
+      (item) =>
+        item.quote.toLowerCase().includes(req.query.term.toLowerCase()) ||
+        item.author.toLowerCase().includes(req.query.term.toLowerCase())
     );
     res.send(searchQuote);
   } else {
-    res.send(400, "No q parameter provided !");
+    res.send(400, "No term parameter provided !");
   }
 });
 
