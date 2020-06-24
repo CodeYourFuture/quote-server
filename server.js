@@ -4,6 +4,8 @@
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
 const app = express();
+const _ = require("lodash");
+const cors = require("cors");
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
@@ -21,18 +23,19 @@ app.get("/quotes", (req, res) => {
   res.send(quotes);
 });
 app.get("/quotes/random", (req, res) => {
-  res.send(pickFromArray(quotes));
+  res.send(_.sample(quotes));
 });
 
 app.get("/quotes/search", (req, res) => {
-  const term = req.query;
+  const term = req.query.term;
   const searchData = quotes.filter(
     (quotes) =>
-      quotes.quote.toLowerCase().includes(term.term.toLowerCase()) ||
-      quotes.author.toLowerCase().includes(term.term.toLowerCase())
+      quotes.quote.toLowerCase().includes(term.toLowerCase()) ||
+      quotes.author.toLowerCase().includes(term.toLowerCase())
   );
   res.send(searchData);
 });
+app.use(cors());
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
