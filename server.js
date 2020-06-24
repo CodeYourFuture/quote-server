@@ -33,6 +33,9 @@ app.get("/quotes/search", (req,res)=>{
   }
   
 })
+app.get("/quotes/minko",(req,res)=>{
+  res.json(quotes)
+})
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
