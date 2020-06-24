@@ -25,6 +25,17 @@ app.get("/quotes/random", (req, res) => {
   res.send(pickFromArray(quotes));
 });
 
+app.get("/quotes/search", (req, res) => {
+  if (req.query.term) {
+    const searchQuote = quotes.filter((item) =>
+      item.quote.toLowerCase().includes(req.query.term.toLowerCase())
+    );
+    res.send(searchQuote);
+  } else {
+    res.send(400, "No q parameter provided !");
+  }
+});
+
 const myPort = 3000;
 app.listen(myPort, () => console.log(`Listening on port ${myPort}`));
 
