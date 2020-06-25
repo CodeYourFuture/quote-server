@@ -1,32 +1,43 @@
-// server.js
-// This is where your node app starts
-
-//load the 'express' module which makes writing webservers easy
 const express = require("express");
 const app = express();
-
-//load the quotes JSON
 const quotes = require("./quotes.json");
 
-// Now register handlers for some routes:
-//   /                  - Return some helpful welcome info (text)
-//   /quotes            - Should return all quotes (json)
-//   /quotes/random     - Should return ONE quote (json)
+//START OF YOUR CODE...
+
 app.get("/", function (request, response) {
   response.send(
     "Mahmut's Quote Server!  Ask me for /quotes/random, or /quotes"
   );
 });
-
-//START OF YOUR CODE...
-
 app.get("/quotes", (req, res) => {
-  res.send(quotes);
+  res.json(quotes);
 });
 
 app.get("/quotes/random", (req, res) => {
   res.json(pickFromArray(quotes));
 });
+
+// app.get("/quotes/search", (req, res) => {
+//   if (req.query.term) {
+//     const search = quotes.filter((element) =>
+//       element.quote.toLowerCase().includes(req.query.term.toLowerCase()) ||
+//       element.author.toLowerCase().includes(req.query.term.toLowerCase())
+//     );
+//     res.send(search);
+//   } else {
+//     res.status(400).send('Sorry!')
+//   }
+// });
+
+app.get('/quotes/search', (req,res)=>{
+  const search = quotes.filter(element => element.quote.toLowerCase().includes(req.query.term.toLowerCase()))
+  if(search){
+    res.send(search);
+  }else{
+    res.status(400).send('Not Found !')
+  }
+
+})
 
 //...END OF YOUR CODE
 
