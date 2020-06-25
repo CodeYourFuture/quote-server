@@ -5,6 +5,7 @@
 const express = require("express");
 const app = express();
 
+const lodash= require("lodash");
 //load the quotes JSON
 const quotes = require("./quotes.json");
 
@@ -23,7 +24,7 @@ app.get("/quotes", (request, response)=>{
 });
 
 app.get("/quotes/random", (request, response)=>{
-  response.send(pickFromArray(quotes))
+  response.send(lodash.sample(quotes))
 });
 
 app.get("/quotes/search", (req, res)=>{
