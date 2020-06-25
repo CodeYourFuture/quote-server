@@ -23,7 +23,7 @@ app.get("/quotes", (request, response)=>{
 });
 
 app.get("/quotes/random", (request, response)=>{
-  response.send(quotes[Math.floor(Math.random() * quotes.length)])
+  response.send(pickFromArray(quotes))
 });
 
 app.get("/quotes/search", (req, res)=>{
