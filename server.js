@@ -31,6 +31,8 @@ app.get("/quotes/random", function (request, response) {
 });
 
 app.get('/quotes/search', (req, res) => {
+  const term = req.query.term;
+  
   if (req.query.term) {
     const searchedQuote = quotes.filter((item) =>{
       item.quote.toLowerCase().includes(req.query.term.toLowerCase()) ||
