@@ -30,19 +30,30 @@ app.get("/quotes/random", (req, res) => {
   res.send(_.sample(quotes));
 });
 
-
-app.get('/quotes/search', (req, res) => {
+app.get("/quotes/search", (req, res) => {
   const term = req.query.term;
   if (req.query.term) {
-    const searchedQuote = quotes.filter((item) =>{
-      item.quote.toLowerCase().includes(req.query.term.toLowerCase()) ||
-      item.author.toLowerCase().includes(req.query.term.toLowerCase())
-      }
+    const searchedQuote = quotes.filter(
+      (quotes) =>
+      quotes.quote.toLowerCase().includes(term.toLowerCase()) ||
+      quotes.author.toLowerCase().includes(term.toLowerCase())
+      
     );
     res.send(searchedQuote)
   } else {
     res.send (400, "No term provided")
   }
+});
+
+
+app.get("/quotes/search", (req, res) => {
+  const term = req.query.term;
+  const searchData = quotes.filter(
+    (quotes) =>
+      quotes.quote.toLowerCase().includes(term.toLowerCase()) ||
+      quotes.author.toLowerCase().includes(term.toLowerCase())
+  );
+  res.send(searchData);
 });
 
 //...END OF YOUR CODE
