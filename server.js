@@ -5,6 +5,9 @@
 const express = require("express");
 const app = express();
 
+const cors = require("cors");
+app.use(cors());
+
 //load the quotes JSON
 const quotes = require("./quotes-with-id.json");
 
