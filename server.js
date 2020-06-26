@@ -30,6 +30,19 @@ app.get("/quotes/random", function (request, response) {
   response.send(pickFromArray(quotes));
 });
 
+app.get('/quotes/search', (req, res) => {
+  if (req.query.term) {
+    const searchedQuote = quotes.filter((item) =>{
+      item.quote.toLowerCase().includes(req.query.term.toLowerCase()) ||
+      item.author.toLowerCase().includes(req.query.term.toLowerCase())
+      }
+    );
+    res.send(searchedQuote)
+  } else {
+    res.send (400, "No term provided")
+  }
+});
+
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
@@ -44,10 +57,4 @@ function pickFromArray(arr) {
 const PORT = process.env.PORT || 5000;
 const listener = app.listen(PORT, function () {
   console.log("Your app is listening on port " + listener.address().port);
-});
-
-app.all('/', function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  next()
 });
