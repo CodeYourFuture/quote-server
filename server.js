@@ -55,7 +55,7 @@ function pickFromArray(arr) {
 
 //const PORT = process.env.PORT || 4400;
 
-app.listen(38494, () => console.log(`server started on prot ${PORT}`));
+app.listen(38494, () => console.log("server started on prot"));
 
 //Start our server so that it listens for HTTP requests!
 // const listener = app.listen(process.env.PORT, function () {
