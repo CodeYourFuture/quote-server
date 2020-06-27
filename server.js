@@ -38,7 +38,7 @@ app.get("/quotes/search", (req, res) => {
   }
 });
 
-const myPort = 3000;
+const myPort = process.env.myPort || 3000;
 app.listen(myPort, () => console.log(`Listening on port ${myPort}`));
 
 //START OF YOUR CODE...
