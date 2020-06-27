@@ -17,6 +17,17 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+import quote from './quotes.json'
+const express = require("express");
+const app = express();
+const quotes = require("./quotes.json");
+
+app.get("/", function (request, response) {
+  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+});
+
+const listener = app.listen(3000, ()=> console.log('server starts on 3000'))
+
 
 //...END OF YOUR CODE
 
