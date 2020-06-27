@@ -25,6 +25,19 @@ app.get("/quotes/random", function (req, res) {
   res.json(pickFromArray(quotes));
 });
 
+app.get("/search", function (req, res) {
+  const { term } = req.query;
+
+  let result = quotes.filter((element) => {
+    return (
+      element.quote.toLowerCase().includes(term.toLowerCase()) ||
+      element.author.toLowerCase().includes(term.toLowerCase())
+    );
+  });
+
+  res.json(result);
+});
+
 
 //...END OF YOUR CODE
 
