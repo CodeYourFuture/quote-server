@@ -21,6 +21,10 @@ app.get("/quotes", function (req, res) {
   res.json(quotes);
 });
 
+app.get("/quotes/random", function (req, res) {
+  res.json(pickFromArray(quotes));
+});
+
 
 //...END OF YOUR CODE
 
