@@ -53,11 +53,11 @@ function pickFromArray(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-// const PORT = process.env.PORT || 4400;
+ const PORT = process.env.PORT || 38623;
 
 // app.listen(PORT, () => console.log(`server started on prot ${PORT}`));
 
 //Start our server so that it listens for HTTP requests!
 const listener = app.listen(process.env.PORT, function () {
-  console.log("Your app is listening on port " + listener.address().port);
+  console.log("Your app is listening on port " + listener.address().PORT);
 });
