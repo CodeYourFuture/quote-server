@@ -17,6 +17,9 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+app.get("/quotes", function (req, res) {
+  res.json(quotes);
+});
 
 
 //...END OF YOUR CODE
