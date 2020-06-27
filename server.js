@@ -14,19 +14,42 @@ const quotes = require("./quotes.json");
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
   response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+
 });
 
 //START OF YOUR CODE...
-import quote from './quotes.json'
-const express = require("express");
-const app = express();
-const quotes = require("./quotes.json");
-
-app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+app.get('/quotes',(req, res)=>{
+  res.send(quotes)
 });
 
-const listener = app.listen(3000, ()=> console.log('server starts on 3000'))
+app.get('/quotes/random', (req, res)=>{
+  res.send(pickFromArray(quotes))
+})
+
+app.get('/quotes/search', (req, res)=>{
+  console.log('search for a qoute', req.query.term)
+  if(req.query.term){
+    const search = quotes.filter(quote => {
+      return quote.quote.includes(req.query.term)
+     })
+     res.send(search)
+
+  }else{
+    res.send('sorry it seems you did not use any word to search for')
+  }
+  
+})
+
+// import quote from './quotes.json'
+// const express = require("express");
+// const app = express();
+// const quotes = require("./quotes.json");
+
+// app.get("/", function (request, response) {
+//   response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+// });
+
+// const listener = app.listen(3000, ()=> console.log('server starts on 3000'))
 
 
 //...END OF YOUR CODE
