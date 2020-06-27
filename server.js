@@ -3,6 +3,7 @@
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
+const lodash = require("lodash");
 const app = express();
 
 //load the quotes JSON
@@ -23,7 +24,7 @@ app.get('/quotes',(req, res)=>{
 });
 
 app.get('/quotes/random', (req, res)=>{
-  res.send(pickFromArray(quotes))
+  res.send(lodash.sample(quotes))
 })
 
 app.get('/quotes/search', (req, res)=>{
