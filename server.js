@@ -23,6 +23,21 @@ app.get("/quotes", (req, res) => {
 app.get("/quotes/random", (req, res) => {
   res.send(pickFromArray(quotes));
 });
+app.get("/quotes/search", (req, res) => {
+  const term = req.query.term;
+  console.log(term);
+  if (term) {
+    res.send(
+      quotes.filter(
+        (word) =>
+          word.quote.toLowerCase().includes(term.toLowerCase()) ||
+          word.author.toLowerCase().includes(term.toLowerCase())
+      )
+    );
+  } else {
+    res.sendStatus(404);
+  }
+});
 
 //...END OF YOUR CODE
 
