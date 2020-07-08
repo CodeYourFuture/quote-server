@@ -32,7 +32,11 @@ app.get("/quotes",(req,res)=>{
 app.get("/quotes/search", (req,res)=>{
   console.log(`We are searching for ${req.query.term}`);
   if(req.query.term){
-    const searchQuote= quotes.filter(quote=>quote.quote.toLowerCase().includes(req.query.term.toLowerCase()))
+    const searchQuote = quotes.filter(
+      (quote) =>
+        quote.quote.toLowerCase().includes(req.query.term.toLowerCase()) ||
+        quote.author.toLowerCase().includes(req.query.term.toLowerCase())
+    );
     res.send(searchQuote)
   }
   
