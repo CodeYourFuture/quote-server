@@ -3,12 +3,15 @@
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
+const {MongoClient} = require('mongodb');
 const app = express();
 const _ = require("lodash");
 const cors = require("cors");
 app.use(cors());
 //load the quotes JSON
 const quotes = require("./quotes.json");
+const uri = "mongodb+srv://<username>:<password>@<your-cluster-url>/test?retryWrites=true&w=majority";
+ const client = new mongodb.MongoClient(uri);
 
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
