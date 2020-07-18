@@ -34,42 +34,60 @@ app.get("/", function (req, res) {
      })
 
    })
-  // res.send("Min's Quote Server!  Ask me for /quotes/random, or /quotes");
+  
 });
 
 //START OF YOUR CODE...
-// app.get("/quotes/random", (req,res)=>{
-//   res.send(pickFromArray(quotes))
-// })
+app.get("/quotes/random", (req, res) => {
+  const client = mongodb.MongoClient(url);
+  client.connect(() => {
+    const db = client.db("quotes");
+    const collection = db.collection("quotes");
+    collection.find().toArray();
 
-// app.get("/quotes",(req,res)=>{
-//   res.json(quotes)
-// })
+    collection.find().toArray((err, quotes) => {
+      res.send(err || pickFromArray(quotes));
+      client.close();
+    });
+  });
+});
 
-// app.get("/quotes/search", (req,res)=>{
-//   console.log(`We are searching for ${req.query.term}`);
-//   if(req.query.term){
-//     const searchQuote = quotes.filter(
-//       (quote) =>
-//         quote.quote.toLowerCase().includes(req.query.term.toLowerCase()) ||
-//         quote.author.toLowerCase().includes(req.query.term.toLowerCase())
-//     );
-//     res.send(searchQuote)
-//   }
-  
-// })
-// app.get("/quotes/minko",(req,res)=>{
-//   res.json(quotes)
-// })
+app.get("/quotes/search", (req, res) => {
+  const client = mongodb.MongoClient(url);
+  client.connect(() => {
+    const db = client.db("quotes");
+    const collection = db.collection("quotes");
+    const searchQuote ={}
+    if(req.query.author){
+      searchQuote.author=req.query.author
+    }
+    if(req.query.quote){
+      searchQuote.quote =req.query.quote
+    }
+    console.log(searchQuote)
+
+    collection.find(searchQuote).toArray((err, quote) => {
+      res.send(err || quote);
+      client.close();
+    });
+  });
+});
+
+
+
+
+
+
+
 // //...END OF YOUR CODE
 
 // //You can use this function to pick one element at random from a given array
 // //example: pickFromArray([1,2,3,4]), or
 // //example: pickFromArray(myContactsArray)
 // //
-// function pickFromArray(arr) {
-//   return arr[Math.floor(Math.random() * arr.length)];
-// }
+function pickFromArray(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
 
 //Start our server so that it listens for HTTP requests!
 let port = process.env.PORT;
