@@ -49,15 +49,6 @@ app.get("/quotes/random", function (request, response) {
   });
 });
 
-//...END OF YOUR CODE
-
-//You can use this function to pick one element at random from a given array
-//example: pickFromArray([1,2,3,4]), or
-//example: pickFromArray(myContactsArray)
-//
-// function pickFromArray(arr) {
-//   return arr[Math.floor(Math.random() * arr.length)];
-// }
 const port = process.env.PORT || 5000;
 //Start our server so that it listens for HTTP requests!
 const listener = app.listen(port, function () {
