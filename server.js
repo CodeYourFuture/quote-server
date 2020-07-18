@@ -29,12 +29,12 @@ app.get("/", function (req, res) {
      const collection = db.collection("quotes")
 
      collection.find().toArray((err,quotes)=>{
-       res.sent(err||quotes)
+       res.send(err||quotes)
        client.close()
      })
 
    })
-  res.send("Min's Quote Server!  Ask me for /quotes/random, or /quotes");
+  // res.send("Min's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
 //START OF YOUR CODE...
