@@ -3,17 +3,15 @@
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
-const cors = require('cors')
-const mongodb = require('mongodb')
+const cors = require("cors");
+const mongodb = require("mongodb");
 const dotenv = require("dotenv");
 
- dotenv.config()
+dotenv.config();
 const url = process.env.MONGOLAB_URI;
 
-
 const app = express();
-app.use(cors())
-
+app.use(cors());
 
 //load the quotes JSON
 //const quotes = require("./quotes-with-id.json");
@@ -23,18 +21,16 @@ app.use(cors())
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (req, res) {
-  const client =  mongodb.MongoClient(url)
-   client.connect(()=>{
-     const db = client.db("quotes")
-     const collection = db.collection("quotes")
+  const client = mongodb.MongoClient(url);
+  client.connect(() => {
+    const db = client.db("quotes");
+    const collection = db.collection("quotes");
 
-     collection.find().toArray((err,quotes)=>{
-       res.send(err||quotes)
-       client.close()
-     })
-
-   })
-  
+    collection.find().toArray((err, quotes) => {
+      res.send(err || quotes);
+      client.close();
+    });
+  });
 });
 
 //START OF YOUR CODE...
@@ -57,14 +53,15 @@ app.get("/quotes/search", (req, res) => {
   client.connect(() => {
     const db = client.db("quotes");
     const collection = db.collection("quotes");
-    const searchQuote ={}
-    if(req.query.author){
-      searchQuote.author=req.query.author
+    
+    const searchQuote = {};
+    if (req.query.author) {
+      searchQuote.author = req.query.author;
     }
-    if(req.query.quote){
-      searchQuote.quote =req.query.quote
+    if (req.query.quote) {
+      searchQuote.quote = req.query.quote;
     }
-    console.log(searchQuote)
+    console.log(searchQuote);
 
     collection.find(searchQuote).toArray((err, quote) => {
       res.send(err || quote);
@@ -72,13 +69,6 @@ app.get("/quotes/search", (req, res) => {
     });
   });
 });
-
-
-
-
-
-
-
 // //...END OF YOUR CODE
 
 // //You can use this function to pick one element at random from a given array
