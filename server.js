@@ -3,37 +3,50 @@
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
-const app = express();
+const mongodb = require("mongodb");
 const _ = require("lodash");
+
+const app = express();
+require("dotenv").config();
 const cors = require("cors");
 app.use(cors());
 //load the quotes JSON
-const quotes = require("./quotes.json");
 
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
-app.get("/", function (request, response) {
-  response.send("Neil's Quote Server!  Ask me for /quotes/random, or /quotes");
-});
 
 //START OF YOUR CODE...
-app.get("/quotes", (req, res) => {
-  res.send(quotes);
-});
-app.get("/quotes/random", (req, res) => {
-  res.send(_.sample(quotes));
-});
-
-app.get("/quotes/search", (req, res) => {
-  const term = req.query.term;
-  const searchData = quotes.filter(
-    (quotes) =>
-      quotes.quote.toLowerCase().includes(term.toLowerCase()) ||
-      quotes.author.toLowerCase().includes(term.toLowerCase())
+app.get("/quotes", function (request, response) {
+  const client = new mongodb.MongoClient(
+    "mongodb+srv://cyfstudent:Byt53rgWR6e5GY13@cluster0-pi6ui.mongodb.net"
   );
-  res.send(searchData);
+
+  client.connect(() => {
+    const db = client.db("quotes");
+    const collection = db.collection("quotes");
+
+    collection.find().toArray((err, quotes) => {
+      response.send(err || quotes);
+      client.close();
+    });
+  });
+});
+app.get("/quotes/random", function (request, response) {
+  const client = new mongodb.MongoClient(
+    "mongodb+srv://cyfstudent:Byt53rgWR6e5GY13@cluster0-pi6ui.mongodb.net"
+  );
+
+  client.connect(() => {
+    const db = client.db("quotes");
+    const collection = db.collection("quotes");
+
+    collection.find().toArray((err, quotes) => {
+      response.send(err || _.sample(quotes));
+      client.close();
+    });
+  });
 });
 
 //...END OF YOUR CODE
