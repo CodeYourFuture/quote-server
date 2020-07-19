@@ -1,61 +1,70 @@
-// server.js
-// This is where your node app starts
-
-//load the 'express' module which makes writing webservers easy
 const express = require("express");
-const lodash= require("lodash");
-const cors = require("cors");
+const mongodb = require("mongodb");
+const lodash = require("lodash");
+const http = require('http');
+require ("dotenv").config();
+
 const app = express();
 
-app.use(cors())
+const uri = process.env.DATABASE_URI;
 
-//load the quotes JSON
-const quotes = require("./quotes.json");
-
-// Now register handlers for some routes:
-//   /                  - Return some helpful welcome info (text)
-//   /quotes            - Should return all quotes (json)
-//   /quotes/random     - Should return ONE quote (json)
-app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+app.get("/", function(req, res) {
+  res.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
-//START OF YOUR CODE...
+app.get("/quotes", (req, res) => {
+  const client = new mongodb.MongoClient(uri);
 
-app.get("/quotes", (request, response)=>{
-  response.send(quotes)
+  client.connect(() => {
+    console.log("collection")
+    const db = client.db("quotes");
+    const collection = db.collection("quotes");
+    collection.find().toArray((err, quotes) => {
+      res.send(err || quotes);
+      client.close();
+    });
+  });
 });
 
-app.get("/quotes/random", (request, response)=>{
-  response.send(lodash.sample(quotes))
+app.get("/quotes/random", (req, res) => {
+  const client = new mongodb.MongoClient(uri);
+
+  client.connect(() => {
+    const db = client.db("quotes");
+    const collection = db.collection("quotes");
+
+    collection.find().toArray((err, quote) => {
+      res.send(err || lodash.sample(quote));
+      client.close();
+    });
+  });
 });
 
-app.get("/quotes/search", (req, res)=>{
-  console.log(`we,re searching for a ${req.query.term} in quotes `)
-  if(req.query.term){
-    const searchedQuotes = quotes.filter(quoteObj =>{
-      return (
-        quoteObj.quote.toLowerCase().includes(req.query.term.toLowerCase()) || 
-        quoteObj.author.toLowerCase().includes(req.query.term.toLowerCase())
-      )
-    })
-    res.send(searchedQuotes)
-  }else{
-    res.send(400, "no term parameter provided!");
-  }
-})
+app.get("/quotes/search", (req, res) => {
+  const client = new mongodb.MongoClient(uri);
 
-//...END OF YOUR CODE
+  client.connect(() => {
+    const db = client.db("quotes");
+    const collection = db.collection("quotes");
+    const { term } = req.query;
 
-//You can use this function to pick one element at random from a given array
-//example: pickFromArray([1,2,3,4]), or
-//example: pickFromArray(myContactsArray)
-//
-function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
+    collection.find().toArray((err, quotes) => {
+      if (err) {
+        res.send(err);
+        client.close();
+      } else {
+        const searchedObj = quotes.filter(
+          quote =>
+            quote.quote.toLowerCase().includes(term.toLowerCase()) ||
+            quote.author.toLowerCase().includes(term.toLowerCase())
+        );
+        res.send(searchedObj);
+        client.close();
+      }
+    });
+  });
+});
 
-//Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
+const listener = app.listen(process.env.PORT, function() {
   console.log("Your app is listening on port " + listener.address().port);
 });
