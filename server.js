@@ -12,11 +12,43 @@ const quotes = require("./quotes.json");
 //   /                  - Return some helpful welcome info (text)
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
-app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+
+app.get("/", (request, response) =>{
+  response.send("Nawal's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
 //START OF YOUR CODE...
+app.get("/quotes", (request, response)=>{
+response.send(quotes)
+})
+
+app.get("/quotes/random", (request, response)=>{
+  response.send(pickFromArray(quotes))
+})
+
+
+//Level 2
+
+//- `/quotes/search?term=life`
+//`/quotes/search?term=success`
+//`/quotes/search?term=miss`
+
+app.get("/quotes/search", (request, response)=>{   //decide route 
+  // searching query called term
+  let searchTerm = request.query.term 
+let result;           
+  // checking for value of the term
+if(!searchTerm){
+  response.send("Please add a valid term")
+}
+result = quotes.filter(term => term.quote.includes(searchTerm))
+if(result.length < 1){
+  response.send("There is no quote with this term")
+}
+response.send(result)
+})
+
+
 
 //...END OF YOUR CODE
 
@@ -28,7 +60,11 @@ function pickFromArray(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
+app.get("/*", (request, response) => {
+  
+  response.send("The route is not found");
+});
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
-  console.log("Your app is listening on port " + listener.address().port);
+const listener = app.listen(process.env.PORT || 3001, function () {
+  console.log("Your app is listening on port " + listener.address().port) 
 });
