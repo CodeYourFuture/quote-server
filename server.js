@@ -17,18 +17,39 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+app.get("/quotes", (request, response) => {
+  response.send(quotes);
+});
 
+app.get("/quotes/random", (request, response) => {
+  response.send(pickFromArray(quotes));
+});
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
 //example: pickFromArray([1,2,3,4]), or
 //example: pickFromArray(myContactsArray)
 //
+
 function pickFromArray(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
+app.get("/quotes/search", (request, response) => {
+  let searchTerm = request.query.term;
+  let result;
+
+  if (!searchTerm) {
+    response.send("Please add a valid term");
+  }
+  result = quotes.filter((term) => term.quote.includes(searchTerm));
+  if (result.length < 1) {
+    response.send("There is no quote with this term");
+  }
+  response.send(result);
+});
+
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
+const listener = app.listen(process.env.PORT || 3002, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
