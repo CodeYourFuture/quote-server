@@ -2,7 +2,8 @@
 // This is where your node app starts
 
 //load the 'express' module which makes writing webservers easy
-const express = require("express");
+const express = require('express');
+const lodash = require('lodash');
 const app = express();
 
 //load the quotes JSON
@@ -22,7 +23,8 @@ app.get("/quotes", function (req, res){
 })
 
 app.get("/quotes/random", function(req,res){
-  res.json(pickFromArray(quotes));
+  //res.json(pickFromArray(quotes));
+  res.json(lodash.sample(quotes));
 })
 
 app.get("/quotes/search", function(req, res){
