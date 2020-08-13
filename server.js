@@ -29,24 +29,36 @@ app.get("/", (req, res) => {
 
 //------Get all quotes------
 app.get("/quotes", (req, res) => {
-  res.json(quotes);
+  if (quotes !== undefined) {
+    res.json(quotes);
+  } else {
+    res.status(404).send("not found");
+  }
 });
 
 //------Get Random Quotes----
 app.get("/quotes/random", (req, res) => {
-  res.json(lodash.sample(quotes));
+  if (quotes) {
+    res.json(lodash.sample(quotes));
+  } else {
+    res.status(404).send("not found");
+  }
 });
 
 //-----search-------
 app.get("/quotes/search", (req, res) => {
   const searchTerm = req.query.term.toLowerCase();
-  res.json(
-    quotes.filter(
-      (word) =>
-        word.quote.toLowerCase().includes(searchTerm) ||
-        word.author.toLowerCase().includes(searchTerm)
-    )
-  );
+  if (quotes !== undefined) {
+    res.json(
+      quotes.filter(
+        (word) =>
+          word.quote.toLowerCase().includes(searchTerm) ||
+          word.author.toLowerCase().includes(searchTerm)
+      )
+    );
+  } else {
+    res.status(404).send("not found");
+  }
 });
 
 //...END OF YOUR CODE
