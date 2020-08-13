@@ -4,7 +4,9 @@
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
 const app = express();
-
+const lodash = require('lodash');
+var cors = require('cors')
+app.use(cors())
 //load the quotes JSON
 const quotes = require("./quotes.json");
 
@@ -13,10 +15,43 @@ const quotes = require("./quotes.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send("Sulaiman's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
 //START OF YOUR CODE...
+app.get('/quotes', (request, response)=> {
+response.send(quotes)
+})
+
+app.get('/quotes/random', (request, response)=> {
+response.send(lodash.sample(quotes))
+})
+
+
+
+app.get("/quotes/search", (request, response)=>{  
+
+  let searchTerm = request.query.term.toLowerCase() 
+  let result;           
+
+  if(searchTerm){
+    result = 
+    quotes.filter(term => term.quote.toLowerCase().includes(searchTerm) ||  term.author.toLowerCase().includes(searchTerm))
+  } else {
+    response.send('There is no term to search')
+  }
+  
+  
+  if(result.length == 0){
+    response.send("Term not found")
+  } 
+
+  
+  response.send(result)
+})
+
+
+
 
 //...END OF YOUR CODE
 
@@ -29,6 +64,6 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
+const listener = app.listen(process.env.PORT || 3030, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
