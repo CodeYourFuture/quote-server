@@ -3,6 +3,7 @@
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
+const lodash = require("lodash");
 const app = express();
 
 //load the quotes JSON
@@ -21,9 +22,14 @@ app.get("/quotes", (request, response) => {
   response.send(quotes);
 });
 
+// app.get("/quotes/random", (request, response) => {
+//   response.send(pickFromArray(quotes));
+// });
+
 app.get("/quotes/random", (request, response) => {
-  response.send(pickFromArray(quotes));
+  response.send(_.sample(quotes));
 });
+
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
