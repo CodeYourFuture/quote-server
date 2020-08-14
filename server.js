@@ -5,6 +5,9 @@
 const express = require("express");
 const app = express();
 
+const lodash = require('lodash');
+var cors = require('cors')
+app.use(cors())
 //load the quotes JSON
 const quotes = require("./quotes.json");
 
@@ -18,6 +21,34 @@ app.get("/", function (request, response) {
 
 //START OF YOUR CODE...
 
+app.get('/quotes', (request, response)=> {
+  response.send(quotes)
+  })
+  
+  app.get('/quotes/random', (request, response)=> {
+  response.send(lodash.sample(quotes))
+  })
+  
+  app.get("/quotes/search", (request, response)=>{  
+  
+    let searchKey = request.query.term.toLowerCase() 
+    let result;           
+  
+    if(searchKey){
+      result = 
+      quotes.filter(match => match.quote.toLowerCase().includes(searchKey) ||  match.author.toLowerCase().includes(searchKey))
+    } else {
+      response.send('No search results')
+    }
+  
+  
+    if(result.length == 0){
+      response.send("not found")
+    } 
+    response.send(result)
+  })
+  
+
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
@@ -29,6 +60,6 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
+const listener = app.listen(process.env.PORT || 3030, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
