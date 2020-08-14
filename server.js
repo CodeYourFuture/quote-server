@@ -17,7 +17,29 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+app.get("/quotes", (req, res) => {
+  res.send(quotes);
+});
+app.get("/quotes/random", (req, res) => {
+  res.send(pickFromArray(quotes));
+});
+app.get("/quotes/search", (req, res) => {
+  let term = req.query.term.toLocaleLowerCase();
+  if (term !== undefined) {
+    selectedQuote = quotes.filter((item) =>
+      item.quote.toLocaleLowerCase().includes(term)
+    );
+  }
+  if (selectedQuote < 1) {
+    res.send("there is no quote with this term");
+  }
+  res.send(selectedQuote);
+});
+app.get("/quotes/echo", (req, res) => {
+  let word = req.query.word;
 
+  res.send(`You said ${word}`);
+});
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array

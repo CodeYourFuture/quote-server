@@ -10,7 +10,8 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4"
   },
   "engines": {
     "node": "8.x"
@@ -23,5 +24,6 @@
     "node",
     "glitch",
     "express"
-  ]
+  ],
+  "author": ""
 }
