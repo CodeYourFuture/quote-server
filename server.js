@@ -17,6 +17,31 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+app.get("/quotes", (req, res) => {
+  res.send(quotes);
+});
+
+app.get("/quotes/random", (req, res) => {
+  res.send(pickFromArray(quotes));
+});
+
+app.get("/quotes/search", (req, res) => {
+  let term = req.query.term;
+  let selectedQuotes;
+  if (term !== undefined) {
+    selectedQuotes = quotes.filter((item) =>
+      item.quote.toLowerCase().includes(term.toLowerCase())
+    );
+  }
+  if (selectedQuotes < 1) {
+    res.send("Not Found");
+  }
+  res.send(selectedQuotes);
+});
+app.get("/quotes/echo", (req, res) => {
+  let word = req.query.word;
+  res.send(`You Said ${word}`);
+});
 
 //...END OF YOUR CODE
 
