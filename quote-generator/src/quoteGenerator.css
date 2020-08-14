@@ -1,0 +1,51 @@
+/** Write your CSS in here **/
+body{
+    background-color: #e8dcce;
+}
+.heading{
+       
+    display: flex;
+    justify-content: center;
+    margin: 25px;
+}
+.container{
+    position: relative;
+    width:60%;
+    /* padding: 0px 100px 0px 100px;
+    margin: 20px 0px 20px 0px; */
+    
+}
+
+.image{
+    background-image: url('https://wallpapercave.com/wp/wp4795357.png');
+    width:100%;
+    height: 500px;
+    padding: 25px;
+    margin-left: 250px;
+}
+
+#btn{
+    position: absolute;
+    top: 75%;
+    left: 80%;
+    background-color:#e8dcce;
+    border: ridge;
+}
+#btn:hover{
+    border: solid;
+    font-weight: bold;
+}
+
+.quote{
+    position: relative;
+    margin-top:200px;
+    margin-left:200px;
+    font-weight: bold;
+    font-style: italic;
+    font-size: large;
+
+}
+
+
+
+
