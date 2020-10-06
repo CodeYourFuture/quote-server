@@ -10,7 +10,9 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.16.4"
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "lodash": "^4.17.20"
   },
   "engines": {
     "node": "8.x"
@@ -22,6 +24,8 @@
   "keywords": [
     "node",
     "glitch",
-    "express"
+    "express",
+    "lodash",
+    "cors"
   ]
 }

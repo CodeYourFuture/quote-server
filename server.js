@@ -3,20 +3,54 @@
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
+
 const app = express();
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
+
+
 
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send("Razan's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
 //START OF YOUR CODE...
+
+app.get("/quotes", function (request, response) {
+  if (quotes !== undefined) {
+    response.send(quotes);
+  }
+  else {
+    response.send([])
+  }
+})
+
+
+app.get("/quotes/random", function (request, response) {
+  response.send(pickFromArray(quotes));
+
+});
+
+app.get("/quotes/search", function (req, res) {
+  const target = req.query.term
+  if (target != undefined) {
+    const result = quotes.filter(word => (word.quote.toLowerCase().includes(target.toLowerCase())) || (word.author.toLowerCase().includes(target.toLowerCase())))
+    res.send(result);
+  }
+  else {
+    res.send([])
+  }
+});
+app.get("/echo", function (request, response) {
+  let word = request.query.word;
+  response.send(`You said ${word}`);
+});
+
 
 //...END OF YOUR CODE
 
