@@ -12,11 +12,24 @@ const quotes = require("./quotes.json");
 //   /                  - Return some helpful welcome info (text)
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
-app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+app.get("/goat", function (request, response) {
+  // const allQuotes  = request.quotes
+  response.send("Ebenezer");
 });
 
 //START OF YOUR CODE...
+// Route for quotes
+app.get("/", function (request, response) {
+  const allQoutes = quotes.map((item) => {
+    return item.quote;
+  });
+
+  response.send(allQoutes);
+});
+
+app.get("/quotes/random", function (request, response) {
+  response.send(pickFromArray(quotes));
+});
 
 //...END OF YOUR CODE
 
