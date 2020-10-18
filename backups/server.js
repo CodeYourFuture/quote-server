@@ -1,7 +1,7 @@
 // server.js
 // This is where your node app starts
 
-//load the 'express' module which makes writing webservers easy
+//load the 'express' module which makes writing web servers easy
 const express = require("express");
 const app = express();
 
