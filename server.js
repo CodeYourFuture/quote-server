@@ -5,6 +5,8 @@
 const express = require("express");
 const app = express();
 
+const lodash = require("lodash")
+
 //load the quotes JSON
 const Quotes = require("./quotes.json");
 
@@ -36,9 +38,34 @@ app.get("/one", function(request, response) {
   
   app.get("/quotes/random", function(request, response) {
 
-
-    response.send(JSON.stringify(pickFromArray(Quotes)));
+    response.send(lodash.sample(Quotes));
   });
+
+  app.get("/quotes/search", function(req,res) {
+  const term = req.query.term;
+  console.log(term);
+  if (term) {
+    res.send(
+      Quotes.filter(
+        (word) =>
+          word.quote.toLowerCase().includes(term.toLowerCase()) ||
+          word.author.toLowerCase().includes(term.toLowerCase())
+      )
+    );
+  } else {
+    res.sendStatus(404);
+  }
+});
+
+//   app.get("/quotes/search", function(request, response) {
+
+//   var textToSearch = 'life';
+//   var filteredArray = Quotes.map(quote=>quote.quote).filter((str)=>{
+//   return str.toLowerCase().indexOf(textToSearch.toLowerCase()) >= 0;});
+  
+//  // var querySearch1 = request.query.textToSearch;
+//   response.send()
+//   });
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
