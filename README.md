@@ -166,7 +166,7 @@ Well done!
 
 - Mark the relevant Google Classroom assignment done, but _before you do_, add your two links (1 for the glitch project and 1 for your server address) as _link attachments_ to the assignment. (Instructions on this are in the assignment)
 
-- Also post the two links (as one message) [in THIS thread on Slack](https://codeyourfuture.slack.com/archives/CEDK6JPKQ/p1557924290017700).
+- Also post the two links (as one message) in Slack.
 
 ### Ideas for further work
 
