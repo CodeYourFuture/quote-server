@@ -13,10 +13,14 @@ const quotes = require("./quotes.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send("Ali Haider's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
 //START OF YOUR CODE...
+//quotes
+app.get("/quotes", function (request, response) {
+  response.send(quotes);
+});
 
 //...END OF YOUR CODE
 
