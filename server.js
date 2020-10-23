@@ -25,7 +25,12 @@ app.get("/quotes", function (request, response) {
 app.get("/quotes/random", function (request, response) {
   response.send(pickFromArray(quotes));
 });
-//...END OF YOUR CODE
+//quotes/search?term=life
+   
+app.get("/quotes/search", function(request, response) {
+  let term = request.query.term; 
+  response.send(pickTerm(quotes,term));
+});
 
 //You can use this function to pick one element at random from a given array
 //example: pickFromArray([1,2,3,4]), or
@@ -33,6 +38,11 @@ app.get("/quotes/random", function (request, response) {
 //
 function pickFromArray(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function pickTerm(arr,word) {
+  let filteredArr = arr.filter((i)=>i.quote.includes(word));
+  return filteredArr;
 }
 
 //Start our server so that it listens for HTTP requests!
