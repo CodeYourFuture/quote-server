@@ -43,10 +43,12 @@ function pickFromArray(arr) {
 function pickTerm(arr,word) {
     let  arrLo= arr.map(function(a) { 
     a.quote = a.quote.toLowerCase();
+    a.author = a.author.toLowerCase();
     return a;
 });
     
-  let filteredArr = arrLo.filter((i)=>i.quote.includes(word));
+  let filteredArr = arrLo.filter((i)=>{
+    return i.quote.includes(word) || i.author.includes(word)});
   return filteredArr;
 }
 
