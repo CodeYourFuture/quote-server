@@ -28,7 +28,7 @@ app.get("/quotes/random", function (request, response) {
 //quotes/search?term=life
    
 app.get("/quotes/search", function(request, response) {
-  let term = request.query.term; 
+  let term = request.query.term.toLowerCase(); 
   response.send(pickTerm(quotes,term));
 });
 
@@ -41,7 +41,12 @@ function pickFromArray(arr) {
 }
 
 function pickTerm(arr,word) {
-  let filteredArr = arr.filter((i)=>i.quote.includes(word));
+    let  arrLo= arr.map(function(a) { 
+    a.quote = a.quote.toLowerCase();
+    return a;
+});
+    
+  let filteredArr = arrLo.filter((i)=>i.quote.includes(word));
   return filteredArr;
 }
 
