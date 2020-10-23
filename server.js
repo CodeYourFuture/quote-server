@@ -24,8 +24,7 @@ app.get("/quotes", function (request, response) {
   const allQoutes = quotes.map((item) => {
     return item.quote;
   });
-  console.log(quotes);
-  response.send(allQoutes);
+   response.send(allQoutes);
 });
 
 //Search for a particular term or word
