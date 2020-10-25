@@ -17,6 +17,25 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+app.get('/quotes', function(request, response) {
+  response.send(quotes);
+})
+app.get('/quotes/random', function(request, response) {
+  response.send(pickFromArray(quotes));
+})
+
+app.get("/quotes/word", function(request, response) {
+  let search = request.query.echo;  
+  let phrase = quotes.filter(item => item.quote.toLowerCase().includes(search.toLowerCase()) 
+      || item.author.toLowerCase().includes(search.toLowerCase()));
+  response.send(phrase);
+});
+
+// app.get("/echo", function(request, response) {
+//   let name = request.query.search
+//   response.send(`Jacques is ${name}`);
+  
+// });
 
 //...END OF YOUR CODE
 
