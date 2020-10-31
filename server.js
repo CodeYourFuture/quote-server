@@ -1,69 +1,171 @@
-// server.js
-// This is where your node app starts
-
-//load the 'express' module which makes writing webservers easy
 const express = require("express");
-const { random } = require("lodash");
+const cors = require('cors')
 const app = express();
-const lodash = require('lodash');
-var cors = require('cors')
+const bodyParser = require("body-parser")
+app.use(bodyParser.json())
 app.use(cors())
-
-//load the quotes JSON
-let quoteList=require("./quotes.json");
-let quotes=require("./quotes.json");
-lodash.sample(quoteList);
-
-// Now register handlers for some routes:
-//   /                  - Return some helpful welcome info (text)
-//   /quotes            - Should return all quotes (json)
-//   /quotes/random     - Should return ONE quote (json)
-app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
-});
-
-app.get("/quotes", function (request, response) {
-  response.json(quotes);
-});
-
-app.get("/quotes/random", function (request, response) {
-  response.send(pickFromArray(quotes));
-});
-//    `/quotes/search?term=life`
-//START OF YOUR CODE...
-app.get(`/quotes/search`, function (request, response) {
-  let searchItem=request.query.term;
-  
-  let searchedquote=quoteList.filter(quoteObject=>quoteObject.quote.toLowerCase().includes(searchItem) || quoteObject.author.toLowerCase().includes(searchItem) );
-  response.json(searchedquote);
-  // console.log("Hello Kid")
-});
-
-app.get("/echo", function (request, response) {
-  let searchItem=request.query.word;
-  response.send("Your Said "+searchItem);
-});
-
-
-app.get("/lodashtesting", function (request, response) {
-  let searchItem=request.query.word;
-  let randomquote = lodash.sample(quoteList);
-  response.json(randomquote);
-});
-
-//...END OF YOUR CODE
-
-//You can use this function to pick one element at random from a given array
-//example: pickFromArray([1,2,3,4]), or
-//example: pickFromArray(myContactsArray)
-//
-function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
+let welcomeMessage = {
+  id: 0,
+  from: "Bart",
+  text: "Welcome to CYF chat system!"
 }
-
-//Start our server so that it listens for HTTP requests!
-// const listener = app.listen(3000, function () {
-//   console.log("Your app is listening on port 3000 ");
-// });
-
-app.listen(8080)
+let anotherMessage = {
+  id: 1,
+  from: "Ade",
+  text: "hi world!"
+}
+let one = {
+  id: 2,
+  from: "Bart",
+  text: "Welcome to CYF chat system!"
+}
+let two = {
+  id: 3,
+  from: "Ade",
+  text: "hi world!"
+}
+let three = {
+  id: 4,
+  from: "Bart",
+  text: "Welcome to CYF chat system!"
+}
+let four = {
+  id: 5,
+  from: "Ade",
+  text: "hi world!"
+}
+let five = {
+  id: 6,
+  from: "Bart",
+  text: "Welcome to CYF chat system!"
+}
+let six = {
+  id: 7,
+  from: "Ade",
+  text: "hi world!"
+}
+let seven = {
+  id: 8,
+  from: "Bart",
+  text: "Welcome to CYF chat system!"
+}
+let eight = {
+  id: 9,
+  from: "Ade",
+  text: "hi world!"
+}
+let nine = {
+  id: 10,
+  from: "Bart",
+  text: "Welcome to CYF chat system!"
+}
+let ten = {
+  id: 11,
+  from: "Ade",
+  text: "hi world!"
+}
+//This array is our "data store".
+//We will start with one message in the array.
+//Note: messages will be lost when Glitch restarts our server.
+let messages = [welcomeMessage, anotherMessage, one, two, three, four, five, six, seven, eight, nine, ten]
+// let serialNumber = 0;
+// function updateMessage() {
+//   let form = document.getElementbyId("myForm")
+//   let element = form.elements;
+//   console.log(encodeURIComponent(element[0].value))
+//   serialNumber = serialNumber+1;
+//   let name = document.getElementById("name");
+//    let message = document.getElementById("message");
+//   console.log("yes i am working" + name.value)
+//   let msgObj = {
+//     "id":serialNumber, 
+//   "from":name.value, 
+//   "text":message.value
+//   };
+// }
+app.get('/', function(request, response) {
+  response.sendFile(__dirname + '/index.html');
+});
+app.get("/messages/search", (req, res)=>{
+  let mySearch = req.query.term;
+  console.log(mySearch)
+  let filteredList=messages.filter((msg)=> msg.text.toLocaleLowerCase().includes(mySearch.toLocaleLowerCase()))
+  // messages.filter(obj => {obj.text.toLowerCase().includes(mySearch) ? res.json(obj.text): res.json({success:false})}) 
+  if(filteredList)
+  res.json(filteredList)
+  else
+  res.json({success:false})
+})
+app.get("/messages/display" , (req,res)=> {
+  let counter = 0;
+  let carryOn=true;
+  let i=messages.length-1;
+  let tenMessages=[];
+ while(carryOn)
+ {
+   tenMessages.push(messages[i]);
+   i=i-1;
+   counter=counter+1;
+   if(counter >= 10 || i < 0){
+    carryOn = false;
+   }
+ }
+ res.send(tenMessages);
+ res.send("it works");
+//  console.log(tenMessages);
+ console.log("it is working");
+} )
+app.get('/messages', function(request, response) {
+  let name = request.query.from;
+  console.log(name)
+  response.json(messages);
+});
+app.get("/messages/:id", function (req, res) {
+ const {id} = req.params
+ const myMessages = messages.find(e=> e.id == id);
+  myMessages? res.json(myMessages): res.send("data not found");
+});
+//Create
+app.post("/messages", function (req, res) {
+  const msg = req.body;
+  // let name = req.query.from;
+  // console.log(name)
+console.log("-------")
+  if (Object.keys(msg).length === 0){ 
+    res.send({status:400})
+  }else{ 
+    messages.push(msg)
+    res.json(messages)
+  }
+});
+//delete
+app.delete("/deleteMessages/:id", function (req, res) {
+  const {id}= req.params;
+ messages= messages.filter(e=> e.id !=id);
+  res.send(messages);
+ res.send("single album deleted")
+});
+//update
+app.patch("/updateMessages/:id", function (req, res) {
+  const {id}= req.params;
+  const {from, text} = req.body
+ const updateMyMessages= messages.find(e=> e.id ==id);
+  if(from) 
+    updateMyMessages.from = from; 
+  else
+    updateMyMessages.from = "";
+  if(text)
+    updateMyMessages.text = text;
+  else
+    updateMyMessages.text = "";
+  res.send(updateMyMessages);
+ res.send("messages Updated")
+});
+app.get('/messages', function(request, response) {
+  let name = request.query.from;
+  console.log(name)
+  response.json(messages);
+});
+app.listen(8000, ()=> {
+  console.log("server started on port 8000")
+});
