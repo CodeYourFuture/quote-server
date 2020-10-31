@@ -20,7 +20,7 @@ app.get("/", function (request, response) {
 app.get("/quotes", (request, response) => {
   response.json(quotes);
 });
- 
+
 app.get("/quotes/random", (request, response) => {
   response.json( pickFromArray(quotes) );
 });
