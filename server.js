@@ -17,9 +17,22 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+
+//Get all of the quotes
 app.get("/quotes", (req, res) => {
   res.json(quotes);
-})
+});
+
+// Get random quote using the function provided
+app.get("/quotes/random", (req, res) => {
+  res.json(pickFromArray(quotes));
+});
+
+//Allow quote search 
+
+
+
+
 
 //...END OF YOUR CODE
 
