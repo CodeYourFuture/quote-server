@@ -30,6 +30,25 @@ app.get("/quotes/random", function (request, response) {
   const quote = pickFromArray(quotes);
   response.json(quote);
 });
+
+//    quote search feature
+app.get("/quotes/search", (request, response) => {
+  const searchTerm = request.query.term;
+  // check if the route path is of the correct format
+  if (!searchTerm) {
+    // if it is not
+    return response.sendStatus(400); // send a "Bad Request" error response (message).
+  }
+  // otherwise, continue to search action
+  const searchResult = quotes.filter(
+    (quoteData) =>
+      // **make sure the search is not case-sensitive
+      quoteData.quote.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      quoteData.author.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+  // send the search result to the client in JSON format
+  response.json(searchResult);
+});
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
@@ -41,6 +60,8 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
-  console.log("Your app is listening on port " + listener.address().port);
-});
+const PORT = 3001;
+app.listen(PORT, () => console.log("App listening on port " + PORT));
+// const listener = app.listen(process.env.PORT, function () {
+//   console.log("Your app is listening on port " + listener.address().port);
+// });
