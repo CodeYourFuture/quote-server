@@ -14,7 +14,8 @@ const quotes = require("./quotes.json");
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
   const body = `<h2>Welcome to my Quote Server!</h2><br/><br/>
-  <p>To view all quotes use the route: /quotes. You can also view a quote at random via /quotes/random.</p>`;
+  <p>To view all quotes use the route: /quotes. You can also view a quote at random via /quotes/random.</p>
+  <p>You can also search for quotes. Use the following format to do so: /quotes/search?term=[your_search_keyword]</p>`;
   response.send(body);
   // response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
