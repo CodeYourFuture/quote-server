@@ -15,9 +15,6 @@
     "express": "^4.17.1",
     "save": "^2.4.0"
   },
-  "engines": {
-    "node": "8.x"
-  },
   "repository": {
     "url": "https://glitch.com/edit/#!/hello-express"
   },
