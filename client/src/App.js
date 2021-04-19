@@ -7,7 +7,7 @@ function App() {
   const [dataQuotes, setDataQuotes] = useState([]);
 
   useEffect(() => {
-    axios.get("/home").then((response) => {
+    axios.get("/api/home").then((response) => {
       setDataPage(response.data.data);
     });
   }, []);
@@ -20,14 +20,14 @@ function App() {
   // };
 
   const functionFetcherQuote = () => {
-    axios.get("/quotes").then((response) => {
+    axios.get("/api/quotes").then((response) => {
       console.log(response.data.data);
       setDataQuotes(response.data.data);
     });
   };
 
   const functionFetcherQuotes = () => {
-    axios.get("/quotes/random").then((response) => {
+    axios.get("/api/quotes/random").then((response) => {
       console.log(response.data.data);
       setDataQuotes(response.data.data);
     });
