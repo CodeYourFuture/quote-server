@@ -4,8 +4,8 @@
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
 const app = express();
-const lodash = require('lodash');
-const cors = require('cors');
+const lodash = require("lodash");
+const cors = require("cors");
 app.use(cors());
 
 //load the quotes JSON
@@ -16,21 +16,27 @@ const quotes = require("./quotes.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send(
+    "Cecilia's Quote Server!  Ask me for /quotes/random, or /quotes"
+  );
 });
 
 //START OF YOUR CODE...
-app.get("/quotes", (req,res) => {
-	res.send(quotes);
+app.get("/quotes", (req, res) => {
+  res.send(quotes);
 });
 
-app.get("/quotes/random", (req,res) => {
-	res.send(lodash.sample(quotes));
+app.get("/quotes/random", (req, res) => {
+  res.send(lodash.sample(quotes));
 });
 
-app.get("/quotes/search", (req,res) => {
-	let newQuotes = quotes.filter(el => el.quote.toLowerCase().includes(req.query.term.toLowerCase()) || el.author.toLowerCase().includes(req.query.term.toLowerCase()))
-	res.send(newQuotes);
+app.get("/quotes/search", (req, res) => {
+  let newQuotes = quotes.filter(
+    (el) =>
+      el.quote.toLowerCase().includes(req.query.term.toLowerCase()) ||
+      el.author.toLowerCase().includes(req.query.term.toLowerCase())
+  );
+  res.send(newQuotes);
 });
 //...END OF YOUR CODE
 
