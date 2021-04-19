@@ -33,13 +33,13 @@ app.get("/quotes", function (request, response) {
   });
 });
 
-app.get("/quotes/random  ", function (request, response) {
-  const data = pickFromArray;
+app.get("/quotes/random", function (request, response) {
+  const data = pickFromArray(quotes);
   // response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
   response.status(200).json({
     status: "success",
     length: quotes.length,
-    data,
+    data: [data],
   });
 });
 
