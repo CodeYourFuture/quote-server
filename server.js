@@ -27,7 +27,15 @@ app.get('/quotes/random', (req, res) => {
 
 app.get('/quotes/search', (req, res) => {
   const filtered = quotes.filter(quote => quote.quote.toLocaleLowerCase().includes(req.query.term.toLocaleLowerCase()) || quote.author.toLocaleLowerCase().includes(req.query.term.toLocaleLowerCase()));
-  res.send(filtered);
+  const letters = /^[A-Za-z]+$/;
+  if (req.query.term.indexOf(' ') !== -1 || !req.query.term.match(letters)) {
+    res.status(400).json({message: "Please make sure your search term is a single keyword and contains no characters rather than letters."});
+  } else if (filtered.length < 1){
+    res.status(400).json({message: "Please try another keyword."});
+  } else {
+    res.send(filtered);
+  }
+  
 })
 //...END OF YOUR CODE
 
