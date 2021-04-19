@@ -25,7 +25,11 @@ app.get("/quotes", function (request, response) {
 
 app.get("/quotes/search", function (request, response) {
   const searchTerm = request.query.term;
-  const quote = quotes.filter((el) => el.quote.includes(searchTerm));
+  const quote = quotes.filter(
+    (el) =>
+      el.quote.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      el.author.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   if (searchTerm && quote.length !== 0) {
     response.json(quote);
