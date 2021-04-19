@@ -17,6 +17,11 @@ app.get("/", (req, res) => {
 });
 
 //START OF YOUR CODE...
+let port = process.env.PORT;
+if (port === null || port === "") {
+	port = 8000;
+}
+
 app.get('/quotes', (req, res) => {
   res.send(quotes);
 })
@@ -46,10 +51,7 @@ app.get('/quotes/search', (req, res) => {
 function pickFromArray(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
-let port = process.env.PORT;
-if (port === null || port === "") {
-  port = 8000;
-}
+
 // app.listen(port);
 //Start our server so that it listens for HTTP requests!
 const listener = app.listen(port, () => {
