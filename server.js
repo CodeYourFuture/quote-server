@@ -13,7 +13,7 @@ const quotes = require("./quotes.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", (req, res) => {
-  res.send("Biruk's Quote Server!  Ask me for /quotes,  quotes/random, or /quotes/search?term=[your-search-term]");
+  res.send("Biruk's Quote Server!  Ask me for /quotes,  quotes/random or /quotes/search?term=[your-search-term]");
 });
 
 //START OF YOUR CODE...
