@@ -34,8 +34,12 @@ app.get('/quotes/random', (req, res) => {
 function pickFromArray(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
-const PORT = process.env.PORT || 43207;
+let port = process.env.PORT;
+if (port === null || port === "") {
+  port = 8000;
+}
+// app.listen(port);
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(PORT, function () {
+const listener = app.listen(port, () => {
   console.log("Your app is listening on port " + listener.address().port);
 });
