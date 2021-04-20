@@ -1,31 +1,19 @@
 {
-  "//1": "describes your app and its dependencies",
-  "//2": "https://docs.npmjs.com/files/package.json",
-  "//3": "updating this file will download and update your packages",
-  "name": "hello-express",
-  "version": "0.0.1",
-  "description": "A simple Node app built on Express, instantly up and running.",
-  "main": "server.js",
+  "name": "challenge-quote-server",
+  "version": "1.0.0",
+  "description": "- 1 hour (level 1)\r - 3-4 hours (advanced level)",
+  "main": "index.js",
   "scripts": {
-     "start": "npm server/server.js",
-    "build": "cd client && npm install && npm run build"
-  },
-  "dependencies": {
-    "-": "0.0.1",
-    "express": "^4.17.1",
-    "save": "^2.4.0"
+   "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "repository": {
-    "url": "https://glitch.com/edit/#!/hello-express"
+    "type": "git",
+    "url": "git+https://github.com/Pat-On/node-challenge-quote-server.git"
   },
-  "license": "MIT",
-  "keywords": [
-    "node",
-    "glitch",
-    "express"
-  ],
   "author": "",
-  "engines": {
-    "node": "^14.15.4"
-}
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pat-On/node-challenge-quote-server/issues"
+  },
+  "homepage": "https://github.com/Pat-On/node-challenge-quote-server#readme"
 }
