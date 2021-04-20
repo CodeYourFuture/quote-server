@@ -3,7 +3,7 @@
 const path = require("path");
 // const express = require("express");
 
-//load the 'express' module which makes writing webservers easy
+//load the 'express' module which makes writing web servers easy
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 5000;
