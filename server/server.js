@@ -1,5 +1,7 @@
 // server.js
 // This is where your node app starts
+const path = require("path");
+// const express = require("express");
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
@@ -43,8 +45,8 @@ app.get("/api/quotes/random", function (request, response) {
   });
 });
 
-//Start our server so that it listens for HTTP requests!
-// const listener = app.listen(process.env.PORT, function () {
+// // Start our server so that it listens for HTTP requests!
+// const listener = app.listen(PORT, function () {
 //   console.log("Your app is listening on port " + listener.address().port);
 // });
 
