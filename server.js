@@ -13,7 +13,9 @@ const quotes = require("./quotes.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", (req, res) => {
-  res.send("Biruk's Quote Server!  Ask me for /quotes,  quotes/random or /quotes/search?term=[your-search-term]");
+	res.send(
+		"Biruk's Quote Server!  Ask me for /quotes,  quotes/random or /quotes/search?term=[your-search-term]"
+	);
 });
 
 //START OF YOUR CODE...
@@ -22,26 +24,34 @@ if (port === null || port === "") {
 	port = 8000;
 }
 
-app.get('/quotes', (req, res) => {
-  res.send(quotes);
-})
+app.get("/quotes", (req, res) => {
+	res.send(quotes);
+});
 
-app.get('/quotes/random', (req, res) => {
-  res.send(pickFromArray(quotes));
-})
+app.get("/quotes/random", (req, res) => {
+	res.send(pickFromArray(quotes));
+});
 
-app.get('/quotes/search', (req, res) => {
-  const filtered = quotes.filter(quote => quote.quote.toLocaleLowerCase().includes(req.query.term.toLocaleLowerCase()) || quote.author.toLocaleLowerCase().includes(req.query.term.toLocaleLowerCase()));
-  const letters = /^[A-Za-z]+$/;
-  if (req.query.term.indexOf(' ') !== -1 || !req.query.term.match(letters)) {
-    res.status(400).json({message: "Please make sure your search term is a single keyword and contains no characters rather than letters."});
-  } else if (filtered.length < 1){
-    res.status(400).json({message: "Please try another keyword."});
-  } else {
-    res.send(filtered);
-  }
-  
-})
+app.get("/quotes/search", (req, res) => {
+	const searchTerm = req.query.term.toLowerCase();
+	const searchResult = quotes.filter((quote) =>
+		quote.quote.toLowerCase().includes(searchTerm) || 
+    quote.author.toLowerCase().includes(searchTerm)
+	);
+	const letters = /^[A-Za-z]+$/;
+	if (!searchTerm.match(letters) || searchTerm.indexOf(' ') !== -1) {
+		res.status(400).json({
+			message:
+				"Please make sure your search term is a single keyword and contains no characters rather than letters.",
+		});
+	} else if (searchResult.length < 1) {
+		res.status(400).json({
+			message:
+				"Your search term isn't found in quotes or authors' names. Please try another keyword.",
+		});
+	} else res.send(searchResult);
+});
+
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
@@ -49,11 +59,11 @@ app.get('/quotes/search', (req, res) => {
 //example: pickFromArray(myContactsArray)
 //
 function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
+	return arr[Math.floor(Math.random() * arr.length)];
 }
 
 // app.listen(port);
 //Start our server so that it listens for HTTP requests!
 const listener = app.listen(port, () => {
-  console.log("Your app is listening on port " + listener.address().port);
+	console.log("Your app is listening on port " + listener.address().port);
 });
