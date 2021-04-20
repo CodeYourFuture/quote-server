@@ -38,8 +38,8 @@ function App() {
       <header></header>
       <body>
         <h1>{dataPage}</h1>
-        <button onClick={functionFetcherQuote}>One Quote</button>
-        <button onClick={functionFetcherQuotes}>All Quotes</button>
+        <button onClick={functionFetcherQuote}>All Quotes</button>
+        <button onClick={functionFetcherQuotes}>One Quote</button>
         {dataQuotes.map((item) => {
           return (
             <div>
