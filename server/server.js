@@ -45,6 +45,20 @@ app.get("/api/quotes/random", function (request, response) {
   });
 });
 
+app.get("/api/quotes/search", (req, res) => {
+  const query = req.query.query.toLowerCase();
+  let queryResults = quotes.filter(
+    (el) =>
+      el.quote.toLowerCase().includes(query) ||
+      el.author.toLowerCase().includes(query)
+  );
+  res.status(200).json({
+    status: "success",
+    length: queryResults.length,
+    data: queryResults,
+  });
+});
+
 // // Start our server so that it listens for HTTP requests!
 // const listener = app.listen(PORT, function () {
 //   console.log("Your app is listening on port " + listener.address().port);

@@ -5,6 +5,7 @@ import axios from "axios";
 function App() {
   const [dataPage, setDataPage] = useState("updated");
   const [dataQuotes, setDataQuotes] = useState([]);
+  const [querySearch, setQuerySearch] = useState("");
 
   useEffect(() => {
     axios.get("/api/home").then((response) => {
@@ -33,11 +34,25 @@ function App() {
     });
   };
 
+  const searchConfirmationFunction = () => {
+    axios.get(`/api/quotes/search?query=${querySearch}`).then((response) => {
+      console.log(response.data.data);
+      setDataQuotes(response.data.data);
+    });
+  };
+
   return (
     <div className="App">
       <header></header>
       <body>
         <h1>{dataPage}</h1>
+        <input
+          type="text"
+          placeholder="Search"
+          value={querySearch}
+          onChange={(e) => setQuerySearch(e.target.value)}
+        />
+        <button onClick={searchConfirmationFunction}>Search</button>
         <button onClick={functionFetcherQuote}>All Quotes</button>
         <button onClick={functionFetcherQuotes}>One Quote</button>
         {dataQuotes.map((item) => {
