@@ -43,27 +43,24 @@ function App() {
 
   return (
     <div className="App">
-      <header></header>
-      <body>
-        <h1>{dataPage}</h1>
-        <input
-          type="text"
-          placeholder="Search"
-          value={querySearch}
-          onChange={(e) => setQuerySearch(e.target.value)}
-        />
-        <button onClick={searchConfirmationFunction}>Search</button>
-        <button onClick={functionFetcherQuote}>All Quotes</button>
-        <button onClick={functionFetcherQuotes}>One Quote</button>
-        {dataQuotes.map((item) => {
-          return (
-            <div>
-              <h2>{item.quote}</h2>
-              <h3>{item.author}</h3>
-            </div>
-          );
-        })}
-      </body>
+      <h1>{dataPage}</h1>
+      <input
+        type="text"
+        placeholder="Search"
+        value={querySearch}
+        onChange={(e) => setQuerySearch(e.target.value)}
+      />
+      <button onClick={searchConfirmationFunction}>Search</button>
+      <button onClick={functionFetcherQuote}>All Quotes</button>
+      <button onClick={functionFetcherQuotes}>One Quote</button>
+      {dataQuotes.map((item) => {
+        return (
+          <div>
+            <h2>{item.quote}</h2>
+            <h3>{item.author}</h3>
+          </div>
+        );
+      })}
     </div>
   );
 }
