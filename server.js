@@ -14,7 +14,11 @@ const quotes = require("./quotes.json");
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
   response.send(
-    "Amanuel's Quote Server!  Ask me for /quotes/random, or /quotes"
+    `<h1> Welcome to Amanuel's Quote Server!<h1>  
+    <p> To get all quotes  use: /quotes </p>  
+    <p> To get random quotes  use: /quotes/random</p>  
+    <p> To search any term in the  quotes or author use /quotes/search?term=search-term </p>  
+    `
   );
 });
 
