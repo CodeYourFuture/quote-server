@@ -27,7 +27,7 @@ const pickFromArray = (arr) => {
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", (req, res) => {
   res.send(
-    "<h1>Chizim's Quote Server! Ask me for /quotes/random, or /quotes</h1>"
+    "<h1>Welcome to Chizim's Quote Server!</h1><p> Ask me for /quotes /quotes/random or /quotes/search?term={your-search-term}</p>"
   );
 });
 
