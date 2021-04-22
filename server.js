@@ -29,7 +29,22 @@ app.get("/quotes/random", (req, res) => {
 });
 
 //Allow quote search 
+app.get("/quotes/search", (req, res) => {
+  const searchedQuote = req.query.term;
+  //Check for error
+  if (!searchedQuote) {
+    return res.sendStatus(400);
+  }
+  const searchResult = quotes.filter(
+    (data) =>
+      // **make sure the search is not case-sensitive
+      data.quote.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      data.author.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
+  res.json(searchResult);
+
+})
 
 
 
