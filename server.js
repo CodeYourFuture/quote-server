@@ -34,8 +34,8 @@ app.get("/quotes/search", function (request, response) {
       if (
         filterQuote.quote.toLowerCase().includes(quoteSearch.toLowerCase()) ||
         filterQuote.author.toLowerCase().includes(quoteSearch.toLowerCase())
-      ) { return filterQuote
-      }
+      ) { return filterQuote 
+      } 
   })
   response.json(filteredQuotes);
 });
