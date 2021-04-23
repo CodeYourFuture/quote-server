@@ -13,7 +13,13 @@ const quotes = require("./quotes.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Khalid's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send(
+    ` <h2> Welcome to Khalid Elsafi's Quotes </h2>
+    <p> To return all quotes type : /quotes </p>
+    <p> To return random quotes type : /quotes/random </p>
+    <p>To search your list of Quotes please Type: /quotes/search?term=search-term </p>
+    `
+    );
 });
 
 //START OF YOUR CODE...
