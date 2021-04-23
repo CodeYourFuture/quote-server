@@ -37,7 +37,7 @@ app.get("/quotes/search", (req, res) => {
   }
   const searchResult = quotes.filter(
     (data) =>
-      // **make sure the search is not case-sensitive
+      // make sure the search is not case-sensitive
       data.quote.toLowerCase().includes(searchTerm.toLowerCase()) ||
       data.author.toLowerCase().includes(searchTerm.toLowerCase())
   );
