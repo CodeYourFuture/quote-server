@@ -18,7 +18,7 @@ app.get("/", function (request, response) {
 
 //START OF YOUR CODE...
 
-//Get all of the quotes
+//Get all the quotes
 app.get("/quotes", (req, res) => {
   res.json(quotes);
 });
