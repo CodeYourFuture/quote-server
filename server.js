@@ -15,7 +15,9 @@ const quotes = require("./quotes.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", (request, response) => {
-  response.send("Liew's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send(
+    "Liew's Quote Server! Ask me for /quotes/random, or /quotes or /quotes/search?term={}"
+  );
 });
 
 //START OF YOUR CODE...
