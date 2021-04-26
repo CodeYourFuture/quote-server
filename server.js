@@ -38,11 +38,11 @@ app.get("/quotes/search", (req, res) => {
 		quote.quote.toLowerCase().includes(searchTerm) || 
     quote.author.toLowerCase().includes(searchTerm)
 	);
-	const letters = /^[A-Za-z]+$/;
-	if (!searchTerm.match(letters) || searchTerm.indexOf(' ') !== -1) {
+	const letters = /^[A-Za-z\s]+$/;
+	if (!searchTerm.match(letters)) {
 		res.status(400).json({
 			message:
-				"Please make sure your search term is a single keyword and contains no characters rather than letters.",
+				"Please make sure your search term contains no characters rather than letters.",
 		});
 	} else if (searchResult.length < 1) {
 		res.status(400).json({
