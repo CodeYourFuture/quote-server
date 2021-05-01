@@ -8,7 +8,7 @@ const app = express();
 //load the quotes JSON
 const quotes = require("./quotes.json");
 
-const PORT = 3000 || process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
