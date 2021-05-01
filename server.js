@@ -17,7 +17,6 @@ app.get("/", function (request, response) {
   <p>To view all quotes use the route: /quotes. You can also view a quote at random via /quotes/random.</p>
   <p>You can also search for quotes. Use the following format to do so: /quotes/search?term=[your_search_keyword]</p>`;
   response.send(body);
-  // response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
 //START OF YOUR CODE...
@@ -35,6 +34,7 @@ app.get("/quotes/random", function (request, response) {
 //    quote search feature
 app.get("/quotes/search", (request, response) => {
   const searchTerm = request.query.term;
+
   // check if the route path is of the correct format
   if (!searchTerm) {
     // if it is not
@@ -60,9 +60,10 @@ function pickFromArray(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-//Start our server so that it listens for HTTP requests!
-const PORT = 3001;
-app.listen(PORT, () => console.log("App listening on port " + PORT));
-// const listener = app.listen(process.env.PORT, function () {
-//   console.log("Your app is listening on port " + listener.address().port);
-// });
+app.get("/echo", function (request, response) {
+  const term = request.query.term;
+  
+  response.send(`you term is ${term}`)
+});
+
+app.listen(process.env.PORT || 5000);
