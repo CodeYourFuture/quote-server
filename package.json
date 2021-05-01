@@ -1,27 +1,25 @@
 {
-  "//1": "describes your app and its dependencies",
-  "//2": "https://docs.npmjs.com/files/package.json",
-  "//3": "updating this file will download and update your packages",
-  "name": "hello-express",
-  "version": "0.0.1",
-  "description": "A simple Node app built on Express, instantly up and running.",
+  "name": "node-challenge-quote-server",
+  "version": "1.0.0",
+  "description": "- 1 hour (level 1)\r - 3-4 hours (advanced level)",
   "main": "server.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "dependencies": {
-    "express": "^4.16.4"
-  },
-  "engines": {
-    "node": "8.x"
-  },
   "repository": {
-    "url": "https://glitch.com/edit/#!/hello-express"
+    "type": "git",
+    "url": "git+https://github.com/mikinet/node-challenge-quote-server.git"
   },
-  "license": "MIT",
-  "keywords": [
-    "node",
-    "glitch",
-    "express"
-  ]
+  "keywords": [],
+  "author": "Michael",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikinet/node-challenge-quote-server/issues"
+  },
+  "homepage": "https://github.com/mikinet/node-challenge-quote-server#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
 }
