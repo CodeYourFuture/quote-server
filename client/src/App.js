@@ -44,6 +44,13 @@ function App() {
   return (
     <div className="App">
       <h1>{dataPage}</h1>
+      <h2>2 in 1 App</h2>
+      <h2>React.js - client</h2>
+      <h2>Express.js - server</h2>
+      <p>
+        Access to API: <br /> /api/home <br /> /api/quotes
+        <br /> /api/quotes/random <br /> /api/quotes/search
+      </p>
       <input
         type="text"
         placeholder="Search"
