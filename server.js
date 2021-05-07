@@ -33,7 +33,7 @@ app.get("/quotes/search", function (request, response) {
 
   if (!term) {
     console.log("I am undefined");
-    return response.sendStatus(404);
+    response.sendStatus(404);
   }
   term = term.toLowerCase();
   let filteredQuotes = quotes.filter(
