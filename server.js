@@ -19,11 +19,16 @@ app.get("/", function (request, response) {
 //START OF YOUR CODE...
 app.get('/quotes', (req, res) => {
   res.send(quotes);
-})
+});
+
+app.get('/quotes/search', (req, res) => {
+  const searchVal = req.query.term.toLocaleLowerCase();
+  res.send(quotes.filter(x => x.quote.toLocaleLowerCase().includes(searchVal)))
+});
 
 app.get('/quotes/random', (req, res) => {
   res.send(quotes[Math.floor(Math.random() * quotes.length)]);
-})
+});
 
 //...END OF YOUR CODE
 
