@@ -39,6 +39,20 @@ app.get("/quotes/random", (req, res) => {
     
           //...END OF YOUR CODE
           
+          //  LEVEL 2
+          // - `/quotes/search?term=life`
+          // - `/quotes/search?term=success`
+          // - `/quotes/search?term=miss`
+app.get("/quotes/search", (req,res) => {
+const term = req.query.term.toLowerCase();
+const found = quotes.some(quote => quote.quote.toLowerCase().includes(term) || quote.author.toLowerCase().includes(term));
+console.log(found);
+if(found){
+  res.json(quotes.filter(quote => quote.quote.toLowerCase().includes(term) ||  quote.author.toLowerCase().includes(term)))
+}else {
+  res.status(400).json({ msg: `No quote with the term of ${term}`});
+}
+})
           
           
           
