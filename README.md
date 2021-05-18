@@ -184,6 +184,7 @@ In this extra challenge, you should install and use lodash to do the picking.
 
 Install the lodash library:
 
+
 - edit the file `package.json`...
 - add a line for lodash in the dependencies (you'll already see one for "express").
 - You can use "\*" as the version number for now.
