@@ -17,13 +17,14 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+
 app.get('/quotes', (req, res) => {
   res.send(quotes);
 });
 
 app.get('/quotes/search', (req, res) => {
-  const searchVal = req.query.term.toLocaleLowerCase();
-  res.send(quotes.filter(x => x.quote.toLocaleLowerCase().includes(searchVal)))
+  const searchVal = req.query.term.toLowerCase();
+  res.send(quotes.filter(x => x.quote.toLowerCase().includes(searchVal)))
 });
 
 app.get('/quotes/random', (req, res) => {
