@@ -8,9 +8,7 @@ const lodash = require('lodash');
 //load the quotes JSON
 const quotes = require("./quotes.json");
 
-let sasd = lodash.sample(quotes);
-
-let cors = require("cors")
+const cors = require("cors")
 
 app.use(cors())
 

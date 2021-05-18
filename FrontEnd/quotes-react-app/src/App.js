@@ -1,23 +1,29 @@
-import logo from "./logo.svg";
 import "./App.css";
-
+import React, { useEffect, useState } from "react";
+import { BsFillChatQuoteFill } from "react-icons/bs";
 function App() {
+  const [quotes, setQuotes ] = useState([]);
+  useEffect(() =>{
+    try {
+       fetch("https://yunusfirat-quote-server.glitch.me/quotes/random")
+      .then((response) => response.json()).then((data) => setQuotes(data));
+    } catch (error) {
+      console.log(error);
+    }
+  },[]);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <form>
+      <div className="container">
+        <div className="article">
+        <p><BsFillChatQuoteFill /> {quotes.quote}</p>
+        <h4>{quotes.author}</h4>
+        </div>
+      </div>
+      <div className="random">
+      <button>get new quote</button>
+      </div>
+      </form>
     </div>
   );
 }
