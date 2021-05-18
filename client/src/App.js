@@ -1,12 +1,19 @@
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import './App.css';
-import Quotes from './components/quotes.js';
 
 function App() {
   return (
-    <div>
-      <Quotes />
-    </div>
-  );
+    <BrowserRouter>
+      <Header />
+      <Switch>
+
+      </Switch>
+      <Footer />
+    </BrowserRouter>
+  )
 }
 
 export default App;
