@@ -11,9 +11,13 @@ function App() {
       console.log(error);
     }
   },[]);
+
+  const getQuote = () => {
+    fetch("https://yunusfirat-quote-server.glitch.me/quotes/random")
+    .then((response) => response.json()).then((data) => setQuotes(data));
+  };
   return (
     <div className="App">
-      <form>
       <div className="container">
         <div className="article">
         <p><BsFillChatQuoteFill /> {quotes.quote}</p>
@@ -21,9 +25,8 @@ function App() {
         </div>
       </div>
       <div className="random">
-      <button>get new quote</button>
+      <button onClick={getQuote}>get new quote</button>
       </div>
-      </form>
     </div>
   );
 }
