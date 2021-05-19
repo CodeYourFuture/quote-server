@@ -4,7 +4,7 @@ import './Footer.css';
 const Footer = () => {
 	return (
 		<footer>
-			Made by
+			<h3>Made by Ionut Tripa</h3>
 		</footer>
 	)
 }
