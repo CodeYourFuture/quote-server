@@ -14,8 +14,8 @@ const PORT = 3000;
 //   /                  - Return some helpful welcome info (text)
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
-app.get("/", function (request, response) {
-  response.send("Yasemin's Quote Server!  Ask me for /quotes/random, or /quotes");
+app.get("/", function(request, response) {
+  response.send("<h3>Yasemin's Quote Server!</h3> <h4>Ask me for /quotes</h4> <h4>Ask me for /quotes/random</h4> <h4>Ask me for /quotes/search?term=</h4>");  
 });
 
 //START OF YOUR CODE...
