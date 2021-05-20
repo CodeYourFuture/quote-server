@@ -24,7 +24,7 @@ If you want to share your server with other people the easiest way to do this is
 
 - Remix [this server on glitch -
   https://glitch.com/~cyf-quotes-start](https://glitch.com/~cyf-quotes-start)
-- Name your new server `yourname-quote-server`
+- Name your new server `Ali Nosratpour--quote-server`
 - Make sure you're logged in so that it saves
 - Check that it is working by making a request to `/`
 - Take time to read the comments
