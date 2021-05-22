@@ -1,3 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap");
+
 .quote-action-container {
 	display: flex;
+	justify-content: space-around;
+}
+
+header {
+	background-color: #264653;
+	color: #e9c46a;
+}
+
+.handwritten {
+	font-family: "Dancing Script", cursive;
+	text-align: center;
 }

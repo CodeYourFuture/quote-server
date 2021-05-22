@@ -1,0 +1,16 @@
+.quote-container {
+	width: 60vw;
+	margin: auto;
+	padding: 2rem;
+	background-color: darkorange;
+	margin-top: 3rem;
+}
+
+.quote-text {
+	text-align: center;
+}
+
+.quote-author {
+	text-align: end;
+	padding-right: 5rem;
+}
