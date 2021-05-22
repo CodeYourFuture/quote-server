@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap");
-
 .quote-action-container {
 	display: flex;
 	justify-content: space-around;
@@ -10,7 +8,9 @@ header {
 	color: #e9c46a;
 }
 
-.handwritten {
-	font-family: "Dancing Script", cursive;
+.app-name {
 	text-align: center;
+	color: #e9c46a;
+	padding-top: 2rem;
+	font-size: 5rem;
 }

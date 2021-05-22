@@ -60,4 +60,6 @@ select {
 .main-component {
 	position: relative;
 	min-height: 100vh;
+	background-color: #e9c46a;
+	padding-bottom: 7rem;
 }

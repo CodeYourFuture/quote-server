@@ -4,6 +4,7 @@ import QuoteComponent from './QuoteComponent.js';
 
 const AllQuotes = () => {
 	const [quotes, setQuotes] = useState([]);
+	const [searchValue, setSearchValue] = useState('');
 
 	useEffect(() => {
 		fetch('/quotes')
@@ -14,13 +15,17 @@ const AllQuotes = () => {
 			.catch(err => console.error(err));
 	}, [])
 
+	const handleSearch = (event) => setSearchValue(event.target.value);
+	
+	const filteredQuotes = quotes.filter(quote => quote.quote.toLowerCase().includes(searchValue.toLowerCase()));
+
 	return (
-		<div>
+		<div className='all-quotes-container'>
 			<form>
 				<label>Search for quotes</label>
-				<input type='search' id='search' name='search' placeholder='Start typing...' />
+				<input type='search' id='search' name='search' placeholder='Start typing...' onChange={handleSearch} />
 			</form>
-			{quotes.length === 0 ? null : quotes.map(elem => <QuoteComponent quote={elem} />)}
+			<div className='test'>{filteredQuotes.map((quote, index) => <QuoteComponent quote={quote} key={index} />)}</div>
 		</div>
 	)
 };
