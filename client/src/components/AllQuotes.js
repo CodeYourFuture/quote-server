@@ -6,18 +6,23 @@ const AllQuotes = () => {
 	const [quotes, setQuotes] = useState([]);
 	const [searchValue, setSearchValue] = useState('');
 
+	// useEffect(() => {
+	// 	fetch('/quotes')
+	// 		.then(res => res.json())
+	// 		.then(data => setQuotes(data))
+	// 		.catch(err => console.error(err));
+	// }, [])
+
 	useEffect(() => {
-		fetch('/quotes')
+		fetch(`/quotes/search?term=${searchValue}`)
 			.then(res => res.json())
-			.then(data => {
-				setQuotes(data);
-			})
-			.catch(err => console.error(err));
-	}, [])
+			.then(data => setQuotes(data))
+			.catch(error => console.error(error))
+	}, [searchValue])
 
 	const handleSearch = (event) => setSearchValue(event.target.value);
-	
-	const filteredQuotes = quotes.filter(quote => quote.quote.toLowerCase().includes(searchValue.toLowerCase()));
+
+	// const filteredQuotes = quotes.filter(quote => quote.quote.toLowerCase().includes(searchValue.toLowerCase()));
 
 	return (
 		<div className='all-quotes-container'>
@@ -25,7 +30,7 @@ const AllQuotes = () => {
 				<label>Search for quotes</label>
 				<input type='search' id='search' name='search' placeholder='Start typing...' onChange={handleSearch} />
 			</form>
-			<div className='test'>{filteredQuotes.map((quote, index) => <QuoteComponent quote={quote} key={index} />)}</div>
+			<div className='test'>{quotes.map((quote, index) => <QuoteComponent quote={quote} key={index} />)}</div>
 		</div>
 	)
 };
