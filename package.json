@@ -8,10 +8,11 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "server": "nodemon server.js" 
+    "server": "nodemon server.js"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "lodash": "^4.17.21"
   },
   "repository": {
     "url": "https://glitch.com/edit/#!/hello-express"

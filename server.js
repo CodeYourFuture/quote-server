@@ -7,6 +7,7 @@ const app = express();
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
+const lodash = require("lodash");
 
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
@@ -17,6 +18,9 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+
+//Level 1
+
 app.get("/hello", (req, res) => {
   res.send("Hello CYF");
 });
@@ -27,6 +31,22 @@ app.get("/quotes", (req, res) => {
 
 app.get("/quotes/:random", (req, res) => {
   res.json(pickFromArray(quotes));
+});
+
+//Level 2
+
+app.get("/quotes/search", (req, res) => {
+  let searchQuery = req.query.term.toLowerCase();
+  const matchingQuote = quotes.filter(
+    (quoteParameter) =>
+      quoteParameter.quote.toLowerCase().includes(searchQuery) ||
+      quoteParameter.author.toLowerCase().includes(searchQuery)
+  );
+  res.send(matchingQuote);
+});
+
+app.get("/quotes/lodash", (req, res) => {
+  res.json(lodash.sample(quotes));
 });
 //...END OF YOUR CODE
 
