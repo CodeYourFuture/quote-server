@@ -21,15 +21,11 @@ app.get("/", function (request, response) {
 
 //Level 1
 
-app.get("/hello", (req, res) => {
-  res.send("Hello CYF");
-});
-
 app.get("/quotes", (req, res) => {
   res.json(quotes);
 });
 
-app.get("/quotes/:random", (req, res) => {
+app.get("/quotes/random", (req, res) => {
   res.json(pickFromArray(quotes));
 });
 
@@ -59,6 +55,6 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(3000, function () {
+const listener = app.listen(3000 || port, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
