@@ -1,34 +1,47 @@
-// server.js
-// This is where your node app starts
-
-//load the 'express' module which makes writing webservers easy
+//LEVEL 1
 const express = require("express");
 const app = express();
-
-//load the quotes JSON
 const quotes = require("./quotes.json");
 
-// Now register handlers for some routes:
-//   /                  - Return some helpful welcome info (text)
-//   /quotes            - Should return all quotes (json)
-//   /quotes/random     - Should return ONE quote (json)
-app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+//Picks a random value from an array
+function randomiser(arr){
+    let initial = 0;
+    let final = (arr.length - 1);
+    let randIndex = Math.floor(Math.random() * (final- initial)) + initial;
+    return arr[randIndex];
+}
+
+const randElem = randomiser(quotes)
+
+//  Return some helpful welcome info (text)
+app.get("/", function(request, response) {
+  response.send("Remen's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
 //START OF YOUR CODE...
+// quotes returns all quotes (json)
+app.get("/quotes", function(request, response) {
+  response.send(quotes)
+});
 
-//...END OF YOUR CODE
+// quotes/random returns ONE quote (json)
+app.get('/quotes/random', function(request, response) {
+  response.send(randElem)
+});
 
-//You can use this function to pick one element at random from a given array
-//example: pickFromArray([1,2,3,4]), or
-//example: pickFromArray(myContactsArray)
-//
-function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
+//LEVEL 2
+app.get("/quotes/search", function (req, res) {
+  const searchTerm = req.query.term;
+  function search(arry){
+    return arry.filter(element => element.quote.includes(searchTerm))
+  }
+res.send(search(quotes));
+});
 
-//Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
+
+const PORT = 6048;
+const listener = app.listen(PORT, function() {
   console.log("Your app is listening on port " + listener.address().port);
 });
+
+
