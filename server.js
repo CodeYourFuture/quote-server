@@ -27,7 +27,7 @@ app.get('/quotes/random', (req, res) => {
 
 app.get('/quotes/search', (req, res) => {
   let term = req.query.term;
-  let match = quotes.find(({ quote }) => quote.includes(term));
+  let match = quotes.filter(({ quote }) => quote.toLowerCase().includes(term.toLowerCase()));
   res.send(match);
 });
 //...END OF YOUR CODE
