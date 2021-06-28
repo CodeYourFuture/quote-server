@@ -7,6 +7,7 @@ const app = express();
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
+const quotesWithId = require("./quotes-with-id.json");
 
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
@@ -17,6 +18,19 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+
+app.get("/quotes", function (request, response) {
+  response.send(quotes);
+});
+
+app.get("/quotes/random", function (request, response) {
+  response.send(pickFromArray(quotes));
+});
+
+app.get("/quotes/search", function (request, response) {
+  let term = request.query.term;
+  response.send(quotes.filter(quote => quote.quote.toLowerCase().includes(term.toLowerCase()) || quote.author.toLowerCase().includes(term.toLowerCase())));
+});
 
 //...END OF YOUR CODE
 
