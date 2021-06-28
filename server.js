@@ -27,7 +27,12 @@ app.get('/quotes/random', (req, res) => {
 
 app.get('/quotes/search', (req, res) => {
   let term = req.query.term;
-  let match = quotes.filter(({ quote }) => quote.toLowerCase().includes(term.toLowerCase()));
+  let match = quotes.filter(({ quote, author }) => {
+    return (
+      quote.toLowerCase().includes(term.toLowerCase()) ||
+      author.toLowerCase().includes(term.toLowerCase())
+    )
+  });
   res.send(match);
 });
 //...END OF YOUR CODE
