@@ -19,12 +19,14 @@ app.get("/", function (request, response) {
 	);
 });
 
-app.get("/quotes", (req, res)=>{
-  res.json(quotes);
-})
-
 //START OF YOUR CODE...
+app.get("/quotes", (req, res) => {
+	res.json(quotes);
+});
 
+app.get("/quotes/random", (req, res) => {
+	res.json(quotes[Math.floor(Math.random() * quotes.length)]);
+});
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
