@@ -8,6 +8,9 @@ const app = express();
 //load the quotes JSON
 const quotes = require("./quotes.json");
 
+//  port for 
+const PORT = process.env.PORT || 5000;
+
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
 //   /quotes            - Should return all quotes (json)
@@ -46,6 +49,6 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
+const listener = app.listen(PORT, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
