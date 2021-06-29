@@ -28,15 +28,20 @@ app.get("/quotes/random", (req, res) => {
 	res.json(quotes[Math.floor(Math.random() * quotes.length)]);
 });
 
-app.get("/quotes/search", (req,res)=>{
+app.get("/quotes/search", (req, res) => {
 	let searchVal = req.query.term;
-	if(searchVal){
-		let filteredQuotes = quotes.filter(quote => quote.quote.includes(searchVal));
+	// searchVal.toLowerCase();
+	if (searchVal) {
+		let filteredQuotes = quotes.filter(
+			(quote) =>
+				quote.quote.toLowerCase().includes(searchVal.toLowerCase()) ||
+				quote.author.toLowerCase().includes(searchVal.toLowerCase())
+		);
 		res.json(filteredQuotes);
-	}else{
+	} else {
 		res.send("No parameter given, unable to search.");
 	}
-})
+});
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
