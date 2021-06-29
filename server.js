@@ -8,7 +8,7 @@ const app = express();
 //load the quotes JSON
 const quotes = require("./quotes.json");
 
-//  port for 
+//  when server is deployed, the port number will be stored in an environment variable and for development it is 5000.
 const PORT = process.env.PORT || 5000;
 
 // Now register handlers for some routes:
