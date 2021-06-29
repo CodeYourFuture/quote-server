@@ -15,6 +15,30 @@ const quotes = require("./quotes.json");
 app.get("/", function (request, response) {
   response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
+app.get("/quotes", function (request, response) {
+  response.status(200).json(quotes);
+});
+app.get("/quotes/random", function (request, response) {
+  response.status(200).json(pickFromArray(quotes));
+});
+
+app.get("/quotes/search", function (request, response) {
+  let searchItem = request.query.s;
+  if (searchItem) {
+    response.json(
+      quotes.filter((item) => {
+        let new_author = item.author.toLowerCase()
+        let new_quote = item.quote.toLowerCase()
+        let new_search = searchItem.toLocaleLowerCase()
+        if (new_author.includes(new_search) || new_quote.includes(new_search)) {
+          return item
+        }
+      })
+    );
+  } else {
+    response.json({ message: "Please include search query" });
+  }
+});
 
 //START OF YOUR CODE...
 
@@ -29,6 +53,6 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
+const listener = app.listen(3000, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
