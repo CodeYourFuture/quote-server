@@ -31,9 +31,10 @@ app.get("/quotes/random", (req, res) => {
 app.get("/quotes/search", (req,res)=>{
 	let searchVal = req.query.term;
 	if(searchVal){
-		console.log(searchVal);
+		let filteredQuotes = quotes.filter(quote => quote.quote.includes(searchVal));
+		res.json(filteredQuotes);
 	}else{
-		console.log("No parameter given, unable to search.");
+		res.send("No parameter given, unable to search.");
 	}
 })
 //...END OF YOUR CODE
