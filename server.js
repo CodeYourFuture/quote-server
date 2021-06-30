@@ -18,12 +18,28 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+
+// level 1
 app.get("/quotes", function(req, res) {
    res.send(quotes);
 })
 
-app.get("/quotes/random/", function(req, res) {
+app.get("/quotes/random", function(req, res) {
   res.send(pickFromArray(quotes));
+});
+
+// level 2
+app.get("/quotes/search", function(req, res) {
+  let word = req.query.word;
+  if(word) {
+    const searchWord = quotes.filter(word => {
+      return (word.quote.toLowerCase().includes(word.toLowerCase()) ||
+       word.author.toLowerCase().includes(word.toLowerCase()));
+    });
+    res.send(searchWord);
+  } else {
+    res.send([]);
+  }
 });
 //...END OF YOUR CODE
 
