@@ -1,11 +1,19 @@
 import Quotes from "./Quotes";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
   
   return (
-    <div className="App">
-      <Quotes />
-    </div>
+    <Router>
+      <div>
+        <Switch>
+          <Route path='/'>
+            <Quotes />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+
   );
 }
 
