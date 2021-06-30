@@ -4,9 +4,11 @@
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
 const app = express();
-
+const lodash = require("lodash");
+var cors = require("cors");
 //load the quotes JSON
 const quotes = require("./quotes.json");
+app.use(cors());
 
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
@@ -35,7 +37,7 @@ app.get("/quotes/search", function (req, res) {
   }
 });
 app.get("/quotes/random", function (req, res) {
-  res.send(pickFromArray(quotes));
+  res.send(lodash.sample(quotes));
 });
 app.get("/quotes/random", function (req, res) {
   res.send(pickFromArray(quotes));
