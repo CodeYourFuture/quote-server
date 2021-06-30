@@ -3,15 +3,14 @@
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
-const _ = require("lodash");
 const cors = require("cors");
 
 const app = express();
+
 app.use(cors());
+app.use('/quotes', require('./routes/api/quotes'));
 
 
-//load the quotes JSON
-const quotes = require("./quotes.json");
 
 //  when server is deployed, the port number will be stored in an environment variable and for development it is 5000.
 const PORT = process.env.PORT || 5000;
@@ -21,38 +20,14 @@ const PORT = process.env.PORT || 5000;
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send(`Use endpoint /quotes to display all the quotes. Use endpoint /quotes/random to display a random quote. Use endpoint / quotes/search?term=your search word here`);
+  response.send(`/quotes to display all the quotes. /quotes/random to display a random quote. / quotes/search?term=search word`);
 });
 
 //START OF YOUR CODE...
-app.get('/quotes', (req, res) => {
-  res.send(quotes);
-});
 
-app.get('/quotes/random', (req, res) => {
-  // res.send(pickFromArray(quotes));
-  res.send(_.sample(quotes));
-});
-
-app.get('/quotes/search', (req, res) => {
-  let term = req.query.term;
-  let match = quotes.filter(({ quote, author }) => {
-    return (
-      quote.toLowerCase().includes(term.toLowerCase()) ||
-      author.toLowerCase().includes(term.toLowerCase())
-    )
-  });
-  res.send(match);
-});
 //...END OF YOUR CODE
 
-//You can use this function to pick one element at random from a given array
-//example: pickFromArray([1,2,3,4]), or
-//example: pickFromArray(myContactsArray)
-//
-function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
+
 
 //Start our server so that it listens for HTTP requests!
 const listener = app.listen(PORT, function () {

@@ -8,7 +8,7 @@ function App() {
       <div>
         {/* switch looks for the 1st route match and renders that route */}
         <Switch>
-          <Route path='/'>
+          <Route exact path='/'>
             <Quotes />
           </Route>
         </Switch>
