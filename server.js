@@ -20,6 +20,23 @@ app.get("/", function (request, response) {
 app.get("/quotes", function (req, res) {
   res.send(quotes);
 });
+app.get("/quotes/search", function (req, res) {
+  let search = req.query.term;
+  if (search == "") {
+    res.send(quotes);
+  } else {
+    res.send(
+      quotes.filter(
+        (element) =>
+          element.quote.toLowerCase().includes(search.toLowerCase()) ||
+          element.author.toLowerCase().includes(search.toLowerCase())
+      )
+    );
+  }
+});
+app.get("/quotes/random", function (req, res) {
+  res.send(pickFromArray(quotes));
+});
 app.get("/quotes/random", function (req, res) {
   res.send(pickFromArray(quotes));
 });
