@@ -16,7 +16,7 @@ const quotes = require("./quotes.json");
 //   response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
 // });
 
-//START OF YOUR CODE...
+//START OF MY CODE...
 //Homepage Route
 app.get("/", (req, res) => {
   res.send("Ryno's Quote Server!  Ask me for /quotes/random, or /quotes");
@@ -29,10 +29,10 @@ app.get("/quotes", (req, res) => {
 
 //Return One Of The Random Quotes.
 app.get("/quotes/random", (req, res) => {
-  res.send("Random quotes");
+  res.send(pickFromArray(quotes));
 });
 
-//...END OF YOUR CODE
+//...END OF MY CODE
 
 //You can use this function to pick one element at random from a given array
 //example: pickFromArray([1,2,3,4]), or
@@ -41,6 +41,7 @@ app.get("/quotes/random", (req, res) => {
 function pickFromArray(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
+console.log();
 
 //Start our server so that it listens for HTTP requests!
 const listener = app.listen(process.env.PORT, function () {
