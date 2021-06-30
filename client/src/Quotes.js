@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Quote from './Quote';
+import AllQuotes from './AllQuotes';
 
 const Quotes = () => {
   const URL = "http://localhost:5000/quotes";
@@ -47,7 +47,7 @@ const Quotes = () => {
     return (
       <div>
         <div>
-          <Quote quotes={state.quotes} />;
+          <AllQuotes quotes={state.quotes} />;
         </div>
       </div>
     );

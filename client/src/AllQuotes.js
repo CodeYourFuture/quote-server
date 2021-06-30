@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Quote({quotes}) {
+function AllQuotes({quotes}) {
   return (
     <div>  
       {quotes.map(el => {
@@ -16,4 +16,4 @@ function Quote({quotes}) {
   )
 }
 
-export default Quote
+export default AllQuotes;
