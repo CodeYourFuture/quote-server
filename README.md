@@ -30,7 +30,7 @@ If you want to share your server with other people the easiest way to do this is
 - Take time to read the comments
 - Copy the code you've written to Glitch
 
-## Level 1 Challenge - make the quote server
+## Level 1 Challenge - make the quote server!
 
 Your server must have at least these two "routes":
 
@@ -88,7 +88,7 @@ Well done!
 - You might want to download your project for safekeeping. (Tools: Git, Import, and Export: Download Project)
 - Read the following ideas for further work
 
-## Level 2 Challenge - allow quote _searches_!
+## Level 2 Challenge - allow quote _searches_
 
 ### Overview
 
@@ -135,8 +135,8 @@ Look at [the code of this example glitch](https://glitch.com/~cyf-query-params).
 
 Then use it by clicking these links and then changing the search word.
 
-- https://cyf-query-params.glitch.me/search?word=Mussie
-- https://cyf-query-params.glitch.me/search?word=holiday
+- <https://cyf-query-params.glitch.me/search?word=Mussie>
+- <https://cyf-query-params.glitch.me/search?word=holiday>
 
 In express, we use the object `req.query`, which will have all the parameters passed to us in the URL's query string. [The official documentation is here](https://expressjs.com/en/api.html#req.query).
 
@@ -234,4 +234,4 @@ and in CORS in Express [here](https://expressjs.com/en/resources/middleware/cors
 
 ### Credits
 
-I found the quotes list here https://gist.githubusercontent.com/nasrulhazim/54b659e43b1035215cd0ba1d4577ee80/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json
+I found the quotes list here <https://gist.githubusercontent.com/nasrulhazim/54b659e43b1035215cd0ba1d4577ee80/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json>
