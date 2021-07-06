@@ -34,12 +34,13 @@ app.get("/quotes/:id?", function (request, response) {
 // };
 
 app.get("/quotes/search", function (request, response) {
-	console.log("This is in the route", search);
-	const searchWord = request.query.word;
-	const result = quotes.filter((quote) =>
-		quote.quote.toLocaleLowerCase().includes(searchWord)
-	);
-	response.send("This is word", searchWord);
+	response.send("Function working");
+	// const searchWord = request.query.word;
+	// console.log("This is in the route", searchWord);
+	// const result = quotes.filter((quote) =>
+	// 	quote.quote.toLocaleLowerCase().includes(searchWord)
+	// );
+	// response.send("This is word");
 });
 
 console.log("App is listening");
