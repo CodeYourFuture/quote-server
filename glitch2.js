@@ -16,31 +16,33 @@ app.get("/quotes", function (request, response) {
 });
 
 //Display quote matching an id
-app.get("/quotes/:id?", function (request, response) {
+app.get("/quotes/:id", function (request, response) {
 	const inputId = request.params.id;
-	if (inputId) {
-		const quote = quotes.filter((res) => res.id == inputId);
+	const numeralId = parseInt(inputId)
+	if (typeof(numeralId) === "number") {
+		const quote = quotes.filter((res) => res.id === numeralId);
 		response.json(quote);
 	}
 });
 
-//search by a term
-// const search = (word) => {
-// 	console.log("This is in the function", word);
-// 	let filteredQuotes = quotes.filter((quote) =>
-// 		quote.quote.toLowerCase().includes(word)
-// 	);
-// 	return filteredQuotes;
-// };
+// search by a term
+const search = (word) => {
+	// console.log("This is in the function", word);
+	let filteredQuotes = quotes.filter((quote) =>
+		quote.quote.toLowerCase().includes(word.toLowerCase())
+	);
+	return filteredQuotes;
+};
 
-app.get("/quotes/search", function (request, response) {
-	response.send("Function working");
-	// const searchWord = request.query.word;
+app.get("/quote/search", function (request, response) {
+	// response.send("Function working");
+	const searchWord = request.query.word;
 	// console.log("This is in the route", searchWord);
+	const result = search(searchWord);
 	// const result = quotes.filter((quote) =>
 	// 	quote.quote.toLocaleLowerCase().includes(searchWord)
 	// );
-	// response.send("This is word");
+	response.json(result);
 });
 
 console.log("App is listening");
