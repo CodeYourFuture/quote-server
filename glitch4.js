@@ -18,4 +18,7 @@ app.get("/quotes/random", function (request, response) {
 	response.send(lodash.sample(quotes));
 });
 
-const listener = app.listen(process.env.PORT);
+const listener = app.listen(process.env.PORT, ()=>{
+    console.log("App listening on:", listener.address().port);
+});
+
