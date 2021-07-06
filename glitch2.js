@@ -16,7 +16,7 @@ app.get("/quotes", function (request, response) {
 });
 
 //Display quote matching an id
-app.get("/quotes/:id", function (request, response) {
+app.get("/quotes/:id", function (request, response) {//How to bypass this in future to avoid this bug
 	const inputId = request.params.id;
 	const numeralId = parseInt(inputId)
 	if (typeof(numeralId) === "number") {
