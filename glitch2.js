@@ -15,16 +15,6 @@ app.get("/quotes", function (request, response) {
 	response.json(quotes);
 });
 
-//Display quote matching an id
-app.get("/quotes/:id", function (request, response) {//How to bypass this in future to avoid this bug
-	const inputId = request.params.id;
-	const numeralId = parseInt(inputId)
-	if (typeof(numeralId) === "number") {
-		const quote = quotes.filter((res) => res.id === numeralId);
-		response.json(quote);
-	}
-});
-
 // search by a term
 const search = (word) => {
 	// console.log("This is in the function", word);
@@ -34,7 +24,8 @@ const search = (word) => {
 	return filteredQuotes;
 };
 
-app.get("/quote/search", function (request, response) {
+app.get("/quotes/search", function (request, response) {
+	//Re-order code to set hierarchy - to check this route before checking for id
 	// response.send("Function working");
 	const searchWord = request.query.word;
 	// console.log("This is in the route", searchWord);
@@ -43,6 +34,17 @@ app.get("/quote/search", function (request, response) {
 	// 	quote.quote.toLocaleLowerCase().includes(searchWord)
 	// );
 	response.json(result);
+});
+
+//Display quote matching an id
+app.get("/quotes/:id", function (request, response) {
+	//How to bypass this in future to avoid this bug - see above
+	const inputId = request.params.id;
+	const numeralId = parseInt(inputId);
+	if (typeof numeralId === "number") {
+		const quote = quotes.filter((res) => res.id === numeralId);
+		response.json(quote);
+	}
 });
 
 console.log("App is listening");
