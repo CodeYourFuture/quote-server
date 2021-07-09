@@ -13,21 +13,21 @@ const quotesWithId = require("./quotes-with-id.json");
 //   /                  - Return some helpful welcome info (text)
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
-app.get("/", function (request, response) {
-  response.send("Jarrod's Quote Server!  Ask me for /quotes/random, or /quotes");
+app.get("/", (req, res) => {
+  res.send("Welcome to my Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
 //START OF YOUR CODE...
 
-app.get("/quotes",  (req, res) => {
+app.get("/quotes", (req, res) => {
   res.send(quotes);
 });
 
-app.get("/quotes/random",  (req, res) => {
+app.get("/quotes/random", (req, res) => {
   res.send(pickFromArray(quotes));
 });
 
-app.get("/quotes/search",  (req, res) => {
+app.get("/quotes/search", (req, res) => {
   let term = req.query.term;
   res.send(quotes.filter(quote => quote.quote.toLowerCase().includes(term.toLowerCase()) || quote.author.toLowerCase().includes(term.toLowerCase())));
 });
