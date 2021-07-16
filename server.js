@@ -2,7 +2,9 @@
 // This is where your node app starts
 
 //load the 'express' module which makes writing webservers easy
+const { response } = require("express");
 const express = require("express");
+const { request } = require("http");
 const app = express();
 
 //load the quotes JSON
@@ -17,6 +19,12 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+app.get("/quote", (request, response) => {
+  response.json(quotes);
+})
+app.get("/quote/random",(request,response)=>{
+  response.json(pickFromArray(quotes));
+})
 
 //...END OF YOUR CODE
 
