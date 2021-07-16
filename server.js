@@ -19,12 +19,25 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
-app.get("/quote", (request, response) => {
+/*  Level 1*/
+app.get("/quotes", (request, response) => {
   response.json(quotes);
-})
-app.get("/quote/random",(request,response)=>{
+});
+app.get("/quotes/random", (request, response) => {
   response.json(pickFromArray(quotes));
-})
+});
+/*Level 2*/
+
+app.get("/quotes/search", (request, response) => {
+  let term = request.query.term.toLowerCase();
+  let matchingQuotes = quotes.filter((elem) => {
+    return (
+      elem.quote.toLowerCase().includes(term) ||
+      elem.author.toLowerCase().includes(term)
+    );
+  });
+  response.json(matchingQuotes);
+});
 
 //...END OF YOUR CODE
 
