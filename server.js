@@ -3,12 +3,13 @@
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const lodash = require("lodash");
-var cors = require("cors");
 //load the quotes JSON
 const quotes = require("./quotes.json");
-app.use(cors());
+
+app.use(cors({ origin: "*" }));
 
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
@@ -19,8 +20,8 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
-app.get("/quotes", function (req, res) {
-  res.send(quotes);
+app.get("/quote", function (req, res) {
+  res.json(quotes);
 });
 app.get("/quotes/search", function (req, res) {
   let search = req.query.term;
@@ -53,6 +54,6 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
+const listener = app.listen(process.env.PORT || 3000, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
