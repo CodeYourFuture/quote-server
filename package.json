@@ -7,10 +7,13 @@
   "description": "A simple Node app built on Express, instantly up and running.",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "Dev": "nodemon index"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "lodash": "*"
   },
   "repository": {
     "url": "https://glitch.com/edit/#!/hello-express"
@@ -20,5 +23,9 @@
     "node",
     "glitch",
     "express"
-  ]
+  ],
+  "devDependencies": {
+    "i": "^0.3.6",
+    "nodemon": "^2.0.12"
+  }
 }
