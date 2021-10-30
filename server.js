@@ -17,6 +17,18 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+//all quotes
+const allQuotes = (req, res) => {
+  res.send(quotes)
+}
+const randomQuote = (req, res) => {
+  
+  res.send(pickFromArray(quotes))
+ }
+app.get('/quotes', allQuotes)
+app.get('/quotes/random',randomQuote)
+
+
 
 //...END OF YOUR CODE
 
