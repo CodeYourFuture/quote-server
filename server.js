@@ -22,11 +22,20 @@ const allQuotes = (req, res) => {
   res.send(quotes)
 }
 const randomQuote = (req, res) => {
-  
-  res.send(pickFromArray(quotes))
- }
+  const randomPickedQuote= pickFromArray(quotes);
+  res.send(randomPickedQuote["author"])
+}
+ 
+
+const searchQuote = (req, res) => {
+  const searchTerm = req.query.term;
+  const result = quotes.filter(elem => elem["quote"].includes(searchTerm.toLowerCase())
+    || elem["author"].includes(searchTerm.toLowerCase()))
+  res.send(result);
+}
 app.get('/quotes', allQuotes)
-app.get('/quotes/random',randomQuote)
+app.get('/quotes/random', randomQuote)
+app.get('/quotes/search', searchQuote) 
 
 
 

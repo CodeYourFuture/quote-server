@@ -84,6 +84,7 @@ Be sure to check that the previous routes `/quotes` and `/` are still working, t
 Well done!
 
 - On Slack, post the address of your server.
+http://localhost:43053/quotes/random
 - Also post the address when you mark your google classroom assignment done.
 - You might want to download your project for safekeeping. (Tools: Git, Import, and Export: Download Project)
 - Read the following ideas for further work
