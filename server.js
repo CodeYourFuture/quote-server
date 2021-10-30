@@ -4,9 +4,12 @@
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
 const app = express();
+//lodash for array sampling
+const lodash = require("lodash");
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
+let number= lodash.sample(quotes);
 
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
@@ -23,7 +26,7 @@ const allQuotes = (req, res) => {
 }
 const randomQuote = (req, res) => {
   const randomPickedQuote= pickFromArray(quotes);
-  res.send(randomPickedQuote["author"])
+  res.send(number);
 }
  
 
