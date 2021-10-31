@@ -6,6 +6,8 @@ const express = require("express");
 const app = express();
 //lodash for array sampling
 const lodash = require("lodash");
+const cors = require('cors');
+app.use(cors());
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
