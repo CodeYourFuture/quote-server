@@ -2,9 +2,9 @@
 // This is where your node app starts
 
 //load the 'express' module which makes writing webservers easy
+const { request, response } = require("express");
 const express = require("express");
 const app = express();
-
 //load the quotes JSON
 const quotes = require("./quotes.json");
 
@@ -17,7 +17,14 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
-
+//Send all quotes
+app.get('/quotes', (request , response)=>{
+  response.send(quotes);
+})
+//Send random quote
+app.get('/quotes/random', (request , response)=>{
+  response.send(pickFromArray(quotes));
+})
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
@@ -29,6 +36,9 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
+const listener = app.listen(3000, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
+// const listener = app.listen(process.env.PORT, function () {
+//   console.log("Your app is listening on port " + listener.address().port);
+// });
