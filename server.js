@@ -12,20 +12,45 @@ const quotes = require("./quotes.json");
 //   /                  - Return some helpful welcome info (text)
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
+
+//START OF YOUR CODE...
+
+// Homepage Get Response
 app.get("/", function (request, response) {
   response.send("Omer's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
-app.get('/quotes', function (request, response) {
-  response.json(quotes);
+// Quotes Get Response
+app.get('/quotes', function (req, res) {
+  res.json(quotes);
 })
 
-app.get('/quotes/random', function (request, response) {
+// Quotes/random Get Response
+app.get('/quotes/random', function (req, res) {
   const randomQuote = pickFromArray(quotes);
-  response.json(randomQuote);
+  res.json(randomQuote);
 })
 
-//START OF YOUR CODE...
+// Quotes Search Get Response
+app.get('/quotes/search', function (req, res) {
+  const searchTerm = req.query.term.toLowerCase();
+  const loweredCaseQuotes = quotes.map(({quote, author}) => {
+    const loweredCaseQuote = quote.toLowerCase();
+    const loweredCaseAuthor = author.toLowerCase();
+    return { loweredCaseQuote, loweredCaseAuthor };
+  })
+  const searchedQuotes = [];
+  loweredCaseQuotes.forEach((q, i) => {
+    if (
+      q.loweredCaseQuote.includes(searchTerm) ||
+      q.loweredCaseAuthor.includes(searchTerm)
+    ) {
+      searchedQuotes.push(quotes[i]);
+    }
+  });
+
+  res.json(searchedQuotes);
+})
 
 //...END OF YOUR CODE
 
