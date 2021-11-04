@@ -34,9 +34,9 @@ app.get("/quotes/search", (req, res) => {
       return [];
     }
     return quotes.filter(
-      (term) =>
-        term.quote.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        term.author.toLowerCase().includes(searchQuery.toLowerCase())
+      (item) =>
+        item.quote.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.author.toLowerCase().includes(searchQuery.toLowerCase())
     );
   };
   res.send(searchQuotes(req.query.term));
