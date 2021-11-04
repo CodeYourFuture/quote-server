@@ -18,15 +18,37 @@ app.get("/", function (request, response) {
 
 //START OF YOUR CODE...
 
+function pickFromArray(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+app.get("/quotes", function (request, response) {
+  response.send(quotes);
+});
+
+app.get("/quotes/random", function (request, response) {
+  response.send(pickFromArray(quotes));
+});
+
+app.get("/quotes/search", function (request, response) {
+  function searchQuotes(searchQuery) {
+    return quotes.filter((item) => {
+      return (
+        item.quote.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.author.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    });
+  }
+  // response.send(request.query.term)
+  response.send(searchQuotes(request.query.term));
+});
+
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
 //example: pickFromArray([1,2,3,4]), or
 //example: pickFromArray(myContactsArray)
 //
-function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
 
 //Start our server so that it listens for HTTP requests!
 const listener = app.listen(process.env.PORT, function () {
