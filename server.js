@@ -52,7 +52,7 @@ function pickFromArray(arr) {
 }
 
 const listener = app.listen(
-  process.env.PORT || 3000,
+  process.env.PORT || 5000,
   function () {
     console.log(
       "Your app is listening on port " +
