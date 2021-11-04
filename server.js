@@ -5,42 +5,20 @@
 const express = require("express");
 const app = express();
 //lodash for array sampling
-const lodash = require("lodash");
+
 const cors = require('cors');
 app.use(cors());
-
+app.use('/',require('./routes/api/quotes'))
 //load the quotes JSON
 const quotes = require("./quotes.json");
-let number= lodash.sample(quotes);
+
 
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
-app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
-});
 
-//START OF YOUR CODE...
-//all quotes
-const allQuotes = (req, res) => {
-  res.send(quotes)
-}
-const randomQuote = (req, res) => {
-  const randomPickedQuote= pickFromArray(quotes);
-  res.send(number);
-}
- 
 
-const searchQuote = (req, res) => {
-  const searchTerm = req.query.term;
-  const result = quotes.filter(quote => quote["quote"].includes(searchTerm.toLowerCase())
-    || quote["author"].includes(searchTerm.toLowerCase()))
-  res.send(result);
-}
-app.get('/quotes', allQuotes)
-app.get('/quotes/random', randomQuote)
-app.get('/quotes/search', searchQuote) 
 
 
 
@@ -50,11 +28,8 @@ app.get('/quotes/search', searchQuote)
 //example: pickFromArray([1,2,3,4]), or
 //example: pickFromArray(myContactsArray)
 //
-function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
+const listener = app.listen(process.env.PORT ||3000, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
