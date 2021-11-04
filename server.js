@@ -34,8 +34,8 @@ const randomQuote = (req, res) => {
 
 const searchQuote = (req, res) => {
   const searchTerm = req.query.term;
-  const result = quotes.filter(elem => elem["quote"].includes(searchTerm.toLowerCase())
-    || elem["author"].includes(searchTerm.toLowerCase()))
+  const result = quotes.filter(quote => quote["quote"].includes(searchTerm.toLowerCase())
+    || quote["author"].includes(searchTerm.toLowerCase()))
   res.send(result);
 }
 app.get('/quotes', allQuotes)
