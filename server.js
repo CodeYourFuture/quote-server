@@ -16,6 +16,15 @@ app.get("/", function (request, response) {
   response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
+app.get("/quotes", (req, res) => {
+  res.json(quotes);
+});
+
+// app.get("/quotes/random", (req, res) => {
+//   const pickFromArray = (arr) =>  arr[Math.floor(Math.random() * arr.length)];
+//   res.json(pickFromArray(quotes));
+// });
+
 //START OF YOUR CODE...
 
 //...END OF YOUR CODE
@@ -24,11 +33,10 @@ app.get("/", function (request, response) {
 //example: pickFromArray([1,2,3,4]), or
 //example: pickFromArray(myContactsArray)
 //
-function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
-  console.log("Your app is listening on port " + listener.address().port);
+const PORT = process.env.PORT || 4000;
+
+const listener = app.listen(PORT, () => {
+  console.log(`Your app is listening on port ${PORT}`);
 });

@@ -465,3 +465,5 @@
     author: "Zig Ziglar",
   },
 ];
+
+module.exports = quotes;
