@@ -2,6 +2,7 @@
 // This is where your node app starts
 
 //load the 'express' module which makes writing webservers easy
+const { response } = require("express");
 const express = require("express");
 const app = express();
 
@@ -20,8 +21,19 @@ app.get("/", function (request, response) {
 app.get("/quotes", function (request, response) {
   response.send(quotes);
 })
-app.get("quotes/random", function (request, response){
+app.get("/quotes/random", function (request, response){
   response.send(pickFromArray(quotes))
+})
+//Search
+app.get("/quotes/search", function (req, res){
+  const searchTerm = req.query.term.toLowerCase();
+  console.log(searchTerm)
+  const quotesWithTerm = quotes.filter(quote => {
+   return quote.author.toLowerCase().includes(searchTerm)
+    || 
+    quote.quote.toLowerCase().includes(searchTerm);
+  })
+  res.send(quotesWithTerm);
 })
 //...END OF YOUR CODE
 
