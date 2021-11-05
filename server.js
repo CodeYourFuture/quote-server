@@ -3,18 +3,20 @@
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
-const lodash = require('lodash');
+const lodash = require("lodash");
 const app = express();
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
-
+const randomPickLodash = lodash.sample(quotes);
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Ali's Quote Server!  Ask me for /quotes/random, or /quotes, or /quotes/search");
+  response.send(
+    "Ali's Quote Server!  Ask me for /quotes/random, or /quotes, or /quotes/search"
+  );
 });
 
 app.get("/quotes", (req, res) => {
@@ -22,8 +24,8 @@ app.get("/quotes", (req, res) => {
 });
 
 app.get("/quotes/random", (req, res) => {
-  const pickFromArray = (arr) => arr[Math.floor(Math.random() * arr.length)];
-  res.json(pickFromArray(quotes));
+  // const pickFromArray = (arr) => arr[Math.floor(Math.random() * arr.length)]; // change it to use lodash
+  res.json(randomPickLodash);
 });
 
 // search quotes
