@@ -6,8 +6,11 @@ const { res } = require("express");
 const express = require("express");
 const app = express();
 
-//load the quotes JSON
+// load the quotes JSON
 const quotes = require("./quotes.json");
+
+// load lodash utility library
+const lodash = require("lodash");
 
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
@@ -19,15 +22,18 @@ app.get("/", function (req, res) {
 
 //START OF YOUR CODE...
 
+// Send all `quotes`
 app.get("/quotes", (req, res) => {
   res.send(quotes);
 });
 
+// Send a random `quote`
 app.get("/quotes/random", (req, res) => {
-  res.send(pickFromArray(quotes));
+  res.send(lodash.sample(quotes));
 });
 
 // http://localhost:4000/quotes/search/?word=try
+// Case insensitive search within both the `quote` and `author` property values for the submitted browser query
 app.get("/quotes/search", (req, res) => {
   const matchingQuotes = quotes.filter((singleQuote) => {
     let searchTermUppercase = req.query.word.toUpperCase();
@@ -49,7 +55,7 @@ app.get("/quotes/search", (req, res) => {
 //example: pickFromArray([1,2,3,4]), or
 //example: pickFromArray(myContactsArray)
 //
-let pickFromArray = (arr) => arr[Math.floor(Math.random() * arr.length)];
+// let pickFromArray = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
 //Start our server so that it listens for HTTP requests!
 const listener = app.listen(process.env.PORT || 4000, () => {
