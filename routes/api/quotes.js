@@ -22,8 +22,8 @@ const searchQuote = (req, res) => {
   const searchTerm = req.query.term
   const result = quotes.filter(
     quote =>
-      quote['quote'].includes(searchTerm.toLowerCase()) ||
-      quote['author'].includes(searchTerm.toLowerCase())
+      quote['quote'].toLowerCase().includes(searchTerm.toLowerCase()) ||
+      quote['author'].toLowerCase().includes(searchTerm.toLowerCase())
   )
   res.send(result)
 }
