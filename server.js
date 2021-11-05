@@ -4,6 +4,7 @@
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
 const lodash = require("lodash");
+var cors = require('cors')
 const app = express();
 
 //load the quotes JSON
@@ -46,6 +47,8 @@ app.get("/quotes/search", (req, res) => {
     });
   }
 });
+
+app.use(cors());
 
 //START OF YOUR CODE...
 
