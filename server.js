@@ -3,6 +3,7 @@
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
+const lodash = require('lodash');
 const app = express();
 
 //load the quotes JSON
@@ -13,7 +14,7 @@ const quotes = require("./quotes.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send("Ali's Quote Server!  Ask me for /quotes/random, or /quotes, or /quotes/search");
 });
 
 app.get("/quotes", (req, res) => {
@@ -38,7 +39,7 @@ app.get("/quotes/search", (req, res) => {
       )
     );
   } else {
-    res.status(400).json({
+    res.status(400).send({
       msg: `not found anything with this term ${found}`,
     });
   }
