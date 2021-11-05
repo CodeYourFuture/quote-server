@@ -4,9 +4,7 @@
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
 const app = express();
-
-//load the quotes JSON
-const quotes = require("./quotes.json");
+const PORT = process.env.PORT || 3000;
 
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
@@ -17,40 +15,14 @@ const quotes = require("./quotes.json");
 
 // Homepage Get Response
 app.get("/", function (request, response) {
-  response.send("Omer's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send("Omer's Quote Server!  Ask me for /quotes/random, or /quotes/search?term=xxx, or even /proverbs...");
 });
 
-// Quotes Get Response
-app.get('/quotes', function (req, res) {
-  res.json(quotes);
-})
+// Quotes Routes
+app.use('/quotes', require('./routes/quotes/quotes'));
 
-// Quotes/random Get Response
-app.get('/quotes/random', function (req, res) {
-  const randomQuote = pickFromArray(quotes);
-  res.json(randomQuote);
-})
-
-// Quotes Search Get Response
-app.get('/quotes/search', function (req, res) {
-  const searchTerm = req.query.term.toLowerCase();
-  const loweredCaseQuotes = quotes.map(({quote, author}) => {
-    const loweredCaseQuote = quote.toLowerCase();
-    const loweredCaseAuthor = author.toLowerCase();
-    return { loweredCaseQuote, loweredCaseAuthor };
-  })
-  const searchedQuotes = [];
-  loweredCaseQuotes.forEach((q, i) => {
-    if (
-      q.loweredCaseQuote.includes(searchTerm) ||
-      q.loweredCaseAuthor.includes(searchTerm)
-    ) {
-      searchedQuotes.push(quotes[i]);
-    }
-  });
-
-  res.json(searchedQuotes);
-})
+// Proverbs Routes
+app.use('/proverbs', require('./routes/proverbs/proverbs'));
 
 //...END OF YOUR CODE
 
@@ -58,11 +30,8 @@ app.get('/quotes/search', function (req, res) {
 //example: pickFromArray([1,2,3,4]), or
 //example: pickFromArray(myContactsArray)
 //
-function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT || 3000, function () {
+const listener = app.listen(PORT, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
