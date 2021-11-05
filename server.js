@@ -2,7 +2,7 @@
 // This is where your node app starts
 
 //load the 'express' module which makes writing webservers easy
-const { response } = require("express");
+const { res } = require("express");
 const express = require("express");
 const app = express();
 
@@ -13,18 +13,34 @@ const quotes = require("./quotes.json");
 //   /                  - Return some helpful welcome info (text)
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
-app.get("/", function (request, response) {
-  response.send("Andy's Quote Server!  Ask me for /quotes/random, or /quotes");
+app.get("/", function (req, res) {
+  res.send("Andy's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
 //START OF YOUR CODE...
 
-app.get("/quotes", (request, response) => {
-  response.send(quotes);
+app.get("/quotes", (req, res) => {
+  res.send(quotes);
 });
 
-app.get("/quotes/random", (request, response) => {
-  response.send(pickFromArray(quotes));
+app.get("/quotes/random", (req, res) => {
+  res.send(pickFromArray(quotes));
+});
+
+// http://localhost:4000/quotes/search/?word=try
+app.get("/quotes/search", (req, res) => {
+  const matchingQuotes = quotes.filter((singleQuote) => {
+    let searchTermUppercase = req.query.word.toUpperCase();
+
+    if (singleQuote.quote.toUpperCase().includes(searchTermUppercase)) {
+      return true;
+    } else if (singleQuote.author.toUpperCase().includes(searchTermUppercase)) {
+    } else {
+      return false;
+    }
+  });
+
+  res.send(matchingQuotes);
 });
 
 //...END OF YOUR CODE
@@ -33,9 +49,7 @@ app.get("/quotes/random", (request, response) => {
 //example: pickFromArray([1,2,3,4]), or
 //example: pickFromArray(myContactsArray)
 //
-function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
+let pickFromArray = (arr) => arr[Math.floor(Math.random() * arr.length)];
 
 //Start our server so that it listens for HTTP requests!
 const listener = app.listen(process.env.PORT || 4000, () => {
