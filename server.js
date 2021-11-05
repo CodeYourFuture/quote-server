@@ -21,8 +21,27 @@ app.get("/quotes", (req, res) => {
 });
 
 app.get("/quotes/random", (req, res) => {
-  const pickFromArray = (arr) =>  arr[Math.floor(Math.random() * arr.length)];
+  const pickFromArray = (arr) => arr[Math.floor(Math.random() * arr.length)];
   res.json(pickFromArray(quotes));
+});
+
+// search quotes
+
+app.get("/quotes/search", (req, res) => {
+  const found = req.query.term.toLocaleLowerCase();
+  if (found) {
+    res.json(
+      quotes.filter(
+        (quote) =>
+          quote.author.toLocaleLowerCase().includes(found) ||
+          quote.quote.toLocaleLowerCase().includes(found)
+      )
+    );
+  } else {
+    res.status(400).json({
+      msg: `not found anything with this term ${found}`,
+    });
+  }
 });
 
 //START OF YOUR CODE...
