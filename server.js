@@ -20,10 +20,10 @@ app.get("/quotes", (req, res) => {
   res.json(quotes);
 });
 
-// app.get("/quotes/random", (req, res) => {
-//   const pickFromArray = (arr) =>  arr[Math.floor(Math.random() * arr.length)];
-//   res.json(pickFromArray(quotes));
-// });
+app.get("/quotes/random", (req, res) => {
+  const pickFromArray = (arr) =>  arr[Math.floor(Math.random() * arr.length)];
+  res.json(pickFromArray(quotes));
+});
 
 //START OF YOUR CODE...
 
