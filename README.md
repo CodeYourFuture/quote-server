@@ -84,6 +84,7 @@ Be sure to check that the previous routes `/quotes` and `/` are still working, t
 Well done!
 
 - On Slack, post the address of your server.
+http://localhost:43053/quotes/random
 - Also post the address when you mark your google classroom assignment done.
 - You might want to download your project for safekeeping. (Tools: Git, Import, and Export: Download Project)
 - Read the following ideas for further work
@@ -182,7 +183,7 @@ In this extra challenge, you should install and use lodash to do the picking.
 
 [Here's the documentation for its sample() function](https://lodash.com/docs/4.17.11#sample).
 
-Install the lodash library:
+Install the lodash library:npm 
 
 - edit the file `package.json`...
 - add a line for lodash in the dependencies (you'll already see one for "express").
