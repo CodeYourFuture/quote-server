@@ -26,6 +26,26 @@ app.get("/quotes/random", function (request, response) {
   response.json(randomQuote);
 });
 
+app.get("/quotes/search", function (request, response) {
+  const searchTerm = request.query.term.toLowerCase();
+  const loweredCaseQuotes = quotes.map(({ quote, author }) => {
+    const loweredCaseQuote = quote.toLowerCase();
+    const loweredCaseAuthor = author.toLowerCase();
+    return { loweredCaseQuote, loweredCaseAuthor };
+  });
+  const searchedQuotes = [];
+  loweredCaseQuotes.forEach((quote, index) => {
+    if (
+      quote.loweredCaseQuote.includes(searchTerm) ||
+      quote.loweredCaseAuthor.includes(searchTerm)
+    ) {
+      searchedQuotes.push(quotes[index]);
+    }
+  });
+
+  res.json(searchedQuotes);
+});
+
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
