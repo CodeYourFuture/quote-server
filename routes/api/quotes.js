@@ -5,32 +5,33 @@ const quotes = require('../../quotes.json')
 const lodash = require('lodash')
 
 router.get('/', function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, /quotes or quotes/search?term=anyword")
+  response.status(200).send("Anza Azam's Quote Server!  Ask me for /quotes/random, /quotes or quotes/search?term=anyword")
 })
 
 //START OF YOUR CODE...
 //all quotes
 const allQuotes = (req, res) => {
-  res.send({msg:"All Quotes",quotes: quotes })
+  res.status(200).json({ msg: "All Quotes", quotes: quotes })
 }
 const randomQuote = (req, res) => {
-  //const randomPickedQuote = pickFromArray(quotes)
+  
+  
   let randomSelectedQuote = lodash.sample(quotes)
-  res.send(randomSelectedQuote)
+  res.status(200).json(randomSelectedQuote)
 }
 
 const searchQuote = (req, res) => {
   const searchTerm = req.query.term
   const result = quotes.filter(
-    quote =>
-      quote['quote'].toLowerCase().includes(searchTerm.toLowerCase()) ||
-      quote['author'].toLowerCase().includes(searchTerm.toLowerCase())
-  )
-  res.send({ msg: "Searched Quotes are: ", result: result })
+    quote => {
+      let word = searchTerm.toLowerCase();
+     return quote['quote'].toLowerCase().includes(word)||
+        quote['author'].toLowerCase().includes(word)
+    })
+  res.status(200).json({ msg: "Searched Quotes are: ", result: result })
 }
-function pickFromArray (arr) {
-  return arr[Math.floor(Math.random() * arr.length)]
-}
+
+
 
 router.get('/quotes', allQuotes)
 router.get('/quotes/random', randomQuote)
