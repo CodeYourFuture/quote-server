@@ -3,8 +3,10 @@
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
+const cors = require("cors")
 const app = express();
-
+app.use(cors())
+//app.use(express.static("react-demo"));
 //load the quotes JSON
 const quotes = require("./quotes.json");
 
@@ -14,6 +16,7 @@ const quotes = require("./quotes.json");
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
   response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+  
 }); 
 
 //START OF YOUR CODE...
