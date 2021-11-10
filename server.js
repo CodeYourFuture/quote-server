@@ -18,22 +18,22 @@ app.get("/", function (req, res) {
 
 //START OF YOUR CODE...
 
-app.get('/quotes', function (req, res) {
+app.get("/quotes", function (req, res) {
   res.json(quotes);
-})
+});
 
-app.get('/quotes/random', function (req, res) {
+app.get("/quotes/random", function (req, res) {
   const randomQuotes = pickFromArray(quotes);
   res.json(randomQuotes);
-})
+});
 
-app.get('/quotes/search', function (req, res) {
+app.get("/quotes/search", function (req, res) {
   const searchRules = req.query.term.toLowerCase();
-  const lowerCaseQuotes = quotes.map(({quote, author}) => {
+  const lowerCaseQuotes = quotes.map(({ quote, author }) => {
     const lowerCaseQuote = quote.toLowerCase();
     const lowerCaseAuthor = author.toLowerCase();
     return { lowerCaseQuote, lowerCaseAuthor };
-  })
+  });
   const searchQuotes = [];
   lowerCaseQuotes.forEach((m, i) => {
     if (
@@ -45,8 +45,7 @@ app.get('/quotes/search', function (req, res) {
   });
 
   res.json(searchQuotes);
-})
-
+});
 
 //...END OF YOUR CODE
 
