@@ -31,6 +31,21 @@ response.send(randomQuote);
   
 } )
 
+app.get("/quotes/search", (req, res) => {
+  const termSearch = req.query.term;
+  console.log(termSearch);
+  const quote = quotes.filter((ele)=>
+  ele.quote.toLowerCase().includes(termSearch.toLowerCase()) ||
+  ele.author.toLowerCase().includes(termSearch.toLowerCase()) 
+  );
+    
+    // if(quote.length !== 0){
+    //   req.json(quote);
+    // }else{
+    //   res.status(400).json({msg: "no matches found for your search"})
+    // }
+    res.send(quote)
+    })
 //START OF YOUR CODE...
 
 //...END OF YOUR CODE
@@ -45,5 +60,5 @@ function pickFromArray(arr) {
 
 //Start our server so that it listens for HTTP requests!
 const listener = app.listen(PORT, function () {
-  console.log("Your app is listening on port " + listener.address().port);
+  console.log("Your app is listening on port " + PORT);
 });
