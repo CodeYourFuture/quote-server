@@ -16,6 +16,14 @@ app.get("/quotes", (request, response) => {
   response.json(quotes);
 });
 
+app.get("/quotes/search", (request, response) => {
+  const queryTerm = String(request.query.term).toLowerCase();
+  const searchedItem = quotes.filter((quote) => {
+    if (quote.quote.includes(queryTerm)) return quote.quote;
+  });
+  response.send(searchedItem);
+});
+
 app.get("/quotes/random", (request, response) => {
   const randomQuote = pickFromArray(quotes);
   response.send(randomQuote);
