@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const lodash = require("lodash");
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
@@ -27,6 +28,10 @@ app.get("/quotes/search", (request, response) => {
 app.get("/quotes/random", (request, response) => {
   const randomQuote = pickFromArray(quotes);
   response.send(randomQuote);
+});
+
+app.get("/quotes/sample", (request, response) => {
+  response.send(lodash.sample(quotes));
 });
 
 //...END OF YOUR CODE
