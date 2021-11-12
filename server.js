@@ -1,22 +1,25 @@
-// server.js
-// This is where your node app starts
-
-//load the 'express' module which makes writing webservers easy
 const express = require("express");
 const app = express();
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
-
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send("Seyed's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
 //START OF YOUR CODE...
+app.get("/quotes", (request, response) => {
+  response.json(quotes);
+});
+
+app.get("/quotes/random", (request, response) => {
+  const randomQuote = pickFromArray(quotes);
+  response.send(randomQuote);
+});
 
 //...END OF YOUR CODE
 
