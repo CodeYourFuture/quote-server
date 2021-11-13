@@ -1,467 +1,440 @@
 [
   {
-    quote: "Life isn’t about getting and having, it’s about giving and being.",
-    author: "Kevin Kruse",
+    quote: "Try not. Do or do not. There is no try.",
+    author: "Yoda, Star Wars Episode V: The Empire Strikes Back",
   },
   {
-    quote: "Whatever the mind of man can conceive and believe, it can achieve.",
-    author: "Napoleon Hill",
+    quote: "Your eyes can deceive you; don’t trust them.",
+    author: "Obi-Wan Kenobi, Star Wars Episode IV: A New Hope",
   },
   {
-    quote: "Strive not to be a success, but rather to be of value.",
-    author: "Albert Einstein",
+    quote: "The ability to speak does not make you intelligent.",
+    author: "Qui-Gon Jinn, The Phantom Menace",
   },
   {
-    quote:
-      "Two roads diverged in a wood, and I—I took the one less traveled by, And that has made all the difference.",
-    author: "Robert Frost",
+    quote: "Difficult to see; always in motion is the future.",
+    author: "Yoda, The Empire Strikes Back",
   },
   {
-    quote: "I attribute my success to this: I never gave or took any excuse.",
-    author: "Florence Nightingale",
+    quote: "I like firsts. Good or bad, they’re always memorable.",
+    author: "Ahsoka Tano, The Mandalorian",
   },
   {
-    quote: "You miss 100% of the shots you don’t take.",
-    author: "Wayne Gretzky",
+    quote: "Great, kid, don’t get cocky.",
+    author: "Han Solo, A New Hope",
   },
   {
-    quote:
-      "I’ve missed more than 9000 shots in my career. I’ve lost almost 300 games. 26 times I’ve been trusted to take the game winning shot and missed. I’ve failed over and over and over again in my life. And that is why I succeed.",
-    author: "Michael Jordan",
+    quote: "Insolence? We are pirates. We don’t even know what that means.",
+    author: "Hondo Ohnaka, The Clone Wars",
   },
   {
-    quote:
-      "The most difficult thing is the decision to act, the rest is merely tenacity.",
-    author: "Amelia Earhart",
+    quote: "“I’m a Mandalorian. Weapons are part of my religion..",
+    author: "Din Djarin, The Mandalorian",
   },
   {
-    quote: "Every strike brings me closer to the next home run.",
-    author: "Babe Ruth",
+    quote: "Fear leads to anger, anger leads to hate, hate leads to suffering.",
+    author: "Yoda, The Phantom Menace",
   },
   {
-    quote: "Definiteness of purpose is the starting point of all achievement.",
-    author: "W. Clement Stone",
+    quote: "The fear of loss is a path to the dark side.",
+    author: "Yoda, Revenge Of The Sith",
   },
   {
-    quote: "We must balance conspicuous consumption with conscious capitalism.",
-    author: "Kevin Kruse",
+    quote: "These aren’t the droids you’re looking for.",
+    author: "Obi-Wan Kenobi, A New Hope",
   },
   {
-    quote: "Life is what happens to you while you’re busy making other plans.",
-    author: "John Lennon",
+    quote: "This is the way.",
+    author: "Din Djarin, The Mandalorian",
   },
   {
-    quote: "We become what we think about.",
-    author: "Earl Nightingale",
+    quote: "I find your lack of faith disturbing.",
+    author: "Darth Vader, A New Hope",
   },
   {
-    quote:
-      "Twenty years from now you will be more disappointed by the things that you didn’t do than by the ones you did do, so throw off the bowlines, sail away from safe harbor, catch the trade winds in your sails.  Explore, Dream, Discover.",
-    author: "Mark Twain",
+    quote: "So this is how liberty dies … with thunderous applause.",
+    author: "Queen Amidala, Revenge of The Sith",
   },
   {
-    quote: "Life is 10% what happens to me and 90% of how I react to it.",
-    author: "Charles Swindoll",
+    quote: "The Force will be with you. Always.",
+    author: "Obi-Wan Kenobi, A New Hope",
   },
   {
-    quote:
-      "The most common way people give up their power is by thinking they don’t have any.",
-    author: "Alice Walker",
-  },
-  {
-    quote: "The mind is everything. What you think you become.",
-    author: "Buddha",
+    quote: "If you only knew the power of the dark side.",
+    author: "Darth Vader, The Empire Strikes Back",
   },
   {
     quote:
-      "The best time to plant a tree was 20 years ago. The second best time is now.",
-    author: "Chinese Proverb",
+      "You were the chosen one! It was said that you would destroy the Sith, not join them. You were to bring balance to the Force, not leave it in darkness.",
+    author: "Obi-Wan kenobi, Revenge of the Sith",
   },
   {
-    quote: "An unexamined life is not worth living.",
-    author: "Socrates",
-  },
-  {
-    quote: "Eighty percent of success is showing up.",
-    author: "Woody Allen",
+    quote: "Only a Sith deals in absolutes.",
+    author: "Obi-Wan Kenobi, Revenge of the Sith",
   },
   {
     quote:
-      "Your time is limited, so don’t waste it living someone else’s life.",
-    author: "Steve Jobs",
-  },
-  {
-    quote: "Winning isn’t everything, but wanting to win is.",
-    author: "Vince Lombardi",
+      "If you strike me down, I shall become more powerful than you can possibly imagine.",
+    author: "Obi-Wan Kenobi, A New Hope",
   },
   {
     quote:
-      "I am not a product of my circumstances. I am a product of my decisions.",
-    author: "Stephen Covey",
+      "Always two there are, no more, no less. A master and an apprentice.",
+    author: "Yoda, The Phantom Menace",
   },
   {
     quote:
-      "Every child is an artist.  The problem is how to remain an artist once he grows up.",
-    author: "Pablo Picasso",
+      "The dark side of the Force is a pathway to many abilities some consider to be unnatural.",
+    author: "Chancellor Palpatine, Revenge of the Sith",
+  },
+  {
+    quote: "Search your feelings, you know it to be true.",
+    author: "Darth Vader, The Empire Strikes Back",
+  },
+  {
+    quote: "Let the past die. Kill it if you must.",
+    author: "Kylo Ren, The Last Jedi",
+  },
+  {
+    quote: "A great leap forward often requires first taking two steps back",
+    author: "Obi-Wan Kenobi, Clone Wars S1 E18(Mystery of a Thousand Moons)",
   },
   {
     quote:
-      "You can never cross the ocean until you have the courage to lose sight of the shore.",
-    author: "Christopher Columbus",
+      "“It takes strength to resist the dark side. Only the weak embrace it",
+    author: "Obi-Wan Kenobi, The Clone Wars S5 E16(The Lawless)",
+  },
+  {
+    quote: "Great leaders inspire greatness in others",
+    author: "Title Card, The Clone Wars S1 E1(Ambush)",
+  },
+  {
+    quote: "Belief is not a matter of choice, but of conviction",
+    author: "Title Card, The Clone Wars S1 E2(Rising Malevolence)",
+  },
+  {
+    quote: "Easy is the path to wisdom for those not blinded by ego.",
+    author: "Title Card, The Clone Wars S1 E3 (Shadow of Malevolence)",
+  },
+  {
+    quote: "A plan is only as good as those who see it through.",
+    author: "Title Card, The Clone Wars S1 E4 (Destroy Malevolence)",
+  },
+  {
+    quote: "The best confidence builder is experience.",
+    author: "Title Card, The Clone Wars S1 E5 (Rookies)",
   },
   {
     quote:
-      "I’ve learned that people will forget what you said, people will forget what you did, but people will never forget how you made them feel.",
-    author: "Maya Angelou",
-  },
-  {
-    quote: "Either you run the day, or the day runs you.",
-    author: "Jim Rohn",
-  },
-  {
-    quote: "Whether you think you can or you think you can’t, you’re right.",
-    author: "Henry Ford",
+      "You can’t stop change any more than you can stop the suns from setting.",
+    author: "Shmi Skywalker, The Phantom Menace",
   },
   {
     quote:
-      "The two most important days in your life are the day you are born and the day you find out why.",
-    author: "Mark Twain",
+      "Sometimes we must let go of our pride and do what is requested of us.",
+    author: "Padme Amidala, Attack of the Clones",
+  },
+  {
+    quote: "Train yourself to let go of everything you fear to lose.",
+    author: "Yoda, The Empire Strikes Back",
+  },
+  {
+    quote: "People are predictable.",
+    author: "Tobias Beckett, Solo: A Star Wars Story",
+  },
+  {
+    quote: "Without freedom of choice there is no creativity.",
+    author:
+      "Captain James T Kirk, Star Trek: The Original Series S1 E21(The Return of the Archons)",
+  },
+  {
+    quote: "Logic is the beginning of wisdom, not the end.",
+    author: "Spock, Star Trek IV The Undiscovered Country",
   },
   {
     quote:
-      "Whatever you can do, or dream you can, begin it.  Boldness has genius, power and magic in it.",
-    author: "Johann Wolfgang von Goethe",
+      "You can use logic to justify almost anything. That’s its power. And it’s flaw.",
+    author: "Captain Kathryn Janeway, Voyager S1 E10(Prime Factors)",
   },
   {
-    quote: "The best revenge is massive success.",
-    author: "Frank Sinatra",
+    quote: "Change is the essential process of all existence.",
+    author:
+      "Spock, Star Trek: The Original Series S3 E15(Let that be your Last Battlefield)",
   },
   {
-    quote:
-      "People often say that motivation doesn’t last. Well, neither does bathing.  That’s why we recommend it daily.",
-    author: "Zig Ziglar",
+    quote: "… The needs of the many outweigh the needs of the few.",
+    author: "Spock, Star Trek II The Wrath of Khan",
   },
   {
-    quote: "Life shrinks or expands in proportion to one’s courage.",
-    author: "Anais Nin",
-  },
-  {
-    quote:
-      "If you hear a voice within you say “you cannot paint,” then by all means paint and that voice will be silenced.",
-    author: "Vincent Van Gogh",
+    quote: "It is the lot of ‘man’ to strive no matter how content he is.",
+    author: "Spock",
   },
   {
     quote:
-      "There is only one way to avoid criticism: do nothing, say nothing, and be nothing.",
-    author: "Aristotle",
+      "It is possible to commit no errors and still lose. That is not a weakness. That is life.",
+    author:
+      "Captain Jean-Luc Picard, Star Trek: The Next Generation S2 E21(Peak Perfomance)",
   },
   {
     quote:
-      "Ask and it will be given to you; search, and you will find; knock and the door will be opened for you.",
-    author: "Jesus",
+      "You know the greatest danger facing us is ourselves, and irrational fear of the unknown. There is no such thing as the unknown. Only things temporarily hidden, temporarily not understood.",
+    author:
+      "Captain James T Kirk, Star Trek: The Original Series S1 E10(The Carbomite Maneuver)",
   },
   {
     quote:
-      "The only person you are destined to become is the person you decide to be.",
-    author: "Ralph Waldo Emerson",
+      "There is a way out of every box, a solution to every puzzle; it’s just a matter of finding it.",
+    author:
+      "Captain Jean-Luc Picard, Star Trek: The Next Generation S7 E8(Attached)",
   },
   {
     quote:
-      "Go confidently in the direction of your dreams.  Live the life you have imagined.",
-    author: "Henry David Thoreau",
+      "Improve a mechanical device and you may double productivity. But improve man, you gain a thousandfold.",
+    author:
+      "Khan Noonien Singh, Star Trek: The Original Series S1 E22(Space Seed)",
   },
   {
     quote:
-      "When I stand before God at the end of my life, I would hope that I would not have a single bit of talent left and could say, I used everything you gave me.",
-    author: "Erma Bombeck",
+      "Computers make excellent and efficient servants, but I have no wish to serve under them.",
+    author:
+      "Spock, Star Trek: The Original Series S2 E24(The Ultimate Computer)",
+  },
+  {
+    quote: "Pain is a thing of the mind. The mind can be controlled.",
+    author:
+      "Spock, Star Trek: The Original Series S1 E29 (Operation - Annihilate)",
+  },
+  {
+    quote: "Live long and prosper",
+    author: "Spock, Start Trek: The Original Series S2 E1(Amok Time)",
+  },
+  {
+    quote: "A library serves no purpose unless someone is using it.",
+    author:
+      "Mr Atoz, Star Trek: The Original Series S3 E23(All Our Yesterdays)",
   },
   {
     quote:
-      "Few things can help an individual more than to place responsibility on him, and to let him know that you trust him.",
-    author: "Booker T. Washington",
+      "When a child is taught, it's programmed with simple instructions, and at some point, if its mind develops properly, it exceeds the sum of what it was taught, thinks independently.",
+    author:
+      "Dr Daystrom, Star Trek: The Orginal Series S2 E24(The Ultimate Computer)",
   },
   {
     quote:
-      "Certain things catch your eye, but pursue only those that capture the heart.",
-    author: " Ancient Indian Proverb",
-  },
-  {
-    quote: "Believe you can and you’re halfway there.",
-    author: "Theodore Roosevelt",
-  },
-  {
-    quote: "Everything you’ve ever wanted is on the other side of fear.",
-    author: "George Addair",
+      "The intellect is not all... but its cultivation must come first, or the individual makes errors... wastes time in unprofitable pursuits.",
+    author:
+      "Flint, Star trek: The Original Series S3 E19(Requiem for Methuselah)",
   },
   {
     quote:
-      "We can easily forgive a child who is afraid of the dark; the real tragedy of life is when men are afraid of the light.",
-    author: "Plato",
+      "I speak of rights! A machine has none; a man must. If you do not grant him that right, you have brought us down to the level of the machine; indeed, you have elevated that machine above us!",
+    author:
+      "Samuel T. Cogley, Star Trek: The Original Series S1 E20(Court Martial)",
   },
   {
     quote:
-      "Teach thy tongue to say, “I do not know,” and thous shalt progress.",
-    author: "Maimonides",
-  },
-  {
-    quote: "Start where you are. Use what you have.  Do what you can.",
-    author: "Arthur Ashe",
+      "Live now; make now always the most precious time. Now will never come again",
+    author:
+      "Captain Jean-Luc Picard, Star Trek: The Next Generation S5 E25(The Inner Light)",
   },
   {
     quote:
-      "When I was 5 years old, my mother always told me that happiness was the key to life.  When I went to school, they asked me what I wanted to be when I grew up.  I wrote down ‘happy’.  They told me I didn’t understand the assignment, and I told them they didn’t understand life.",
-    author: "John Lennon",
+      "I am pleased to see that we have differences. May we together become greater than the sum of both of us.",
+    author: "Surak, Star Trek: The Original Series S3 E22(The Savage Curtain)",
   },
   {
-    quote: "Fall seven times and stand up eight.",
-    author: "Japanese Proverb",
-  },
-  {
-    quote:
-      "When one door of happiness closes, another opens, but often we look so long at the closed door that we do not see the one that has been opened for us.",
-    author: "Helen Keller",
-  },
-  {
-    quote: "Everything has beauty, but not everyone can see.",
-    author: "Confucius",
+    quote: "A little suffering is good for the soul.",
+    author:
+      "Captain James T Kirk, Star Trek: The Original Series S1 E10(The Carbomite Maneuver)",
   },
   {
     quote:
-      "How wonderful it is that nobody need wait a single moment before starting to improve the world.",
-    author: "Anne Frank",
-  },
-  {
-    quote: "When I let go of what I am, I become what I might be.",
-    author: "Lao Tzu",
+      "It can be argued that a human is ultimately the sum of his experiences",
+    author: "Captain Benjamin Sisko, Star Trek: Deep Space 9 S1 E1(Emissary)",
   },
   {
     quote:
-      "Life is not measured by the number of breaths we take, but by the moments that take our breath away.",
-    author: "Maya Angelou",
+      "Believing oneself to be perfect is often the sign of a delusional mind.",
+    author: "Lt. Commander Data, Star Trek: First Contact",
   },
   {
     quote:
-      "Happiness is not something readymade.  It comes from your own actions.",
-    author: "Dalai Lama",
+      "I object to intellect without discipline; I object to power without constructive purpose.",
+    author:
+      "Spock, Star Trek: The Original Series S1 E17(The Squire of Gothos)",
+  },
+  {
+    quote: "Time is the fire in which we burn.",
+    author: "Soran, Star trek Generations",
   },
   {
     quote:
-      "If you’re offered a seat on a rocket ship, don’t ask what seat! Just get on.",
-    author: "Sheryl Sandberg",
+      "To be human is to be complex. You can’t avoid a little ugliness – from within – and from without.",
+    author:
+      "Captain James T Kirk, Star Trek: The Original Series S3 E19(Requiem for Methuselah)",
+  },
+  {
+    quote: "Superior ability breeds superior ambition.",
+    author: "Spock, Star Trek: the Original Series S1 E22(Space Seed)",
+  },
+  {
+    quote: "If I can have honesty, it’s easier to overlook mistakes.",
+    author:
+      "Captain James T Kirk, Star Trek: the Original Series S1 E22(Space Seed)",
   },
   {
     quote:
-      "First, have a definite, clear practical ideal; a goal, an objective. Second, have the necessary means to achieve your ends; wisdom, money, materials, and methods. Third, adjust all your means to that end.",
-    author: "Aristotle",
-  },
-  {
-    quote: "If the wind will not serve, take to the oars.",
-    author: "Latin Proverb",
+      "A man either lives life as it happens to him, meets it head-on and licks it, or he turns his back on it and starts to wither away.",
+    author:
+      "Dr. Boyce, Star Trek: the Original Series S1 E11 & 12(The Menagerie)",
   },
   {
     quote:
-      "You can’t fall if you don’t climb.  But there’s no joy in living your whole life on the ground.",
-    author: "Unknown",
+      "... the prejudices people feel about each other disappear when they get to know each other.",
+    author:
+      "Captain James T Kirk, Star Trek: The Original Series S3 E13(Elaan of Troyius)",
   },
   {
     quote:
-      "We must believe that we are gifted for something, and that this thing, at whatever cost, must be attained.",
-    author: "Marie Curie",
+      "With the first link, the chain is forged. The first speech censored, the first thought forbidden, the first freedom denied, chains us all irrevocably.",
+    author:
+      "Captain Jean-Luc Picard, Star Trek: The Next Generation S4 E21(The Drumhead)",
+  },
+  {
+    quote: "Darmok and Jalad at Tanagra",
+    author: "Captain Dathan, Star Trek: The Next Generation S5 E2(Darmok)",
+  },
+  {
+    quote: "Shaka, when the walls fell.",
+    author: "Captain Dathan, Star Trek: The Next Generation S5 E2(Darmok)",
+  },
+  {
+    quote: "Darmok and Jalad at Tenagra!",
+    author: "Captain Dathan, Star Trek: The Next Generation S5 E2(Darmok)",
+  },
+  {
+    quote: "Temba, his arms wide",
+    author: "Captain Dathan, Star Trek: The Next Generation S5 E2(Darmok)",
+  },
+  {
+    quote: "Insufficient facts always invite danger.",
+    author: "Spock, Star Trek: the Original Series S1 E22(Space Seed)",
   },
   {
     quote:
-      "Too many of us are not living our dreams because we are living our fears.",
-    author: "Les Brown",
+      "Compassion: that's the one things no machine ever had. Maybe it's the one thing that keeps men ahead of them.",
+    author:
+      " Dr. Leonard 'Bones' McCoy, Star Trek: The Orginal Series S2 E24(The Ultimate Computer)",
   },
   {
     quote:
-      "Challenges are what make life interesting and overcoming them is what makes life meaningful.",
-    author: "Joshua J. Marine",
-  },
-  {
-    quote: "If you want to lift yourself up, lift up someone else.",
-    author: "Booker T. Washington",
+      "It is the struggle itself that is most important. We must strive to be more than we are. It does not matter that we will never reach our ultimate goal. The effort yields its own rewards.",
+    author:
+      "Lt. Commander Data, Star Trek: The Next Generation S3 E16(The Offspring)",
   },
   {
     quote:
-      "I have been impressed with the urgency of doing. Knowing is not enough; we must apply. Being willing is not enough; we must do.",
-    author: "Leonardo da Vinci",
+      "You're not alone, you know. What you were, and what you are to become, will always be with you.",
+    author:
+      "Q, Star Trek: The Next Generation S7 E25 (All Good Things, Part I)",
   },
   {
     quote:
-      "Limitations live only in our minds.  But if we use our imaginations, our possibilities become limitless.",
-    author: "Jamie Paolinetti",
+      "The winding path to peace is always a worthy one, regardless of how many turns it takes.",
+    author: "Title Card, The Clone Wars S1 E11 (Dooku Captured)",
+  },
+  {
+    quote: "Fail with honor rather than succeed by fraud.",
+    author: "Title Card, The Clone Wars S1 E12 (The Gungan General)",
+  },
+  {
+    quote: "Arrogance diminishes wisdom.",
+    author: "Title Card, The Clone Wars S1 E12 (Trespass)",
   },
   {
     quote:
-      "You take your life in your own hands, and what happens? A terrible thing, no one to blame.",
-    author: "Erica Jong",
+      "Compromise is a virtue to be cultivated, not a weakness to be despised.",
+    author: "Title Card, The Clone Wars S1 E21 (Liberty on Ryloth)",
+  },
+  {
+    quote: "A lesson learned is a lesson earned",
+    author: "Title Card, The Clone Wars S2 E1 (Holocron Heist)",
+  },
+  {
+    quote: "Overconfidence is the most dangerous form of carelessness.",
+    author: "Title Card, The Clone Wars S2 E2 (Cargo of Doom)",
+  },
+  {
+    quote: "Believe in yourself or no one else will.",
+    author: "Title Card, The Clone Wars S2 E5 (Landing at Point Rain)",
+  },
+  {
+    quote: "Sometimes, accepting help is harder than offering it.",
+    author: "Title Card, The Clone Wars S2 E7 (Legacy of Terror)",
+  },
+  {
+    quote: "A failure in planning is a plan for failure.",
+    author: "Title Card, The Clone Wars S3 E8 (Evil Plans)",
+  },
+  {
+    quote: "He who seeks to control fate shall never find peace.",
+    author: "Title Card, The Clone Wars S3 E17 (Ghosts of Mortis)",
+  },
+  {
+    quote: "Adaptation is the key to survival.",
+    author: "Title Card, The Clone Wars S3 E18 (The Citadel)",
+  },
+  {
+    quote: "Who we are never changes, who we think we are does.",
+    author: "Title Card, The Clone Wars S4 E20 (Bounty)",
+  },
+  {
+    quote: "You must trust in others or success is impossible.",
+    author: "Title Card, The Clone Wars S5 E13 (Point of No Return)",
+  },
+  {
+    quote: "Mistakes are valuable lessons often learned too late.",
+    author: "Title Card, The Clone Wars S7 E6 (Deal No Deal)",
+  },
+  {
+    quote: "Who you were does not have to define who you are.",
+    author: "Title Card, The Clone Wars S7 E7 (Dangerous Debt)",
+  },
+  {
+    quote: "Without the darkness, how would we recognize the light?",
+    author: "Tuvok, Star Trek: Voyager S2 E10(Cold Fire)",
   },
   {
     quote:
-      "What’s money? A man is a success if he gets up in the morning and goes to bed at night and in between does what he wants to do.",
-    author: "Bob Dylan",
-  },
-  {
-    quote: "I didn’t fail the test. I just found 100 ways to do it wrong.",
-    author: "Benjamin Franklin",
+      "Good intentions aren't enough. They're not meaningless, but that's where we start, not where we end.",
+    author: "Princess Leia, Leia, Princess of Alderaan(Novel)",
   },
   {
     quote:
-      "In order to succeed, your desire for success should be greater than your fear of failure.",
-    author: "Bill Cosby",
-  },
-  {
-    quote: "A person who never made a mistake never tried anything new.",
-    author: " Albert Einstein",
+      "Easy is the path to wisdom for those only not blinded by themselves",
+    author: "Broadside, Star Wars: The Clone Wars",
   },
   {
     quote:
-      "The person who says it cannot be done should not interrupt the person who is doing it.",
-    author: "Chinese Proverb",
+      "Lesson one from this experience: Realise how much you don't know. Lesson two: Make sure to learn from lesson one.",
+    author: "Jacen Solo, New Jedi Order: Dark Tide: Onslaught(Novel)",
   },
   {
-    quote: "There are no traffic jams along the extra mile.",
-    author: "Roger Staubach",
-  },
-  {
-    quote: "It is never too late to be what you might have been.",
-    author: "George Eliot",
-  },
-  {
-    quote: "You become what you believe.",
-    author: "Oprah Winfrey",
-  },
-  {
-    quote: "I would rather die of passion than of boredom.",
-    author: "Vincent van Gogh",
+    quote: "Your focus determines your reality.",
+    author: "Qui-Gon Jinn, The Phantom Menace",
   },
   {
     quote:
-      "A truly rich man is one whose children run into his arms when his hands are empty.",
-    author: "Unknown",
+      "Life is not without pain, but life concerns itself with how we handle that pain, or joy, or confusion, or triumph. life is more than time passing before death; it is the sum and total of all we make of it.",
+    author: "Elegos A'Kla, I, Jedi(Novel)",
   },
   {
     quote:
-      "It is not what you do for your children, but what you have taught them to do for themselves, that will make them successful human beings.",
-    author: "Ann Landers",
+      "...what most people call luck is often little more than raw talent combined with the ability to make the most of opportunities",
+    author: "Talon Kaarde, Heir to the Empire(Novel)",
   },
   {
-    quote:
-      "If you want your children to turn out well, spend twice as much time with them, and half as much money.",
-    author: "Abigail Van Buren",
-  },
-  {
-    quote:
-      "Build your own dreams, or someone else will hire you to build theirs.",
-    author: "Farrah Gray",
-  },
-  {
-    quote:
-      "The battles that count aren’t the ones for gold medals. The struggles within yourself–the invisible battles inside all of us–that’s where it’s at.",
-    author: "Jesse Owens",
-  },
-  {
-    quote: "Education costs money.  But then so does ignorance.",
-    author: "Sir Claus Moser",
-  },
-  {
-    quote:
-      "I have learned over the years that when one’s mind is made up, this diminishes fear.",
-    author: "Rosa Parks",
-  },
-  {
-    quote: "It does not matter how slowly you go as long as you do not stop.",
-    author: "Confucius",
-  },
-  {
-    quote:
-      "If you look at what you have in life, you’ll always have more. If you look at what you don’t have in life, you’ll never have enough.",
-    author: "Oprah Winfrey",
-  },
-  {
-    quote:
-      "Remember that not getting what you want is sometimes a wonderful stroke of luck.",
-    author: "Dalai Lama",
-  },
-  {
-    quote: "You can’t use up creativity.  The more you use, the more you have.",
-    author: "Maya Angelou",
-  },
-  {
-    quote: "Dream big and dare to fail.",
-    author: "Norman Vaughan",
-  },
-  {
-    quote:
-      "Our lives begin to end the day we become silent about things that matter.",
-    author: "Martin Luther King Jr.",
-  },
-  {
-    quote: "Do what you can, where you are, with what you have.",
-    author: "Teddy Roosevelt",
-  },
-  {
-    quote:
-      "If you do what you’ve always done, you’ll get what you’ve always gotten.",
-    author: "Tony Robbins",
-  },
-  {
-    quote: "Dreaming, after all, is a form of planning.",
-    author: "Gloria Steinem",
-  },
-  {
-    quote:
-      "It’s your place in the world; it’s your life. Go on and do all you can with it, and make it the life you want to live.",
-    author: "Mae Jemison",
-  },
-  {
-    quote:
-      "You may be disappointed if you fail, but you are doomed if you don’t try.",
-    author: "Beverly Sills",
-  },
-  {
-    quote: "Remember no one can make you feel inferior without your consent.",
-    author: "Eleanor Roosevelt",
-  },
-  {
-    quote: "Life is what we make it, always has been, always will be.",
-    author: "Grandma Moses",
-  },
-  {
-    quote:
-      "The question isn’t who is going to let me; it’s who is going to stop me.",
-    author: "Ayn Rand",
-  },
-  {
-    quote:
-      "When everything seems to be going against you, remember that the airplane takes off against the wind, not with it.",
-    author: "Henry Ford",
-  },
-  {
-    quote:
-      "It’s not the years in your life that count. It’s the life in your years.",
-    author: "Abraham Lincoln",
-  },
-  {
-    quote: "Change your thoughts and you change your world.",
-    author: "Norman Vincent Peale",
-  },
-  {
-    quote:
-      "Either write something worth reading or do something worth writing.",
-    author: "Benjamin Franklin",
-  },
-  {
-    quote: "Nothing is impossible, the word itself says, “I’m possible!”",
-    author: "Audrey Hepburn",
-  },
-  {
-    quote: "The only way to do great work is to love what you do.",
-    author: "Steve Jobs",
-  },
-  {
-    quote: "If you can dream it, you can achieve it.",
-    author: "Zig Ziglar",
+    quote: "Many of the truths we cling to depend on our point of view",
+    author: "Obi-Wan Kenobi, Return of the Jedi",
   },
 ];

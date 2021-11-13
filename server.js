@@ -5,6 +5,7 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
+const lodash = require("lodash");
 app.use(cors());
 
 //load the quotes JSON
@@ -14,8 +15,10 @@ const quotes = require("./quotes.json");
 //   /                  - Return some helpful welcome info (text)
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
-app.get("/", function (req, res) {
-  res.send("Dharma's Quote Server!  Ask me for /quotes/random, or /quotes");
+app.get("/", (req, res) => {
+  res
+    .status(200)
+    .send("Dharma's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
 //START OF YOUR CODE...
@@ -24,11 +27,12 @@ app.get("/quotes", (req, res) => {
 });
 
 app.get("/quotes/random", (req, res) => {
-  const pickFromArray = (arr) => arr[Math.floor(Math.random() * arr.length)];
-  res.send(pickFromArray(quotes));
+  //const pickFromArray = arr => arr[Math.floor(Math.random() * arr.length)];
+  res.send(lodash.sample(quotes));
 });
 
 app.get("/quotes/search", (req, res) => {
+  const termToBeSearched = req.query.term.toLowerCase();
   const searchQuotes = (searchQuery) => {
     if (!searchQuery) {
       return [];
@@ -36,7 +40,7 @@ app.get("/quotes/search", (req, res) => {
     return quotes.filter(
       (item) =>
         item.quote.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        item.author.toLowerCase().includes(searchQuery.toLowerCase())
+        item.author.toLowerCase().includes(termToBeSearched)
     );
   };
   res.send(searchQuotes(req.query.term));
