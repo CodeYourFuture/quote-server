@@ -5,6 +5,11 @@
 const express = require("express");
 const app = express();
 const lodash = require('lodash');
+const cors = require('cors')
+
+
+
+app.use(cors())
 
 
 //load the quotes JSON

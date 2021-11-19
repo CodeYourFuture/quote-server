@@ -1,0 +1,35 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.quote-cart{
+  box-shadow: 0 0px 30px rgba(126, 223, 230, 0.5);
+  border-radius: 10px;
+  font-size: 22px !important;
+}
+.welcome{
+  background-image: url(https://lh3.googleusercontent.com/proxy/oslJWLXA7-AbLhem0NUIVjIJIiPWoFMj1OTW6tFnxeplcKHK5YUPoJIFU89jcpQXQWUAGYYQgu8a6dTdrEq3smvzYMPCOiUy570nrKqO-6_CEyZpK5JPFc8W3Mo7);
+  background-repeat: no-repeat;
+  background-size: cover;
+ 
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
