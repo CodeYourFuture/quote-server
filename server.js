@@ -17,7 +17,21 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+app.get("/quotes", (req, res) => {
+  res.json(quotes);
+});
 
+app.get("/quotes/random", (req, res) => {
+  res.json(pickFromArray(quotes));
+});
+
+app.get("/quotes/search", (req, res) => {
+  const { term: searchTerm } = req.query
+
+  res.json(quotes.filter((element) => {
+    return element.quote.toLowerCase().includes(searchTerm.toLowerCase()) || element.author.toLowerCase().includes(searchTerm.toLowerCase())
+  }));
+});
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
