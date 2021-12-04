@@ -2,6 +2,7 @@
 // This is where your node app starts
 
 //load the 'express' module which makes writing webservers easy
+const { request, response } = require("express");
 const express = require("express");
 const app = express();
 
@@ -13,10 +14,34 @@ const quotes = require("./quotes.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send(
+    "Konika's Quote Server!  Ask me for /quotes/random, or /quotes"
+  );
 });
 
 //START OF YOUR CODE...
+//Level 1 Challenge - make the quote server
+app.get("/quotes", function (request, response) {
+  response.json(quotes);
+});
+
+app.get("/quotes/random", (request, response) => {
+  const pickedRandomQuotes = pickFromArray(quotes);
+  response.json(pickedRandomQuotes);
+});
+
+//Level 2 Challenge - allow quote searches!
+app.get("/quotes/search", (request, response) => {
+  const searchTermForQuotes = (searchQTerm) => {
+    const lowerCasedSearchQ = searchQTerm.toLowerCase();
+    return quotes.filter(
+      (element) =>
+        element.quote.toLowerCase().includes(lowerCasedSearchQ) ||
+        element.author.toLowerCase().includes(lowerCasedSearchQ)
+    );
+  };
+  response.json(searchTermForQuotes(request.query.term));
+});
 
 //...END OF YOUR CODE
 
@@ -24,11 +49,12 @@ app.get("/", function (request, response) {
 //example: pickFromArray([1,2,3,4]), or
 //example: pickFromArray(myContactsArray)
 //
+
 function pickFromArray(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
+const listener = app.listen(3001, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
