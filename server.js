@@ -24,6 +24,16 @@ app.get("/quotes", (req, res) => {
 app.get("/quotes/random", (req, res) => {
   res.json(pickFromArray(quotes));
 });
+
+
+function filteredQuotes (string){
+  return quotes.filter(quote => quote.quote.toLowerCase().includes(string.toLowerCase()) || quote.author.toLowerCase().includes(string.toLowerCase()))
+}
+
+app.get("/quotes/search", (req, res) => {
+  res.json(filteredQuotes(req.query.term));
+});
+
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
@@ -33,6 +43,8 @@ app.get("/quotes/random", (req, res) => {
 function pickFromArray(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
+
+
 
 //Start our server so that it listens for HTTP requests!
 const listener = app.listen(process.env.PORT, function () {
