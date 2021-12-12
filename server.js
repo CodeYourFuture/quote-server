@@ -1,6 +1,9 @@
 // server.js
 // This is where your node app starts
 
+//load the 'lodash'
+const lodash = require("lodash");
+
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
 const app = express();
@@ -41,10 +44,8 @@ app.get("/quotes/search", (req, res) => {
 //example: pickFromArray(myContactsArray)
 //
 function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
+  return lodash.sample(arr);
 }
-
-
 
 //Start our server so that it listens for HTTP requests!
 const listener = app.listen(process.env.PORT, function () {
