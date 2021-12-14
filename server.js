@@ -2,7 +2,9 @@
 // This is where your node app starts
 
 //load the 'express' module which makes writing webservers easy
+const { response } = require("express");
 const express = require("express");
+const lodash = require("lodash");
 const app = express();
 
 //load the quotes JSON
@@ -17,6 +19,30 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+app.get("/quotes", (req, res) => {
+  res.json(quotes);
+});
+
+app.get("/quotes/random", (req, res) => {
+  res.json(lodash.sample(quotes));
+});
+
+app.get("/quotes/search", (req, res) => {
+  const searchedWord = req.query.term;
+  res.json(
+    quotes.filter((entry) => {
+      return (
+        entry.quote.toLowerCase().includes(searchedWord.toLowerCase()) ||
+        entry.author.toLowerCase().includes(searchedWord.toLowerCase())
+      );
+    })
+  );
+});
+
+app.get("/quotes/echo", (req, res) => {
+  const yourWord = req.query.word;
+  res.json(`You said ${yourWord}!`);
+});
 
 //...END OF YOUR CODE
 
