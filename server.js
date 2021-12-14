@@ -37,8 +37,10 @@ app.get("/quotes/search", (req, res) => {
     });
   }
   res.send(
-    quotes.filter((quote) =>
-      quote.quote.toLowerCase().includes(search.toLowerCase())
+    quotes.filter(
+      (quote) =>
+        quote.quote.toLowerCase().includes(search.toLowerCase()) ||
+        quote.author.toLowerCase().includes(search.toLowerCase())
     )
   );
 });
