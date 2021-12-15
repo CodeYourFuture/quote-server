@@ -33,7 +33,11 @@ app.get("/quotes/search", (req, res) => {
   }));
 });
 //...END OF YOUR CODE
-
+app.get("/quotes/search", function (req, res) {
+  const text = req.query.term;
+  let searchQoute = text ? quotes.filter(quoty => quoty.quote.includes(text.toLowerCase()) || quoty.author.includes(text.toLowerCase)) : [];
+  res.json(searchQoute);
+});
 //You can use this function to pick one element at random from a given array
 //example: pickFromArray([1,2,3,4]), or
 //example: pickFromArray(myContactsArray)
