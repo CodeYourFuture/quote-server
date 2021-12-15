@@ -17,6 +17,18 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+app.get("/quotes", function (request, response) {
+  const allQuotes = quotes.map((quote) => {
+    return quote.quote;
+  });
+
+  response.send(allQuotes);
+});
+
+app.get("/quotes/random", function (request, response) {
+  const randomQuote = pickFromArray(quotes)
+response.send (randomQuote);
+});
 
 //...END OF YOUR CODE
 
@@ -27,8 +39,13 @@ app.get("/", function (request, response) {
 function pickFromArray(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
-
+//wrote this and realised I was given a similar code
+// function pickFromArray(quotes) {
+//   const randomIndex = Math.floor(Math.random() * quotes.length);
+//   return quotes[randomIndex];
+// }
 //Start our server so that it listens for HTTP requests!
 const listener = app.listen(process.env.PORT, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
+
