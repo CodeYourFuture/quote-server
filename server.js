@@ -1,5 +1,4 @@
 const express = require("express");
-const req = require("express/lib/request");
 const app = express();
 
 //load the quotes JSON
@@ -34,21 +33,19 @@ function pickFromArray(arr) {
 app.get("/quotes/search", function (request, response) {
   // search for a word
   function searchArray(arr) {
-    let arr1 = arr.filter(
-      (quote) =>
-        quote.quote.toLocaleLowerCase().includes(request.query.term) ||
+    let arr1 = arr.filter((quote) =>
+        quote.quote.toLocaleLowerCase().includes(request.query.term)||
         quote.author.toLocaleLowerCase().includes(request.query.term)
-    );
-    if (arr1.length > 0) {
-      return arr1.map((quote) => {
-        `      ${quote.quote}  ${quote.author}`;
-      });
-    } else {
-      return `${request.query.term}  not found`;
+    ).map(quote=>`${quote.quote}  author:${quote.author}         `);
+     if(arr1.length>0){
+      return (`SEARCH RESULTS FOR THe WORD :${request.query.term.toUpperCase()} (${arr1})`)
+    }
+    else{
+      return "Word Not Found"
     }
   }
   response.json(
-    `YOU ARE SEARCHING FOR THE WORD: ((${request.query.term})) ${searchArray(
+    ` ${searchArray(
       quotes
     )}`
   );
