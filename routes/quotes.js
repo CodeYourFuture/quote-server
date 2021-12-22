@@ -1,4 +1,48 @@
-[
+const express = require('express');
+const router= express.Router();
+
+
+
+// Get all quotes
+router.get('/',(req, res) => 
+res.json(quote));
+
+//Get random quote
+//router.get('/:id', (req, res) => {
+
+
+
+
+router.post('/' (req, res) =>{
+    res.send(req.body);
+});
+
+module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const quote[
   {
     quote: "Life isn’t about getting and having, it’s about giving and being.",
     author: "Kevin Kruse",

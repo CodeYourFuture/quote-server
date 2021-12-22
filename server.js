@@ -1,7 +1,4 @@
-// server.js
-// This is where your node app starts
 
-//load the 'express' module which makes writing webservers easy
 const express = require("express");
 const app = express();
 
@@ -17,6 +14,33 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+app.get('/quotes', (req, res) => { 
+  const listQuotes = quotes.map((quote)=>
+  return quote.quote;) 
+  res.send(listQuotes'<h1> Welcome to the Quote Server' </h1>)
+});
+
+app.get("/quote/random", (req, res) => {
+  const randomQuote = pickFromArray(quotes);
+  res.send(randomQuote);
+});
+
+app.get("quotes/search", (req, res) => {
+  const search = req.query.term;
+  if(req.query.term === undefined) {
+    return res.jason({
+      msg:"Please specify a search term.
+      /quotes/search?term=:query",
+    });
+  }
+  res.send(quotes.filter 
+    ((quote) =>
+      quote.quote.toLowerCase().includes(search.toLowerCase()) ||
+        quote.author.toLowerCase().includes(search.toLowerCase())
+    )
+  );
+  });
+
 
 //...END OF YOUR CODE
 
@@ -29,6 +53,6 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
+const listener = app.listen(3000, () => {
   console.log("Your app is listening on port " + listener.address().port);
 });
