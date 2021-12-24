@@ -1,34 +1,72 @@
-// server.js
-// This is where your node app starts
-
-//load the 'express' module which makes writing webservers easy
 const express = require("express");
+
+
+const lodash = require("lodash");
 const app = express();
+const cors = require("cors");
+ app.use(cors());
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
 
-// Now register handlers for some routes:
-//   /                  - Return some helpful welcome info (text)
-//   /quotes            - Should return all quotes (json)
-//   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send(
+    "<h1>Welcome to the quote server , Ask me for /quotes/random, or /quotes...!</h1>"
+  );
+});
+app.get("/quotes", function (request, response) {
+  //get all the quotes
+  response.json(
+    quotes.map((item) => {
+      return `${item.quote}  Author: ${item.author}`;
+    })
+  );
 });
 
-//START OF YOUR CODE...
+//***************This is to get a random quotes without using a library************************/
 
-//...END OF YOUR CODE
+// app.get("/quotes/random", function (request, response) {
+// pick a random quote
+//   function pickFromArray(arr) {
+//     return arr[Math.floor(Math.random() * arr.length)];
+//   }
+//   response.json(pickFromArray(quotes));
+//   console.log(`${pickFromArray(quotes)}`);
+// });
+// function pickFromArray(arr) {
+//   return arr[Math.floor(Math.random() * arr.length)];
+// }
 
-//You can use this function to pick one element at random from a given array
-//example: pickFromArray([1,2,3,4]), or
-//example: pickFromArray(myContactsArray)
-//
-function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
+app.get("/quotes/search", function (request, response) {
+  // search for a word
+  function searchArray(arr) {
+    let arr1 = arr
+      .filter(
+        (quote) =>
+          quote.quote.toLocaleLowerCase().includes(request.query.term) ||
+          quote.author.toLocaleLowerCase().includes(request.query.term)
+      )
+      .map((quote) => `${quote.quote}  author:${quote.author}         `);
+    if (arr1.length > 0) {
+      return `SEARCH RESULTS FOR THe WORD :${request.query.term.toUpperCase()} (${arr1})`;
+    } else {
+      return "Word Not Found";
+    }
+  }
+  response.json(` ${searchArray(quotes)}`);
+});
 
-//Start our server so that it listens for HTTP requests!
+app.get("/echo", function (request, response) {
+  // echo search
+  response.send(`You said ${request.query.word}`);
+});
+// challenge ,Use a library to make random picking easier
+
+app.get("/quotes/random", function (request, response) {
+  // pick a random quote
+
+  response.json(lodash.sample(quotes));
+});
 const listener = app.listen(process.env.PORT, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
