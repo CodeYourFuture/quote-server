@@ -33,16 +33,17 @@ app.get("/quotes/random", function (req, res) {
   res.json(pickFromArray(quotes));
 });
 
-// Level 2 Search
+// Level 2 Search Functionality
 
 function filterQuotes(searchString) {
-  quotes.filter((textInput) => {
+  return quotes.filter((textInput) => {
     return (
       textInput.quote.toLowerCase().includes(searchString.toLowerCase()) ||
       textInput.author.toLowerCase().includes(searchString.toLowerCase())
     );
   });
 }
+
 app.get("/quotes/search", function (req, res) {
   res.send(filterQuotes(req.query.term));
 });
@@ -58,6 +59,7 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
+
 const listener = app.listen(process.env.PORT, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
