@@ -1,3 +1,5 @@
+/* eslint-disable comma-dangle */
+/* eslint-disable operator-linebreak */
 // server.js
 // This is where your node app starts
 
@@ -13,10 +15,38 @@ const quotes = require("./quotes.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send(
+    "Haseeb's Quote Server!  Ask me for /quotes/random, or /quotes"
+  );
 });
 
 //START OF YOUR CODE...
+app.get("/quotes", function (req, res) {
+  res.json(
+    quotes.map((element) => {
+      return `${element.quote}, Author:${element.author}`;
+    })
+  );
+});
+
+app.get("/quotes/random", function (req, res) {
+  res.json(pickFromArray(quotes));
+});
+
+// Level 2 Search Functionality
+
+function filterQuotes(searchString) {
+  return quotes.filter((textInput) => {
+    return (
+      textInput.quote.toLowerCase().includes(searchString.toLowerCase()) ||
+      textInput.author.toLowerCase().includes(searchString.toLowerCase())
+    );
+  });
+}
+
+app.get("/quotes/search", function (req, res) {
+  res.send(filterQuotes(req.query.term));
+});
 
 //...END OF YOUR CODE
 
@@ -29,6 +59,7 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
+
 const listener = app.listen(process.env.PORT, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
