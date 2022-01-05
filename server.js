@@ -20,7 +20,7 @@ app.get("/", function (request, response) {
 
 
 app.get("/quotes", (req, res) => {
-  res.send(quotes);
+  res.json(quotes);
 });
 
 /*app.get("/quotes/random", (req, res) => {
@@ -29,8 +29,9 @@ app.get("/quotes", (req, res) => {
 });*/
 
 app.get("/quotes/random", (req, res) => {
-  res.send(pickFromArray(quotes));
+  res.json(pickFromArray(quotes));
 });
+
 
 const PORT = process.env.PORT || 5005;
 //...END OF YOUR CODE
