@@ -32,6 +32,16 @@ app.get("/quotes/random", (req, res) => {
   res.json(pickFromArray(quotes));
 });
 
+app.get("/echo", (req, res) => {
+  let word = req.query.word;
+  res.send(`You have asked for the word: ${word}`)
+})
+
+app.get("/quotes/search", (req, res) => {
+  let term = req.query.term;
+  const filterQuotes = quotes.filter(item => item.quote.includes(term));
+  res.json(filterQuotes);
+});
 
 const PORT = process.env.PORT || 5005;
 //...END OF YOUR CODE
