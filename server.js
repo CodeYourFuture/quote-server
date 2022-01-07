@@ -4,6 +4,7 @@
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
 const app = express();
+const lodash = require("lodash");
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
@@ -22,11 +23,11 @@ app.get("/quotes", (request, response) => {
 });
 
 app.get("/quotes/random", (request, response) => {
-  response.json(pickFromArray(quotes));
+  response.json(lodash.sample(quotes));
 });
 
-app.get("/quo", (request, response) => {
-  const searchWord = request.query.search;
+app.get("/quotes/search", (request, response) => {
+  const searchWord = request.query.word;
   const searchedQuotes = quotes.filter(quote => {
     if (quote.quote.toLowerCase().includes(searchWord.toLocaleLowerCase())
       || quote.author.toLowerCase().includes(searchWord.toLowerCase()))
