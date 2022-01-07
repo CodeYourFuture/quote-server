@@ -180,7 +180,7 @@ In the real world, many developers would use a library like [lodash](https://lod
 
 In this extra challenge, you should install and use lodash to do the picking.
 
-[Here's the documentation for its sample() function](https://lodash.com/docs/4.17.11#sample).
+[Here's the documentation for its sample() function](https://lodash.com/docs/4.d17.11#sample).
 
 Install the lodash library:
 
