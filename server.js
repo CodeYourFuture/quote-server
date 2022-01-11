@@ -3,6 +3,7 @@
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
+const { send } = require("express/lib/response");
 const app = express();
 
 //load the quotes JSON
@@ -39,8 +40,8 @@ app.get("/echo", (req, res) => {
 
 app.get("/quotes/search", (req, res) => {
   let term = req.query.term;
-  const filterQuotes = quotes.filter(item => item.quote.includes(term));
-  res.json(filterQuotes);
+  const filterQuotes = quotes.filter(item => item.quote.toLowerCase().includes(term.toLowerCase()) || item.author.toLowerCase().includes(term.toLowerCase()));
+    res.json(filterQuotes);
 });
 
 const PORT = process.env.PORT || 5005;
