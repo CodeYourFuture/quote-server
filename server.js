@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const PORT = process.env.PORT || 3001;
+const lodash = require("lodash");
 
 //server listens for HTTP requests.
 const listener = app.listen(PORT, function () {
@@ -25,13 +26,9 @@ app.get("/quotes", function (request, response) {
 });
 
 app.get("/quotes/random", function (request, response) {
-  response.send(pickFromArray(quotes));
+  // response.send(pickFromArray(quotes));
+  response.json(lodash.sample(quotes));
 });
-
-//random quote selector 
-function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
 
 //query.param = term: /quotes/search?term=life
 app.get("/quotes/search", (req, res) => {
