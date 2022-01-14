@@ -2,6 +2,7 @@
 // This is where your node app starts
 
 //load the 'express' module which makes writing webservers easy
+const { request } = require("express");
 const express = require("express");
 const app = express();
 
@@ -12,11 +13,38 @@ const quotes = require("./quotes.json");
 //   /                  - Return some helpful welcome info (text)
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
-app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+// app.get("/", function (request, response) {
+//   response.send("Mireille's Quote Server!  Ask me for /quotes/random, or /quotes");
+// });
+
+// //START OF YOUR CODE...
+
+// //return all of the quotes
+// app.get('/quotes', function (request, response) {
+//   response.send(quotes);
+// });
+
+// app.get('/quotes/random', function (request, response) {
+//   response.send(pickFromArray(quotes));
+// });
+
+//challenge 2
+
+app.get('/search', function (request, response) {
+  let word = request.query.word;
+  const found = quotes.some((quote) => quote === request.query.word);
+
+  if (found) {
+    response.json(quotes.filter((quote) => quote === request.query.word));
+  } else {
+    response.status(400).json([]);
+  }
+  //response.send(`You said you want to search for: ${word}`);
+});
+app.get('/', function (request, response) {
+  response.send('You need to request /search?word=whatever');
 });
 
-//START OF YOUR CODE...
 
 //...END OF YOUR CODE
 
