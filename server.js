@@ -31,16 +31,15 @@ const quotes = require("./quotes.json");
 //challenge 2
 
 app.get('/search', function (request, response) {
-  let word = request.query.word;
-  const found = quotes.some((quote) => quote === request.query.word);
-
-  if (found) {
-    response.json(quotes.filter((quote) => quote === request.query.word));
-  } else {
-    response.status(400).json([]);
-  }
-  //response.send(`You said you want to search for: ${word}`);
+  let word = request.query.word.toLowerCase();
+  response.json(quotes.filter((quot) => quot.quote.includes(word)));
 });
+
+app.get('/echo', function (request, response) {
+  let word = request.query.word.toLowerCase();
+  response.send(`You said ${word}`);
+});
+
 app.get('/', function (request, response) {
   response.send('You need to request /search?word=whatever');
 });
