@@ -26,6 +26,15 @@ app.get("/quotes/random", function(request, response) {
   response.json(pickFromArray(quotes));
 });
 
+app.get("/quotes/search", function(request, response) {
+  let searchTerm = request.query.term;
+  response.send(quotes.filter(search => search.quote.toLowerCase().includes(searchTerm.toLowerCase())));
+});
+
+app.get("/quotes/echo", function(request, response) {
+  let searchWord = request.query.word;
+  response.json(`You said ${searchWord}`);
+});
 
 //...END OF YOUR CODE
 
