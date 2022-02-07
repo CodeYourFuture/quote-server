@@ -41,7 +41,7 @@ app.get("/quotes", (req, res) => {
     response.send("Random quote: " + JSON.stringify(quotes[Math.floor(Math.random() * quotes.length)]));
   });
 
-  //   /quotes/:id        - Should return ONE quote (json)
+  //   quotes/:id        - Should return ONE quote (json)
   // app.get("/quotes/:id", function (request, response) {
   //   response.send("Quote with id: " + request.params.id + " is " + JSON.stringify(quotes[request.params.id]));
   // });
