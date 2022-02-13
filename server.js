@@ -16,9 +16,10 @@ const quotes = require("./quotes.json");
 //Import ability to host static folders. 
 app.use(express.static(path.join(__dirname, "public")));
 
-//Register handlers for routes:
+//routes:
 app.get("/", function (request, response) {
-  response.send("Sinead's Quote Server!  Ask me for random quotes using: /quotes/random, or all quotes by using: /quotes");
+  response.send(`Sinead's Quote Server!  Ask me for random quotes using: "/quotes/random", all quotes by using: "/quotes", or search all quotes using "/quotes/search?term=
+  (your search term)"`);
 });
 
 app.get("/quotes", function (request, response) {
