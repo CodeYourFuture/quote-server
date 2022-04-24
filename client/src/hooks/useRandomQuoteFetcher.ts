@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
 import Quote from "../entities/Quote";
-import dotenv from "dotenv";
 
-dotenv.config();
-
-const API_URL = process.env.API_URL || "http://localhost:4002"
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:4002"
 
 function useRandomQuoteFetcher (searchTrigger:boolean) {
     const [quote, setQuote] = useState<Quote | undefined>(undefined);
