@@ -7,7 +7,8 @@
   "description": "A simple Node app built on Express, instantly up and running.",
   "main": "server.js",
   "scripts": {
-    "run" : "npm run server.js",
+    
+    "start:dev": "nodemon server.js",
     "start": "node server.js"
   },
   "dependencies": {
@@ -22,5 +23,8 @@
     "glitch",
     "express"
   ],
-  "author": ""
+  "author": "",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }
