@@ -13,10 +13,18 @@ const quotes = require("./quotes.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send("Davood's Quote Server! Ask me for /quotes/random, or /quotes You can search by /quotes/search?term=SearchWord");
 });
 
+
 //START OF YOUR CODE...
+app.get("/quotes", (req, res) => res.send(quotes))
+app.get("/quotes/random", (req, res) => res.send(pickFromArray(quotes)))
+app.get('/quotes/search', (req, res) => {
+  let word = req.query.term
+  const foundedQuotes = quotes.filter((q) => q.quote.includes(word))
+  res.send(foundedQuotes.length>0 ? foundedQuotes : res.status(404).send('Term not found in any quote!'))
+})
 
 //...END OF YOUR CODE
 
