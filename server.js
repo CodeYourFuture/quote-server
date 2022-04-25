@@ -2,6 +2,7 @@
 // This is where your node app starts
 
 //load the 'express' module which makes writing webservers easy
+const { response, request } = require("express");
 const express = require("express");
 const app = express();
 
@@ -13,10 +14,28 @@ const quotes = require("./quotes.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send(
+    "Margarita's Quote Server!  Ask me for /quotes/random, or /quotes"
+  );
 });
 
 //START OF YOUR CODE...
+app.get("/quotes", (request, response) => {
+  response.send(quotes);
+});
+app.get("/quotes/random", (request, response) => {
+  response.send(pickFromArray(quotes));
+});
+app.get("/quotes/search", (request, response) => {
+  let searchQuery = request.query.term;
+  const filteredQuotes = quotes.filter(
+    (q) =>
+      q.quote.toLowerCase().includes(searchQuery) ||
+      q.author.toLowerCase().includes(searchQuery)
+  );
+  response.send(filteredQuotes.length? filteredQuotes : []);
+});
+
 
 //...END OF YOUR CODE
 
