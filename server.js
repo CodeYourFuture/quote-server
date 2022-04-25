@@ -25,9 +25,6 @@ app.use("/api/quotes", require("./routes/api/quotes"));
 //example: pickFromArray([1,2,3,4]), or
 //example: pickFromArray(myContactsArray)
 //
-function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
 
 //Start our server so that it listens for HTTP requests!
 const listener = app.listen(PORT, function () {

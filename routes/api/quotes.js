@@ -7,8 +7,16 @@ const quotesWithId = require("../../quotes-with-id.json");
 
 router.get("/", (req, res) => res.json(quotes));
 
-router.get("/:id", (req, res) => {
-  res.json(quotesWithId.filter((quote) => quote.id === Number(req.params.id)));
+router.get("/random", (req, res) => {
+  res.send(pickFromArray(quotesWithId));
 });
+
+router.get("/:id", (req, res) => {
+  res.send(quotesWithId.filter((quote) => quote.id === Number(req.params.id)));
+});
+
+function pickFromArray(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
 
 module.exports = router;
