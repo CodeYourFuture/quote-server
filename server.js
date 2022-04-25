@@ -5,10 +5,6 @@
 const express = require("express");
 const app = express();
 
-//load the quotes JSON
-const quotes = require("./quotes.json");
-const quotesWithId = require("./quotes-with-id.json");
-
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
 //   /quotes            - Should return all quotes (json)
@@ -21,11 +17,7 @@ app.get("/", function (request, response) {
 
 const PORT = process.env.PORT || 3000;
 
-app.get("/quotes", (req, res) => res.send(quotes));
-
-app.get("/quotes/:id", (req, res) => {
-  res.json(quotesWithId.filter((quote) => quote.id === Number(req.params.id)));
-});
+app.use("/api/quotes", require("./routes/api/quotes"));
 
 //...END OF YOUR CODE
 
