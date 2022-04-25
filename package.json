@@ -11,7 +11,8 @@
     "start:dev": "nodemon server.js"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "nodemon": "^2.0.15"
   },
   "repository": {
     "url": "https://glitch.com/edit/#!/hello-express"
