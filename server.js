@@ -5,7 +5,7 @@
 const { response, request } = require("express");
 const express = require("express");
 const app = express();
-
+const lodash = require("lodash");
 //load the quotes JSON
 const quotes = require("./quotes.json");
 
@@ -24,7 +24,7 @@ app.get("/quotes", (request, response) => {
   response.send(quotes);
 });
 app.get("/quotes/random", (request, response) => {
-  response.send(pickFromArray(quotes));
+  response.send(lodash.sample(quotes));
 });
 app.get("/quotes/search", (request, response) => {
   let searchQuery = request.query.term;
@@ -43,9 +43,9 @@ app.get("/quotes/search", (request, response) => {
 //example: pickFromArray([1,2,3,4]), or
 //example: pickFromArray(myContactsArray)
 //
-function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
+// function pickFromArray(arr) {
+//   return arr[Math.floor(Math.random() * arr.length)];
+// }
 
 //Start our server so that it listens for HTTP requests!
 const listener = app.listen(process.env.PORT, function () {
