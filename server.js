@@ -7,6 +7,7 @@ const app = express();
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
+const quotesWithId = require("./quotes-with-id.json");
 
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
@@ -17,6 +18,14 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+
+const PORT = process.env.PORT || 3000;
+
+app.get("/quotes", (req, res) => res.send(quotes));
+
+app.get("/quotes/:id", (req, res) => {
+  res.json(quotesWithId.filter((quote) => quote.id === Number(req.params.id)));
+});
 
 //...END OF YOUR CODE
 
@@ -29,6 +38,6 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
+const listener = app.listen(PORT, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
