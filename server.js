@@ -5,6 +5,11 @@
 const express = require("express");
 const app = express();
 
+app.listen(3000, function () {
+  console.log("Server is listening on port 3000. Ready to accept requests!");
+});
+
+
 //load the quotes JSON
 const quotes = require("./quotes.json");
 
@@ -13,10 +18,23 @@ const quotes = require("./quotes.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send("Hello! Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
 //START OF YOUR CODE...
+app.get("/quotes", function (request, response) {
+  let resText = ""; 
+  quotes.forEach(e => { resText = resText + `QUATE: ${e.quote} \n AUTHOR: ${e.author}`});
+  response.send(`Here are the quotes \r\n ${resText}`);
+});
+
+
+app.get("/quotes/random", function (request, response) {
+  let oneQuote = pickFromArray(quotes);
+  response.send(`The quote is: "${oneQuote.quote}" and the author is ${oneQuote.author}`);
+ 
+});
+
 
 //...END OF YOUR CODE
 
