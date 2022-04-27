@@ -5,11 +5,11 @@
   padding: 1em;
   font-size: 1.3rem;
   background: black;
-  margin: 1em auto;
   color: rgb(222, 222, 222);
   border-radius: 10px;
   border-top-left-radius: 111%;
   text-shadow: 0px 0px 8px black;
+  margin: 1em auto;
 }
 .quote_btn {
   padding: 0.5em;
@@ -26,11 +26,14 @@
   text-align: center;
 }
 .single_quote_div {
+  width: 100%;
+  padding: 0.8em;
+  margin: 0 auto;
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
-  padding: 0.8em;
-  left: 0;
+  display: block;
+  left: -50%;
+  margin-left: 50%;
 }
 hr {
   width: 80%;
