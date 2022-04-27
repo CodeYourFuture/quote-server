@@ -2,8 +2,11 @@
 // This is where your node app starts
 
 //load the 'express' module which makes writing webservers easy
+const { json } = require("express");
 const express = require("express");
+var cors = require("cors");
 const app = express();
+app.use(cors());
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
@@ -17,7 +20,13 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
-
+app.get("/quotes", (req, res) => {
+  res.send(json(quotes));
+});
+app.get("/quotes/random", (req, res) => {
+  const quote = pickFromArray(quotes);
+  res.send(quote);
+});
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
