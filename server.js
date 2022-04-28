@@ -9,8 +9,10 @@ const app = express();
 //   /                  - Return some helpful welcome info (text)
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
-app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+app.get("/", (request, response) => {
+  response.send(
+    "Craig's Quote Server!  Ask me for /api/quotes/random, or /api/quotes"
+  );
 });
 
 //START OF YOUR CODE...
