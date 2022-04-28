@@ -11,7 +11,7 @@ const app = express();
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", (request, response) => {
   response.send(
-    "Craig's Quote Server!  Ask me for /api/quotes/random, or /api/quotes"
+    "Craig's Quote Server!  Ask me for /api/quotes, /api/random, or /api/quotes/:id"
   );
 });
 
