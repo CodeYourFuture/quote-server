@@ -18,11 +18,11 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
-app.get("/quotes ", function (request, response){
+app.get("/quotes", function (request, response) {
   response.send(quotes);
 });
- 
-app.get("/quotes/random", function (request, response){
+
+app.get("/quotes/random", function (request, response) {
   response.send(pickFromArray(quotes));
 });
 //...END OF YOUR CODE
