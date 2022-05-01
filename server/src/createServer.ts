@@ -7,11 +7,9 @@ dotenv.config();
 // This is where your node app starts
 
 //load the 'express' module which makes writing webservers easy
-const app = express();
-app.use(cors())
-app.use("/", router);
-
-//Start our server so that it listens for HTTP requests!
-app.listen(process.env.PORT, function () {
-  console.log(`App is running on http://localhost:${process.env.PORT}`);
-});
+export default function ():express.Application {
+  const app:express.Application = express();
+  app.use(cors())
+  app.use("/", router);
+  return app
+}

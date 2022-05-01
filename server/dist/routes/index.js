@@ -4,32 +4,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const matchStrings_1 = __importDefault(require("../utils/matchStrings"));
-const quotes_1 = __importDefault(require("../constants/quotes"));
-const lodash_1 = __importDefault(require("lodash"));
+const resolvers_1 = require("./resolvers");
 const router = express_1.default.Router();
-router.get('/', (_req, res) => {
-    res.send("Berkeli's Quote Server!  Ask me for api/quotes/random, or api/quotes");
-});
-router.get('/api', (_req, res) => {
-    res.send("Berkeli's Quote Server!  Ask me for api/quotes/random, or api/quotes");
-});
-router.get('/api/quotes', (_req, res) => {
-    res.send(quotes_1.default);
-});
-router.get('/api/quotes/random', (_req, res) => {
-    res.send(lodash_1.default.sample(quotes_1.default));
-});
-router.get('/api/quotes/search', (req, res) => {
-    const searchTerm = req.query.term;
-    if (!searchTerm) {
-        res.status(404).send("No search term provided");
-    }
-    const searchResults = quotes_1.default.filter((quote) => (0, matchStrings_1.default)(searchTerm, quote.quote, quote.author));
-    if (searchResults.length === 0) {
-        res.status(404).send("No results found");
-    }
-    res.send(searchResults);
-});
+router.get('/', resolvers_1.homePage);
+router.get('/api/v1/', resolvers_1.homePage);
+router.get('/api/v1/quotes', resolvers_1.getQuotes);
+router.get('/api/v1/quotes/random', resolvers_1.getRandomQuote);
+router.get('/api/v1/quotes/search', resolvers_1.quoteSearch);
+router.get('*', resolvers_1.routeNotFound);
 exports.default = router;
 //# sourceMappingURL=index.js.map

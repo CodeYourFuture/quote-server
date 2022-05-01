@@ -22,9 +22,10 @@
     "experimentalDecorators": true,
     "resolveJsonModule": true,
     "useUnknownInCatchVariables": false,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "types": ["node", "jest"],
   },
   "exclude": ["node_modules"],
-  "include": ["./src/**/*.ts"],
+  "include": ["./src/**/*.ts", "./__tests__/**/*.ts"],
   "typeRoots": ["./node_modules/@types"]
 }
