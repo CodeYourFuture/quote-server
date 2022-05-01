@@ -33,3 +33,4 @@ jobs:
           heroku_app_name: "quote-server-berkeli"
           heroku_email: "berkelih@gmail.com"
           appdir: server
+          branch: london-class-8/berkeli-halmyradov
