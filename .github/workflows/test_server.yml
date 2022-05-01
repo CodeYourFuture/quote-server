@@ -1,0 +1,20 @@
+name: Node.js CI for Server
+
+on:
+  push:
+    branches: [ main, london-class-8/berkeli-halmyradov ]
+  pull_request:
+    branches: [ main, london-class-8/berkeli-halmyradov]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+  steps:
+  - uses: actions/checkout@v3
+  - name: Install dependencies
+    run: npm ci
+    working-directory: server
+  - name: Run tests
+    run: npm test
+    working-directory: server
