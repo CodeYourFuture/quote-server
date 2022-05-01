@@ -8,6 +8,7 @@
   "main": "src/server.js",
   "scripts": {
     "start": "node dist/server.js",
+    "postinstall": "tsc",
     "test": "jest --verbose",
     "dev": "nodemon dist/server.js",
     "watch": "tsc -w"
