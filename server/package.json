@@ -5,12 +5,12 @@
   "name": "hello-express",
   "version": "0.0.1",
   "description": "A simple Node app built on Express, instantly up and running.",
-  "main": "src/server.js",
+  "main": "src/app.js",
   "scripts": {
-    "start": "node dist/server.js",
+    "start": "node dist/app.js",
     "postinstall": "tsc",
     "test": "jest --verbose",
-    "dev": "nodemon dist/server.js",
+    "dev": "nodemon dist/app.js",
     "watch": "tsc -w"
   },
   "dependencies": {
