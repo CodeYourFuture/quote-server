@@ -8,10 +8,10 @@ function useRandomQuoteFetcher (searchTrigger:boolean) {
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<string>('');
     useEffect(() => {
-        fetch(`${API_URL}/api/quotes/random`)
-            .then(res => res.json())
-            .then(res => {
-                setQuote(res);
+        fetch(`${API_URL}/quotes/random`)
+            .then((res)=> res.json())
+            .then((data:Quote) => {
+                setQuote(data);
                 setIsLoading(false);
             })
             .catch(err => {
