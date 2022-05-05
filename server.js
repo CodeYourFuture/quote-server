@@ -13,10 +13,22 @@ const quotes = require("./quotes.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send("Helen's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
 //START OF YOUR CODE...
+// const PORT = process.env.PORT || 5000;
+const PORT = 5000;
+
+app.listen(PORT, () => console.log(`Server started on ${PORT}`));
+
+app.get("/quotes", function (request, response) {
+  response.json(quotes);
+});
+
+app.get("/quotes/random", function (request, response) {
+  response.json(pickFromArray(quotes));
+});
 
 //...END OF YOUR CODE
 
