@@ -138,7 +138,7 @@ Then use it by clicking these links and then changing the search word.
 - https://cyf-query-params.glitch.me/search?word=Mussie
 - https://cyf-query-params.glitch.me/search?word=holiday
 
-In express, we use the object `req.query`, which will have all the parameters passed to us in the URL's query string. [The official documentation is here](https://expressjs.com/en/api.html#req.query).
+In express, we use the object `req.query`, which will have all the parameters passed to us in the URL's query string. [The official documentation is here](https://expressjs.com/en/api.html#req.query).b  
 
 #### An intermediate step - echo the parameter
 
