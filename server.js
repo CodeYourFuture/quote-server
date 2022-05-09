@@ -3,6 +3,8 @@
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
+const req = require("express/lib/request");
+const lodash = require('lodash')
 const app = express();
 
 //load the quotes JSON
@@ -22,7 +24,23 @@ app.get("/quotes", function (request, response) {
 });
 
 app.get("/quotes/random", function (request, response) {
-  response.send(pickFromArray(quotes));
+  const randomQuote = quotes[lodash.random(quotes.length - 1)];
+  response.send(randomQuote);
+});
+
+app.get(`/quotes/search`, function (request, response) {
+  const term = request.query.term;
+  const filteredQuotes = quotes.filter(
+    (quote) =>
+      quote.quote.toLowerCase().includes(term.toLowerCase()) ||
+      quote.author.toLowerCase().includes(term.toLowerCase())
+  );
+  response.send(filteredQuotes);
+});
+
+app.get("/echo", function (request, response) {
+  const word = request.query.word;
+  response.send(`you said ${word}`);
 });
 
 //...END OF YOUR CODE
@@ -31,12 +49,13 @@ app.get("/quotes/random", function (request, response) {
 //example: pickFromArray([1,2,3,4]), or
 //example: pickFromArray(myContactsArray)
 //
-function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
+
+// function pickFromArray(arr) {
+//   return arr[Math.floor(Math.random() * arr.length)];
+// }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(3000, function () {
+const listener = app.listen(3000, 'localhost', function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
 
