@@ -31,9 +31,9 @@ app.get("/quotes/random", function (request, response) {
 app.get(`/quotes/search`, function (request, response) {
   const term = request.query.term;
   const filteredQuotes = quotes.filter(
-    (quote) =>
-      quote.quote.toLowerCase().includes(term.toLowerCase()) ||
-      quote.author.toLowerCase().includes(term.toLowerCase())
+      (quote) =>
+        quote.author.toLowerCase().includes(term.toLowerCase()) ||
+        quote.quote.toLowerCase().includes(term.toLowerCase())
   );
   response.send(filteredQuotes);
 });
