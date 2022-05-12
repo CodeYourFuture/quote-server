@@ -22,7 +22,7 @@ app.get("/quotes", (request, response) => {
 });
 
 app.get("/quotes/random", (request, response) => {
-  response(pickFromArray(quotes));
+  response.send(pickFromArray(quotes));
 });
 //...END OF YOUR CODE
 
