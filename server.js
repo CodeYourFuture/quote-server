@@ -21,6 +21,18 @@ app.get("/quotes/random", function (request, response) {
   response.send(pickFromArray(quotes));
 });
 
+//searching word
+app.get("/quotes/search", (req, res) => {
+  const searchedWord = req.query.word.toUpperCase();
+  res.send(
+    quotes.filter(
+      (quote) =>
+        quote.quote.toUpperCase().includes(searchedWord) ||
+        quote.author.toUpperCase().includes(searchedWord)
+    )
+  );
+});
+
 app.get("/quotes", function (request, response) {
   response.send(quotes);
 });
