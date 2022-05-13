@@ -5,7 +5,7 @@
 const { response } = require("express");
 const express = require("express");
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
@@ -37,6 +37,6 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(3000, function () {
+const listener = app.listen(3001, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
