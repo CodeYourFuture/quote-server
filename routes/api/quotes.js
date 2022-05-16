@@ -12,7 +12,9 @@ router.get("/random", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-  res.send(quotesWithId.find((quote) => quote.id === Number(req.params.id)));
+  const id = Number(req.params.id)
+  const quote = quotesWithId.find((quote) => quote.id === id)
+  res.send(quote);
 });
 
 function pickFromArray(arr) {
