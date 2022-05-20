@@ -27,8 +27,8 @@ app.get("/quotes/random", function(request, response) {
 });
 
 app.get("/quotes/search", function(request, response) {
-  let term = request.query.term;
-  response.send(quotes.filter((quote) => quote.quote.includes(term) || quote.author.includes(term)));
+  let term = request.query.term.toLowerCase();
+  response.send(quotes.filter((quote) => quote.quote.toLowerCase().includes(term) || quote.author.toLowerCase().includes(term)));
 });
  
 //...END OF YOUR CODE
