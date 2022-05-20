@@ -3,6 +3,7 @@
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
+const lodash = require('lodash');
 const app = express();
 
 //load the quotes JSON
@@ -17,7 +18,19 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+app.get("/quotes", function(request, response) {
+  response.send(quotes);
+});
 
+app.get("/quotes/random", function(request, response) {
+  response.send(lodash.sample(quotes));
+});
+
+app.get("/quotes/search", function(request, response) {
+  let term = request.query.term.toLowerCase();
+  response.send(quotes.filter((quote) => quote.quote.toLowerCase().includes(term) || quote.author.toLowerCase().includes(term)));
+});
+ 
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
