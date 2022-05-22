@@ -13,7 +13,12 @@ const quotes = require("./quotes.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Davood's Quote Server! Ask me for /quotes/random, or /quotes You can search by /quotes/search?term=SearchWord");
+  response.send(`Davood's Quote Server! You can use:<br/> 
+              <ul> 
+                <li><strong>/quotes/random</strong> to get a random quote</li>
+                <li><strong>/quotes</strong> to get all quotes </li>
+                <li><strong>/quotes/search?term=SearchWord</strong> to serach a word</li>
+              </ul>`);
 });
 
 
