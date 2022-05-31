@@ -13,10 +13,31 @@ const quotes = require("./quotes.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send(
+    "Mandeep's Quote Server!  Ask me for /quotes/random, or /quotes"
+  );
 });
 
 //START OF YOUR CODE...
+
+app.get("/quotes", function (request, response) {
+  response.send(quotes);
+});
+
+app.get("/quotes/random", function (request, response) {
+  response.send(pickFromArray(quotes));
+});
+
+app.get("/search", function (request, response) {
+  let word = request.query.term;
+  response.send(
+    quotes.filter((el) =>
+      Object.keys(el).reduce((acc, curr) => {
+        return acc || el[curr].toLowerCase().includes(word);
+      }, false)
+    )
+  );
+});
 
 //...END OF YOUR CODE
 
@@ -29,6 +50,8 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
+const listener = app.listen(3002, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
+
+//process.env.PORT
