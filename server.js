@@ -29,8 +29,14 @@ app.get("/quotes/random", function (request, response) {
 });
 
 app.get("/search", function (request, response) {
-  let word = request.query.word;
-  response.send(`Hello World + ${word}`);
+  let word = request.query.term;
+  response.send(
+    quotes.filter((el) =>
+      Object.keys(el).reduce((acc, curr) => {
+        return acc || el[curr].toLowerCase().includes(word);
+      }, false)
+    )
+  );
 });
 
 //...END OF YOUR CODE
