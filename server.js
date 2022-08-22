@@ -11,6 +11,7 @@ const PORT = 3000;
 //load the quotes JSON
 const quotes = require("./quotes.json");
 
+// neccessary to avoid CORS errors on Heroku
 const cors = require('cors');
 app.use(cors());
 
