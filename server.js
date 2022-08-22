@@ -8,6 +8,9 @@ const fs = require("fs");
 const lodash = require("lodash");
 const PORT = 3000;
 
+const cors = require('cors');
+app.use(cors());
+
 //load the quotes JSON
 const quotes = require("./quotes.json");
 
@@ -45,6 +48,6 @@ app.get("/quotes/search", function (request, response) {
 // }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(PORT || process.env.PORT, function () {
+const listener = app.listen(process.env.PORT || PORT, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
