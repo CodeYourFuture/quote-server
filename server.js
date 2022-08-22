@@ -48,6 +48,6 @@ app.get("/quotes/search", function (request, response) {
 // }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT || PORT, function () {
-  console.log("Your app is listening on port " + listener.address().port);
+app.listen(process.env.PORT || PORT, function () {
+  console.log(`The server is running on ${PORT}`);
 });
