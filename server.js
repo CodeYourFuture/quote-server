@@ -8,11 +8,11 @@ const fs = require("fs");
 const lodash = require("lodash");
 const PORT = 3000;
 
-const cors = require('cors');
-app.use(cors());
-
 //load the quotes JSON
 const quotes = require("./quotes.json");
+
+const cors = require('cors');
+app.use(cors());
 
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
