@@ -21,6 +21,7 @@ app.use(express.static('public'))
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
+  // response.send("Baz's Quote Server! Ask me for /quotes/ or /quotes/random or /quotes/search?term=_____");
   response.sendFile(__dirname + "/index.html");
 });
 
