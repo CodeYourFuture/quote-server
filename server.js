@@ -14,7 +14,7 @@ const quotes = require("./quotes.json");
 const cors = require('cors');
 app.use(cors());
 
-app.use(express.static('public'))
+app.use(express.static('public'));
 
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
