@@ -4,7 +4,6 @@
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
 const app = express();
-const fs = require("fs");
 const lodash = require("lodash");
 const PORT = 3000;
 
@@ -14,6 +13,8 @@ const quotes = require("./quotes.json");
 // neccessary to avoid CORS errors on Heroku
 const cors = require('cors');
 app.use(cors());
+
+app.use(express.static('public'))
 
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
