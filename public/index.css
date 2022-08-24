@@ -18,8 +18,8 @@ body {
 }
 
 #container {
+    max-width: 600px;
     margin-top: 1rem;
-    width: 60vw;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
