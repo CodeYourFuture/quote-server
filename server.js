@@ -45,6 +45,6 @@ app.get("/quotes/search", function (request, response) {
 //   return arr[Math.floor(Math.random() * arr.length)];
 // }
 
-const listener = app.listen(PORT || process.env.PORT, function() {
+const listener = app.listen(process.env.PORT || PORT, function() {
   console.log("Your app is listening on port " + listener.address().port);
 });
