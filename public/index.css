@@ -9,7 +9,7 @@
 }
 
 body {
-    margin: 1rem;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,10 +19,10 @@ body {
 
 #container {
     max-width: 600px;
-    margin-top: 1rem;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    margin-top: 1rem;
     padding: 1rem;
     border: 0.15rem solid hsla(248, 39%, 39%, 0.5);
     border-radius: 0.5rem;
@@ -45,6 +45,8 @@ body {
 iframe {
     height: 300px;
     background: hsla(0, 0%, 100%, 0.5);
+    border-radius: 0.5rem;
+    border: 0.15rem solid hsla(248, 39%, 39%, 0.5);
 }
 
 .info-container {
