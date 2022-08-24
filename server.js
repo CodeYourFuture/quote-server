@@ -31,7 +31,7 @@ app.get("/quotes/random", function (request, response) {
 });
 
 app.get("/quotes/search", function (request, response) {
-  // console.log("GET /quotes/search route");
+  // console.log("GET /quotes/search?term= route");
   const searchQuery = request.query.term;
   const searchResults = quotes.filter(element => element.quote.toLowerCase().includes(searchQuery.toLowerCase()) || element.author.toLowerCase().includes(searchQuery.toLowerCase()));
   response.send(searchResults);
