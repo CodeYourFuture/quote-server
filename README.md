@@ -1,1 +1,1 @@
-<a href="https://cyf-bazmurphy-quotes.herokuapp.com" target="_blank">https://cyf-bazmurphy-quotes.herokuapp.com</a>
+<a href="https://cyf-bazmurphy-quotes-server.glitch.me" target="_blank">https://cyf-bazmurphy-quotes-server.glitch.me</a>
