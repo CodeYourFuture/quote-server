@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const lodash = require("lodash");
-const PORT = 3000;
+const PORT = 3001;
 
 const quotes = require("./quotes.json");
 
