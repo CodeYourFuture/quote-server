@@ -3,27 +3,25 @@
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
 const app = express();
-// const { response } = require("express");
-// const { request } = require("http");
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
 
 // Setting up the route Homepage
-app.get("/", function (request, response) {
-  response.json("Tresor's Quote Server!  Ask me for /quotes/random, or /quotes");
+app.get("/", function (req, res) {
+  res.json("Tresor's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
 //START OF MY CODE...
 
 // Returning All the quotes as JSON
-app.get("/quotes", (request, response) => {
-  response.json(quotes);
+app.get("/quotes", (req, res) => {
+  res.json(quotes);
 })
 
 // Returning one of the Quotes randomly as JSON
-app.get("/quotes/random",(request,response)=>{
-  response.json(pickFromArray(quotes));
+app.get("/quotes/random",(req,res)=>{
+  res.json(pickFromArray(quotes));
 })
 
 //...END OF MY CODE
