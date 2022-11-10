@@ -26,15 +26,14 @@ app.get("/quotes",(req, res)=>{
 //  });
 // });
 
+function pickFromArray(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
 
 app.get("/quotes/random",(req, res)=>{
-       res.send(pickFromArray());
+       res.send(pickFromArray(quotes));
   });
-// app.get("/quotes/random",(req, res)=>{
-//   quotes.map((array)=>{
-//     res.send(array.quote[Math.floor(Math.random()*array.length)])
-//   });
-// });
+
 
 //...END OF YOUR CODE
 
@@ -43,10 +42,10 @@ app.get("/quotes/random",(req, res)=>{
 //example: pickFromArray(myContactsArray)
 //
 function pickFromArray(arr) {
-  return arr[Math.floor(Math.random())]*arr.length;
+  return arr[Math.floor(Math.random() * arr.length)];
 }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
+const listener = app.listen(3001, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
