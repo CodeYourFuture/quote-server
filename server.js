@@ -18,8 +18,6 @@ app.get("/", function (request, response) {
 
 //START OF YOUR CODE...
 
-//...END OF YOUR CODE
-
 //You can use this function to pick one element at random from a given array
 //example: pickFromArray([1,2,3,4]), or
 //example: pickFromArray(myContactsArray)
@@ -28,7 +26,26 @@ function pickFromArray(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
+app.get("/quotes/random", function (request, response) {
+  // response.send(quotes);
+  pickFromArray(quotes)
+});
+
+app.get("/quotes/", function (request, response) {
+  response.send(quotes);
+});
+
+
+app.get("/quotes1", function (request, response) {
+  response.send(pickFromArray(quotes.quote));
+});
+
+//...END OF YOUR CODE
+
+
+
+
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
+const listener = app.listen(888, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
