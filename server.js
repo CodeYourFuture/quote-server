@@ -25,7 +25,6 @@ console.log(json);
 
 app.listen(3000, () =>
 console.log("Server is listening for requests on port 3000"));
-;
 
 
 //...END OF YOUR CODE
