@@ -2,6 +2,7 @@
 // This is where your node app starts
 
 //load the 'express' module which makes writing webservers easy
+const { request, response } = require("express");
 const express = require("express");
 const app = express();
 
@@ -17,7 +18,13 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+app.get("/quotes", (request, response) => {
+  response.send(quotes);
+});
 
+app.get("/quotes/random", (request, response) => {
+  response.send(pickFormArray(quotes));
+});
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
