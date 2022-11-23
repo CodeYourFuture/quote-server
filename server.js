@@ -10,11 +10,39 @@ const quotes = require("./quotes.json");
 
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
+app.get("/", (req, res) => {
+  res.send("Ele's Node Challenge");
+})
 //   /quotes            - Should return all quotes (json)
+app.get("/quotes", (req, res) =>{
+  res.send(quotes)
+})
 //   /quotes/random     - Should return ONE quote (json)
-app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+
+function pickFromArray(quotes) {
+  return quotes[Math.floor(Math.random() * quotes.length)];
+}
+
+app.get("/quotes/random", function (request, response) {
+  response.send(pickFromArray(quotes));
 });
+
+// app.get("/quotes/:quote", function (request, response) {
+//   let quote = parseInt(request.params.quote);
+//   response.send(quotes.find(element => element.quote ===quote));
+// });
+
+app.get('/quotes', (req, res) => {
+  if (req.query.quote) {
+      const search = req.query.quote.toLowerCase();
+      const matched = quotes.filter(quote => quote.toLowerCase().includes(search));
+      res.send(matched);
+  }
+  else {
+      res.send(quotes);
+  }
+});
+
 
 //START OF YOUR CODE...
 
@@ -24,11 +52,9 @@ app.get("/", function (request, response) {
 //example: pickFromArray([1,2,3,4]), or
 //example: pickFromArray(myContactsArray)
 //
-function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
+
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
+const listener = app.listen(process.env.PORT || 3000, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
