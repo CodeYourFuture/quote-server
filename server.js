@@ -8,15 +8,62 @@ const app = express();
 //load the quotes JSON
 const quotes = require("./quotes.json");
 
+//START OF YOUR CODE...
+
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send(
+    "Delroy's Quote Server!  Ask me for /quotes/random, or /quotes<br/>If you would like to do a search enter e.g. /quotes/search?term=success"
+  );
 });
 
-//START OF YOUR CODE...
+app.get("/quotes", function (request, response) {
+  response.send(quotes);
+});
+
+app.get("/quotes/random", function (request, response) {
+  response.send(pickFromArray(quotes));
+});
+
+// An intermediate step - echo the parameter
+// e.g. /echo?word=ismail should just return You said 'ismail'
+
+app.get("/echo", function (request, response) {
+  if ('query' in request && 'word' in request.query) {
+              response.send(
+                `You said '${request.query.word}'`
+              ); 
+  }
+});
+
+/*
+Allow the user of your quotes API to search your list of quotes.
+
+It should work with requests like this one:
+
+/quotes/search?term=life
+/quotes/search?term=success
+/quotes/search?term=miss
+
+Make your search case-insensitive
+Make the search return matches on quote OR author text.
+*/
+
+app.get("/quotes/search", function (request, response) {
+  if ("query" in request && "term" in request.query) {
+    const searchTerm = request.query.term.toLowerCase();
+    // console.log(searchTerm)
+    const results = quotes.filter(
+      ({ quote, author }) =>
+        quote.toLowerCase().includes(searchTerm) ||
+        author.toLowerCase().includes(searchTerm)
+    );
+    response.send(results);
+  }
+});
 
 //...END OF YOUR CODE
 
