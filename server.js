@@ -30,15 +30,11 @@ app.get('/quotes/search', (req, res) => {
   let qoutesCopy = quotes
   const term = req.query.term
 
-  if (term) {
-    qoutesCopy = qoutesCopy.filter(
+  term && res.json(qoutesCopy.filter(
       (q) =>
         q.quote.toLowerCase().includes(term) ||
         q.author.toLocaleLowerCase().includes(term)
-    )
-  }
-
-  res.send(qoutesCopy)
+    ))
 })
 //...END OF YOUR CODE
 
