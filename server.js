@@ -2,28 +2,43 @@
 // This is where your node app starts
 
 //load the 'express' module which makes writing webservers easy
-const { response } = require("express");
-const express = require("express");
-const app = express();
+const { response } = require('express')
+const express = require('express')
+const app = express()
 
 //load the quotes JSON
-const quotes = require("./quotes.json");
+const quotes = require('./quotes.json')
 
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
-app.get("/", (request, response) => {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
-});
+app.get('/', (request, response) => {
+  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes")
+})
 
 //START OF YOUR CODE...
-app.get("/quotes", (req, res) => {
+app.get('/quotes', (req, res) => {
   res.json(quotes)
 })
 
-app.get("/quotes/random", (req, res) => {
+app.get('/quotes/random', (req, res) => {
   res.json(pickFromArray(quotes))
+})
+
+app.get('/quotes/search', (req, res) => {
+  let qoutesCopy = quotes
+  const term = req.query.term
+
+  if (term) {
+    qoutesCopy = qoutesCopy.filter(
+      (q) =>
+        q.quote.toLowerCase().includes(term) ||
+        q.author.toLocaleLowerCase().includes(term)
+    )
+  }
+
+  res.send(qoutesCopy)
 })
 //...END OF YOUR CODE
 
@@ -32,7 +47,7 @@ app.get("/quotes/random", (req, res) => {
 //example: pickFromArray(myContactsArray)
 //
 function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
+  return arr[Math.floor(Math.random() * arr.length)]
 }
 
 //Start our server so that it listens for HTTP requests!
