@@ -4,6 +4,7 @@
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
 const app = express();
+// const port = 3000;
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
@@ -17,6 +18,17 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+app.get("/quotes", (req, res) => {
+  let quotesList = quotes;
+
+  res.send(quotesList);
+});
+
+
+app.get("/quotes/random", (req, res) => {
+  let quote = pickFromArray(quotes);
+  res.send(quote);
+});
 
 //...END OF YOUR CODE
 
