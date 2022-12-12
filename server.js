@@ -10,14 +10,17 @@ const quotes = require("./quotes.json");
 
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
-app.get("/quotes", (req, res) => res.json(quotes));
+app.get("/" , (req,res)=>res.send(`Welcome, to our quotes server!`))
 
 //   /quotes            - Should return all quotes (json)
+app.get("/quotes", (req, res) => res.json(quotes));
+
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
   response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
+app.get("/quotes/random", (req, res) => res.send(pickFromArray(quotes)));
 //START OF YOUR CODE...
 
 //...END OF YOUR CODE
