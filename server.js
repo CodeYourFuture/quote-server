@@ -2,7 +2,6 @@
 // This is where your node app starts
 
 //load the 'express' module which makes writing webservers easy
-const { response } = require('express')
 const express = require('express')
 const app = express()
 
