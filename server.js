@@ -18,6 +18,14 @@ app.get("/", function (request, response) {
 
 //START OF YOUR CODE...
 
+// Get All Quotes
+app.get("/micheale-quote-server", (request, response) => response.json(quotes));
+
+// Get Random Quote
+app.get("/micheale-quote-server/random", (request, response) =>
+  response.json(pickFromArray(quotes))
+);
+
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
