@@ -18,6 +18,17 @@ app.get("/", function (request, response) {
 
 //START OF YOUR CODE...
 
+// Level 1 Challenge: `/quotes` - returns ALL of the quotes, as JSON.
+app.get("/quotes", function (request, response) {
+  response.send(quotes);
+});
+
+// Level 1 Challenge: `/quotes/random` - returns ONE of the quotes, picked differently at random each time it is requested.
+app.get("/quotes/random", (req, res) => {
+  res.send(pickFromArray(quotes))
+});
+
+
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
@@ -29,6 +40,6 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
-  console.log("Your app is listening on port " + listener.address().port);
+const listener = app.listen(3000, function () {
+  console.log("Your app is listening on port 3000");
 });
