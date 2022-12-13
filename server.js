@@ -13,7 +13,9 @@ const quotes = require("./quotes.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Simeon's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send(
+    "Simeon's Quote Server!  Ask me for /quotes/random, or /quotes. <br/>or <br/>You need to request /quotes/search?term=whatever"
+  );
 });
 
 //START OF YOUR CODE...
@@ -24,6 +26,19 @@ app.get("/quotes", function (request, response) {
 
 app.get("/quotes/random", function (request, response) {
   response.send(pickFromArray(quotes));
+});
+
+//  /quotes/search?term=life
+
+app.get("/quotes/search/", function (request, response) {
+  // console.log(request);
+  let word = request.query.term.toLocaleLowerCase();
+  let filteredQuotes = quotes.filter(
+    (q) =>
+      q.quote.toLowerCase().includes(word) ||
+      q.author.toLowerCase().includes(word)
+  );
+  response.send(filteredQuotes);
 });
 
 //...END OF YOUR CODE
