@@ -18,17 +18,39 @@ app.get("/", function (request, response) {
 
 //START OF YOUR CODE...
 
+
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
 //example: pickFromArray([1,2,3,4]), or
 //example: pickFromArray(myContactsArray)
 //
+
+app.get("/", (req, res)=>{
+res.send("<h1>welcome to Quote server</h1>")
+})
+
 function pickFromArray(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
-  console.log("Your app is listening on port " + listener.address().port);
-});
+// const listener = app.listen(process.env.PORT, function () {
+//   console.log("Your app is listening on port " + listener.address().port);
+// });
+app.listen(4000)
+
+
+// setting up route
+app.get("/ansu", (req, res)=>{
+res.send("hello world")
+})
+
+app.get("/quotes", (req, res)=>{
+  res.json(quotes);
+})
+
+app.get("/quotes/random", (req, res)=>{
+  let randomQuotes = pickFromArray(quotes)
+  res.json(randomQuotes);
+})
