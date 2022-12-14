@@ -20,14 +20,15 @@ app.get("/", function (request, response) {
 
 // Level 1 Challenge: `/quotes` - returns ALL of the quotes, as JSON.
 app.get("/quotes", function (request, response) {
-  response.send(quotes);
+  response.json(quotes);
 });
 
 // Level 1 Challenge: `/quotes/random` - returns ONE of the quotes, picked differently at random each time it is requested.
 app.get("/quotes/random", (req, res) => {
-  res.send(pickFromArray(quotes))
+  res.json(pickFromArray(quotes))
 });
 
+// Glitch link: (https://glitch.com/edit/#!/alexphillip-quote-server?path=server.js%3A1%3A0)
 
 //...END OF YOUR CODE
 
