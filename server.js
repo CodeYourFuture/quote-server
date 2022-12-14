@@ -17,7 +17,20 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
-
+app.get("/", function (request, response) {
+  response.send(
+    "Kavita's Quote Server!  Ask me for /quotes/random, or /quotes."
+  );
+});
+app.get("/", function (req, res) {
+  res.send("Welcome to Random quote website");
+});
+app.get("/quotes", function (request, response) {
+  response.json(quotes);
+});
+app.get("/quotes/random", function (request, response) {
+  response.json(pickFromArray(quotes));
+});
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
@@ -29,6 +42,7 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
-  console.log("Your app is listening on port " + listener.address().port);
+const PORT = 5000;
+const listener = app.listen(PORT, function () {
+  console.log("Your app is listening on port 5000" + listener.address().port);
 });
