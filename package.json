@@ -8,11 +8,15 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
+    "build": "cd client && npm install && npm run build",
     "server": "nodemon server.js",
-    "dev": "npm run server"
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "client": "npm start --prefix client"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "body-parser": "^1.20.1",
+    "express": "^4.17.1",
+    "url": "^0.11.0"
   },
   "repository": {
     "url": "https://glitch.com/edit/#!/hello-express"
@@ -24,6 +28,7 @@
     "express"
   ],
   "devDependencies": {
+    "concurrently": "^7.6.0",
     "nodemon": "^2.0.20"
   }
 }
