@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import "../App.css";
+
 
 const Quotes = () => {
   const [quotes, setQuotes] = useState([]);
@@ -11,14 +13,16 @@ const Quotes = () => {
       });
   });
   return (
-    <div>
+    <div className="quotes-container">
       <h1>All Quotes</h1>
-      {quotes.map((quote) => (
-        <div>
-          <p>{quote.quote}</p>
-          <p>{quote.author}</p>
-        </div>
-      ))}
+      <div className="all-quotes">
+        {quotes.map((quote) => (
+          <div className="single-quotes">
+            <p>{quote.quote}</p>
+            <p>{quote.author}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

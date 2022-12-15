@@ -37,10 +37,10 @@ app.get("/quotes", (req, res) => {
 //   res.json(quotes).sendFile(path.join(__dirname, "./", "views", "allQuotes.html"));
 // });
 
-app.get("/quotes/random", (req, res) => {
-  let randomQuote = pickFromArray(quotes)
-  res.json(randomQuote);
-});
+// app.get("/quotes/random", (req, res) => {
+//   let randomQuote = pickFromArray(quotes)
+//   res.json(randomQuote);
+// });
 app.get("/quotes/random", (req, res) => {
   let randomQuote = pickFromArray(quotes)
   res.json(randomQuote);

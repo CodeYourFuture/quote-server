@@ -3,25 +3,25 @@ import Home from "./pages/Home";
 import Quotes from "./pages/Quotes";
 import Random from "./pages/Random";
 import Search from "./pages/Search";
+import "./App.css";
 
 
 const Router = () => {
   return (
     <BrowserRouter>
-      <div>
-        <nav>
-          <h2>Product List</h2>
-          <ul>
-            <li>
+      <div className="main-header">
+        <nav className="main-header__nav">
+          <ul className="main-header__item-list">
+            <li className="main-header__item">
               <Link to="/home">Home</Link>
             </li>
-            <li>
+            <li className="main-header__item">
               <Link to="/quotes">All Quotes</Link>
             </li>
-            <li>
+            <li className="main-header__item">
               <Link to="/random">Random Quote</Link>
             </li>
-            <li>
+            <li className="main-header__item">
               <Link to="/search">Search</Link>
             </li>
           </ul>

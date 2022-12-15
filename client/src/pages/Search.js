@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import "../App.css";
+
 
 const Search = () => {
   const [searchQuote, setSearchQuote] = useState([]);
@@ -15,22 +17,24 @@ const Search = () => {
         });
     }
   }, [searchTerm, search]);
-    
+
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
     if (event.target.value === "") {
       setSearch(true);
     }
   };
-    
+
   return (
     <div>
       <input type="text" onChange={handleSearch} />
       <button onClick={() => setSearch(true)}>Search</button>
       {searchQuote.map((quote) => (
         <div className={!search ? "search" : "hide"}>
-          <p>{quote.quote}</p>
-          <p>{quote.author}</p>
+          <div className="quote-search">
+            <p>{quote.quote}</p>
+            <p>{quote.author}</p>
+          </div>
         </div>
       ))}
     </div>

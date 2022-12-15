@@ -1,6 +1,7 @@
+// import "../App.css";
 const Home = () => {
   return (
-    <div>
+    <div className="homeContainer">
       <h1>My First Node App</h1>
     </div>
   );
