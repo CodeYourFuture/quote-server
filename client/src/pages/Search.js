@@ -32,7 +32,10 @@ const Search = () => {
       {searchQuote.map((quote) => (
         <div className={!search ? "search" : "hide"}>
           <div className="quote-search">
-            <p>{quote.quote}</p>
+            <p>
+              <span>&#8220;</span>
+              {quote.quote}
+            </p>
             <p>{quote.author}</p>
           </div>
         </div>

@@ -20,7 +20,10 @@ const Random = () => {
     <div>
       <button onClick={() => setRandomQuote(true)}>Random Quote</button>
       <div className="random">
-        <p>{random.quote}</p>
+        <p>
+          <span>&#8220;</span>
+          {random.quote}
+        </p>
         <p>{random.author}</p>
       </div>
     </div>

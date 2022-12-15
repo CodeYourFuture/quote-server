@@ -18,7 +18,10 @@ const Quotes = () => {
       <div className="all-quotes">
         {quotes.map((quote) => (
           <div className="single-quotes">
-            <p>{quote.quote}</p>
+            <p>
+              <span>&#8220;</span>
+              {quote.quote}
+            </p>
             <p>{quote.author}</p>
           </div>
         ))}

@@ -87,6 +87,11 @@ button {
   text-align: left;
   border-radius: 12px;
 }
+.single-quotes span,
+.random span,
+.quote-search span {
+  font-size: 1.5rem;
+}
 .single-quotes:hover {
   box-shadow: none;
   /* border: 2px solid black; */
@@ -99,3 +104,4 @@ box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 
   text-align: left;
   border-radius: 12px;
 }
+
