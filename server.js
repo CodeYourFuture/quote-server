@@ -21,9 +21,9 @@ app.get("/quotes",(req,res)=>{
   res.json(quotes);
 });
 
-// app.get('/quotes/random',(req,res)=>{
-//   res.json(quotes[Math.floor(Math.random() * quotes.length)]);
-// })
+app.get('/quotes/random',(req,res)=>{
+  res.json(pickFromArray(quotes));
+})
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
