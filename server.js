@@ -11,11 +11,6 @@ const quotes = require("./quotes.json");
 // Handlers for routes:
 // Home route
 
-
-
-
-
-
 app.get("/", function (request, response) {
   response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
