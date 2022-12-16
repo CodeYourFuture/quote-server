@@ -22,10 +22,6 @@ app.get("/quotes", function (request, response) {
   response.json(quotes);
 });
 
-
-
-
-
 // Returns ONE quote (json)
 app.get("/quotes/random", function (request, response) {
   response.json(pickFromArray(quotes));
