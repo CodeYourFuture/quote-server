@@ -23,12 +23,6 @@ app.get("/quotes", function (request, response) {
 });
 
 //Pick one element at random from a given array
-//...END OF YOUR CODE
-
-//You can use this function to pick one element at random from a given array
-//example: pickFromArray([1,2,3,4]), or
-//example: pickFromArray(myContactsArray)
-//
 function pickFromArray(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
