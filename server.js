@@ -7,10 +7,13 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 4000;
 const bodyParser = require("body-parser");
+const cors = require("cors");//
+const lodash = require('lodash');//
 
 // const { fileURLToPath } = require("url"); 
 // const __filename = fileURLToPath(import.meta.url);
 // const __dirname = path.dirname(__filename);
+app.use(cors());//
 app.use(express.json());
 app.use(bodyParser.json());
 
@@ -42,8 +45,10 @@ app.get("/quotes", (req, res) => {
 //   res.json(randomQuote);
 // });
 app.get("/quotes/random", (req, res) => {
-  let randomQuote = pickFromArray(quotes)
-  res.json(randomQuote);
+  // let randomQuote = pickFromArray(quotes)//
+  // res.json(randomQuote);//
+  res.json(lodash.sample(quotes));
+
 });
 // app.get("/quotes/random", (req, res) => {
 //   let randomQuote = pickFromArray(quotes);
