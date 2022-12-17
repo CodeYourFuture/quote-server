@@ -31,6 +31,8 @@ app.get("/quotes", function (request, response) {
 app.get("/quotes/random", function (request, response) {
   response.json(pickFromArray(quotes));
 });
+
+
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
@@ -42,7 +44,7 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
-const PORT = 5000;
-const listener = app.listen(PORT, function () {
+const port = process.env.PORT || 5000;
+const listener = app.listen(port, function () {
   console.log("Your app is listening on port 5000" + listener.address().port);
 });
