@@ -1,6 +1,7 @@
 // server.js
 // This is where your node app starts
-
+const cors = require("cors");
+app.use(cors({ origin: "*" }));
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
 const app = express();
