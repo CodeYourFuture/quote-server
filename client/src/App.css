@@ -39,6 +39,13 @@
 .hide {
   display: none;
 }
+
+.homeContainer,
+.quotes-container h1 {
+  font-size: 2.5rem;
+  color: #bfbcbc;
+text-shadow: 3px 5px 2px #474747;
+}
 .quote-search {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   margin: 2% 25%;

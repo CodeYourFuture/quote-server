@@ -2,7 +2,9 @@
 const Home = () => {
   return (
     <div className="homeContainer">
-      <h1>My First Node App</h1>
+      <h1>Welcome to Dawit's Quote App</h1>
+      <h3>Created by Dawit Abraha</h3>
+      <h3>My first full-stack application</h3>
     </div>
   );
 };
