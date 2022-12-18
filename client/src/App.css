@@ -51,6 +51,7 @@ text-shadow: 3px 5px 2px #474747;
   margin: 2% 25%;
   padding: 1.5rem;
   text-align: left;
+  font-size: 1.3rem;
   gap: 2rem;
   border-radius: 12px;
 }
@@ -92,6 +93,7 @@ button {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   padding: 1.5rem;
   text-align: left;
+  font-size: 1.3rem;
   border-radius: 12px;
 }
 .single-quotes span,
@@ -114,5 +116,6 @@ button {
   margin: 2% 25%;
   padding: 1.5rem;
   text-align: left;
+  font-size: 1.3rem;
   border-radius: 12px;
 }

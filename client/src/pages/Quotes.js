@@ -22,7 +22,7 @@ const Quotes = () => {
               <span>&#8220;</span>
               {quote.quote}
             </p>
-            <p>{quote.author}</p>
+            <p>{`By ${quote.author}`}</p>
           </div>
         ))}
       </div>
