@@ -28,7 +28,6 @@ app.get("/quotes/search", function (request, response) {
   response.send(quotes);
 });
 
-var cors = require('cors')
 app.use(cors())
 
 
