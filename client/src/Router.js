@@ -13,7 +13,7 @@ const Router = () => {
         <nav className="main-header__nav">
           <ul className="main-header__item-list">
             <li className="main-header__item">
-              <Link to="/home">Home</Link>
+              <Link to="/">Home</Link>
             </li>
             <li className="main-header__item">
               <Link to="/quotes">All Quotes</Link>
@@ -28,7 +28,7 @@ const Router = () => {
         </nav>
 
         <Routes>
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/quotes" element={<Quotes />} />
           <Route path="/random" element={<Random />} />
           <Route path="/search" element={<Search />} />
