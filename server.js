@@ -19,14 +19,13 @@ app.get("/quotes/random", function (request, response) {
   response.send(quote);
 });
 
-app.get("/quotes", function (request, response) {
+app.get("/quotes/search", function (request, response) {
   response.send(quotes);
 });
 
 app.get("/quotes/search", function (request, response) {
-  console.log(request.query.term)
-  console.log(request.query.key)
-  response.send(quotes);
+  let results = quotes.filter(q => q.quote.indexOf(request.query.term) > 0);
+  response.send(results[0]);
 });
 
 let corsOptions = {
