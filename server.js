@@ -7,6 +7,7 @@ const cors = require('cors')
 const app = express();
 
 //load the quotes JSON
+app.use(cors())
 const quotes = require("./quotes.json");
 
 // Now register handlers for some routes:
@@ -27,8 +28,6 @@ app.get("/quotes/search", function (request, response) {
   console.log(request.query.key)
   response.send(quotes);
 });
-
-app.use(cors())
 
 let corsOptions = {
   origin: 'https://jscomplete.com',
