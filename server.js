@@ -30,6 +30,11 @@ app.get("/quotes/search", function (request, response) {
 
 app.use(cors())
 
+let corsOptions = {
+  origin: 'https://jscomplete.com',
+  optionsSuccessStatus: 200
+}
+
 
 
 //START OF YOUR CODE...
