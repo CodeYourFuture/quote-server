@@ -21,6 +21,16 @@ app.get("/quotes", function (request, response) {
   response.send(quotes);
 });
 
+app.get("/quotes/search", function (request, response) {
+  console.log(request.query.term)
+  console.log(request.query.key)
+  response.send(quotes);
+});
+
+var cors = require('cors')
+app.use(cors())
+
+
 
 //START OF YOUR CODE...
 
