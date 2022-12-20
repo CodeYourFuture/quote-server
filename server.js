@@ -46,7 +46,18 @@ const listener = app.listen(port, function () {
 });
 
 // search function
-app.get("/find", function (req, res) {
-  let searchQuery = req.query.search;
-  res.send("Hello World! You searched for " + searchQuery);
+// app.get("/find", function (req, res) {
+  // let searchQuery = req.query.search;
+  // res.send("Hello World! You searched for " + searchQuery);
+// });
+
+app.get('/quotes', (req, res) => {
+  if (req.query.quote) {
+      const search = req.query.quote.toLowerCase();
+      const matchedquotes = quotes.filter(quote => quote.toLowerCase().includes(search));
+      res.send(matchedquotes);
+  }
+  else {
+      res.send(quotes);
+  }
 });
