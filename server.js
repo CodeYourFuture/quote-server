@@ -4,7 +4,7 @@
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
 const app = express();
-
+const lodash = require("lodash");
 //load the quotes JSON
 const quotes = require("./quotes.json");
 
@@ -13,7 +13,9 @@ const quotes = require("./quotes.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Chioma's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send(
+    "Chioma's Quote Server!  Ask me for /quotes/random, or /quotes"
+  );
 });
 
 //START OF YOUR CODE...
@@ -24,22 +26,30 @@ app.get("/quotes", (req, res) => {
 });
 
 app.get("/quotes/random", (req, res) => {
-  res.send(pickFromArray(quotes));
+  res.send(lodash.sample(quotes));
 });
 
-app.get('/quotes/search', (req, res) => {
-let data = quotes
-let searchterm = req.query.term.toLowerCase()
+app.get("/quotes/search", (req, res) => {
+  let data = quotes;
+  let searchterm = req.query.term.toLowerCase();
+  if (!searchterm) return [];
+  searchterm &&
+    res.send(
+      data.filter((val) => val.quote.toLowerCase().includes(searchterm))
+    );
+  // res.send(data);
+});
+app.get("/author/search", (req, res) => {
+  let data = quotes;
+  let searchAuthor = req.query.term.toLowerCase();
+  if (!searchAuthor) return [];
+  searchAuthor &&
+    res.send(
+      data.filter((val) => val.author.toLowerCase().includes(searchterm))
+    );
+  // res.send(data);
+});
 
-  if (searchterm) {
-  data = data.filter(
-    (val) =>
-      val.quote.toLowerCase().includes(searchterm) ||
-      val.author.toLowerCase().includes(searchterm)
-  );
-  }
-  res.send(data)
-})
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
