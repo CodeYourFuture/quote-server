@@ -8,12 +8,17 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server"
+    "build": "cd client && npm i && npm run build",
+    "server": "nodemon server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "dependencies": {
+    "concurrently": "^7.6.0",
     "express": "^4.17.1",
     "lodash": "^4.17.21",
-    "lodash.chunk": "^4.2.0"
+    "lodash.chunk": "^4.2.0",
+    "react-router-dom": "^6.6.1"
   },
   "repository": {
     "url": "https://glitch.com/edit/#!/hello-express"

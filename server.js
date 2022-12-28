@@ -45,7 +45,7 @@ app.get("/author/search", (req, res) => {
   if (!searchAuthor) return [];
   searchAuthor &&
     res.send(
-      data.filter((val) => val.author.toLowerCase().includes(searchterm))
+      data.filter((val) => val.author.toLowerCase().includes(searchAuthor))
     );
   // res.send(data);
 });
