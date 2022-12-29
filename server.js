@@ -13,33 +13,33 @@ const quotes = require("./quotes.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
-});
-
-app.get("/quotes", function (request, response) {
-  response.send(quotes);
-});
-
-app.get("/quotes/search", function (request, response) {
-  let quotesCopy = quotes;
-
-  if (request.query.term) {
-    quotesCopy = quotesCopy.filter((c) => {
-      return (
-        c.quote.toLowerCase().includes(request.query.term.toLowerCase()) ||
-        c.author.toLowerCase().includes(request.query.term.toLowerCase())
-      );
-    });
-  }
-  response.send(quotesCopy);
-});
-
-app.get("/random_quote", function (request, response) {
-  let selected = pickFromArray(quotes);
-  response.send(selected);
+  response.send(
+    "Tsione's Quote Server!  Ask me for /quotes/random, or /quotes"
+  );
 });
 
 //START OF YOUR CODE...
+
+app.get("/quotes", function (request, response) {
+  response.json(quotes);
+});
+
+app.get("/quotes/random", function (request, response) {
+  response.json(pickFromArray(quotes));
+});
+
+app.get("/quotes/search", function (request, response) {
+  let test = request.query.term;
+  console.log(test);
+
+  const newQ = quotes.filter(
+    (quo) =>
+      quo.quote.toLowerCase().includes(test.toLowerCase()) ||
+      quo.author.includes(test.toLowerCase())
+  );
+
+  response.json(newQ);
+});
 
 //...END OF YOUR CODE
 
@@ -52,6 +52,6 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(3000, function () {
+const listener = app.listen(process.env.PORT, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
