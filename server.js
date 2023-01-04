@@ -31,6 +31,7 @@ function pickFromArray(arr) {
 
 //Start our server so that it listens for HTTP requests!
 
-const listener = app.listen(3000, function () {
-  console.log(`Your app is listening on port http://localhost:${3000} ` );
+ app.listen(3000, function () {
+  console.log(`Your app is listening on port http://localhost:${3000} ` 
+  );
 });
