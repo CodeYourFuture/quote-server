@@ -30,14 +30,19 @@ app.get(`/quotes/random/`, (req, res) => {
   const randomQuote = quotes[lodash.random(quotes.length - 1)];
   res.send(randomQuote)
 });
-app.get(`/quote/search`, (req, res) => {
+app.get(`/quotes/search`, function (req, res) {
   const term = req.query.term;
-  const filterQuotes = quotes.filter(q => q.quote.toLowerCase().includes(term.toLowerCase()))
-    || q.author.toLowerCase().includes(term.toLowerCase());
-  res.send(filterQuotes)
-}
- )
-
+  const filteredQuotes = quotes.filter(
+    (q) =>
+      q.quote.toLowerCase().includes(term.toLowerCase()) ||
+      q.author.toLowerCase().includes(term.toLowerCase())
+  );
+  res.send(filteredQuotes);
+});
+app.get("/echo", function (request, response) {
+  const word = request.query.word;
+  response.send(`you said ${word}`);
+});
 //Start our server so that it listens for HTTP requests!
 
  app.listen(3000, function () {
