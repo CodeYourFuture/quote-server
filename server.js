@@ -30,6 +30,13 @@ app.get(`/quotes/random/`, (req, res) => {
   const randomQuote = quotes[lodash.random(quotes.length - 1)];
   res.send(randomQuote)
 });
+app.get(`/quote/search`, (req, res) => {
+  const term = req.query.term;
+  const filterQuotes = quotes.filter(q => q.quote.toLowerCase().includes(term.toLowerCase()))
+    || q.author.toLowerCase().includes(term.toLowerCase());
+  res.send(filterQuotes)
+}
+ )
 
 //Start our server so that it listens for HTTP requests!
 
