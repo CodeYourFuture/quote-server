@@ -3,6 +3,8 @@
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
+const req = require("express/lib/request");
+const lodash = require('lodash');
 const app = express();
 
 //load the quotes JSON
@@ -17,21 +19,20 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
-app.get("/quote", (req, res) => { res.send(pickFromArray(quotes))})
+app.get("/quotes", (req, res) => { res.send(quotes) });
 //...END OF YOUR CODE
 
 
 //You can use this function to pick one element at random from a given array
 //example: pickFromArray([1,2,3,4]), or
 //example: pickFromArray(myContactsArray)
-
-function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
+app.get(`/quotes/random/`, (req, res) => {
+  const randomQuote = quotes[lodash.random(quotes.length - 1)];
+  res.send(randomQuote)
+});
 
 //Start our server so that it listens for HTTP requests!
 
  app.listen(3000, function () {
-  console.log(`Your app is listening on port http://localhost:${3000} ` 
-  );
+  console.log(`Your app is listening on port http://localhost:${3000} ` );
 });
