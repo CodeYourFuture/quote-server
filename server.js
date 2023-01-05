@@ -4,7 +4,7 @@
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
 const req = require("express/lib/request");
-const lodash = require('lodash');
+const lodash = require("lodash");
 const app = express();
 
 //load the quotes JSON
@@ -34,10 +34,10 @@ app.get(`/quotes/search`, function (req, res) {
   const term = req.query.term;
   const filteredQuotes = quotes.filter(
     (q) =>
-      q.quote.toLowerCase().includes(term.toLowerCase()) ||
-      q.author.toLowerCase().includes(term.toLowerCase())
+      q.author.toLowerCase().includes(term.toLowerCase()) ||
+      q.quote.toLowerCase().includes(term.toLowerCase())
   );
-  res.send(filteredQuotes);
+  response.send(filteredQuotes);
 });
 app.get("/echo", function (request, response) {
   const word = request.query.word;
@@ -45,6 +45,6 @@ app.get("/echo", function (request, response) {
 });
 //Start our server so that it listens for HTTP requests!
 
- app.listen(3000, function () {
-  console.log(`Your app is listening on port http://localhost:${3000} ` );
+ const listener = app.listen(process.env.PORT || 3000, "localhost", function () {
+  console.log("Your app is listening on port " + listener.address().port);
 });
