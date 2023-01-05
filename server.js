@@ -2,9 +2,22 @@
 // This is where your node app starts
 
 //load the 'express' module which makes writing webservers easy
+const path = require("path");
 const express = require("express");
 const app = express();
+const PORT = process.env.PORT || 4000;
+const bodyParser = require("body-parser");
+const cors = require("cors");//
+const lodash = require('lodash');//
 
+// const { fileURLToPath } = require("url"); 
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
+app.use(cors());//
+app.use(express.json());
+app.use(bodyParser.json());
+
+app.use(express.static(path.resolve(__dirname, "./client/build")));
 //load the quotes JSON
 const quotes = require("./quotes.json");
 
@@ -13,10 +26,57 @@ const quotes = require("./quotes.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send("Dawit's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
+// app.get("/", function (req, res) {
+//   res.sendFile(path.join(__dirname, "./", "views", "index.html"));
+// });
 
-//START OF YOUR CODE...
+// START OF YOUR CODE...
+app.get("/quotes", (req, res) => {
+  res.json(quotes);
+});
+// app.get("/quotes", (req, res) => {
+//   res.json(quotes).sendFile(path.join(__dirname, "./", "views", "allQuotes.html"));
+// });
+
+// app.get("/quotes/random", (req, res) => {
+//   let randomQuote = pickFromArray(quotes)
+//   res.json(randomQuote);
+// });
+app.get("/quotes/random", (req, res) => {
+  // let randomQuote = pickFromArray(quotes)//
+  // res.json(randomQuote);//
+  res.json(lodash.sample(quotes));
+
+});
+// app.get("/quotes/random", (req, res) => {
+//   let randomQuote = pickFromArray(quotes);
+//   res
+//     .json(randomQuote)
+//     .sendFile(path.join(__dirname, "./", "views", "random.html"));
+// });
+app.get("/quotes/search", (req, res) => {
+  let searchQuery = req.query.term;
+  console.log(searchQuery)
+  const filteredQuotes = quotes.filter(
+    (quote) =>
+      quote.quote.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      quote.author.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+  res.send(filteredQuotes);
+});
+// app.get("/quotes/random/search", (req, res) => {
+//   let searchQuery = req.query.term;
+//   const filteredQuotes = quotes.filter(
+//     (quote) =>
+//       quote.quote.toLowerCase().includes(searchQuery) ||
+//       quote.author.toLowerCase().includes(searchQuery)
+//   );
+//   res
+//     .json(filteredQuotes)
+//     .sendFile(path.join(__dirname, "./", "views", "search.html"));
+// });
 
 //...END OF YOUR CODE
 
@@ -29,6 +89,6 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
-  console.log("Your app is listening on port " + listener.address().port);
+app.listen(PORT, function () {
+  console.log("Your app is listening on port " + PORT);
 });
