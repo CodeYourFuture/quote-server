@@ -17,7 +17,7 @@ app.get("/", function (request, response) {
 });
 
 app.get("/quotes", function (request, response) {
-  response.send(quotes);
+  response.json(quotes);
 });
 
 app.get("/quotes/search", function (request, response) {
@@ -32,6 +32,11 @@ app.get("/quotes/search", function (request, response) {
     });
   }
   response.send(quotesCopy);
+});
+
+app.get("/random", function (request, response) {
+  
+  response.json(pickFromArray(quotes));
 });
 
 app.get("/random_quote", function (request, response) {
