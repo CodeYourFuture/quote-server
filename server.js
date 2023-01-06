@@ -2,6 +2,7 @@
 // This is where your node app starts
 
 //load the 'express' module which makes writing webservers easy
+const { response } = require("express");
 const express = require("express");
 const app = express();
 
@@ -10,18 +11,27 @@ const quotes = require("./quotes.json");
 
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
-app.get("/" , (req,res)=>res.send(`Welcome, to our quotes server!`))
+app.get("/", (req, res) => res.send(`Welcome, to our quotes server!`));
 
 //   /quotes            - Should return all quotes (json)
 app.get("/quotes", (req, res) => res.json(quotes));
 
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send("Azin's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
 app.get("/quotes/random", (req, res) => res.send(pickFromArray(quotes)));
 //START OF YOUR CODE...
+
+app.get("/quotes/search", (req, res) => {
+  let term = req.query.term;
+
+  let result = quotes.filter((q) => {
+    return q.author.toLowerCase().includes(term) || q.quote.toLowerCase().includes(term);
+  });
+  res.json(result);
+});
 
 //...END OF YOUR CODE
 
