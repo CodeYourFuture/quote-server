@@ -8,6 +8,8 @@ const app = express();
 //load the quotes JSON
 const Quotes = require("../quotes.json");
 
+app.listen(3000);
+
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
 //   /quotes            - Should return all quotes (json)
@@ -20,6 +22,18 @@ app.get("/", function (request, response) {
 //START OF YOUR CODE...
 app.get("/quotes", function (request, response) {
   response.send(Quotes);
+});
+app.get("/echo", function (request, response) {
+  response.send(`You said ${request.query.word}`);
+});
+
+app.get("/quotes/search", function (request, response) {
+  const searchKeyword = request.query.term;
+  if (searchKeyword) {
+    const lowerCase = searchKeyword.toLowerCase();
+    const matched = Quotes.filter((quote) => quote.author.toLowerCase().includes(lowerCase) || quote.quote.toLowerCase().includes(lowerCase));
+    response.send(matched);
+  }
 });
 
 let randomQoute = pickFromArray(Quotes);
@@ -38,6 +52,6 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
-  console.log("Your app is listening on port " + listener.address().port);
-});
+// const listener = app.listen(process.env.PORT, function () {
+//   console.log("Your app is listening on port " + listener.address().port);
+// });
