@@ -18,6 +18,23 @@ app.get("/", function (request, response) {
 
 //START OF YOUR CODE...
 
+const listener = app.listen(9090, function () {
+  console.log("Your app is listening on port " + listener.address().port);
+});
+
+app.get("/quotes", function (request, respond) {
+  respond.send({ quotes });
+});
+
+app.get("/quotes/random", function (request, respond) {
+  let randonQuote = pickFromArray(quotes);
+  respond.send({ randonQuote });
+});
+
+// app.listen("/quotes", function (request, respond) {
+//   request.send({ quotes });
+// });
+
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
@@ -29,6 +46,6 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
-  console.log("Your app is listening on port " + listener.address().port);
-});
+// const listener = app.listen(process.env.PORT, function () {
+//   console.log("Your app is listening on port " + listener.address().port);
+// });
