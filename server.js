@@ -2,6 +2,7 @@
 // This is where your node app starts
 
 //load the 'express' module which makes writing webservers easy
+const { response } = require("express");
 const express = require("express");
 const app = express();
 
@@ -17,6 +18,15 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+
+app.get("/quotes", (request, response) => {
+  response.send({ quotes });
+});
+
+app.get("/quotes/random", (request, response) => {
+  const randomQuote = pickFromArray(quotes);
+  response.send({ randomQuote });
+});
 
 //...END OF YOUR CODE
 
