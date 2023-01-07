@@ -28,6 +28,21 @@ app.get("/quotes/random", (request, response) => {
   response.send(pickFromArray(quotes));
 });
 
+app.get("/quotes/search", (request, response) => {
+  const term = request.query.term.toLocaleLowerCase();
+  console.log("You said", term);
+
+  const filter = quotes.filter(eachQuote=>eachQuote.quote.toLocaleLowerCase().includes(term)||eachQuote.author.toLocaleLowerCase().includes(term));
+  response.send(filter);
+});
+
+app.get("/echo", (request, response) => {
+  const word = request.query.word;
+response.send(`You said ${word}`)
+});
+
+
+
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
