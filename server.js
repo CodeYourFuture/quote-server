@@ -4,7 +4,7 @@
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
 const app = express();
-const port = 3000 || process.env.PORT;
+const port =  process.env.PORT ||3000;
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
@@ -39,7 +39,7 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(port, function () {
+app.listen(port, function () {
   console.log("Your app is listening on port " + port);
 });
 //listener.address().
