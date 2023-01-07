@@ -66,6 +66,7 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
+const port = process.env.PORT || 9090;
 const listener = app.listen(process.env.PORT, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
