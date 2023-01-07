@@ -15,7 +15,13 @@ const quotes = require("./quotes.json");
 app.get("/", function (request, response) {
   response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
+app.get("/quotes", function (request, response) {
+  response.send(quotes);
+});
 
+app.get("/quotes/random", function (request, response) {
+  response.send(pickFromArray(quotes));
+});
 //START OF YOUR CODE...
 
 //...END OF YOUR CODE
