@@ -13,10 +13,47 @@ const quotes = require("./quotes.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send("Emily's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
 //START OF YOUR CODE...
+app.get("/", function (request, response) {
+  response.send("You need to request /search?word=whatever");
+});
+
+app.get("/quotes", function (request, response) {
+  response.send("Emily's Quote Server!  Ask me for /quotes/random, or /quotes");
+});
+
+app.get("/quotes/random", function (request, response) {
+  let randomQuote = pickFromArray(quotes);
+  response.send(randomQuote);
+});
+
+app.get("/quotes", function (request, response) {
+  response.send(
+    "Emily's Quote Server!  Ask me for /quotes/random, or /quotes or request /search?word=whatever"
+  );
+});
+
+app.get("/quotes/search", function (request, response) {
+  let searchedWord = request.query.word;
+  if (searchedWord) {
+    const lowerCaseSearchedWord = searchedWord.toLowerCase();
+    let filteredQuotes = quotes.filter(
+      (quote) =>
+        quote.author.toLowerCase().includes(lowerCaseSearchedWord) ||
+        quote.quote.toLowerCase().includes(lowerCaseSearchedWord)
+    );
+    response.send(filteredQuotes);
+  } else {
+    response.send([]);
+  }
+});
+
+app.get("/echo", function (request, response) {
+  response.send(`You said ${request.query.word}`);
+});
 
 //...END OF YOUR CODE
 
