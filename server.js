@@ -4,6 +4,7 @@
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
 const app = express();
+const PORT = process.env.PORT || 5000;
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
@@ -17,6 +18,21 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+app.get("/quotes", function (request, response) {
+  if (quotes !== undefined) {
+    response.json(quotes);
+  }else{
+    response.status(404).send("Not found");
+  }
+});
+app.get("/quotes/random", function (request, response) {
+  if (quotes !== undefined) {
+    const randomQuote = pickFromArray(quotes);
+    response.json(randomQuote);
+  } else {
+    response.status(404).send("Not found");
+  }
+});
 
 //...END OF YOUR CODE
 
@@ -29,6 +45,6 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
+const listener = app.listen(PORT, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
