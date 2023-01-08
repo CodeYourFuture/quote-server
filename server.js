@@ -3,7 +3,9 @@
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
+// const quotes = require("./quotes.js")
 const app = express();
+
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
@@ -13,10 +15,17 @@ const quotes = require("./quotes.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send("WELCOME TO QUOTE SERVER API");
 });
 
 //START OF YOUR CODE...
+app.get("/quotes", function (request, response) {
+  response.send(pickAllFromArray(quotes));
+});
+
+app.get("/quotes/random", function (request, response) {
+  response.send(pickRandomFromArray(quotes));
+});
 
 //...END OF YOUR CODE
 
@@ -24,8 +33,13 @@ app.get("/", function (request, response) {
 //example: pickFromArray([1,2,3,4]), or
 //example: pickFromArray(myContactsArray)
 //
-function pickFromArray(arr) {
+function pickRandomFromArray(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
+}
+function pickAllFromArray(arr) {
+  return arr.map(elem => {
+    return elem
+  })
 }
 
 //Start our server so that it listens for HTTP requests!
