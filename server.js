@@ -7,7 +7,9 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 //load the quotes JSON
+
 const quotes = require("./quotes.json");
+
 
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
@@ -23,9 +25,20 @@ app.get("/quotes", function (request, response) {
 });
 
 app.get("/quotes/random", function (request, response) {
-const {random} = pickFromArray(quotes);
-  response.status(200).json(random);
+response.status(200).json(pickFromArray(quotes));
 });
+
+app.get("/quotes/search", function (request, response) {
+  const term = request.query.term;
+  const filt = quotes.filter(item =>{
+    if(item.quote === term){
+      return 
+    }
+  })
+  response.status(200).json(filt);
+  });
+
+
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
@@ -37,5 +50,5 @@ function pickFromArray(arr) {
 
 //Start our server so that it listens for HTTP requests!
  app.listen(PORT, function () {
-  console.log(`Your app is listening on ${PORT}`);
+  console.log(`Your app is listening on port ${PORT}`);
 });
