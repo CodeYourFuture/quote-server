@@ -18,6 +18,8 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+
+//------Get all quotes------
 app.get("/quotes", function (request, response) {
   if (quotes !== undefined) {
     response.json(quotes);
@@ -25,12 +27,29 @@ app.get("/quotes", function (request, response) {
     response.status(404).send("Not found");
   }
 });
+
+//------Get Random Quotes----
 app.get("/quotes/random", function (request, response) {
   if (quotes !== undefined) {
     const randomQuote = pickFromArray(quotes);
     response.json(randomQuote);
   } else {
     response.status(404).send("Not found");
+  }
+});
+//-----Quotes search-------
+app.get("/quotes/search", (req, res) => {
+  const searchTerm = req.query.term.toLowerCase();
+  if (quotes !== undefined) {
+    res.json(
+      quotes.filter(
+        (word) =>
+          word.quote.toLowerCase().includes(searchTerm) ||
+          word.author.toLowerCase().includes(searchTerm)
+      )
+    );
+  } else {
+    res.status(404).send("not found");
   }
 });
 
