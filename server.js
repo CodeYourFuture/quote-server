@@ -4,6 +4,7 @@
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
 const app = express();
+const PORT = process.env.PORT || 5000;
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
@@ -18,6 +19,40 @@ app.get("/", function (request, response) {
 
 //START OF YOUR CODE...
 
+//------Get all quotes------
+app.get("/quotes", function (request, response) {
+  if (quotes !== undefined) {
+    response.json(quotes);
+  }else{
+    response.status(404).send("Not found");
+  }
+});
+
+//------Get Random Quotes----
+app.get("/quotes/random", function (request, response) {
+  if (quotes !== undefined) {
+    const randomQuote = pickFromArray(quotes);
+    response.json(randomQuote);
+  } else {
+    response.status(404).send("Not found");
+  }
+});
+//-----Quotes search-------
+app.get("/quotes/search", (req, res) => {
+  const searchTerm = req.query.term.toLowerCase();
+  if (quotes !== undefined) {
+    res.json(
+      quotes.filter(
+        (word) =>
+          word.quote.toLowerCase().includes(searchTerm) ||
+          word.author.toLowerCase().includes(searchTerm)
+      )
+    );
+  } else {
+    res.status(404).send("not found");
+  }
+});
+
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
@@ -29,6 +64,6 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
+const listener = app.listen(PORT, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
