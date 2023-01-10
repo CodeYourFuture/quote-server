@@ -3,13 +3,11 @@
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
-const fs = require('fs')
+const fs = require("fs");
 const app = express();
-const port = 3000
-
+const port = process.env.PORT || 3000;
 
 //const quotesTemnplate = fs.readFileSync("./quotesTemplate.html", 'utf-8');
-
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
@@ -26,10 +24,32 @@ app.get("/quotes", function (request, response) {
   response.send(quotes);
 });
 
-
 app.get("/quotes/random", function (request, response) {
   response.send(pickFromArray(quotes));
 });
+
+// level 2
+
+app.get(`/quotes/search`, (req, res) => {
+  const term = req.query.term //.toLowerCase();
+  const filteredWord = quotes.filter(
+    (word) =>
+      word.quote.toLowerCase().includes(term) ||
+      word.author.toLowerCase().includes(term)
+  );
+
+  res.send(filteredWord);
+});
+
+
+//An intermediate step - echo the parameter
+
+app.get(`/quotes/echo`, (req, res) => {
+  const word = req.query.word
+  console.log(`you have said ${word}`);
+  res.send(`you have said ${word}`);
+});
+
 
 //...END OF YOUR CODE
 
@@ -43,8 +63,7 @@ function pickFromArray(arr) {
 
 //Start our server so that it listens for HTTP requests!
 app.listen(port, function () {
-  console.log("Your app is listening on port " );
+  console.log("Your app is listening on port ");
 });
 
-//process.env.PORT
 //+ listener.address().port
