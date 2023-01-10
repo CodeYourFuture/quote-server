@@ -5,6 +5,7 @@
 const { response } = require("express");
 const express = require("express");
 const app = express();
+const lodash = require("lodash");
 
 //load the quotes JSON
 const Quotes = require("./quotes.json");
@@ -51,6 +52,11 @@ app.get("/echo", (request, response)=> {
   response.send(`You said ${word}`);
 })
 
+
+const easyRandomPickingQuotes = lodash.sample(Quotes)
+app.get("/easyRandomPicking", (request, response) => {
+response.json(easyRandomPickingQuotes)
+})
 
 //...END OF YOUR CODE
 
