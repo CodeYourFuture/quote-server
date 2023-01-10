@@ -7,7 +7,8 @@
   "description": "A simple Node app built on Express, instantly up and running.",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "nodemon --exec babel-node src/app.js",
+    "node": "node server.js"
   },
   "dependencies": {
     "express": "^4.17.1"
@@ -22,6 +23,14 @@
     "express"
   ],
   "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@babel/node": "^7.20.7",
+    "@babel/preset-env": "^7.18.10",
     "nodemon": "^2.0.20"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
   }
 }
