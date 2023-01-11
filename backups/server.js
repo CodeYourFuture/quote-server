@@ -1,6 +1,5 @@
 // server.js
 // This is where your node app starts
-
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
 const app = express();
@@ -12,7 +11,7 @@ const Quotes = require("./quotes.json");
 //   /                  - Return some helpful welcome info (text)
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
-app.get("/", function(request, response) {
+app.get("/quotes", function(request, response) {
   response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
