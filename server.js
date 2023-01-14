@@ -4,6 +4,7 @@
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
 const app = express();
+const port = process.env.PORT || 3000;
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
@@ -17,6 +18,27 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+app.get("/quotes", function (request, response) {
+  console.log("Quotes are here:");
+  response.send({ quotes });
+})
+
+app.get("/quotes/random", (request, response) => {
+  console.log("Random quotes here");
+  response.send(pickFromArray(quotes));
+});
+
+app.get("/quotes/search", (request, response) => {
+  const term = request.query.term;
+  // console.log("You said", term);
+  response.send(quotes.filter((eachQuote) => eachQuote.quote.includes(term)));
+});
+
+app.get("/echo", (request, response) => {
+  const word = request.query.word;
+  // console.log("You said", word);
+  response.send(`You said ${word}`);
+});
 
 //...END OF YOUR CODE
 
@@ -24,11 +46,8 @@ app.get("/", function (request, response) {
 //example: pickFromArray([1,2,3,4]), or
 //example: pickFromArray(myContactsArray)
 //
-function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
-  console.log("Your app is listening on port " + listener.address().port);
+app.listen(port, function () {
+  console.log("Your app is listening on port " + port);
 });
