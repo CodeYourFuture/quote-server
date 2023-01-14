@@ -4,7 +4,7 @@
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
@@ -28,6 +28,17 @@ app.get("/quotes/random", (request, response) => {
   response.send(pickFromArray(quotes));
 });
 
+app.get("/quotes/search", (request, response) => {
+  const term = request.query.term;
+  // console.log("You said", term);
+  response.send(quotes.filter((eachQuote) => eachQuote.quote.includes(term)));
+});
+
+app.get("/echo", (request, response) => {
+  const word = request.query.word;
+  // console.log("You said", word);
+  response.send(`You said ${word}`);
+});
 
 //...END OF YOUR CODE
 
