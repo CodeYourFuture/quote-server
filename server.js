@@ -3,9 +3,8 @@
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
-const fs = require("fs");
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
 //const quotesTemnplate = fs.readFileSync("./quotesTemplate.html", 'utf-8');
 
@@ -21,17 +20,19 @@ app.get("/", function (request, response) {
 
 //START OF YOUR CODE...
 app.get("/quotes", function (request, response) {
+  response.header("Access-Control-Allow-Origin", "*");
   response.send(quotes);
 });
 
 app.get("/quotes/random", function (request, response) {
+  response.header("Access-Control-Allow-Origin", "*");
   response.send(pickFromArray(quotes));
 });
 
 // level 2
 
 app.get(`/quotes/search`, (req, res) => {
-  const term = req.query.term //.toLowerCase();
+  const term = req.query.term; //.toLowerCase();
   const filteredWord = quotes.filter(
     (word) =>
       word.quote.toLowerCase().includes(term) ||
@@ -41,15 +42,13 @@ app.get(`/quotes/search`, (req, res) => {
   res.send(filteredWord);
 });
 
-
 //An intermediate step - echo the parameter
 
 app.get(`/quotes/echo`, (req, res) => {
-  const word = req.query.word
+  const word = req.query.word;
   console.log(`you have said ${word}`);
   res.send(`you have said ${word}`);
 });
-
 
 //...END OF YOUR CODE
 
@@ -62,8 +61,6 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
-app.listen(port, function () {
-  console.log("Your app is listening on port ");
+const listerner = app.listen(port, function () {
+  console.log("Your app is listening on port " + listerner.address().port);
 });
-
-//+ listener.address().port
