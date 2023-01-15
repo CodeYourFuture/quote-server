@@ -12,11 +12,37 @@ const quotes = require("./quotes.json");
 //   /                  - Return some helpful welcome info (text)
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
+
+//START OF YOUR CODE...
+
 app.get("/", function (request, response) {
   response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
-//START OF YOUR CODE...
+app.get("/quotes", function (request, respond) {
+  respond.send({ quotes });
+});
+
+app.get("/quotes/random", function (request, respond) {
+  let randonQuote = pickFromArray(quotes);
+  respond.send({ randonQuote });
+});
+
+app.get("/quotes/search", function (request, response) {
+  let searchQuery = request.query.term;
+  // console.log(searchQuery);
+  const quoteWithTerm = quotes.filter(
+    (quote) =>
+      quote.quote.toLowerCase().includes(searchQuery.toLocaleLowerCase()) ||
+      quote.author.toLowerCase().includes(searchQuery.toLocaleLowerCase())
+  );
+  response.send({ quoteWithTerm });
+});
+
+//****comment when you need to use on Glitch
+const listener = app.listen(9090, function () {
+  console.log("Your app is listening on port " + listener.address().port);
+});
 
 //...END OF YOUR CODE
 
@@ -29,6 +55,7 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
-  console.log("Your app is listening on port " + listener.address().port);
-});
+//******Uncomment when you need to use glitch because is not more local (9090)
+// const listener = app.listen(process.env.PORT, function () {
+//   console.log("Your app is listening on port " + listener.address().port);
+// });
