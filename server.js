@@ -12,6 +12,9 @@ const quotes = require("./quotes.json");
 //   /                  - Return some helpful welcome info (text)
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
+
+//START OF YOUR CODE...
+
 app.get("/", function (request, response) {
   response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
@@ -25,12 +28,6 @@ app.get("/quotes/random", function (request, respond) {
   respond.send({ randonQuote });
 });
 
-//START OF YOUR CODE...
-//****comment when you need to use on Glitch
-const listener = app.listen(9090, function () {
-  console.log("Your app is listening on port " + listener.address().port);
-});
-
 app.get("/quotes/search", function (request, response) {
   let searchQuery = request.query.term;
   // console.log(searchQuery);
@@ -40,6 +37,11 @@ app.get("/quotes/search", function (request, response) {
       quote.author.toLowerCase().includes(searchQuery.toLocaleLowerCase())
   );
   response.send({ quoteWithTerm });
+});
+
+//****comment when you need to use on Glitch
+const listener = app.listen(9090, function () {
+  console.log("Your app is listening on port " + listener.address().port);
 });
 
 //...END OF YOUR CODE
