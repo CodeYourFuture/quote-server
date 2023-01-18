@@ -16,10 +16,15 @@ app.get("/", function (request, response) {
   response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
-//START OF YOUR CODE...
+//(json quotes)
+app.get("/quotes", function (request, response) {
+  response.json(quotes);
+});
 
-//...END OF YOUR CODE
-
+// Returns Array quote (json)
+app.get("/quotes/random", function (request, response) {
+  response.json(pickFromArray(quotes));
+});
 //You can use this function to pick one element at random from a given array
 //example: pickFromArray([1,2,3,4]), or
 //example: pickFromArray(myContactsArray)
