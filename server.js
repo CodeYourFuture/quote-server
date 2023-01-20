@@ -17,6 +17,14 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+app.get("/quotes", function (request, response) {
+  response.status(200).json(quotes);
+});
+
+app.get("/quotes/random", function (request, response) {
+response.status(200).json(pickFromArray(quotes));
+});
+
 
 //...END OF YOUR CODE
 
