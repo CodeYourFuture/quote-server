@@ -4,6 +4,7 @@
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
@@ -13,10 +14,27 @@ const quotes = require("./quotes.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send("Hey there, Welcome to Gelson's Quotes of the day!");
 });
 
 //START OF YOUR CODE...
+app.get("/quotes", function (request, response) {
+  response.status(200).json(quotes);
+});
+
+app.get("/quotes/random", function (request, response) {
+response.status(200).json(pickFromArray(quotes));
+});
+
+app.get("/quotes/search", function (request, response) {
+  const term = request.query.term;
+  const filt = quotes.filter(item =>{
+    if(item.quote === term){
+      return 
+    }
+  })
+  response.status(200).json(filt);
+  });
 
 //...END OF YOUR CODE
 
