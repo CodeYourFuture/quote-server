@@ -17,13 +17,22 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
-
+app.listen(56005, ()=>{
+  console.log("I am listning at port 56005")
+})
+app.get("/quotes", (req, res)=>{
+  res.send(quotes)
+  console.log("you've reached Barry's server")
+})
+app.get(`/quotes/random`, (req, res)=>{
+  res.send(pickFromArray(quotes))
+})
 //...END OF YOUR CODE
 
-//You can use this function to pick one element at random from a given array
-//example: pickFromArray([1,2,3,4]), or
-//example: pickFromArray(myContactsArray)
-//
+// / You can use this function to pick one element at random from a given array
+// example: pickFromArray([1,2,3,4]), or
+// example: pickFromArray(myContactsArray)
+
 function pickFromArray(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
