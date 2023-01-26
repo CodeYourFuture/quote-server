@@ -12,11 +12,40 @@ const quotes = require("./quotes.json");
 //   /                  - Return some helpful welcome info (text)
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
-app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+app.get("/", function (req, res) {
+  res.send("Maziar's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
 //START OF YOUR CODE...
+
+app.get("/quotes", function (req, res) {
+  res.json(quotes);
+});
+
+app.get("/quotes/random", function (req, res) {
+  const randomQuotes = pickFromArray(quotes);
+  res.json(randomQuotes);
+});
+
+app.get("/quotes/search", function (req, res) {
+  const searchRules = req.query.term.toLowerCase();
+  const lowerCaseQuotes = quotes.map(({ quote, author }) => {
+    const lowerCaseQuote = quote.toLowerCase();
+    const lowerCaseAuthor = author.toLowerCase();
+    return { lowerCaseQuote, lowerCaseAuthor };
+  });
+  const searchQuotes = [];
+  lowerCaseQuotes.forEach((m, i) => {
+    if (
+      m.lowerCaseQuote.includes(searchRules) ||
+      m.lowerCaseAuthor.includes(searchRules)
+    ) {
+      searchQuotes.push(quotes[i]);
+    }
+  });
+
+  res.json(searchQuotes);
+});
 
 //...END OF YOUR CODE
 
@@ -29,6 +58,6 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
+const listener = app.listen(process.env.PORT || 5000, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
