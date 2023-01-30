@@ -17,6 +17,25 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+app.get("/quotes", (req, res) => {
+  res.json(quotes);
+});
+app.get("/quotes/random", (req, res) => {
+  res.json(pickFromArray(quotes));
+});
+
+app.get("/quotes/search", (req, res) => {
+  console.log(req.query);
+  if (req.query.search) {
+    let search = req.query.search.toLowerCase();
+    let matched = quotes.find((quote) =>
+      quote.quote.toLowerCase().includes(search)
+    );
+    res.send(matched);
+  } else {
+    res.send("");
+  }
+});
 
 //...END OF YOUR CODE
 
