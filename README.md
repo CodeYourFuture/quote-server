@@ -1,6 +1,6 @@
 # Challenge: A Quote Server
 
-## How long will this take?
+### How long will this take?
 
 - 1 hour (level 1)
 - 3-4 hours (advanced level)
@@ -14,22 +14,6 @@ In the _extended_ work of this challenge, you also make a React app which displa
 Here's how it might look if you make a request to such a server.
 ![screenshot of the server in use](./screenshots/quote-server-example.png)
 
-## Getting Started
-
-Fork this repository and read this file. This document outlines all of this tasks to complete this weeks homework.
-
-## Want to run your code on the internet?
-
-If you want to share your server with other people the easiest way to do this is to use Glitch
-
-- Remix [this server on glitch -
-  https://glitch.com/~cyf-quotes-start](https://glitch.com/~cyf-quotes-start)
-- Name your new server `yourname-quote-server`
-- Make sure you're logged in so that it saves
-- Check that it is working by making a request to `/`
-- Take time to read the comments
-- Copy the code you've written to Glitch
-
 ## Level 1 Challenge - make the quote server
 
 Your server must have at least these two "routes":
@@ -40,6 +24,15 @@ Your server must have at least these two "routes":
 A list of quotes (in JSON format) is provided in this repo [quotes.json](./quotes.json), but it will also be included in the starter project on glitch. Each quote is a simple object with a quote and an author.
 
 Try to use what you know to do this challenge on your own. However, there are some steps to guide you, below.
+
+## Start by remixing our example server
+
+- Remix [this server on glitch -
+  https://glitch.com/~cyf-quotes-start](https://glitch.com/~cyf-quotes-start)
+- Name your new server `yourname-quote-server`
+- Make sure you're logged in so that it saves
+- Check that it is working by making a request to `/`
+- Take time to read the comments
 
 ## Add a `/quotes` route
 
