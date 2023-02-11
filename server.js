@@ -14,12 +14,15 @@ const quotes = require("./quotes.json");
 //   /                  - Return some helpful welcome info (text)
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
-app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
-});
+
 
 //START OF YOUR CODE...
 //level 1
+
+app.get("/", function(req, res) {
+  res.send("Walter's Quote Server! Ask me for /quotes/random, or /quotes");
+});
+
 app.get("/quotes", (req, res) =>{
   response.send(quotes);
 });
