@@ -25,6 +25,12 @@ app.get("/quotes", function (request, response) {
 app.get("/quotes/random", function (request, response) {
   response.send(pickFromArray(quotes));
 })
+app.post('/', (req, res) => {
+  res.send("POST Request Called")
+})
+// app.put('/quote/:author', function(res,req) {
+//   res.send('this is an update');
+// });
 
 //...END OF YOUR CODE
 
