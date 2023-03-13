@@ -1,0 +1,36 @@
+name: Node.js CI for Server
+
+on:
+  push:
+    branches: [ main, london-class-8/berkeli-halmyradov ]
+  pull_request:
+    branches: [ main, london-class-8/berkeli-halmyradov]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: npm ci
+        working-directory: server
+      - name: Run tests
+        run: npm test
+        working-directory: server
+      - name: Deploy to Heroku
+        uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "quote-server-berkeli"
+          heroku_email: "berkelih@gmail.com"
+          appdir: server
+          branch: london-class-8/berkeli-halmyradov
