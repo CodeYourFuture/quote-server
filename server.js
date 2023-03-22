@@ -4,7 +4,7 @@
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
 const app = express();
-
+//const errorHandler = require("./middleware/errorHandler");
 const PORT = process.env.PORT || 3000;
 //-- added cours for crossbrowser
 //const cors = require("cors");
@@ -30,10 +30,12 @@ app.use("/quotes", require("./routes/quotes"));
 app.get("/quotes", (request, response) => {
   response.json(quotes);
 }); */
+/*
+// -- moved to controler filer //
 app.get("/quotes/random", (request, response) => {
   console.log(quotes);
   response.json(quotes);
-});
+}); */
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
@@ -54,6 +56,10 @@ app.all("*", (req, res) => {
     res.type("txt").send("404 Not Found");
   }
 });
+/* 
+// removed error handler as not working as expected
+//-- error handler -- //
+app.use(errorHandler); */
 
 //Start our server so that it listens for HTTP requests!
 const listener = app.listen(PORT, function () {

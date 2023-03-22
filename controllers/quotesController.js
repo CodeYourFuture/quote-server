@@ -31,11 +31,35 @@ const getSearchQuote = (req, res) => {
 - `/quotes/search?term=miss`
   */
   let term = req.query.term;
-  const searchResult = data.quotes.filter(
-    (el) => el.quote.includes(term) || el.autor.includes(term)
-  );
-  console.log(searchResult);
-  res.json([...searchResult]);
+  //console.log(typeof term);
+  // term in a string
+  //console.log(data.quotes);
+  //console.log(data.quotes[0]);
+  //console.log(data.quotes[0].quote.toLocaleLowerCase().includes(term));
+
+  try {
+    /* const searchResult = data.quotes.filter(
+    (el) => el.quote.includes(`${term}`) || el.autor.includes(term)
+  );*/
+    // added optional chaining to mitigate erros
+    const searchResult = data.quotes.filter(
+      (el) =>
+        el.quote.toLocaleLowerCase().includes(term) || el.author?.toLocaleLowerCase().includes(term)
+    );
+    //console.log(searchResult, "search result");
+    //console.log(searchResult.length, "search total");
+
+    //question: how to exist out of a funciton if ther is an error
+    // how to short sercut out of an function, do i need to wrap it in a t
+
+    console.log(searchResult);
+    res.json([...searchResult]);
+    //res.send(term);
+  } catch (err) {
+    console.error(err.stack);
+    res.status(500).send("sorry there was an internal server error");
+  } finally {
+  }
 };
 
 module.exports = {

@@ -1,3 +1,4 @@
+//const errorHandler = require("../middleware/errorHandler");
 const express = require("express");
 const router = express.Router();
 
@@ -9,4 +10,6 @@ router.get("/random", quotesController.getRandomQuote);
 
 router.get("/search", quotesController.getSearchQuote);
 
+/* // removed error handler an not working as expected 
+router.use(errorHandler); */
 module.exports = router;
