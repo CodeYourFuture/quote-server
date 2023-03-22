@@ -4,16 +4,15 @@
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
 const app = express();
-//const errorHandler = require("./middleware/errorHandler");
+
 const PORT = process.env.PORT || 3000;
-//-- added cours for crossbrowser
+//-- add cours for crossbrowser
 //const cors = require("cors");
 
 /*
 // - - moved to the quotesControler -- //
 //load the quotes JSON
 const quotes = require("./model/quotes.json"); */
-//const { response } = require("express");
 
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
@@ -56,19 +55,8 @@ app.all("*", (req, res) => {
     res.type("txt").send("404 Not Found");
   }
 });
-/* 
-// removed error handler as not working as expected
-//-- error handler -- //
-app.use(errorHandler); */
 
 //Start our server so that it listens for HTTP requests!
 const listener = app.listen(PORT, function () {
   console.log(`Your app is listening on port  + ${listener.address().port} + ${PORT}`);
 });
-
-/*
-// need to copy past results from listener object
-const listener = app.listen(PORT, function () {
-  console.log(`Your app is listening on port  + ${listener.address().port} + ${PORT}`, listener);
-});
- */
