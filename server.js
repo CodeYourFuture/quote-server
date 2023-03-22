@@ -25,12 +25,12 @@ app.get("/", function (request, response) {
 //START OF YOUR CODE...
 app.use("/quotes", require("./routes/quotes"));
 /* 
-// -- moved to controler filer //
+// -- moved to controler file //
 app.get("/quotes", (request, response) => {
   response.json(quotes);
 }); */
 /*
-// -- moved to controler filer //
+// -- moved to controler file //
 app.get("/quotes/random", (request, response) => {
   console.log(quotes);
   response.json(quotes);
