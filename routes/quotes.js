@@ -7,4 +7,6 @@ router.get("/", quotesController.getAllQuotes);
 
 router.get("/random", quotesController.getRandomQuote);
 
+router.get("/search", quotesController.getSearchQuote);
+
 module.exports = router;

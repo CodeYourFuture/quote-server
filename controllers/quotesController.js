@@ -24,8 +24,22 @@ const getRandomQuote = (req, res) => {
   console.log(randomQ);
   res.json([randomQ]);
 };
+const getSearchQuote = (req, res) => {
+  /* 
+   `/quotes/search?term=life`
+- `/quotes/search?term=success`
+- `/quotes/search?term=miss`
+  */
+  let term = req.query.term;
+  const searchResult = data.quotes.filter(
+    (el) => el.quote.includes(term) || el.autor.includes(term)
+  );
+  console.log(searchResult);
+  res.json([...searchResult]);
+};
 
 module.exports = {
   getAllQuotes,
   getRandomQuote,
+  getSearchQuote,
 };
