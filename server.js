@@ -20,11 +20,22 @@ app.get("/", function (request, response) {
 
 //START OF YOUR CODE...
 app.get("/quotes", function (request, response) {
+  console.log(request.query.quote);
   response.send({ Quotes });
 });
 
 app.get("/quotes/random", function (request, response) {
-  response.send(pickFromArray(Quotes));
+  response.send(Quotes[Math.floor(Math.random() * Quotes.length)]);
+});
+app.get("/quotes/search", function (request, response) {
+  console.log(request.query.term);
+  response.send(
+    Quotes.filter(
+      (el) =>
+        el.quote.toLowerCase().includes(request.query.term.toLowerCase()) ||
+        el.author.toLowerCase().includes(request.query.term.toLowerCase())
+    )
+  );
 });
 //...END OF YOUR CODE
 
