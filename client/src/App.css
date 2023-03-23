@@ -145,6 +145,12 @@ footer {
     width: 20em;
   }
 
+  @media screen and (min-width: 1000px) {
+    .App-header img {
+      right: 14.9em;
+    }
+  }
+
   @media screen and (min-width: 1200px) {
     .App-header img {
       right: 21.4em;
