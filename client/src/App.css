@@ -72,7 +72,7 @@
 }
 
 .quote-area p {
-  height: 9em;
+  height: 10em;
   margin-bottom: 0;
 }
 
@@ -125,10 +125,6 @@ footer {
 
   .quote-area {
     font-size: 1.9em;
-  }
-
-  .quote-area p {
-    height: 6em;
   }
 
   .generate {
