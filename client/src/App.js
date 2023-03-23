@@ -1,6 +1,7 @@
 // import logo from "./logo.svg";
 import { useState, useEffect } from "react";
 import "./App.css";
+import Footer from "./Footer";
 import Header from "./Header";
 import QuoteArea from "./QuoteArea";
 
@@ -28,6 +29,7 @@ function App() {
     <div className="App">
       <Header />
       <QuoteArea data={data} handleClick={handleClick} />
+      <Footer />
     </div>
   );
 }
