@@ -4,13 +4,15 @@ import "./App.css";
 import Header from "./Header";
 
 function App() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState("");
 
   useEffect(() => {
-    fetch("/quotes")
+    fetch("/quotes/random")
       .then((response) => response.json())
-      .then((data) => setData(data));
-    // .catch((error) => console.log(error)));
+      .then((data) => {
+        setData(data);
+      })
+      .catch((error) => console.log(error));
   }, []);
   return (
     <div className="App">
@@ -21,9 +23,12 @@ function App() {
 }
 
 const QuoteArea = (props) => {
-  console.log(props);
-
-  return <div></div>;
+  return (
+    <div>
+      <p>{props.data.quote}</p>
+      <span>{props.data.author}</span>
+    </div>
+  );
 };
 
 export default App;
