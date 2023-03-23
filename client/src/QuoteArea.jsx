@@ -4,7 +4,7 @@ const QuoteArea = (props) => {
       <p>{props.data.quote}</p>
       <span>{props.data.author}</span>
       <aside>
-        <button>Regenerate Quote</button>
+        <button onClick={props.handleClick}>Regenerate Quote</button>
       </aside>
     </div>
   );
