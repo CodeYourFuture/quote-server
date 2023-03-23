@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import Header from "./Header";
+import QuoteArea from "./QuoteArea";
 
 function App() {
   const [data, setData] = useState("");
@@ -21,14 +22,5 @@ function App() {
     </div>
   );
 }
-
-const QuoteArea = (props) => {
-  return (
-    <div>
-      <p>{props.data.quote}</p>
-      <span>{props.data.author}</span>
-    </div>
-  );
-};
 
 export default App;
