@@ -4,10 +4,13 @@
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use(cors());
+
+app.use(express.static(path.join(__dirname, "../client/public")));
 
 //load the quotes JSON
 const quotes = require("./quotes-with-id.json");
