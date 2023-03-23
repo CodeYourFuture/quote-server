@@ -14,15 +14,29 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  /* background-color: #282c34; */
+  /* min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: calc(10px + 2vmin); */
+  width: 18.2em;
+  display: flex;
+  color: black;
+  align-items: center;
+  text-align: justify;
+  padding: 0.5em;
+  margin: 0.5em 1em;
 }
+
+.App-header img {
+  height: 5em;
+}
+
+/* .App-header h1 {
+  padding: 0.5em;
+} */
 
 .App-link {
   color: #61dafb;
@@ -35,4 +49,29 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.quote-area {
+  color: red;
+  width: 15em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 3em;
+  margin-right: 1em;
+  padding: 0.5em;
+}
+
+.quote-area span {
+  margin: 1em;
+  padding: 0.5em;
+}
+
+.generate {
+  font-size: 1em;
+  padding: 0.9em;
+  font-weight: bold;
+  border: 2px purple solid;
+  border-radius: 35px;
+  background: white;
 }
