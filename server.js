@@ -3,8 +3,11 @@
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+app.use(cors());
 
 //load the quotes JSON
 const quotes = require("./quotes-with-id.json");
@@ -29,7 +32,7 @@ app.get("/quotes/random", (req, res) => {
   res.json(pickFromArray(quotes));
 });
 
-app.get("/search", function (req, res) {
+app.get("/quotes/search", function (req, res) {
   const searchQuery = req.query.term;
   function filteredList(arr) {
     return arr.filter(
