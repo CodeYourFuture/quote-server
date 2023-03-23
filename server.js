@@ -21,8 +21,7 @@ app.get("/quotes", (req, res) => {
   res.send(quotes);
 });
 app.get("/quotes/random", (req, res) => {
-  const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-  res.send(randomQuote);
+  res.send(pickFromArray(quotes));
 });
 //...END OF YOUR CODE
 
