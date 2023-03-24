@@ -31,6 +31,10 @@
   margin-right: auto;
 }
 
+/* .header {
+  background-image: url(https://creazilla-store.fra1.digitaloceanspaces.com/cliparts/3153919/quote-clipart-md.png);
+} */
+
 .App-header img {
   height: 12em;
   width: 20em;
@@ -110,6 +114,12 @@ footer {
 
   .App-header img {
     right: 6.9em;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .App-header img {
+    right: 12.3em;
   }
 }
 
