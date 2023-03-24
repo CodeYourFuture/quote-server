@@ -38,6 +38,7 @@
   position: absolute;
   top: 2em;
   right: 3.3em;
+  /* right: calc(16% - 1em); */
 }
 
 .App-header h1 {
@@ -88,6 +89,13 @@
   border: 2px purple solid;
   border-radius: 35px;
   background: white;
+}
+
+.generate:hover {
+  border: 4px solid pink;
+  color: pink;
+  background-color: black;
+  cursor: pointer;
 }
 
 footer {
@@ -144,20 +152,26 @@ footer {
   .quote-area {
     width: 20em;
   }
+}
 
-  @media screen and (min-width: 1000px) {
-    .App-header img {
-      right: 14.9em;
-    }
+@media screen and (min-width: 1000px) {
+  .App-header img {
+    right: 14.9em;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .App-header img {
+    right: 21.4em;
   }
 
-  @media screen and (min-width: 1200px) {
-    .App-header img {
-      right: 21.4em;
-    }
+  footer {
+    font-size: 1.5em;
+  }
+}
 
-    footer {
-      font-size: 1.5em;
-    }
+@media screen and (min-width: 1450px) {
+  .App-header img {
+    right: 28.9em;
   }
 }
