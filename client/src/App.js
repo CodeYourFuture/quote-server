@@ -7,6 +7,11 @@ import QuoteArea from "./QuoteArea";
 
 function App() {
   const [data, setData] = useState("");
+  // const [input, setInput] = useState("");
+
+  // function handleSearch(event) {
+  //   setInput(event.target.value);
+  // }
 
   const handleClick = () => {
     getQuote();
@@ -28,10 +33,17 @@ function App() {
   return (
     <div className="App">
       <Header />
+      {/* <SearchArea input={input} handleSearch={handleSearch} /> */}
       <QuoteArea data={data} handleClick={handleClick} />
       <Footer />
     </div>
   );
 }
+
+// function SearchArea(props) {
+//   return (
+//     <input type="text" value={props.input} onChange={props.handleSearch} />
+//   );
+// }
 
 export default App;
