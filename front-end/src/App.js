@@ -1,37 +1,23 @@
-import logo from "./logo.svg";
 import "./App.css";
-import { useEffect, useState } from "react";
+import { Header } from "./Header";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AllQuotes } from "./AllQuotes";
+import { Home } from "./Home";
+import { SearchQuote } from "./SearchQuote";
+import { Footer } from "./Footer";
 
 function App() {
-  const [data, setData] = useState(null);
-const [inputValue, setInputValue] = useState("");
-
-  useEffect(() => {
-    // fetch(`http://localhost:4444/quotes/search?term=${inputValue}`)
-    fetch(`http://localhost:4444/quotes/random`)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setData(data);
-      });
-  }, [inputValue]);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <input type="search" value={inputValue} onChange={(event) => setInputValue(event.target.value)}/>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/quotes" element={<AllQuotes />} />
+          <Route path="/quotes/search" element={<SearchQuote />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
     </div>
   );
 }

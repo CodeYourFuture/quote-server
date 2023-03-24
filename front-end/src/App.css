@@ -1,38 +1,239 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: url("https://cdn.pixabay.com/photo/2014/09/14/18/04/dandelion-445228__480.jpg") no-repeat center center fixed; 
+  background-size: cover;
+  /* border: 2px dotted red; */
+  width: 100%;
+
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 70px;
+ /* border: 2px dotted red; */
 }
 
-.App-link {
-  color: #61dafb;
+@media only screen and (max-width: 375px) {
+  .App {
+    gap: 40px;
+  }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+header {
+  margin-top: 20px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr .4fr;
+  grid-template-areas: 
+  "header-logo header-quotes-section";
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+@media only screen and (max-width: 375px) {
+  header {
+    margin-top: 10px;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "header-logo"
+    "header-quotes-section";
   }
 }
+
+.header-logo {
+  grid-area: header-logo;
+  border-right: 1px solid black;
+  padding: 3%;
+  justify-self: end;
+}
+
+@media only screen and (max-width: 375px) {
+  .header-logo {
+    width: 100%;
+    text-align: right;
+    border: none;
+    border-bottom: 1px solid black;
+    /* border: 2px dotted red; */
+  }
+}
+
+.header-logo-p {
+  font-weight: 600;
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+}
+
+.header-logo-p:hover {
+  color: rgb(184, 53, 239);
+  text-decoration: underline;
+  }
+
+.header-quotes-section {
+  grid-area: header-quotes-section;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  align-content: center;
+}
+
+@media only screen and (max-width: 375px) {
+  .header-quotes-section {
+    width: 100%;
+    grid-template-columns: 1fr .7fr;
+  }
+}
+
+.header-quotes-section-allQuotes-wrapper {
+  border-right: 1px solid black;
+  padding: 17% 25% 17% 17%;
+}
+
+@media only screen and (max-width: 375px) {
+  .header-quotes-section-allQuotes-wrapper  {
+    padding: 0;
+    padding: 10px 50px 10px 0;
+  }
+}
+
+.header-quotes-section-search-wrapper {
+  padding: 17% 24% 17% 17%; 
+}
+
+@media only screen and (max-width: 375px) {
+  .header-quotes-section-search-wrapper {
+    padding: 0;
+    padding: 10px 0;
+  }
+}
+
+.header-search-text {
+  color: black;
+  text-decoration: none;
+}
+
+.header-search-text:hover {
+color: rgb(184, 53, 239);
+text-decoration: underline;
+}
+
+.header-random-text {
+  color: black;
+  text-decoration: none;
+}
+
+.header-random-text:hover {
+  color: rgb(184, 53, 239);
+  text-decoration: underline;
+  }
+
+  .hero-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 4% 5%;
+    border: 1px solid black;
+    box-shadow:  rgba(154, 154, 162, 0.2) 0px -7px 29px 0px;
+    background-color: rgb(248, 227, 253);
+  }
+
+  @media only screen and (max-width: 375px) {
+    .hero-wrapper {
+      text-align: center;
+      gap: 15px;
+      margin: 0 15px;
+      padding: 6%;
+    }
+  }
+
+  .hero-btn {
+    background-color: rgb(184, 53, 239);
+    padding: 20px 30px;
+    border: 1px solid black;
+    font-weight: bold;
+    box-shadow: 0 3px 10px rgb(115, 113, 113);
+  }
+
+  .hero-btn:hover {
+    background-color: rgb(103, 244, 232);
+  }
+
+  .quotes-wrapper {
+    margin: 0 150px;
+    padding: 50px;
+    background-color: rgb(248, 227, 253);
+    box-shadow:  rgba(154, 154, 162, 0.2) 0px -7px 29px 0px;
+    border: 1px solid black;
+  }
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  @media only screen and (max-width: 375px) {
+    h1 {
+      margin-bottom: 10px;
+    }
+  }
+
+  @media only screen and (max-width: 375px) {
+    .quotes-wrapper {
+      margin: 0 15px;
+      text-align: center;
+      padding: 30px 20px;
+    }
+  }
+
+  .quote-content {
+    padding: 10px 0;
+  }
+
+  .quotes-label-input{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+  }
+
+  @media only screen and (max-width: 375px) {
+    .quotes-label-input{
+    flex-direction: column;
+    }
+  }
+
+  .search-quote-label {
+    font-weight: bold;
+  }
+
+  .quotes-input {
+    padding: 5px;
+    border: 1px solid black;
+  }
+
+  footer {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(103, 244, 232);
+    margin-top: 100px;
+    padding: 10px;
+    border: 1px solid black;
+  }
+
+  @media only screen and (max-width: 375px) {
+    footer {
+      flex-direction: column;
+    }
+  }
+
