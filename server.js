@@ -17,7 +17,14 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+app.get("/quotes", (req, res) => res.send(quotes));
 
+app.get("/quotes/random", (req, res) => {
+  res.send(`<div style="background-color:lightgray;width:50%;font-size:24px;padding:20px;">
+  <span style="font-size:50px;">&#8220;</span><span>${pickFromArray(quotes).quote}</span>
+  <p>${pickFromArray(quotes).author}</p>
+  </div>`);
+});
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
