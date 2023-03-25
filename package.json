@@ -20,5 +20,8 @@
     "node",
     "glitch",
     "express"
-  ]
+  ],
+  "env":{
+    "PORT": 3000
+  }
 }
