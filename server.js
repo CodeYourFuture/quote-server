@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3001;
 
 app.use(cors());
 
-app.use("/", express.static(path.join(__dirname, "../client")));
+app.use("/", express.static(path.join(__dirname, "./client")));
 
 //load the quotes JSON
 const quotes = require("./quotes-with-id.json");

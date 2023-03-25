@@ -22,7 +22,7 @@ function App() {
   }, []);
 
   const getQuote = () => {
-    fetch("/quotes/random")
+    fetch("https://react-full-stack-ebb3.onrender.com/quotes/random")
       .then((response) => response.json())
       .then((data) => {
         setData(data);
