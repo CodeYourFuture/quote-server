@@ -18,6 +18,18 @@ app.get("/", function (request, response) {
 
 //START OF YOUR CODE...
 
+// /quotes/search?term=life
+// /quotes/search?term=success
+// /quotes/search?term=miss
+
+
+app.get('/quotes/search', (request, response) => {
+  let searchQuery = request.query.term.toLowerCase()
+  response.send(quotes.filter(quote => 
+     quote.quote.toLowerCase().includes(searchQuery) || quote.author.toLowerCase().includes(searchQuery)
+  ))
+})
+
 app.get("/quotes",(request, response) => {
   response.send(quotes)
 })
