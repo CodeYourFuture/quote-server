@@ -20,7 +20,7 @@ app.get("/", function (request, response) {
 //START OF YOUR CODE...
 app.get("/quotes", function (request, response) {
   response.send(
-    {quotes}
+    quotes
   );
 });
 
