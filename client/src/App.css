@@ -106,11 +106,6 @@
   cursor: pointer;
 }
 
-.quote-area {
-  margin: 0.5em;
-  padding: 0.5em;
-}
-
 .quote-author,
 .search-results {
   margin: 1em;
@@ -148,6 +143,10 @@ footer {
   .App-header {
     margin-bottom: 2em;
   }
+
+  .quote-author {
+    margin: 2em;
+  }
 }
 
 @media screen and (min-width: 820px) {
@@ -166,12 +165,21 @@ footer {
     height: 22em;
   }
 
+  .navbar {
+    font-size: 1.9em;
+    font-weight: bold;
+  }
+
   .quote-area {
     font-size: 1.9em;
   }
 
   .generate {
     border-radius: 2em;
+  }
+
+  .quote-author {
+    padding: 1em;
   }
 
   footer {
@@ -182,6 +190,18 @@ footer {
 @media screen and (min-width: 900px) {
   .quote-area {
     width: 20em;
+  }
+
+  .quote-author {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 2em;
+  }
+
+  .search-results {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-column-gap: 2em;
   }
 }
 
