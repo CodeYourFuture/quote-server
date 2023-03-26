@@ -13,18 +13,29 @@ const quotes = require("./quotes.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send("Farzaneh's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
 //START OF YOUR CODE...
-app.get("/quotes", (req, res) => res.send(quotes));
+
+app.get("/quotes", (req, res) => {
+  res.status(200).json({
+    data: quotes
+  })
+});
 
 app.get("/quotes/random", (req, res) => {
-  res.send(`<div style="background-color:lightgray;width:50%;font-size:24px;padding:20px;">
-  <span style="font-size:50px;">&#8220;</span><span>${pickFromArray(quotes).quote}</span>
-  <p>${pickFromArray(quotes).author}</p>
-  </div>`);
+  const quote = pickFromArray(quotes);
+  res.status(200).json({ data: quote });
 });
+
+app.get("/quotes/search", (req, res) => {
+  const text = req.query.term.toLocaleLowerCase();
+  const filteredQuotes = quotes.filter(search =>
+    search.author.toLocaleLowerCase().includes(text) || search.quote.toLocaleLowerCase().includes(text));
+  res.status(200).json(filteredQuotes);
+});
+
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
