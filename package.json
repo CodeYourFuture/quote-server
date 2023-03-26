@@ -10,7 +10,8 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "ejs": "^3.1.9",
+    "express": "^4.18.2"
   },
   "repository": {
     "url": "https://glitch.com/edit/#!/hello-express"
@@ -20,5 +21,11 @@
     "node",
     "glitch",
     "express"
-  ]
+  ],
+  "author": "",
+  "devDependencies": {
+    "dotenv": "^16.0.3",
+    "nodemon": "^2.0.22",
+    "server": "^1.0.38"
+  }
 }
