@@ -4,24 +4,23 @@ import "./App.css";
 import Footer from "./Footer";
 import Header from "./Header";
 import QuoteArea from "./QuoteArea";
+import SearchArea from "./SearchArea";
+import AllQuotes from "./AllQuotes";
+import NavBar from "./NavBar";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   const [data, setData] = useState("");
-  // const [input, setInput] = useState("");
-
-  // function handleSearch(event) {
-  //   setInput(event.target.value);
-  // }
 
   const handleClick = () => {
-    getQuote();
+    getRandomQuote();
   };
 
   useEffect(() => {
-    getQuote();
+    getRandomQuote();
   }, []);
 
-  const getQuote = () => {
+  const getRandomQuote = () => {
     fetch("https://react-full-stack-ebb3.onrender.com/quotes/random")
       .then((response) => response.json())
       .then((data) => {
@@ -33,17 +32,20 @@ function App() {
   return (
     <div className="App">
       <Header />
-      {/* <SearchArea input={input} handleSearch={handleSearch} /> */}
-      <QuoteArea data={data} handleClick={handleClick} />
+      <NavBar />
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={<QuoteArea data={data} handleClick={handleClick} />}
+          />
+          <Route path="/quotes/search" element={<SearchArea />} />
+          <Route path="/quotes" element={<AllQuotes />} />
+        </Routes>
+      </BrowserRouter>
       <Footer />
     </div>
   );
 }
-
-// function SearchArea(props) {
-//   return (
-//     <input type="text" value={props.input} onChange={props.handleSearch} />
-//   );
-// }
 
 export default App;

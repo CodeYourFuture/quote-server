@@ -54,6 +54,19 @@
   }
 }
 
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.2em;
+}
+
+.navbar a {
+  text-decoration-color: #fda0a8;
+  text-decoration-style: double;
+  text-decoration-thickness: 0.2em;
+  color: black;
+}
+
 .quote-area {
   width: 18em;
   display: flex;
@@ -91,6 +104,39 @@
   color: #fda0a8;
   background-color: black;
   cursor: pointer;
+}
+
+.quote-area {
+  margin: 0.5em;
+  padding: 0.5em;
+}
+
+.quote-author,
+.search-results {
+  margin: 1em;
+  padding: 0.5em;
+}
+
+.each-quote {
+  border: 2px solid purple;
+  border-radius: 20px;
+  padding: 0.5em;
+  margin-bottom: 1em;
+}
+
+.search-area {
+  margin: 1.5em;
+}
+
+.search {
+  font-size: 1.2em;
+  margin: 0.5em;
+  padding: 0.3em;
+}
+
+.search input {
+  font-size: 1em;
+  padding: 0.2em;
 }
 
 footer {
