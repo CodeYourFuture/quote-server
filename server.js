@@ -2,6 +2,7 @@
 // This is where your node app starts
 
 //load the 'express' module which makes writing webservers easy
+const { response } = require("express");
 const express = require("express");
 const app = express();
 
@@ -18,25 +19,29 @@ app.get("/", (request, response) => {
 });
 
 //START OF YOUR CODE...
-
 app.get("/quotes", (request, response) => {
-  response.send(quotes)
-})
-
+  response.send(quotes);
+});
 app.get("/quotes/random", (request, response) => {
-  response.send(pickFromArray(quotes))
+  response.send(pickFromArray(quotes));
 });
 
-
 app.get("/quotes/search", (request, response) => {
-  const searchQuery = request.query.term.toLowerCase();
-  const result = quotes.filter((searchWord) => {
-    return (
-searchWord.quote.toLowerCase().includes(searchQuery) || searchWord.author.toLowerCase().includes(searchQuery)
-  )})
-  response.send({result})
-})
+  const searchQuery = request.query.term;
 
+  searchQuery
+    ? response.send({
+        result: quotes.filter((searchWord) => {
+          return (
+            searchWord.quote
+              .toLowerCase()
+              .includes(searchQuery.toLowerCase()) ||
+            searchWord.author.toLowerCase().includes(searchQuery.toLowerCase())
+          );
+        }),
+      })
+    : response.send([]);
+});
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
