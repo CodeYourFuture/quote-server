@@ -30,16 +30,18 @@ app.get("/quotes/random", (request, response) => {
 });
 
 app.get("/quotes/search", (request, response) => {
-  const termQuery = request.query.term.toLowerCase();
+  const termQuery = request.query.term;
 
-  const results = quotes.filter((quote) => {
-    return (
-      quote.quote.toLowerCase().includes(termQuery) ||
-      quote.author.toLowerCase().includes(termQuery)
-    );
-  });
-
-  response.send({ results });
+  termQuery
+    ? response.send({
+        results: quotes.filter((quote) => {
+          return (
+            quote.quote.toLowerCase().includes(termQuery.toLowerCase()) ||
+            quote.author.toLowerCase().includes(termQuery.toLowerCase())
+          );
+        }),
+      })
+    : response.send([]);
 });
 
 //...END OF YOUR CODE
