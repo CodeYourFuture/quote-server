@@ -3,7 +3,11 @@
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
+const cors = require("cors");
+
 const app = express();
+
+app.use(cors());
 
 const PORT = 3000;
 
@@ -17,6 +21,8 @@ const quotes = require("./quotes.json");
 app.get("/", (req, res) => {
   res.send("Zahraa's Quote Server! Ask me for /quotes/random, or /quotes");
 });
+
+// request ( MIDDLEWARE ) response
 
 //START OF YOUR CODE...
 
