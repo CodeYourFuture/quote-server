@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: gray;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.quote-container {
+  background: lightgray;
+  border: 1px solid darkgray;
+  padding: 5px;
+}
