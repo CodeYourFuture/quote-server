@@ -4,10 +4,10 @@
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
 const app = express();
-
+const errorHandler = require("./middleware/errorHandler");
 const PORT = process.env.PORT || 3000;
 //-- add cours for crossbrowser
-//const cors = require("cors");
+const cors = require("cors");
 
 /*
 // - - moved to the quotesControler -- //
@@ -18,6 +18,8 @@ const quotes = require("./model/quotes.json"); */
 //   /                  - Return some helpful welcome info (text)
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
+
+app.use(cors);
 app.get("/", function (request, response) {
   response.send("olus's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
@@ -55,6 +57,8 @@ app.all("*", (req, res) => {
     res.type("txt").send("404 Not Found");
   }
 });
+
+app.use(errorHandler);
 
 //Start our server so that it listens for HTTP requests!
 const listener = app.listen(PORT, function () {
