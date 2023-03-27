@@ -1,1 +1,4 @@
 node_modules
+backups/
+model/test.json
+notes.txt
