@@ -33,8 +33,8 @@ function App() {
       {quotes.map((x, index) => {
         return (
           <div key={index} className="quote-container">
-            <p>{x.quote}</p>
-            <p>- {x.author}</p>
+            <p className="quote">{x.quote}</p>
+            <p className="author">- {x.author}</p>
           </div>
         );
       })}
