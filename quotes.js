@@ -1,4 +1,4 @@
-[
+const arr = [
   {
     quote: "Life isn’t about getting and having, it’s about giving and being.",
     author: "Kevin Kruse",
@@ -465,3 +465,5 @@
     author: "Zig Ziglar",
   },
 ];
+
+module.export = arr;
