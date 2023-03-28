@@ -61,10 +61,14 @@
 }
 
 .nav-item {
-  text-decoration-color: #fda0a8;
+  color: black;
+}
+
+.nav-item:hover {
+  text-decoration-color: #6b5995;
   text-decoration-style: double;
   text-decoration-thickness: 0.2em;
-  color: black;
+  color: #828eda;
 }
 
 .quote-area {
