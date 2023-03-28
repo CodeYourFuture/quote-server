@@ -13,25 +13,29 @@ const quotes = require("./quotes.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
+  response.header({
+    "content-Type": "application/json"
+  })
   response.send(
     "Natalie's Quote Server!  Ask me for /quotes/random, or /quotes"
   );
 });
 
 //START OF YOUR CODE...
-//Link for Postman - http://localhost:3000/
+//Link for Postman - http://localhost:3001/
 
 app.get("/quotes", function (request, response) {
-  response.json({ quotes });
+  response.send({ quotes });
 });
 
 app.get("/quotes/random", function (request, response) {
-  response.json(pickFromArray(quotes));
+  response.send(pickFromArray(quotes));
 });
 
 app.get("/quotes/search", function (request, response) {
   const term = request.query.term;
-  response.json(searchTerm(term, quotes));
+  const word = request.query.word;
+  response.send(searchTerm(term, quotes));
 })
 //...END OF YOUR CODE
 
