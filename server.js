@@ -1,3 +1,4 @@
+const lodash = require("lodash");
 const express = require("express");
 const app = express();
 const port = 3030;
@@ -9,11 +10,6 @@ app.listen(port, function () {
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
-
-//function for getting random element from array
-function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
 
 // http://localhost:3030/ - Return some helpful welcome info (text)
 app.get("/", function (request, response) {
@@ -27,7 +23,7 @@ app.get("/quotes", function (request, response) {
 
 //   http://localhost:3030/quotes/random    - Should return ONE quote (json)
 app.get("/quotes/random", function (request, response) {
-  let randomQuote = pickFromArray(quotes);
+  let randomQuote = lodash.sample(quotes);
   response.send(randomQuote);
 });
 
