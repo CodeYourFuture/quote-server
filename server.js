@@ -7,6 +7,7 @@ const cors = require("cors");
 const app = express();
 app.use(cors());
 
+const port=3001
 // const port=3000
 
 //load the quotes JSON
@@ -27,13 +28,18 @@ app.get("/quotes", function (request, response) {
 });
 
 app.get("/quotes/random", function (request, response) {
-  response.json(pickFromArray(quotes));
+  
+  response.json([pickFromArray(quotes)]);
 });
 
+
 app.get("/quotes/search", function (request, response) {
-  const string = request.query.term.toLowerCase();
+  const { term, otherQuery } = request.query
+  const string = term.toLowerCase();
+
   //======>??????? how can i have more than one query
    response.json(searchResult(quotes,string));
+   
  console.log(quotes)
 });
 
@@ -52,11 +58,11 @@ function pickFromArray(arr) {
 }
 
 const searchResult = (arr,str) => {
-  return arr.filter(object => object.quote.toLowerCase().includes(str)||object.author.toLowerCase().includes(str))
+  return arr.filter(object => Object.values(object).some(value => value.toLowerCase().includes(str)))
  //return arr.map(object =>Object.values(object)).filter(object => object.includes(str))
 }
 
 //Start our server so that it listens for HTTP requests!
- app.listen(3001, () => {
-  console.log("Your app is listening on port " );
+ app.listen(port, () => {
+  console.log(`Your app is listening on port ${port}` );
 });

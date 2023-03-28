@@ -16,14 +16,16 @@ function App() {
       });
   }, [inputValue]);
  
-  // useEffect(() => {
-  //   fetch(`http://localhost:3001/quotes/random`)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setData(data);
-  //       console.log(data)
-  //     });
-  // }, []);
+
+ const buttonHandler = () => {
+  fetch(`http://localhost:3001/quotes/random`)
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data);
+        console.log(data)
+      });
+
+    }
 
 
   return (
@@ -43,8 +45,7 @@ function App() {
           setInputValue(event.target.value)
           }/></div>
       
-          <button onClick={() =>{
-        }}>random quote</button>
+          <button onClick={buttonHandler}>random quote</button>
       </div>
         <div className='card-container'>{data.map(object => {
           return (
