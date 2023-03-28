@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3001;
 
 app.use(cors());
 
-app.use("/", express.static(path.join(__dirname, "/client")));
+// app.use("/", express.static(path.join(__dirname, "/client")));
 
 //load the quotes JSON
 const quotes = require("./quotes-with-id.json");
@@ -20,11 +20,11 @@ const quotes = require("./quotes-with-id.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 
-// app.get("/", function (request, response) {
-//   response.send(
-//     "Andriana's Quote Server!  Ask me for /quotes/random, or /quotes"
-//   );
-// });
+app.get("/", function (request, response) {
+  response.send(
+    "Andriana's Quote Server!  Ask me for /quotes/random, or /quotes"
+  );
+});
 
 //START OF YOUR CODE...
 

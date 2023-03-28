@@ -32,16 +32,14 @@ function SearchArea() {
         />
       </aside>
       <aside className="search-results">
-        {input ? (
-          quotes.map((eachQuote) => (
-            <div key={eachQuote.id}>
-              <p>{eachQuote.quote}</p>
-              <p>~ {eachQuote.author}</p>
-            </div>
-          ))
-        ) : (
-          <></>
-        )}
+        {input
+          ? quotes.map((eachQuote) => (
+              <div key={eachQuote.id}>
+                <p>{eachQuote.quote}</p>
+                <p>~ {eachQuote.author}</p>
+              </div>
+            ))
+          : null}
       </aside>
     </section>
   );
