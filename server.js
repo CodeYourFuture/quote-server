@@ -3,7 +3,11 @@
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
+const cors = require("cors");
 const app = express();
+app.use(cors());
+
+// const port=3000
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
@@ -13,8 +17,27 @@ const quotes = require("./quotes.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send(" I am testing if the the Node is working");
 });
+
+
+app.get("/quotes", function (request, response) {
+
+  response.json(quotes);
+});
+
+app.get("/quotes/random", function (request, response) {
+  response.json(pickFromArray(quotes));
+});
+
+app.get("/quotes/search", function (request, response) {
+  const string = request.query.term.toLowerCase();
+  //======>??????? how can i have more than one query
+   response.json(searchResult(quotes,string));
+ console.log(quotes)
+});
+
+
 
 //START OF YOUR CODE...
 
@@ -28,7 +51,12 @@ function pickFromArray(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
+const searchResult = (arr,str) => {
+  return arr.filter(object => object.quote.toLowerCase().includes(str)||object.author.toLowerCase().includes(str))
+ //return arr.map(object =>Object.values(object)).filter(object => object.includes(str))
+}
+
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
-  console.log("Your app is listening on port " + listener.address().port);
+ app.listen(3001, () => {
+  console.log("Your app is listening on port " );
 });
