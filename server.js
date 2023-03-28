@@ -1,7 +1,3 @@
-// server.js
-// This is where your node app starts
-
-//load the 'express' module which makes writing webservers easy
 const express = require("express");
 const app = express();
 const port = 3030;
@@ -33,4 +29,16 @@ app.get("/quotes", function (request, response) {
 app.get("/quotes/random", function (request, response) {
   let randomQuote = pickFromArray(quotes);
   response.send(randomQuote);
+});
+
+//   http://localhost:3030/quotes/search?term=life
+app.get("/quotes/search", (request, response) => {
+  const searchTerm = request.query.term.toLowerCase(); // Get the search term from the query parameter and convert to lowercase
+  console.log(searchTerm);
+  const filteredQuotes = quotes.filter(
+    (quote) =>
+      quote.quote.toLowerCase().includes(searchTerm) ||
+      quote.author.toLowerCase().includes(searchTerm)
+  ); // Filter the quotes array to include only those that contain the search term in the text
+  response.json(filteredQuotes); // Return the filtered quotes as JSON
 });
