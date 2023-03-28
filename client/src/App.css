@@ -90,6 +90,10 @@
   padding: 0.5em;
 }
 
+.quotes {
+  margin-bottom: 1em;
+}
+
 .generate {
   font-size: 1em;
   padding: 0.9em;

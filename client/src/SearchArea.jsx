@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 function SearchArea() {
   const [input, setInput] = useState("");
   const [quotes, setQuotes] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   function handleSearch(event) {
     setInput(event.target.value);
@@ -15,6 +16,7 @@ function SearchArea() {
       .then((response) => response.json())
       .then((data) => {
         setQuotes(data);
+        setLoading(false);
       })
       .catch((error) => console.log(error));
   }, [input]);
@@ -31,16 +33,20 @@ function SearchArea() {
           placeholder="Type a word or author"
         />
       </aside>
-      <aside className="search-results">
-        {input
-          ? quotes.map((eachQuote) => (
-              <div key={eachQuote.id}>
-                <p>{eachQuote.quote}</p>
-                <p>~ {eachQuote.author}</p>
-              </div>
-            ))
-          : null}
-      </aside>
+      {loading ? (
+        "Please wait while we load quotes"
+      ) : (
+        <aside className="search-results">
+          {input
+            ? quotes.map((eachQuote) => (
+                <div key={eachQuote.id}>
+                  <p>{eachQuote.quote}</p>
+                  <p>~ {eachQuote.author}</p>
+                </div>
+              ))
+            : null}
+        </aside>
+      )}
     </section>
   );
 }
