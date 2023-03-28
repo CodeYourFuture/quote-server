@@ -60,7 +60,7 @@
   font-size: 1.2em;
 }
 
-.navbar a {
+.nav-item {
   text-decoration-color: #fda0a8;
   text-decoration-style: double;
   text-decoration-thickness: 0.2em;
