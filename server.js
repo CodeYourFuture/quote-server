@@ -35,6 +35,15 @@ app.use(function (err, req, res, next) {
   console.error(err.stack);
   res.status(500).send("Something broke!");
 });
+app.get("/quotes/search", function (request, response) {
+  response.send(
+    quotes.filter(
+      (e) =>
+        e.quote.toLowerCase().includes(request.query.word.toLowerCase()) ||
+        e.author.toLowerCase().includes(request.query.word.toLowerCase())
+    )
+  );
+});
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
