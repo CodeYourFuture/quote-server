@@ -21,9 +21,7 @@ app.get("/", function (request, response) {
 //START OF YOUR CODE...
 
 app.get("/quotes", (req, res) => {
-  res.status(200).json({
-    data: quotes
-  })
+  res.status(200).json({ data: quotes })
 });
 
 app.get("/quotes/random", (req, res) => {
@@ -33,10 +31,15 @@ app.get("/quotes/random", (req, res) => {
 });
 
 app.get("/quotes/search", (req, res) => {
-  const text = req.query.term.toLocaleLowerCase();
-  const filteredQuotes = quotes.filter(search =>
-    search.author.toLocaleLowerCase().includes(text) || search.quote.toLocaleLowerCase().includes(text));
-  res.status(200).json(filteredQuotes);
+  const { term } = req.query;
+  if (term)
+    res.status(400).json({ error: "You must pass in a 'term' search param" });
+  else {
+    const filteredQuotes = quotes.filter(search =>
+      search.author.toLocaleLowerCase().includes(term.toLocaleLowerCase())
+      || search.quote.toLocaleLowerCase().includes(term.toLocaleLowerCase()))
+    res.status(200).json({ data: filteredQuotes });
+  }
 });
 
 //...END OF YOUR CODE
