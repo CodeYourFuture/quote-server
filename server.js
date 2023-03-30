@@ -4,15 +4,14 @@
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
 const cors = require("cors");
+const lodash = require("lodash");
 const app = express();
-app.use(cors());
-
 const port=3001
 // const port=3000
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
-
+app.use(cors());
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
 //   /quotes            - Should return all quotes (json)
@@ -28,19 +27,15 @@ app.get("/quotes", function (request, response) {
 });
 
 app.get("/quotes/random", function (request, response) {
-  
-  response.json([pickFromArray(quotes)]);
+  response.json([lodash.sample(quotes)]);
 });
 
 
 app.get("/quotes/search", function (request, response) {
   const { term, otherQuery } = request.query
   const string = term.toLowerCase();
-
   //======>??????? how can i have more than one query
    response.json(searchResult(quotes,string));
-   
- console.log(quotes)
 });
 
 

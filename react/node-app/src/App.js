@@ -3,12 +3,12 @@ import './App.css';
 import { useEffect, useState} from "react"
 
 function App() {
-  const [inputValue, setInputValue] = useState(undefined);
+  const [inputValue, setInputValue] = useState("");
   const [data, setData] = useState([]);
 
 
   useEffect(() => {
-    fetch(`http://localhost:3001/quotes/search?term=${inputValue}`)
+    fetch(`https://boshra-quotes.glitch.me/quotes/search?term=${inputValue}`)
       .then((response) => response.json())
       .then((data) => {
         setData(data);
@@ -18,11 +18,10 @@ function App() {
  
 
  const buttonHandler = () => {
-  fetch(`http://localhost:3001/quotes/random`)
+  fetch(`https://boshra-quotes.glitch.me/quotes/random`)
       .then((response) => response.json())
       .then((data) => {
         setData(data);
-        console.log(data)
       });
 
     }
@@ -47,9 +46,9 @@ function App() {
       
           <button onClick={buttonHandler}>random quote</button>
       </div>
-        <div className='card-container'>{data.map(object => {
+        <div className='card-container'>{data.map((object,index) => {
           return (
-            <div className='card'><p>{object.quote}</p>
+            <div key={index} className='card'><p>{object.quote}</p>
             <p>{object.author}</p>
             </div>
           )
