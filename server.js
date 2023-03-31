@@ -20,18 +20,18 @@ app.get("/", function (request, response) {
 
 //START OF YOUR CODE...
 app.get('/quotes',(req,res,next)=>{
-  res.send(quotes);
+  res.json(quotes);
 });
 
 app.get('/quotes/random', (req,res,next)=>{
-  res.send(pickFromArray(quotes));
+  res.json(pickFromArray(quotes));
 });
 
 app.get('/quotes/search',(res,req,next)=>{
   const searchTerm = request.query.term;
   const matchedQuotes =quotes.filter((x) =>{
-    x.quote.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase()) ||
-    x.author.toLocaleLowerCase().includes(searchTerm.toLocaleLowerCase());
+    x.quote.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    x.author.toLowerCase().includes(searchTerm.toLowerCase());
     res.json(matchedQuotes);
 
   })

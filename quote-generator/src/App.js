@@ -1,30 +1,20 @@
-import {useState, useEffect} from "react";
+// import {useState, useEffect} from "react";
 import './App.css';
+import Header from './Header';
+
+
+
 
 function App() {
-  const [quotes, setQuotes] = useState([]);
+return (
+  <div className='App'>
+    <Header />
 
-  useEffect(() => {
-    fetch('https://quotes-server-by-tony.glitch.me/quotes').then((response) =>{
-      return response.json();
-    })
-    .then((data)=> {
-      setQuotes(data);
-    });
-  }, []);
-  
-  return (
-    <div className="App">
-      {quotes.map((x, index) =>{
-        return(
-          <div key={index} className='quote-container'>
-            <p className='quote'>{x.quote}</p>
-            <p className="author">{x.author}</p>
-          </div>
-        );
-      })}
-    </div>
-  );
+  </div>
+)
+
 }
+
+  
 
 export default App;
