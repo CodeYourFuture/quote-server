@@ -21,12 +21,8 @@ app.get("/quotes/search", function (request, response) {
   response.send(
     quotes.filter(
       (item) =>
-        item.quote
-          .toLowerCase()
-          .includes(request.query.searchTerm.toLowerCase()) ||
-        item.author
-          .toLowerCase()
-          .includes(request.query.searchTerm.toLowerCase())
+        item.quote.toLowerCase().includes(request.query.term.toLowerCase()) ||
+        item.author.toLowerCase().includes(request.query.term.toLowerCase())
     )
   );
 }); // request.query.searchTerm; in the input element name is = searchTerm
