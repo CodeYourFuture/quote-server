@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const lodash = require("lodash"); //a library like lodash to make it simpler to do tasks like picking randomly from an array.
 const port = 3000;
 const quotes = require("./quotes.json");
 
@@ -14,7 +15,7 @@ app.get("/quotes", (req, res) => {
 });
 
 app.get(`/quotes/random`, (req, res) => {
-  res.send(pickFromArray(quotes));
+  res.send(lodash.sample(quotes));
 });
 
 app.get("/quotes/search", function (request, response) {
