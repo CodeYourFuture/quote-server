@@ -2,6 +2,9 @@
 import './App.css';
 import Header from './Header';
 import {BrowserRouter, Route, Routes, Link} from 'react-router-dom';
+import AllQuotes from './AllQuotes';
+import Footer from './Footer';
+import RandomQuote from './RandomQuote';
 
 
 
@@ -22,7 +25,12 @@ return (
         Search Quote
       </Link>
     </nav>
+    <Routes>
+      <Route path='/quotes' element = {<AllQuotes/>} /> 
+      <Route path ='/' element ={<RandomQuote />} />
+    </Routes>
   </BrowserRouter>
+  <Footer />
   </div>
 )
 

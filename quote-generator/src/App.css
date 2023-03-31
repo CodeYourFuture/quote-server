@@ -50,6 +50,25 @@ body{
   height: 40vmin;
   pointer-events: none;
 }
+.all-quote{
+  height: auto;
+  width: 80%;
+  border-radius: 10px;
+  background-color: lightgray;
+  
+}
+.quote-container{
+  justify-content: center;
+  align-content: center;
+  padding: 1rem;
+}
+.button{
+  padding: 0.35rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  background-color: #282c34;
+  color: antiquewhite;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

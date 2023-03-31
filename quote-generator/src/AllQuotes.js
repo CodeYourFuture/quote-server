@@ -1,27 +1,44 @@
+import { useState, useEffect } from "react";
 
+function AllQuotes(){
+    const [quotes, setQuotes] =useState([]);
+    const [loading, setLoading] = useState(true);
 
-
-
-
-useEffect(() => {
-    fetch('https://quotes-server-by-tony.glitch.me/quotes').then((response) =>{
+    const generator = () => {
+    fetch('https://quotes-server-by-tony.glitch.me/quotes')
+    .then((response) =>{
       return response.json();
     })
     .then((data)=> {
       setQuotes(data);
-    });
-  }, []);
+      setLoading(false);
+    })
+    .catch((error) => console.log(error));
+  };
+
+  useEffect(()=>{
+    generator();
+  },[]);
   
   return (
-    <div className="App">
-      {quotes.map((x, index) =>{
+    <div className="all-quote">
+    {loading? ('Loading Now...') : (
+        <section>
+        {quotes.map((item) =>{
         return(
-          <div key={index} className='quote-container'>
-            <p className='quote'>{x.quote}</p>
-            <p className="author">{x.author}</p>
+          <div key={item} className='quote-container'>
+            <p className='quote'>{item.quote}</p>
+            <p className="author">{item.author}</p>
           </div>
         );
       })}
+      </section>
+    )}
+      
+      
     </div>
   );
+
 }
+
+export default AllQuotes;
