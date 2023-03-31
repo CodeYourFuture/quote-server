@@ -17,41 +17,33 @@ app.get(`/quotes/random`, (req, res) => {
   res.send(pickFromArray(quotes));
 });
 
-// app.get("/quotes/search", function (request, response) {
-//   response.send(
-//     quotes.filter(
-//       (item) =>
-//         item.quote
-//           .toLowerCase()
-//           .includes(request.query.searchTerm.toLowerCase()) ||
-//         item.author
-//           .toLowerCase()
-//           .includes(request.query.searchTerm.toLowerCase())
-//     )
-//   );
-// }); // request.query.searchTerm; in the input element name is = searchTerm
+app.get("/quotes/search", function (request, response) {
+  response.send(
+    quotes.filter(
+      (item) =>
+        item.quote
+          .toLowerCase()
+          .includes(request.query.searchTerm.toLowerCase()) ||
+        item.author
+          .toLowerCase()
+          .includes(request.query.searchTerm.toLowerCase())
+    )
+  );
+}); // request.query.searchTerm; in the input element name is = searchTerm
 // to toLowerCase? because we want to be case-insensitive
 // in search it's better to use filter instead of find(), because we may have more than one option.
 
-app.get("/quotes/search", function (request, response) {
+/*app.get("/quotes/search", function (request, response) {
   response.send(
     quotes.filter((item) => {
-      if (request.query.uservalue === "") {
-        return [];
-      } else if (
-        item.quote
-          .toLowerCase()
-          .includes(
+      if (request.query.uservalue === "") {return []; } else if ( item.quote .toLowerCase().includes(
             request.query.uservalue.toLowerCase() ||
-              item.author.toLocaleLowerCase().includes(request.query.uservalue)
-                .toLowerCase()
-          )
-      ) {
+              item.author.toLocaleLowerCase().includes(request.query.uservalue) .toLowerCase() ) ) {
         return item;
       }
     })
   );
-});
+}); */
 
 app.listen(port, () => console.log("Your app is listening on port 3000"));
 // const listener = app.listen(process.env.PORT, function () {
