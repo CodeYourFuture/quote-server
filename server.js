@@ -1,8 +1,8 @@
 //load the 'express' module which makes writing webservers easy
+
 const express = require("express");
 const app = express();
 const port = 3000;
-
 //load the quotes JSON
 const quotes = require("./quotes.json");
 
@@ -16,7 +16,6 @@ app.get("/", function (request, response) {
   );
 });
 
-//START OF YOUR CODE...
 app.get("/quotes", (req, res) => {
   res.send(quotes.map((q) => `${q.quote + "   " + q.author}`));
 });
@@ -31,12 +30,13 @@ app.get(`/quotes/random`, (req, res) => {
 //example: pickFromArray([1,2,3,4]), or
 //example: pickFromArray(myContactsArray)
 //
-function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
 
 //Start our server so that it listens for HTTP requests!
 app.listen(port, () => console.log("Your app is listening on port 3000"));
 // const listener = app.listen(process.env.PORT, function () {
 //   console.log("Your app is listening on port " + listener.address().port);
 // });
+
+function pickFromArray(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
