@@ -22,10 +22,10 @@
   justify-content: center;
   font-size: calc(10px + 2vmin); */
   width: 18.2em;
-  display: flex;
+  /* display: flex; */
   color: black;
   align-items: center;
-  text-align: justify;
+  /* text-align: justify; */
   padding: 0.5em;
   margin-left: auto;
   margin-right: auto;
