@@ -38,15 +38,12 @@ app.get("/quotes/random", function (request, response) {
 //Create a search handler for quotes
 app.get("/quotes/search", (req, res) => {
   const term = req.query.term; //Get the search term from the URL query string
-
-  // Query the database for quotes containing the specified term
-  const quotes = db.quotes.filter(
-    (quote) =>
-      quote.text.indexOf(term) !== -1 || quote.author.indexOf(term) !== -1
-  );
+  const quotesFound = quotes.filter((quoteItem) => {
+    return quoteItem.quote.toLowerCase().includes(term.toLowerCase());
+  });
 
   // Send an array of quotes as a response
-  res.json(quotes);
+  res.json(quotesFound);
 });
 
 //...END OF YOUR CODE
