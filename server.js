@@ -41,6 +41,7 @@ app.get("/quotes/search", (req, res) => {
   const quotesFound = quotes.filter((quoteItem) => {
     return quoteItem.quote.toLowerCase().includes(term.toLowerCase());
   });
+  //how to check level 2:(localhost:3000/quotes/search?term=miss)
 
   // Send an array of quotes as a response
   res.json(quotesFound);
