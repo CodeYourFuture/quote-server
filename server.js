@@ -8,7 +8,6 @@ const port = 3030;
 const lodash = require("lodash");
 const cors = require("cors");
 
-
 //load the quotes JSON
 const quotes = require("./quotes.json");
 
@@ -30,7 +29,7 @@ app.get("/quotes", function (request, response) {
 app.get("/quotes/random", function (request, response) {
   response.send(lodash.sample(quotes));
 });
- 
+
 app.get("/quotes/search", function (request, response) {
   response.send(
     quotes.filter(
