@@ -5,6 +5,7 @@
 const express = require("express");
 const app = express();
 
+
 //load the quotes JSON
 const quotes = require("./quotes.json");
 
@@ -17,6 +18,14 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+app.get("/quotes", function(req, res) {
+  res.json(quotes);
+});
+
+app.get("/quotes/random", function(req, res) {
+  const randomQuote = pickFromArray(quotes);
+  res.json(randomQuote);
+});
 
 //...END OF YOUR CODE
 
