@@ -1,7 +1,10 @@
 const lodash = require("lodash");
 const express = require("express");
+var cors = require("cors");
 const app = express();
 const port = 3030;
+
+app.use(cors());
 
 //start listening to server
 app.listen(port, function () {
