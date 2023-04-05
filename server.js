@@ -6,9 +6,11 @@ const express = require("express");
 const cors =require ("cors");
 const app = express();
 const PORT = process.env.PORT || 3001;
-app.use(cors());
+// app.use(cors());
+app.use(express.json());
 //load the quotes JSON
 const quotes = require("./quotes.json");
+const crud = require('./quotes-with-id.json');
 
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
@@ -28,7 +30,7 @@ app.get('/quotes/random', (req,res,next)=>{
 });
 
 app.get('/quotes/search',(res,req,next)=>{
-  const searchTerm = request.query.term;
+  const searchTerm = req.query.term;
   const matchedQuotes =quotes.filter((x) =>{
     x.quote.toLowerCase().includes(searchTerm.toLowerCase()) ||
     x.author.toLowerCase().includes(searchTerm.toLowerCase());
@@ -36,6 +38,30 @@ app.get('/quotes/search',(res,req,next)=>{
 
   })
   
+})
+app.get('/crud',(req,res)=> {
+  res.json(crud);
+})
+// crud starts from here
+
+//post request
+app.post('/crud',(req,res)=> {
+  console.log('tony is messed up')
+  const newQuote=req.body;
+  crud.push(newQuote);
+  res.status(201).send({newQuote})
+ 
+})
+
+//put
+let people =['Tony']
+app.put('people',(req,res)=> {
+people.push(req.body.split('/n'))
+res.json(people)
+})
+
+app.get('/people',(req,res)=>{
+  res.json(people)
 })
 //...END OF YOUR CODE
 
