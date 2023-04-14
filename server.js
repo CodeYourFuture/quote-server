@@ -13,15 +13,15 @@ const quotes = require("./quotes.json");
 //   /                  - Return some helpful welcome info (text)
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
-app.get("/",(request, response) => {
-  response.send("Mo Nahvi's Quote Server!  Ask me for /quotes/random, or /quotes");
+app.get("/", (request, response) => {
+  response.send(
+    "Mo Nahvi's Quote Server!  Ask me for /quotes/random, or /quotes"
+  );
 });
 
 //START OF YOUR CODE...
 app.get("/", (req, res) => {
-  res.send(
-    "MoReel's Quote Server!  Ask me for /quotes/random, or /quotes"
-  );
+  res.send("MoReel's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
 app.get("/quotes", (req, res) => {
@@ -35,6 +35,10 @@ app.get("/quotes/random", (req, res) => {
 app.get("/quotes/search", (req, res) => {
   const termQuery = req.query.term;
 
+  if (!termQuery) {
+    return res.status(400).json({ error: "Search term is required!" });
+  }
+
   termQuery
     ? res.send({
         results: quotes.filter((quote) => {
@@ -46,7 +50,6 @@ app.get("/quotes/search", (req, res) => {
       })
     : res.send([]);
 });
-
 
 //...END OF YOUR CODE
 
