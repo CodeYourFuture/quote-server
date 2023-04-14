@@ -39,16 +39,16 @@ app.get("/quotes/search", (req, res) => {
     return res.status(400).json({ error: "Search term is required!" });
   }
 
-  termQuery
-    ? res.send({
-        results: quotes.filter((quote) => {
-          return (
-            quote.quote.toLowerCase().includes(termQuery.toLowerCase()) ||
-            quote.author.toLowerCase().includes(termQuery.toLowerCase())
-          );
-        }),
+  const searchResults = termQuery
+    ? quotes.filter((quote) => {
+        return (
+          quote.quote.toLowerCase().includes(termQuery.toLowerCase()) ||
+          quote.author.toLowerCase().includes(termQuery.toLowerCase())
+        );
       })
-    : res.send([]);
+    : quotes;
+
+  return res.send(searchResults);
 });
 
 //...END OF YOUR CODE
