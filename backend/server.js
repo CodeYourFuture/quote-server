@@ -15,7 +15,7 @@ app.get("/", function (request, response) {
 });
 
 app.get("/quotes", (req, res) => {
-  res.send(quotes.map((q) => `${q.quote + "   " + q.author}`));
+  res.send(quotes);
 });
 
 app.get(`/quotes/random`, (req, res) => {
