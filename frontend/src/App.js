@@ -21,8 +21,11 @@ function App() {
 
   return (
     <div className="App">
-      {myData.map((q) => (
-        <p>{q.quote}</p>
+      {myData.map((q,index) => (
+        <section>
+          <p>{q.quote}</p>
+          <span>{q.author}</span>
+        </section>
       ))}
     </div>
   );
