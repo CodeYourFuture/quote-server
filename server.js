@@ -22,15 +22,20 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+//returns ALL of the quotes, as JSON.
 app.get("/quotes", function (request, response) {
-  response.send(quotes);
+  response.json(quotes);
 });
 
+//Random quotes
 app.get("/quotes/random", function (request, response) {
   response.send(lodash.sample(quotes));
 });
 
 app.get("/quotes/search", function (request, response) {
+  if (!request.query.word) {
+    response.send("the word is missing");
+  }
   response.send(
     quotes.filter(
       (element) =>
@@ -41,6 +46,7 @@ app.get("/quotes/search", function (request, response) {
     )
   );
 });
+
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
