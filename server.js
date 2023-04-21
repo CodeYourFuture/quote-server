@@ -18,7 +18,7 @@ app.get("/", function (request, response) {
 
 //START OF YOUR CODE...
 app.get('/quotes', (request, response) => {
-  respond.json(quotes);
+  response.json(quotes);
 });
 
 app.get('/quotes/random', (request, response) => {
