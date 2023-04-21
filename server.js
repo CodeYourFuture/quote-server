@@ -17,6 +17,16 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+app.get('/quotes', (request, response) => {
+  respond.json(quotes);
+});
+
+app.get('/quotes/random', (request, response) => {
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  const randomQuote = quotes[randomIndex];
+  response.json(randomQuote);
+});
+
 
 //...END OF YOUR CODE
 
