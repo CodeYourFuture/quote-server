@@ -11,6 +11,9 @@
     "dev": "nodemon index"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-regular-svg-icons": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "cors": "^2.8.5",
     "express": "^4.17.1"
   },
