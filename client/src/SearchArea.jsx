@@ -12,9 +12,7 @@ function SearchArea() {
   }
 
   useEffect(() => {
-    fetch(
-      `https://react-full-stack-ebb3.onrender.com/quotes/search?term=${input}`
-    )
+    fetch(`https://react-full-stack-ebb3.onrender.com/quotes?term=${input}`)
       .then((response) => response.json())
       .then((data) => {
         setQuotes(data);

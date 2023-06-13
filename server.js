@@ -2,23 +2,21 @@
 // This is where your node app starts
 
 //load the 'express' module which makes writing webservers easy
+const dotenv = require("dotenv");
+dotenv.config();
+
 const express = require("express");
 const cors = require("cors");
-const path = require("path");
-const app = express();
+
 const PORT = process.env.PORT || 3001;
+const app = express();
 
 app.use(cors());
-
-// app.use("/", express.static(path.join(__dirname, "/client")));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 //load the quotes JSON
-const quotes = require("./quotes-with-id.json");
-
-// Now register handlers for some routes:
-//   /                  - Return some helpful welcome info (text)
-//   /quotes            - Should return all quotes (json)
-//   /quotes/random     - Should return ONE quote (json)
+const quotesData = require("./db_config.js");
 
 app.get("/", function (request, response) {
   response.send(
@@ -29,39 +27,37 @@ app.get("/", function (request, response) {
 //START OF YOUR CODE...
 
 app.get("/quotes", (req, res) => {
-  res.json(quotes);
+  const searchTerm = req.query.term || "";
+
+  let getQuery = "SELECT * FROM quotes";
+
+  let searchQuery =
+    "WHERE lower(quote) LIKE '%' || $1 || '%' OR lower(author) LIKE '%' || $1 || '%'";
+
+  quotesData
+    .query(getQuery + " " + searchQuery, [searchTerm])
+    .then((result) => {
+      if (result.rowCount === 0) {
+        return res.json({ error: "No quotes available" });
+      } else {
+        return res.status(200).json({ search_query: result.rows });
+      }
+    })
+    .catch((error) => console.log(error));
 });
 
 app.get("/quotes/random", (req, res) => {
-  res.json(pickFromArray(quotes));
+  const randomQuery = "SELECT * FROM quotes ORDER BY RANDOM() LIMIT 1";
+
+  quotesData
+    .query(randomQuery)
+    .then((result) => res.status(200).json(result.rows[0]))
+    .catch((error) => console.log(error));
 });
 
-app.get("/quotes/search", function (req, res) {
-  const searchQuery = req.query.term;
-  function filteredList(arr) {
-    return arr.filter(
-      (eachQuote) =>
-        eachQuote.quote.toLowerCase().includes(searchQuery) ||
-        eachQuote.author.toLowerCase().includes(searchQuery)
-    );
-  }
-  res.json(filteredList(quotes));
-});
-
-//...END OF YOUR CODE
-
-//You can use this function to pick one element at random from a given array
-//example: pickFromArray([1,2,3,4]), or
-//example: pickFromArray(myContactsArray)
-//
 function pickFromArray(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
-
-//Start our server so that it listens for HTTP requests!
-// const listener = app.listen(process.env.PORT, function () {
-//   console.log("Your app is listening on port " + listener.address().port);
-// });
 
 app.listen(PORT, function () {
   console.log("Your app is listening on port " + PORT);
