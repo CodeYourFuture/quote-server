@@ -40,7 +40,7 @@ app.get("/quotes", (req, res) => {
       if (result.rowCount === 0) {
         return res.json({ error: "No quotes available" });
       } else {
-        return res.status(200).json({ search_query: result.rows });
+        return res.status(200).json(result.rows);
       }
     })
     .catch((error) => console.log(error));
