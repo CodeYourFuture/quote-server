@@ -19,14 +19,14 @@ router.get("/quotes", (req, res, next) => {
 });
 
 router.get("/quotes/random", (req, res, next) => {
-  res.json(pickFromArray(quotes));
+  res.json([pickFromArray(quotes)]);
 });
 
 router.get("/quotes/search", (req, res, next) => {
   const searchTerm = req.query.term.toLocaleLowerCase();
-  const result = quotes.filter(({ quote }) =>
-    quote.toLocaleLowerCase().includes(searchTerm)
-  );
+  const regex = new RegExp(searchTerm, "i"); // "i" flag for case-insensitive search
+
+  const result = quotes.filter(({ quote }) => regex.test(quote));
   res.json(result);
 });
 
