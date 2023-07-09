@@ -17,7 +17,24 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+app.get("/quotes", (req, res) => {
+  res.send(quotes);
+  console.log("/quotes");
+});
 
+app.get("/quotes/random", (req, res) => {
+  res.send(pickFromArray(quotes));
+  console.log("/quotes/random");
+});
+
+app.get("/quotes/search", (req, res) => {
+  let searchValue = req.query.term;
+  let filteredArr = quotes.filter((element) =>
+    element.quote.toLowerCase().includes(searchValue)
+  );
+  res.send(filteredArr);
+  console.log("/quotes/search");
+});
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
@@ -29,6 +46,7 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
-  console.log("Your app is listening on port " + listener.address().port);
+app.listen(5500, function () {
+  // console.log("Your app is listening on port " + listener.address().port);
+  console.log("Your app is listening on port ");
 });
