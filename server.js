@@ -1,5 +1,7 @@
 // server.js
 // This is where your node app starts
+// Load the full build.
+var _ = require("lodash");
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
@@ -23,7 +25,7 @@ app.get("/quotes", (req, res) => {
 });
 
 app.get("/quotes/random", (req, res) => {
-  res.send(pickFromArray(quotes));
+  res.send(_.sample(quotes));
   console.log("/quotes/random");
 });
 
@@ -41,9 +43,9 @@ app.get("/quotes/search", (req, res) => {
 //example: pickFromArray([1,2,3,4]), or
 //example: pickFromArray(myContactsArray)
 //
-function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
+// function pickFromArray(arr) {
+//   return arr[Math.floor(Math.random() * arr.length)];
+// }
 
 //Start our server so that it listens for HTTP requests!
 app.listen(5500, function () {
