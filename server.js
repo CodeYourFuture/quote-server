@@ -13,10 +13,25 @@ const quotes = require("./quotes.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send(
+    "Malkit's Quote Server!  Ask me for /quotes/random, or /quotes"
+  );
 });
 
 //START OF YOUR CODE...
+app.get("/quotes", function (request, response) {
+  response.send(quotes);
+});
+
+app.get("/quotes/random", function (request, response) {
+  response.send(pickFromArray(quotes));
+});
+
+app.get("/quotes/search", function (request, response) {
+  let term = request.query.term;
+  let answer = searchArray(quotes, term);
+  response.send(answer);
+});
 
 //...END OF YOUR CODE
 
@@ -26,6 +41,17 @@ app.get("/", function (request, response) {
 //
 function pickFromArray(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function searchArray(arr, searchTerm) {
+  let searchResults = arr.filter((aQuote) => {
+    return (
+      aQuote.quote.toUpperCase().includes(searchTerm.toUpperCase()) ||
+      aQuote.author.toUpperCase().includes(searchTerm.toUpperCase())
+    );
+  });
+
+  return searchResults;
 }
 
 //Start our server so that it listens for HTTP requests!
