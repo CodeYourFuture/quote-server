@@ -5,6 +5,7 @@
 const express = require("express");
 const app = express();
 
+
 //load the quotes JSON
 const quotes = require("./quotes.json");
 
@@ -14,16 +15,26 @@ const quotes = require("./quotes.json");
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
   response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+
+  });
+
+app.get("/quotes",(request,response)=>{
+  response.send(quotes);
 });
 
-//START OF YOUR CODE...
+app.get('/randomQuotes',(request,response)=>{
+  const randomQuotes = pickFromArray(quotes);
+  const quotesText = `Quotes : ${randomQuotes.quote}   by Author :${randomQuotes.author};`;
 
-//...END OF YOUR CODE
+  response.send(quotesText);
+})
+
+
 
 //You can use this function to pick one element at random from a given array
 //example: pickFromArray([1,2,3,4]), or
 //example: pickFromArray(myContactsArray)
-//
+
 function pickFromArray(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
