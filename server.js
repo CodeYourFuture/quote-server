@@ -22,13 +22,25 @@ app.get("/quotes",(request,response)=>{
   response.send(quotes);
 });
 
-app.get('/randomQuotes',(request,response)=>{
+app.get('/quotes/random',(request,response)=>{
   const randomQuotes = pickFromArray(quotes);
   const quotesText = `Quotes : ${randomQuotes.quote}   by Author :${randomQuotes.author};`;
 
   response.send(quotesText);
 })
 
+app.get('/quotes/search', (request, response) => {
+  let term = request.query.term;
+  response.json(search(term));
+});
+
+function search(term) {
+  const quoteSearch = quotes.filter((searchValue) =>
+    searchValue.quote.toLowerCase().includes(term.toLowerCase()) ||
+    searchValue.author.toLowerCase().includes(term.toLowerCase())
+  );
+  return quoteSearch;
+}
 
 
 //You can use this function to pick one element at random from a given array
