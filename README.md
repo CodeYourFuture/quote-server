@@ -186,8 +186,8 @@ Install the lodash library:
 
 - edit the file `package.json`...
 - add a line for lodash in the dependencies (you'll already see one for "express").
-- You can use "\*" as the version number for now.
-- Glitch will automatically install it.
+- You can use `"*"` as the version number for now.
+- If you're using Glitch, it will automatically install it. If you're running locally, you will need to run `npm install` to set up the dependency.
 
 Add a "require" line in your server.js so that you can use the library.
 
