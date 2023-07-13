@@ -2,6 +2,7 @@
 // This is where your node app starts
 
 //load the 'express' module which makes writing webservers easy
+
 const express = require("express");
 const app = express();
 
@@ -13,10 +14,38 @@ const quotes = require("./quotes.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+  console.log("Hellloooooo!!!!!!")
+  let searchQuery = request.query.search;
+    if(searchQuery){
+    response.send(quotes.filter((quote) => quote.quote.includes(searchQuery)));
+  } else {
+    response.send(
+      "Anna's Quote Server!  Ask me for /quotes/random, or /quotes"
+    );
+  }
 });
 
 //START OF YOUR CODE...
+app.get("/quotes", (req, res) => res.send(quotes));
+
+app.get("/quotes/random", (req, res) => {
+  let random = Math.floor(Math.random() * quotes.length);
+  res.send(quotes[random])
+})
+
+app.get("/quotes/search", (req, res) => {
+  let searchValue = req.query.word
+  let searchTerm = req.query.term 
+  if(searchValue){
+    res.send(quotes.filter((quote) => quote.quote.includes(searchValue)));
+  } 
+  if(searchTerm){
+    res.send(quotes.filter((quote) => quote.quote.includes(searchTerm)));
+  }
+  
+})
+
+app.get("/echo", (req, res) => res.send(`You said "${req.query.word}"`))
 
 //...END OF YOUR CODE
 
