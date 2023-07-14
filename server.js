@@ -3,12 +3,15 @@
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
+const lodash = require('lodash');
 const app = express();
 port = 9010
 
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
+
+
 
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
@@ -28,12 +31,18 @@ app.get("/quotes", (request, response) => {
 
 app.get("/quotes/random", (request, response) => {
   // console.log(request.query.quote)
-  response.send(pickFromArray(quotes))
+  response.send(lodash.sample(quotes))
 })
 
 app.get("/quotes/random/search", (request, response) => {
   let word = request.query.terms
   response.send(searchTheQuate(quotes, word))
+})
+
+
+app.get("/echo", (req, res) => {
+  let word = req.query.word
+  res.send("you just said " + word)
 })
 //...END OF YOUR CODE
 
@@ -41,9 +50,10 @@ app.get("/quotes/random/search", (request, response) => {
 //example: pickFromArray([1,2,3,4]), or
 //example: pickFromArray(myContactsArray)
 //
-function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
+// function pickFromArray(arr) {
+//   // return arr[Math.floor(Math.random() * arr.length)];
+
+// }
 
 function searchTheQuate(arr, term) {
   return arr.filter(item =>
