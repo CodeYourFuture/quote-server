@@ -2,9 +2,11 @@
 // This is where your node app starts
 
 //load the 'express' module which makes writing webservers easy
-
+const lodash = require("lodash");
 const express = require("express");
+var cors = require("cors");
 const app = express();
+app.use(cors());
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
@@ -29,8 +31,11 @@ app.get("/", function (request, response) {
 app.get("/quotes", (req, res) => res.send(quotes));
 
 app.get("/quotes/random", (req, res) => {
-  let random = Math.floor(Math.random() * quotes.length);
-  res.send(quotes[random])
+
+  res.send(lodash.sample(quotes))
+  
+  // let random = Math.floor(Math.random() * quotes.length);
+  // res.send(quotes[random])
 })
 
 app.get("/quotes/search", (req, res) => {
@@ -61,3 +66,7 @@ function pickFromArray(arr) {
 const listener = app.listen(process.env.PORT, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
+
+// const listener = app.listen(34845, function () {
+//   console.log("Your app is listening on port " + listener.address().port);
+// });
