@@ -15,9 +15,7 @@ app.use(cors());
 const quotes = require("./quotes-with-id.json");
 
 app.get("/", (req, res) => {
-  response.send(
-    "Kristina's Quote Server!  Ask me for /quotes/random, or /quotes"
-  );
+  res.send("Kristina's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
 app.get("/quotes", (req, res) => {
