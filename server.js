@@ -21,6 +21,30 @@ app.get("/quotes", (req, res) => {
   res.send({ quotes });
 });
 
+app.get("/quotes/search", (req, res) => {
+  const searchTerm = req.query.term;
+  const filteredQuotes = quotes.filter((quote) => {
+    const searchQuote = quote.quote.toLowerCase();
+    const searchAuthor = quote.author.toLowerCase();
+    return searchQuote.includes(searchTerm.toLowerCase()) || searchAuthor.includes(searchTerm.toLowerCase());
+  });
+  res.json(filteredQuotes);
+});
+
+
+/* app.use("/quotes", (req, res, next) => {
+  const filters = req.query;
+  const filteredUsers = quotes.filter((user) => {
+    let isValid = true;
+    for (key in filters) {
+      console.log(key, user[key], filters[key]);
+      isValid = isValid && user[key] == filters[key];
+    }
+    return isValid;
+  });
+  res.send(filteredUsers);
+}); */
+
 app.get("/quotes/random", (req, res) => {
   res.send(pickFromArray(quotes));
 });
