@@ -30,6 +30,11 @@ app.get("/quotes/random", (request, response) => {
   // console.log(request.query.quote)
   response.send(pickFromArray(quotes))
 })
+
+app.get("/quotes/random/search", (request, response) => {
+  let word = request.query.terms
+  response.send(searchTheQuate(quotes, word))
+})
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
@@ -38,6 +43,12 @@ app.get("/quotes/random", (request, response) => {
 //
 function pickFromArray(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function searchTheQuate(arr, term) {
+  return arr.filter(item =>
+    item.quote.toLowerCase().includes(term.toLowerCase())
+  )
 }
 
 //Start our server so that it listens for HTTP requests!
