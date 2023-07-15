@@ -5,7 +5,7 @@
 const express = require("express");
 const lodash = require('lodash');
 const app = express();
-port = 9010
+// port = 9010
 
 
 //load the quotes JSON
@@ -34,9 +34,9 @@ app.get("/quotes/random", (request, response) => {
   response.send(lodash.sample(quotes))
 })
 
-app.get("/quotes/random/search", (request, response) => {
+app.get("/quotes/search", (request, response) => {
   let word = request.query.terms
-  response.send(searchTheQuate(quotes, word))
+  response.send(searchTheQuote(quotes, word))
 })
 
 
@@ -55,17 +55,17 @@ app.get("/echo", (req, res) => {
 
 // }
 
-function searchTheQuate(arr, term) {
+function searchTheQuote(arr, term) {
   return arr.filter(item =>
     item.quote.toLowerCase().includes(term.toLowerCase())
   )
 }
 
 //Start our server so that it listens for HTTP requests!
-// const listener = app.listen(process.env.PORT, function () {
-//   console.log("Your app is listening on port " + listener.address().port);
-// });
+const listener = app.listen(process.env.PORT, function () {
+  console.log("Your app is listening on port " + listener.address().port);
+});
 
-app.listen(port, () => {
-  console.log("Your app is listening on port " + port);
-})
+// app.listen(port, () => {
+//   console.log("Your app is listening on port " + port);
+// })
