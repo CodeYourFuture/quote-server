@@ -5,6 +5,7 @@
 const express = require("express");
 const app = express();
 
+
 //load the quotes JSON
 const quotes = require("./quotes.json");
 
@@ -26,6 +27,19 @@ app.get("/quotes/random", (request, response) => {
 const randomQuote = pickFromArray(quotes);
   response.json(randomQuote);
 });
+
+app.get("/quotes/search", (request, response) => {
+  const search = request.query.term.toUpperCase();
+
+  const searchQuotes = (arr) =>
+    arr.filter(
+      (element) =>
+        element.quote.toUpperCase().includes(search) ||
+        element.author.toUpperCase().includes(search)
+    );
+  response.json(searchQuotes(quotes)) 
+ 
+})
 
 //...END OF YOUR CODE
 
