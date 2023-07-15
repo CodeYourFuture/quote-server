@@ -31,14 +31,14 @@ function pickFromArray(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
-// app.get("/quotes/random/search", function (request, response) {
-//   const word = request.query.word;
-//   response.send(`searched word: ${word}`);
-// });
+app.get("/quotes/search", function (request, response) {
+  const term = request.query.term;
+  const filteredQuotes = quotes.filter(function (quote) {
+    return quote.quote.toLowerCase().includes(term.toLowerCase());
+  });
+  response.send(filteredQuotes);
+});
 
-// app.get("/", function (request, response) {
-//   response.send("You need to request /search?word=life");
-// });
 
 //Start our server so that it listens for HTTP requests!
 const listener = app.listen(process.env.PORT, function () {
