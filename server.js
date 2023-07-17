@@ -3,7 +3,9 @@
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
+const lodash = require("lodash");
 const app = express();
+const lodash = require("lodash");
 
 
 //load the quotes JSON
@@ -31,14 +33,19 @@ const randomQuote = pickFromArray(quotes);
 app.get("/quotes/search", (request, response) => {
   const search = request.query.term.toUpperCase();
 
+  // /echo?word=ismail
+  app.get("/echo", (request, respponse) => {
+    let queryWord = request.query.word;
+    response.send(`you said ${queryWord}`);
+  });
+
   const searchQuotes = (arr) =>
     arr.filter(
       (element) =>
         element.quote.toUpperCase().includes(search) ||
         element.author.toUpperCase().includes(search)
     );
-  response.json(searchQuotes(quotes)) 
- 
+  response.json(searchQuotes(quotes));
 })
 
 //...END OF YOUR CODE
@@ -48,15 +55,13 @@ app.get("/quotes/search", (request, response) => {
 //example: pickFromArray(myContactsArray)
 //
 function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
+  return lodash.sample(myArray);
 }
 
-
-// function search() {
-
-// }
 
 //Start our server so that it listens for HTTP requests!
 const listener = app.listen(3000, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
+
+
