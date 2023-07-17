@@ -21,9 +21,9 @@ const CardWithQuotes = () => {
     }
 
     return (
-        <div>
-            <p>Quote {data.quote}</p>
-            <p>Autor {data.author}</p>
+        <div className="card">
+            <p className="quote">"{data.quote}"</p>
+            <p>Autor: {data.author}</p>
             <button onClick={handleClick}>Next Quote</button>
         </div>
     )

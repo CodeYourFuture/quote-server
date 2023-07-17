@@ -4,7 +4,10 @@ import CardWithQuotes from "./CardWithQuotes.js"
 function App() {
   return (
     <div className="App">
-      <CardWithQuotes />
+      <div className='card-Wrapper'>
+        <CardWithQuotes />
+      </div>
+
     </div>
   );
 }

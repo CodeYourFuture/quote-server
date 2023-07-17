@@ -32,7 +32,47 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.App {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  justify-content: center;
+  padding-top: 4rem;
+  background-color: rgb(250, 241, 227);
+
+}
+
+.card-Wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  background-image: linear-gradient(to bottom right, #e3cfbe, #c3aa94);
+  max-width: 40rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(255, 255, 255);
+
+}
+
+.quote {
+  font-size: 18px;
+  border-bottom: rgb(237, 224, 217) solid 1px;
+  padding-bottom: 1rem;
+}
+
+button {
+  background-color: #603a08;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  color: white;
+  border: rgb(237, 224, 217) solid 1px;
 }
