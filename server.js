@@ -40,6 +40,11 @@ function getMatchingQuotes(searchTerm) {
   );
 }
 
+app.get("/echo", function (request, response) {
+  let wordQuery = request.query.word;
+  response.send(`You said ${wordQuery}`);
+});
+
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
