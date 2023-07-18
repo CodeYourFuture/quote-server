@@ -5,6 +5,7 @@
 const express = require("express");
 const app = express();
 
+const lodash = require("lodash");
 //load the quotes JSON
 const quotes = require("./quotes.json");
 
@@ -25,6 +26,28 @@ app.get("/quotes", function(request, response) {
 app.get("/quotes/random", function (request, response) {
   response.json(pickFromArray(quotes));
 });
+
+  app.get("/quotes/search", function (request, response) {
+  let searchTerm = request.query.term
+  let matchedTerm = searchListOfQuotes(searchTerm);
+  response.json(matchedTerm)
+  })
+
+function searchListOfQuotes (searchTerm){
+return quotes.filter(
+  (quote) =>
+    quote.quote.toLowerCase().includes(searchTerm.toLowerCase) ||
+    quote.author.toLowerCase().includes(searchTerm.toLowerCase)
+    //search term should also be to lower case?
+);
+
+}
+
+app.get("/echo", function(request, response){
+  let word = request.query.word
+  response.send(`you said ${word}`)
+})
+
 
 //...END OF YOUR CODE
 
