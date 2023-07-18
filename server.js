@@ -3,9 +3,11 @@
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
-const app = express();
-
 const lodash = require("lodash");
+const cors = require("cors");
+const app = express();
+app.use(cors());npm
+
 //load the quotes JSON
 const quotes = require("./quotes.json");
 
@@ -19,35 +21,36 @@ app.get("/", function (request, response) {
 
 //START OF YOUR CODE...
 
-app.get("/quotes", function(request, response) {
-  response.json(quotes)
+app.get("/quotes", function (request, response) {
+  response.json(quotes);
 });
 
 app.get("/quotes/random", function (request, response) {
   response.json(pickFromArray(quotes));
 });
 
-  app.get("/quotes/search", function (request, response) {
-  let searchTerm = request.query.term
-  let matchedTerm = searchListOfQuotes(searchTerm);
-  response.json(matchedTerm)
-  })
-
-function searchListOfQuotes (searchTerm){
-return quotes.filter(
-  (quote) =>
-    quote.quote.toLowerCase().includes(searchTerm.toLowerCase) ||
-    quote.author.toLowerCase().includes(searchTerm.toLowerCase)
+function searchListOfQuotes(searchTerm) {
+  return quotes.filter(
+    (quote) =>
+      quote.quote.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      quote.author.toLowerCase().includes(searchTerm.toLowerCase())
     //search term should also be to lower case?
-);
-
+  );
 }
 
-app.get("/echo", function(request, response){
-  let word = request.query.word
-  response.send(`you said ${word}`)
-})
 
+app.get("/quotes/search", function (request, response) {
+  let searchTerm = request.query.term;
+   let matchedTerm = searchListOfQuotes(searchTerm);
+    response.json(matchedTerm);
+});
+
+
+
+app.get("/echo", function (request, response) {
+  let word = request.query.word;
+  response.send(`you said ${word}`);
+});
 
 //...END OF YOUR CODE
 
@@ -56,7 +59,7 @@ app.get("/echo", function(request, response){
 //example: pickFromArray(myContactsArray)
 //
 function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
+  return lodash.sample(arr);
 }
 
 //Start our server so that it listens for HTTP requests!
