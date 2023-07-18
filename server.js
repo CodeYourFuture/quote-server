@@ -3,6 +3,7 @@
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
+const lodash = require("lodash");
 const app = express();
 
 //load the quotes JSON
@@ -23,7 +24,8 @@ app.get("/quotes", function (request, response) {
 });
 
 app.get("/quotes/random", function (request, response) {
-  response.send(pickFromArray(quotes));
+  // response.send(pickFromArray(quotes));
+  response.send(lodash.sample(quotes));
 });
 
 app.get("/quotes/search", function (request, response) {
@@ -38,9 +40,9 @@ app.get("/quotes/search", function (request, response) {
 //example: pickFromArray([1,2,3,4]), or
 //example: pickFromArray(myContactsArray)
 //
-function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
+// function pickFromArray(arr) {
+//   return arr[Math.floor(Math.random() * arr.length)];
+// }
 
 function searchTerm(term) {
   const filteredResults = quotes.filter(
