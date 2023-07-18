@@ -10,11 +10,13 @@
     "start": "node server.js"
   },
   "dependencies": {
+    
     "express": "^4.17.1",
-    "lodash": "*"
+    "lodash": "*",
+    "cors": "^2.8.5"
   },
   "repository": {
-    "url": "https://glitch.com/edit/#!/hello-express"
+    "url": "https://bedi06-quotes-server.glitch.me/"
   },
   "license": "MIT",
   "keywords": [

@@ -2,10 +2,11 @@
 // This is where your node app starts
 
 //load the 'express' module which makes writing webservers easy
-const express = require("express");
-const lodash = require("lodash");
-
+var express = require("express");
+var lodash = require("lodash");
+var cors = require('cors');
 const app = express();
+app.use(cors())
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
@@ -57,6 +58,6 @@ app.get("/echo",function(request,response){
 // }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(52106, function () {
+const listener = app.listen(3000, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
