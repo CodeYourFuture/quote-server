@@ -20,6 +20,7 @@ app.get("/", function (request, response) {
 
 //START OF YOUR CODE...
 
+// display all quotes
 app.get("/quotes", function (request, response) {
   response.json(quotes);
 });
