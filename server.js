@@ -7,6 +7,7 @@ const lodash = require("lodash");
 const app = express();
 const cors = require("cors");
 app.use(cors());
+
 //load the quotes JSON
 const quotes = require("./quotes.json");
 
@@ -20,7 +21,6 @@ app.get("/", function (request, response) {
 
 //START OF YOUR CODE...
 
-// display all quotes
 app.get("/quotes", function (request, response) {
   response.json(quotes);
 });
@@ -31,7 +31,7 @@ app.get("/quotes/random", function (request, response) {
 
 app.get("/quotes/search", function (request, response) {
   let searchQuery = request.query.term;
-  let matchingQuotes = getMatchingQuotes(searchQuery);
+  let matchingQuotes = getMatchingQuotes(searchQuery.toLowerCase());
   response.json(matchingQuotes);
 });
 
