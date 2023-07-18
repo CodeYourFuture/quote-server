@@ -26,6 +26,12 @@ app.get("/quotes/random", function (request, response) {
   response.send(pickFromArray(quotes));
 });
 
+app.get("/quotes/search", function (request, response) {
+  const term = request.query.term.toLocaleLowerCase();
+  const result = searchTerm(term);
+  response.send(result);
+});
+
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
@@ -34,6 +40,15 @@ app.get("/quotes/random", function (request, response) {
 //
 function pickFromArray(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function searchTerm(term) {
+  const filteredResults = quotes.filter(
+    (el) =>
+      el.quote.toLocaleLowerCase().includes(term) ||
+      el.author.toLocaleLowerCase().includes(term)
+  );
+  return filteredResults;
 }
 
 //Start our server so that it listens for HTTP requests!
