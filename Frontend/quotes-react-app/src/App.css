@@ -39,18 +39,26 @@
 }
 
 .App {
-  height: 100%;
-  width: 100%;
-  position: absolute;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  padding-top: 4rem;
-  background-color: rgb(250, 241, 227);
+  padding-top: 3rem;
+}
 
+.page-holder {}
+
+h2 {
+  margin-bottom: 3rem;
+  font-size: 40px;
+  color: #4a4139;
 }
 
 .card-Wrapper {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .card {
@@ -59,7 +67,7 @@
   padding: 1rem;
   border-radius: 0.5rem;
   border: 1px solid rgb(255, 255, 255);
-
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .quote {
@@ -75,4 +83,50 @@ button {
   border-radius: 0.3rem;
   color: white;
   border: rgb(237, 224, 217) solid 1px;
+}
+
+#search {
+  background: none;
+  border: #282c34 2px solid;
+  width: 20rem;
+  height: 2.5rem;
+  border-radius: 2rem;
+  padding-left: 0.6rem;
+}
+
+#search:focus {
+  outline: none !important;
+  background-color: rgb(96, 58, 8, 20%) !important;
+}
+
+
+
+.search-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  list-style-type: none;
+  margin-top: 3rem;
+}
+
+.search-input {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 0.5rem;
+}
+
+.input-lable {
+  color: #9a8675;
+  padding-left: 0.6rem;
+}
+
+.list-of-quotes-container {
+  margin-top: 2rem;
+  width: 50%;
+  text-align: left;
+}
+
+.list-of-quotes-container p {
+  text-align: right;
 }
