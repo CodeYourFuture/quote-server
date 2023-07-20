@@ -33,7 +33,7 @@ const SearchBar = () => {
                 {
                     listOfQuotes.length > 0 && inputValue !== "" && listOfQuotes.map(quote => {
                         return (
-                            <li key={quote.id}>
+                            <li key={quote.id} className="one-quote">
                                 <h4>{quote.quote}</h4>
                                 <p >{quote.author}</p>
                                 <p></p>

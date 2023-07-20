@@ -127,6 +127,10 @@ button {
   text-align: left;
 }
 
+.one-quote {
+  border-top: #603a08 solid 1px;
+}
+
 .list-of-quotes-container p {
   text-align: right;
 }
