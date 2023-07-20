@@ -1,5 +1,6 @@
 import './App.css';
 import CardWithQuotes from "./CardWithQuotes.js"
+import Footer from './Footer';
 import SearchBar from './SearchBar';
 
 function App() {
@@ -13,8 +14,7 @@ function App() {
         </div>
         <SearchBar />
       </div>
-
-
+      <Footer />
     </div>
   );
 }
