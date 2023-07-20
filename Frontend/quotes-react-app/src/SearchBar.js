@@ -25,7 +25,7 @@ const SearchBar = () => {
     return (
         <div className="search-container">
             <div className="search-input">
-                <lable for="input" className="input-lable">Search the Quotes</lable>
+                <p className="input-lable">Search the Quotes</p>
                 <input onChange={handleChanges} id="search" type="search" placeholder="Search..." autoFocus required />
             </div>
 
@@ -33,7 +33,7 @@ const SearchBar = () => {
                 {
                     listOfQuotes.length > 0 && inputValue !== "" && listOfQuotes.map(quote => {
                         return (
-                            <li>
+                            <li key={quote.id}>
                                 <h4>{quote.quote}</h4>
                                 <p >{quote.author}</p>
                                 <p></p>
