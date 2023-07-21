@@ -32,19 +32,6 @@ app.get("/quotes/search", (req, res) => {
 });
 
 
-/* app.use("/quotes", (req, res, next) => {
-  const filters = req.query;
-  const filteredUsers = quotes.filter((user) => {
-    let isValid = true;
-    for (key in filters) {
-      console.log(key, user[key], filters[key]);
-      isValid = isValid && user[key] == filters[key];
-    }
-    return isValid;
-  });
-  res.send(filteredUsers);
-}); */
-
 app.get("/quotes/random", (req, res) => {
   res.send(pickFromArray(quotes));
 });
