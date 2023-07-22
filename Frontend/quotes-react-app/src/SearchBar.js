@@ -1,15 +1,12 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 const SearchBar = () => {
     const [inputValue, setInputValue] = useState("")
-    const handleChanges = (e) => {
-        setInputValue(e.target.value)
-    }
-
     const [listOfQuotes, setListOfQuotes] = useState([]);
 
-    useEffect(() => {
-        if (inputValue !== "") {
+    const handleChanges = (e) => {
+        setInputValue(e.target.value)
+        if (e.target.value !== "") {
             fetch(`https://olha-quote-server.glitch.me/quotes/search?terms=${inputValue}`)
                 .then(response => {
                     return response.json()
@@ -19,7 +16,10 @@ const SearchBar = () => {
                     console.log(listOfQuotes)
                 })
         }
-    }, [inputValue])
+    }
+
+
+
 
 
     return (
