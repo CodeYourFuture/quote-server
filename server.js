@@ -4,6 +4,7 @@
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const lodash = require("lodash");
 const port = 8080;
 
@@ -40,6 +41,8 @@ app.get("/quotes/search", function (request, response) {
     response.json(searchQuotes);
   }
 });
+
+app.use(cors());
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
