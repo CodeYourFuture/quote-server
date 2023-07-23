@@ -2,6 +2,7 @@
 // This is where your node app starts
 
 //load the 'express' module which makes writing webservers easy
+const { response } = require("express");
 const express = require("express");
 const app = express();
 const port = 9090;
@@ -32,18 +33,18 @@ app.get("/quotes/search", (request, response) => {
   const filteredQuote = quotes.filter(
     (e) =>
       e.quote.toUpperCase().includes(search) ||
-      e.author.toUpperCase().includes(search)
+      e.author.toUpperCase().includes(search) 
   );
   response.json(filteredQuote);
 });
 
+app.get("/albums/:albumId", function (request, response) {
+  // req.params.albumId will match the value in the url after /albums/
+  const search = request.params.albumId
+  const filteredQuoteById = quotes.filter((e) => e.id.includes(search))
+  response.send(filteredQuoteById)
+});
 
-//...END OF YOUR CODE
-
-//You can use this function to pick one element at random from a given array
-//example: pickFromArray([1,2,3,4]), or
-//example: pickFromArray(myContactsArray)
-//
 function pickFromArray(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
