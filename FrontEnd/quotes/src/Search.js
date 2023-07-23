@@ -1,0 +1,53 @@
+import { useState } from "react";
+
+const SearchBar = () => {
+  const [inputValue, setInputValue] = useState("");
+  const [listOfQuotes, setListOfQuotes] = useState([]);
+
+  const handleChanges = (e) => {
+    setInputValue(e.target.value);
+    if (e.target.value !== "") {
+      fetch(
+        `https://junita-quote-server.glitch.me/quotes//search?term=${inputValue}`
+      )
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          setListOfQuotes(data);
+          console.log(listOfQuotes);
+        });
+    }
+  };
+
+  return (
+    <div className="search">
+      <div>
+        <p className="search_title">Search your favourite Quotes</p>
+        <input
+          onChange={handleChanges}
+          id="search"
+          type="search"
+          placeholder="Search..."
+          autoFocus
+          required
+        />
+      </div>
+
+      <div className="list">
+        {listOfQuotes.length > 0 &&
+          inputValue !== "" &&
+          listOfQuotes.map((quote) => {
+            return (
+              <li key={quote.id}>
+                <h4>{quote.quote}</h4>
+                <p>{quote.author}</p>
+                <p></p>
+              </li>
+            );
+          })}
+      </div>
+    </div>
+  );
+};
+export default SearchBar;
