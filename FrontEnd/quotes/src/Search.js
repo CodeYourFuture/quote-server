@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const SearchBar = () => {
   const [inputValue, setInputValue] = useState("");
-  const [listOfQuotes, setListOfQuotes] = useState([]);
+  const [list, setList] = useState([]);
 
   const handleChanges = (e) => {
     setInputValue(e.target.value);
@@ -14,8 +14,8 @@ const SearchBar = () => {
           return response.json();
         })
         .then((data) => {
-          setListOfQuotes(data);
-          console.log(listOfQuotes);
+          setList(data);
+          console.log(list);
         });
     }
   };
@@ -25,6 +25,7 @@ const SearchBar = () => {
       <div>
         <p className="search_title">Search your favourite Quotes</p>
         <input
+        className="search_input"
           onChange={handleChanges}
           id="search"
           type="search"
@@ -35,9 +36,9 @@ const SearchBar = () => {
       </div>
 
       <div className="list">
-        {listOfQuotes.length > 0 &&
+        {list.length > 0 &&
           inputValue !== "" &&
-          listOfQuotes.map((quote) => {
+          list.map((quote) => {
             return (
               <li key={quote.id}>
                 <h4>{quote.quote}</h4>
