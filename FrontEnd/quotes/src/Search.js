@@ -15,7 +15,6 @@ const SearchBar = () => {
         })
         .then((data) => {
           setList(data);
-          
         });
     }
   };
@@ -25,12 +24,11 @@ const SearchBar = () => {
       <div>
         <p className="search_title">Search your favourite Quotes</p>
         <input
-        className="search_input"
+          className="search_input"
           onChange={handleChanges}
           id="search"
           type="search"
           placeholder="Search..."
-         
         />
       </div>
 
