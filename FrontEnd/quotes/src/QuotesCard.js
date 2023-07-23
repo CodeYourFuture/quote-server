@@ -31,7 +31,7 @@ return (
     <p className="quote"> {data.quote}</p>
     <p className="author">Author- {data.author}</p>
     <button className="button" onClick={handleClick}>
-      Next Quote
+      Random Quote
     </button>
   </div>
 );
