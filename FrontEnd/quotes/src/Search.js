@@ -15,7 +15,7 @@ const SearchBar = () => {
         })
         .then((data) => {
           setList(data);
-          console.log(list);
+          
         });
     }
   };
@@ -30,8 +30,7 @@ const SearchBar = () => {
           id="search"
           type="search"
           placeholder="Search..."
-          autoFocus
-          required
+         
         />
       </div>
 
