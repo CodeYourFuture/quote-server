@@ -19,13 +19,19 @@ app.get("/", function (request, response) {
 
 //   /quotes            - Should return all quotes (json)
 app.get("/quotes", (req, res) => {
-  res.send({quotes});
+  if (quotes.length === 0) {
+    return res.status(404).json({ error: "No quotes found." });
+  }
+  res.send({ quotes });
 });
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/quotes/random", (req, res) => {
-  res.send( 
-pickFromArray(quotes)
-   );
+  if (quotes.length === 0) {
+    return res.status(404).json({ error: "No quotes found." });
+  }
+
+  const randomQuote = pickFromArray(quotes);
+  res.send(randomQuote);
 });
 
 //You can use this function to pick one element at random from a given array
