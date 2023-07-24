@@ -4,7 +4,11 @@
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
 const lodash = require("lodash");
+const cors = require("cors");
+
 const app = express();
+app.use(cors());
+app.use(express.json());
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
