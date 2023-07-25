@@ -25,6 +25,24 @@ app.get("/quotes/random", function (request, response ){
   response.json(pickFromArray(quotes));
 });
 
+// app.get("/quotes/random", function (request, response ){
+//   response.json(pickFromArray(quotes));
+// });
+
+app.get("/quotes/search", function (request, response){
+  let searchQuery = request.query.term;
+  let matchingQuotes = getMatchingQuotes(searchQuery);
+  response.json(matchingQuotes);
+});
+function getMatchingQuotes(searchTerm){
+  return quotes.filter((element) => element.quote.toLowerCase().includes(searchTerm) || element.author.toLowerCase().includes(searchTerm))
+}
+app.get ("/echo", function(request, response){
+  let wordQuery = request.query.word;
+  response.send("you said ${wordQuery}");
+});
+
+
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
