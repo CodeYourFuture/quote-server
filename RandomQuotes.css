@@ -1,0 +1,13 @@
+.quote-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.quote-button:hover {
+  background-color: #3e8e41;
+}
