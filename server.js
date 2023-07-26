@@ -3,7 +3,9 @@
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
+const { sample } = require("lodash");
 const app = express();
+
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
@@ -17,6 +19,41 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+app.get("/quotes", function(req, res) {
+  res.json(quotes);
+});
+
+// app.get("/quotes/random", function(req, res) {
+//   const randomIndex = Math.floor(Math.random() * quotes.length);
+//   const randomQuote = quotes[randomIndex];
+//   res.json(randomQuote);
+// });
+
+app.get("/echo", function(req, res) {
+  const word = req.query.word;
+  res.send(`You said '${word}'`);
+});
+
+app.get("/quotes/search", function(req, res) {
+  const searchTerm = req.query.term;
+
+  if (!searchTerm) {
+    res.status(400).send("Search term is missing.");
+    return;
+  }
+
+  const searchResult = quotes.filter((quote) => {
+    return quote.quote.toLowerCase().includes(searchTerm.toLowerCase());
+  });
+
+  res.status(200).send({ searchResult });
+});
+
+app.get("/quotes/random", function(req, res) {
+  const randomQuote = sample(quotes);
+  res.json(randomQuote);
+});
+
 
 //...END OF YOUR CODE
 
@@ -29,6 +66,6 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
+const listener = app.listen(process.env.PORT || 3000, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
