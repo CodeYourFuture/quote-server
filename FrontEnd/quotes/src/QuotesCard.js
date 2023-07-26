@@ -23,11 +23,7 @@ const QuotesCard = () => {
   return (
     <div>
       <h1>Quote-server</h1>
-      <img
-        src="https://americanprofile.com/wp-content/uploads/2014/01/plan-a-motivational-quote.jpg"
-        alt="pic"
-        className="image"
-      ></img>
+      
       <p className="quote"> {data.quote}</p>
       <p className="author">Author- {data.author}</p>
       <button className="button" onClick={handleClick}>
