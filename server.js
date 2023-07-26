@@ -17,6 +17,19 @@ app.get("/", function (request, response) {
 });
 
 //START OF YOUR CODE...
+app.get("/quotes", function (request, response) {
+  response.send(quotes);
+});
+
+app.get("/quotes/random", function (request, response) {
+  response.send(pickFromArray(quotes));
+});
+
+app.get("/quotes/search", function (request, response) {
+  const query = request.query.term;
+  const filteredArray = quotes.filter((item) => item["quote"].includes(query));
+  response.send(filteredArray);
+});
 
 //...END OF YOUR CODE
 
