@@ -1,34 +1,43 @@
-// server.js
-// This is where your node app starts
-
-//load the 'express' module which makes writing webservers easy
+const lodash = require("lodash");
 const express = require("express");
+var cors = require("cors");
 const app = express();
+const port = 3030;
+
+app.use(cors());
+
+//start listening to server
+app.listen(port, function () {
+  console.log("Your app is listening on port ");
+});
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
 
-// Now register handlers for some routes:
-//   /                  - Return some helpful welcome info (text)
-//   /quotes            - Should return all quotes (json)
-//   /quotes/random     - Should return ONE quote (json)
+// http://localhost:3030/ - Return some helpful welcome info (text)
 app.get("/", function (request, response) {
   response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
-//START OF YOUR CODE...
+//   http://localhost:3030/quotes            - Should return all quotes (json)
+app.get("/quotes", function (request, response) {
+  response.send(quotes);
+});
 
-//...END OF YOUR CODE
+//   http://localhost:3030/quotes/random    - Should return ONE quote (json)
+app.get("/quotes/random", function (request, response) {
+  let randomQuote = lodash.sample(quotes);
+  response.send(randomQuote);
+});
 
-//You can use this function to pick one element at random from a given array
-//example: pickFromArray([1,2,3,4]), or
-//example: pickFromArray(myContactsArray)
-//
-function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
-
-//Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
-  console.log("Your app is listening on port " + listener.address().port);
+//   http://localhost:3030/quotes/search?term=life
+app.get("/quotes/search", (request, response) => {
+  const searchTerm = request.query.term.toLowerCase(); // Get the search term from the query parameter and convert to lowercase
+  console.log(searchTerm);
+  const filteredQuotes = quotes.filter(
+    (quote) =>
+      quote.quote.toLowerCase().includes(searchTerm) ||
+      quote.author.toLowerCase().includes(searchTerm)
+  ); // Filter the quotes array to include only those that contain the search term in the text
+  response.json(filteredQuotes); // Return the filtered quotes as JSON
 });

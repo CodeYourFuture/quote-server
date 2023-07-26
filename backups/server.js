@@ -12,11 +12,22 @@ const Quotes = require("./quotes.json");
 //   /                  - Return some helpful welcome info (text)
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
-app.get("/", function(request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+app.get("/", function (request, response) {
+  response.send(
+    "Vitalina's Quote Server!  Ask me for /quotes/random, or /quotes"
+  );
 });
 
 //START OF YOUR CODE...
+// Define the /quotes route to return all quotes as JSON
+app.get("/quotes", function (request, response) {
+  response.json(Quotes);
+});
+
+// Start the server and listen for incoming requests
+app.listen(3000, function () {
+  console.log("Quote server is listening on port 3000");
+});
 
 //...END OF YOUR CODE
 
@@ -29,6 +40,6 @@ function pickFromArray(arr) {
 }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function() {
+const listener = app.listen(process.env.PORT, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
