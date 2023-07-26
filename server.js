@@ -3,6 +3,8 @@
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
+const lodash = require("lodash");
+
 const app = express();
 
 //load the quotes JSON
@@ -13,10 +15,32 @@ const quotes = require("./quotes.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send("Farzaneh's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
 //START OF YOUR CODE...
+
+app.get("/quotes", (req, res) => {
+  res.status(200).json({ data: quotes })
+});
+
+app.get("/quotes/random", (req, res) => {
+  // const quote = pickFromArray(quotes);
+  const quote = lodash.sample(quotes);
+  res.status(200).json({ data: quote });
+});
+
+app.get("/quotes/search", (req, res) => {
+  const { term } = req.query;
+  if (term)
+    res.status(400).json({ error: "You must pass in a 'term' search param" });
+  else {
+    const filteredQuotes = quotes.filter(search =>
+      search.author.toLocaleLowerCase().includes(term.toLocaleLowerCase())
+      || search.quote.toLocaleLowerCase().includes(term.toLocaleLowerCase()))
+    res.status(200).json({ data: filteredQuotes });
+  }
+});
 
 //...END OF YOUR CODE
 
