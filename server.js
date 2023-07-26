@@ -13,11 +13,18 @@ const quotes = require("./quotes.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send(
+    "Bahare's Quote Server!  Ask me for /quotes/random, or /quotes"
+  );
 });
 
 //START OF YOUR CODE...
-
+app.get("/quotes", (req, res) => {
+  res.send(quotes);
+});
+app.get("/quotes/random", (req, res) => {
+  res.send(pickFromArray(quotes));
+});
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
@@ -28,6 +35,21 @@ function pickFromArray(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
 
+//Level 2:
+
+app.get("/quotes/search", (req, res) => {
+  const searchedTerm = req.query.term;
+  if (searchedTerm) {
+    const filteredQuotes = quotes.filter(
+      (quote) =>
+        quote.quote.toLowerCase().includes(searchedTerm.toLowerCase()) ||
+        quote.author.toLowerCase().includes(searchedTerm.toLowerCase())
+    );
+    res.send(filteredQuotes);
+  } else {
+    res.send([]);
+  }
+});
 //Start our server so that it listens for HTTP requests!
 const listener = app.listen(process.env.PORT, function () {
   console.log("Your app is listening on port " + listener.address().port);
