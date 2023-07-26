@@ -1,11 +1,11 @@
-import React from "react";
+// import React from "react";
 
-function Button() {
-  return (
-    <div className="button">
-      <button className="btn">Get Random Quotes</button>
-    </div>
-  );
-}
+// function Button(clickHandler) {
+//   return (
+//     <div className="button">
+//       <button className="btn" onClick={clickHandler()}>Get Random Quotes</button>
+//     </div>
+//   );
+// }
 
-export default Button;
+// export default Button;
