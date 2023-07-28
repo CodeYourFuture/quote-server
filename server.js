@@ -5,14 +5,16 @@
 const express = require("express");
 const app = express();
 const lodash = require("lodash");
+var cors = require("cors");
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
-
+app.use(cors());
 // Now register handlers for some routes:
 //   /                  - Return some helpful welcome info (text)
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
+
 app.get("/", function (request, response) {
   response.send(
     "Andrius's Quote Server!  Ask me for /quotes/random, or /quotes"

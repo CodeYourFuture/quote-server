@@ -1,0 +1,28 @@
+.app {
+  margin: -3rem;
+  background-image: url("pexelsjpg.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  height: 38rem;
+  color: white;
+  /* width: auto; */
+}
+.quote{
+  font-size: 3rem;
+  text-align: center;
+
+}
+h1{
+  padding-top: 4rem;
+  text-align: center;
+  font-size: 6rem;
+}
+button{
+  font-size: 2rem;
+}
+h2{
+font-size: 2.5rem;
+}
+p{
+font-size: 2rem;
+}
