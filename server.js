@@ -1,6 +1,6 @@
 // server.js
 // This is where your node app starts
-
+const { res, req } = require("express");
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
 const app = express();
@@ -12,12 +12,32 @@ const quotes = require("./quotes.json");
 //   /                  - Return some helpful welcome info (text)
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
-app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+app.get("/", function (req, res) {
+  res.send(
+    "Shadi's Quote Server!  Ask me for /quotes/random, or /quotes or /quotes/search?term="
+  );
 });
 
 //START OF YOUR CODE...
 
+app.get("/quotes", (req, res) => {
+  res.json(quotes);
+});
+
+app.get("/quotes/random", (req, res) => {
+  const randomQ = pickFromArray(quotes);
+  res.send(randomQ);
+});
+
+app.get("/quotes/search", (req, res) => {
+  let searchQuery = req.query.term;
+  const searchQuotes = quotes.filter(
+    (info) =>
+      info.quote.toLowerCase().includes(searchQuery) ||
+      info.author.toLowerCase().includes(searchQuery)
+  );
+  res.send(searchQuotes);
+});
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
