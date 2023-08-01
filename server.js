@@ -29,10 +29,10 @@ app.get("/quotes/random", function (request, response) {
   response.send(lodash.sample(quotes));
 });
 app.get("/quotes/search", function (request, response) {
-  const query = request.query.term;
+  const searchValue = request.query.term;
   response.send(
-    quotes.filter((quote) =>
-      quote.quote.toLowerCase().includes(query.toLowerCase())
+    quotes.filter((oneQuote) =>
+      oneQuote.quote.toLowerCase().includes(searchValue.toLowerCase())
     )
   );
 });
