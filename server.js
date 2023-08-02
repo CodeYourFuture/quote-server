@@ -2,9 +2,8 @@
 // This is where your node app starts
 
 //load the 'express' module which makes writing webservers easy
-const { query } = require("express");
 const lodash = require("lodash");
-const cors = ("cors");
+const cors = require("cors");
 const express = require("express");
 const app = express();
 
