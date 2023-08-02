@@ -15,7 +15,7 @@
 // //   /quotes            - Should return all quotes (json)
 // //   /quotes/random     - Should return ONE quote (json)
 // app.get("/", function (request, response) {
-//   response.send("Saliha's Quote Server!  Ask me for /quotes/random, or /quotes");
+//   response.send(" Quote Server!  Ask me for /quotes/random, or /quotes");
 // });
 
 // app.get("/quotes", function (request, response) {
@@ -155,9 +155,10 @@ function searchQuotes(term) {
 // // Route search for  `/echo?word=ismail
 // app.get("/quotes/search", function(request, response){
 //   console.log(request.query.word, "<----search word");
-//   const word = quotes.filter((quote) => quote.word === word.toLowerCase()
+//   const word = request.query.word.toLowerCase();
+//   const filteredWord = quotes.filter((quote) => quote.word === word.toLowerCase()
 //   );
-//   return word;
+//   return filteredWord;
 // })
 
 //...END OF YOUR CODE
