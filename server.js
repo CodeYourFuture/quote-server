@@ -2,8 +2,17 @@
 // This is where your node app starts
 
 //load the 'express' module which makes writing webservers easy
+const lodash = require("lodash");
+const cors = require("cors");
 const express = require("express");
 const app = express();
+
+// Enable CORS for all origins (allow all origins)
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*'); // Allow all origins, you can set specific origins as well
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
@@ -13,10 +22,63 @@ const quotes = require("./quotes.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send(
+    "Saliha's Quote Server!  Ask me for /quotes/random, or /quotes"
+  );
 });
 
 //START OF YOUR CODE...
+
+app.get("/quotes", function (request, response) {
+  response.send({ quotes });
+});
+
+app.get("/quotes/random", function (request, response) {
+  // Pick a random quote from the array using the pickFromArray function
+  const randomQuote = pickFromArray(quotes);
+
+  // Send the random quote as the response
+  response.send(randomQuote);
+});
+
+app.get('/quotes/random', function(request, response) {
+  const randomQuote = sample(lodash);
+  response.send(randomQuote);
+})
+
+// - `/quotes/search?term=life`
+//  http://localhost:62297/quotes/search?term=life/success/miss
+// app.get("/quotes/search", function (request, response) {
+//   // let term = request.query.term
+//   // response.send(term);
+// });
+
+// advance
+app.get("/quotes/search", function (request, response) {
+  const term = request.query.term.toLowerCase();
+  const searchResults = searchQuotes(term);
+  response.send({ searchResults });
+});
+
+// - bonus: make your search case-insensitive
+// - bonus: make the search return matches on quote OR author text.
+function searchQuotes(term) {
+  const results = quotes.filter((quote) =>
+      quote.quote.toLowerCase().includes(term.toLowerCase()) ||
+      quote.author.toLowerCase().includes(term.toLowerCase()) ||
+      quote === ""
+  );
+  return results;
+}
+
+// // Route search for  `/echo?word=ismail
+// app.get("/quotes/search", function(request, response){
+//   console.log(request.query.word, "<----search word");
+//   const word = request.query.word.toLowerCase();
+//   const filteredWord = quotes.filter((quote) => quote.word === word.toLowerCase()
+//   );
+//   return filteredWord;
+// })
 
 //...END OF YOUR CODE
 
@@ -32,3 +94,5 @@ function pickFromArray(arr) {
 const listener = app.listen(process.env.PORT, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
+
+
