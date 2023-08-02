@@ -3,7 +3,10 @@
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
+const lodash = require("lodash");
+const cors = require("cors");
 const app = express();
+app.use(cors({ origin: "*" }));
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
@@ -13,11 +16,31 @@ const quotes = require("./quotes.json");
 //   /quotes            - Should return all quotes (json)
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send("Farzad's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
 //START OF YOUR CODE...
-
+app.get("/quotes", function (request, response) {
+  response.json(quotes);
+});
+app.get("/quotes/random", function (request, response) {
+  let result = lodash.sample(quotes);
+  response.json(result);
+});
+app.get("/quotes/search", function (request, response) {
+  let term = request.query.term;
+  let result = quotes.filter((quote) => {
+    return quote.quote.includes(term);
+  });
+  response.json(result);
+});
+app.get("/author/search", function (request, response) {
+  let term = request.query.term;
+  let result = quotes.filter((quote) => {
+    return quote.author.includes(term);
+  });
+  response.json(result);
+});
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
