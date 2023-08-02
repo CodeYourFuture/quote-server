@@ -109,7 +109,7 @@ const quotes = require("./quotes.json");
 //   /quotes/random     - Should return ONE quote (json)
 app.get("/", function (request, response) {
   response.send(
-    "saliha's Quote Server!  Ask me for /quotes/random, or /quotes"
+    "Saliha's Quote Server!  Ask me for /quotes/random, or /quotes"
   );
 });
 
