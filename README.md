@@ -18,18 +18,6 @@ Here's how it might look if you make a request to such a server.
 
 Fork this repository and read this file. This document outlines all of this tasks to complete this weeks homework.
 
-## Want to run your code on the internet?
-
-If you want to share your server with other people the easiest way to do this is to use Glitch
-
-- Remix [this server on glitch -
-  https://glitch.com/~cyf-quotes-start](https://glitch.com/~cyf-quotes-start)
-- Name your new server `yourname-quote-server`
-- Make sure you're logged in so that it saves
-- Check that it is working by making a request to `/`
-- Take time to read the comments
-- Copy the code you've written to Glitch
-
 ## Level 1 Challenge - make the quote server
 
 Your server must have at least these two "routes":
@@ -37,7 +25,7 @@ Your server must have at least these two "routes":
 - `/quotes` - returns ALL of the quotes, as JSON.
 - `/quotes/random` - returns ONE of the quotes, picked differently at random each time it is requested.
 
-A list of quotes (in JSON format) is provided in this repo [quotes.json](./quotes.json), but it will also be included in the starter project on glitch. Each quote is a simple object with a quote and an author.
+A list of quotes (in JSON format) is provided in this repo [quotes.json](./quotes.json). Each quote is a simple object with a quote and an author.
 
 Try to use what you know to do this challenge on your own. However, there are some steps to guide you, below.
 
@@ -164,9 +152,7 @@ Once you've got that working, you can copy-paste your function into your Express
 
 Well done!
 
-- Mark the relevant Google Classroom assignment done, but _before you do_, add your two links (1 for the glitch project and 1 for your server address) as _link attachments_ to the assignment. (Instructions on this are in the assignment)
-
-- Also post the two links (as one message) [in THIS thread on Slack](https://codeyourfuture.slack.com/archives/CEDK6JPKQ/p1557924290017700).
+- Make sure to create your Pull Request with the solution against this project.
 
 ### Ideas for further work
 
@@ -204,10 +190,10 @@ This is the same process for almost ANY library you can find on [https://www.npm
 Note: only do this if you have done all other Node homework this week - that is the priority.
 
 - Make a very simple React app called quotes-react-app
-- Have it fetch a random quote from your server on glitch. You'll have to enable CORS on the express app. See below.
+- Have it fetch a random quote. You'll have to enable CORS on the express app. See below.
 - (Bonus: Allow the user to get a new random quote from the server, by clicking a button or clicking the quote.)
-- Host your react app on netlify
-- Post the URL to your hosted React app on Slack, and in your google classroom submission (along with your glitch server url)
+- Host your react app on Netlify.
+- If you wish you can host your Node app on Glitch. See details at the end of this document.
 
 ### Example screenshot of Simple React app
 
@@ -232,6 +218,18 @@ and
 Read more or CORS [here](https://codeyourfuture.github.io/syllabus-master/others/cors.html)
 and in CORS in Express [here](https://expressjs.com/en/resources/middleware/cors.html).
 
-### Credits
+## Want to run your code on the internet?
+
+If you want to share your server with other people the easiest way to do this is to use Glitch
+
+- Remix [this server on glitch -
+  https://glitch.com/~cyf-quotes-start](https://glitch.com/~cyf-quotes-start)
+- Name your new server `yourname-quote-server`
+- Make sure you're logged in so that it saves
+- Check that it is working by making a request to `/`
+- Take time to read the comments
+- Copy the code you've written to Glitch
+
+## Credits
 
 I found the quotes list here https://gist.githubusercontent.com/nasrulhazim/54b659e43b1035215cd0ba1d4577ee80/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json
