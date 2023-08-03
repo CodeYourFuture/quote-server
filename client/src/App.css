@@ -1,0 +1,49 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.App {
+  padding: 30px;
+  /* background: linear-gradient(rgb(52, 49, 49), rgb(230, 221, 221)); */
+  background: linear-gradient(rgb(31, 31, 33), rgb(197, 189, 189));
+  /* height: 100vhf; */
+}
+.header {
+  background-color: rgba(18, 18, 18, 0.704);
+  color: #fff;
+  height: 100px;
+  margin-bottom: 30px;
+}
+.nav {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  justify-content: center;
+}
+.nav li {
+  padding-top: 40px;
+  list-style: none;
+  text-transform: capitalize;
+  font-weight: 700;
+  font-size: large;
+}
+.welcome {
+  text-align: center;
+  color: rgba(22, 5, 5, 0.773);
+}
+.btn-container {
+  margin: 20px;
+  margin-left: auto;
+}
+.btn {
+  background: rgb(23, 4, 4);
+  color: #fff;
+  border-radius: 2px;
+  padding: 20px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
