@@ -8,22 +8,25 @@ const app = express();
 //load the quotes JSON
 const quotes = require("./quotes.json");
 
-// Now register handlers for some routes:
-//   /                  - Return some helpful welcome info (text)
-//   /quotes            - Should return all quotes (json)
-//   /quotes/random     - Should return ONE quote (json)
+// Handlers for routes:
+// Home route
+
 app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+  response.send("Oguzhan's Quote Server!  Ask me for /quotes/random, or /quotes");
 });
 
 //START OF YOUR CODE...
+// Returns all quotes (json)
+app.get("/quotes", function (request, response) {
+  response.json(quotes);
+});
 
-//...END OF YOUR CODE
+// Returns ONE quote (json)
+app.get("/quotes/random", function (request, response) {
+  response.json(pickFromArray(quotes));
+});
 
-//You can use this function to pick one element at random from a given array
-//example: pickFromArray([1,2,3,4]), or
-//example: pickFromArray(myContactsArray)
-//
+//Pick one element at random from a given array
 function pickFromArray(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
 }
