@@ -8,7 +8,7 @@ function App() {
 const[quote, setQuote]=useState({ quote: '', author: '' });
 
 const GenerateQuote = () => {
-  fetch("https://bedi0-quote-server.glitch.me/quotes")
+  fetch("https://quote-server-fu7w.onrender.com/quotes/random")
     .then((result) => result.json())
     .then((data) => {
       setQuote(data);

@@ -15,9 +15,6 @@
     "lodash": "*",
     "cors": "^2.8.5"
   },
-  "repository": {
-    "url": "https://bedi06-quotes-server.glitch.me/"
-  },
   "license": "MIT",
   "keywords": [
     "node",
