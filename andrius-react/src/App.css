@@ -1,0 +1,80 @@
+  .app {
+    margin: 0;
+    background-image: url("stars-mobile.jpg");
+    height: 50rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+  
+  }
+.container{
+  width: 80%;
+  margin: auto;
+  padding: 2rem;
+}
+  .quote {
+    font-size: 3rem;
+    text-align: center;
+
+  }
+
+  h1 {
+    margin:0;
+   
+    text-align: center;
+    font-size: 4rem;
+  }
+
+  button {
+    margin-top: 5rem;
+    font-size: 2rem;
+    background-color: red;
+    color: aliceblue;
+    
+  }
+
+  h2 {
+    margin-top: 5rem;
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+@media screen and (min-width: 800px) {
+  .app {
+  margin: -3rem;
+  background-image: url("pexelsjpg.jpg");
+  height: 40rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  color: white;
+  /* width: auto; */
+}
+.container{
+margin: auto;
+  width: 80%;
+  padding: 10px;
+}
+.quote{
+  font-size: 3rem;
+  /* text-align: center; */
+
+}
+h1{
+  padding-top: 4rem;
+  /* text-align: center; */
+  font-size: 6rem;
+}
+button{
+  font-size: 2rem;
+}
+h2{
+font-size: 2.5rem;
+}
+p{
+font-size: 2rem;
+}
+}
