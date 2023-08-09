@@ -1,7 +1,7 @@
 import React from "react";
 
-const Button = ({getRandomQuote}) => {
-    return <button onClick={getRandomQuote} >Get Random Quote</button>
+const Button = ({onClickHandler, label}) => {
+    return <button onClick={onClickHandler} >{label}</button>
 }
 
 export default Button;
