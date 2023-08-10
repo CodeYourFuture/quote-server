@@ -1,0 +1,149 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 3rem;
+}
+
+.page-holder {}
+
+h2 {
+  margin-bottom: 3rem;
+  font-size: 40px;
+  color: #4a4139;
+}
+
+.card-Wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.card {
+  background-image: linear-gradient(to bottom right, #e3cfbe, #c3aa94);
+  max-width: 40rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(255, 255, 255);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.quote {
+  font-size: 18px;
+  border-bottom: rgb(237, 224, 217) solid 1px;
+  padding-bottom: 1rem;
+}
+
+button {
+  background-color: #603a08;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  color: white;
+  border: rgb(237, 224, 217) solid 1px;
+}
+
+#search {
+  background: none;
+  border: #282c34 2px solid;
+  width: 20rem;
+  height: 2.5rem;
+  border-radius: 2rem;
+  padding-left: 0.6rem;
+}
+
+#search:focus {
+  outline: none !important;
+  background-color: rgb(96, 58, 8, 20%) !important;
+}
+
+
+
+.search-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  list-style-type: none;
+  margin-top: 3rem;
+}
+
+.search-input {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 0.4rem;
+}
+
+.input-lable {
+  color: #9a8675;
+  padding-left: 0.6rem;
+}
+
+.list-of-quotes-container {
+  margin-top: 2rem;
+  width: 50%;
+  text-align: left;
+}
+
+.one-quote {
+  border-top: #603a08 solid 1px;
+}
+
+.list-of-quotes-container p {
+  text-align: right;
+}
+
+.footer {
+  background-color: #e3cfbe;
+  width: 100%;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0, auto;
+  font-size: 12px;
+  color: #9a8675;
+  ;
+}
