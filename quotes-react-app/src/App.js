@@ -12,8 +12,7 @@ const App = () => {
 
   useEffect(() => {
     fetchRandomQuote();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // Remove the dependency array
+  }, []); 
 
   const pickFromArray = (arr) => {
     const randomIndex = Math.floor(Math.random() * arr.length);
