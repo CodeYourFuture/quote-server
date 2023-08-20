@@ -12,7 +12,7 @@ In this challenge you must make a server (using Node and Express) which serves q
 In the _extended_ work of this challenge, you also make a React app which displays the quotes retrieved from your new server.
 
 Here's how it might look if you make a request to such a server.
-![screenshot of the server in use](./screenshots/quote-server-example.png)
+![screenshot of the server in use](./unneccessary-files/screenshots/quote-server-example.png)
 
 ## Getting Started
 
@@ -199,7 +199,7 @@ Note: only do this if you have done all other Node homework this week - that is 
 
 Here's an example of how your react app might look.
 Note I didn't add a "get new quote" button here.
-![Example Screenshot of React App](./screenshots/example_react_quotes_app.png)
+![Example Screenshot of React App](./unneccessary-files/screenshots/example_react_quotes_app.png)
 
 #### Enabling CORS on the Express app
 
