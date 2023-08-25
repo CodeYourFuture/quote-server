@@ -3,7 +3,10 @@
 
 //load the 'express' module which makes writing webservers easy
 const express = require("express");
+const lodash = require("lodash");
 const app = express();
+const cors = require("cors");
+app.use(cors());
 
 //load the quotes JSON
 const quotes = require("./quotes.json");
@@ -18,17 +21,44 @@ app.get("/", function (request, response) {
 
 //START OF YOUR CODE...
 
+app.get("/quotes", function (request, response) {
+  response.json(quotes);
+});
+
+app.get("/quotes/random", function (request, response) {
+  response.json(pickFromArray(quotes));
+});
+
+app.get("/quotes/search", function (request, response) {
+  let searchQuery = request.query.term;
+  let matchingQuotes = getMatchingQuotes(searchQuery.toLowerCase());
+  response.json(matchingQuotes);
+});
+
+function getMatchingQuotes(searchTerm) {
+  return quotes.filter(
+    (singleQuote) =>
+      singleQuote.quote.toLowerCase().includes(searchTerm) ||
+      singleQuote.author.toLowerCase().includes(searchTerm)
+  );
+}
+
+app.get("/echo", function (request, response) {
+  let wordQuery = request.query.word;
+  response.send(`You said ${wordQuery}`);
+});
+
 //...END OF YOUR CODE
 
 //You can use this function to pick one element at random from a given array
 //example: pickFromArray([1,2,3,4]), or
 //example: pickFromArray(myContactsArray)
 //
-function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
+function pickFromArray(myArray) {
+  return lodash.sample(myArray);
 }
 
 //Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
+const listener = app.listen(3001, function () {
   console.log("Your app is listening on port " + listener.address().port);
 });
