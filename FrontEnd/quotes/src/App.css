@@ -1,0 +1,54 @@
+:root {
+  text-align: center;
+  background-color: azure;
+  background-image: url(https://images.pexels.com/photos/956999/milky-way-starry-sky-night-sky-star-956999.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h1 {
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  font-size: 1rem;
+  color: beige;
+  font-size: 3rem;
+}
+.quote {
+  font-size: 1rem;
+  background-color: black;
+  padding: 2rem;
+  color: beige;
+  width: 30rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.author {
+  text-align: center;
+  color: wheat;
+  font-style: italic;
+  font-size: 1rem;
+}
+
+.button {
+  padding: 1rem;
+  background-color: black;
+  color: brown;
+  font-size: 1rem;
+}
+
+.list {
+  list-style: none;
+  color: orange;
+}
+
+.search_title {
+  font-size: 2rem;
+  margin-top: 2rem;
+  color: white;
+}
+
+.footer {
+  margin-top: 20rem;
+  color: red;
+}
