@@ -1,34 +1,40 @@
-// server.js
-// This is where your node app starts
-
-//load the 'express' module which makes writing webservers easy
-const express = require("express");
+const lodash = require('lodash');
+const express = require('express');
 const app = express();
+const quotes = require('./quotes.json');
 
-//load the quotes JSON
-const quotes = require("./quotes.json");
-
-// Now register handlers for some routes:
-//   /                  - Return some helpful welcome info (text)
-//   /quotes            - Should return all quotes (json)
-//   /quotes/random     - Should return ONE quote (json)
-app.get("/", function (request, response) {
-  response.send("Neill's Quote Server!  Ask me for /quotes/random, or /quotes");
+app.get('/', (req, res) => {
+  res.send(
+    'Quote Server! Ask me for /quotes/random to get a random quote, /quotes for all quotes, or /quotes/search?q=your_query to find a specific quote'
+  );
 });
 
-//START OF YOUR CODE...
+app.get('/quotes', (req, res) => {
+  res.json(quotes);
+});
 
-//...END OF YOUR CODE
+app.get('/quotes/random', (req, res) => {
+  res.send(lodash.sample([...quotes]));
+});
 
-//You can use this function to pick one element at random from a given array
-//example: pickFromArray([1,2,3,4]), or
-//example: pickFromArray(myContactsArray)
-//
-function pickFromArray(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
+app.get('/quotes/search', (req, res) => {
+  try {
+    const searchTerm = req.query.q;
+    const filteredQuotes = quotes.filter(
+      quoteObj =>
+        quoteObj.quote.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        quoteObj.author.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    if (filteredQuotes.length < 1) {
+      res.send("Couldn't find any matches with your searched item.");
+    }
+    res.json(filteredQuotes);
+  } catch (err) {
+    console.log(err);
+  }
+});
 
-//Start our server so that it listens for HTTP requests!
-const listener = app.listen(process.env.PORT, function () {
-  console.log("Your app is listening on port " + listener.address().port);
+const port = process.env.PORT || 3000;
+const listener = app.listen(port, function () {
+  console.log('Your app is listening on port ' + listener.address().port);
 });
